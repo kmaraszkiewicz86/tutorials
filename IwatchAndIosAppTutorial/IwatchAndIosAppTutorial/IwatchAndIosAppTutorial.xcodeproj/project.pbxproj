@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F9A099422973D4D00C1C3DA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9A099322973D4D00C1C3DA /* Constants.swift */; };
+		1F9A099522973D4D00C1C3DA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9A099322973D4D00C1C3DA /* Constants.swift */; };
 		1FD103F42296CE7F0046CBF9 /* WatchSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD103F32296CE7F0046CBF9 /* WatchSessionManager.swift */; };
 		1FD103F52296CE7F0046CBF9 /* WatchSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD103F32296CE7F0046CBF9 /* WatchSessionManager.swift */; };
 		1FD103F72296F1C90046CBF9 /* RequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD103F62296F1C90046CBF9 /* RequestType.swift */; };
@@ -86,6 +88,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1F9A099322973D4D00C1C3DA /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		1FD103F32296CE7F0046CBF9 /* WatchSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchSessionManager.swift; sourceTree = "<group>"; };
 		1FD103F62296F1C90046CBF9 /* RequestType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestType.swift; sourceTree = "<group>"; };
 		1FD6458022946DED00C69400 /* IwatchAndIosAppTutorial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IwatchAndIosAppTutorial.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -152,6 +155,7 @@
 			children = (
 				1FD103F32296CE7F0046CBF9 /* WatchSessionManager.swift */,
 				1FD103F62296F1C90046CBF9 /* RequestType.swift */,
+				1F9A099322973D4D00C1C3DA /* Constants.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -428,6 +432,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F9A099422973D4D00C1C3DA /* Constants.swift in Sources */,
 				1FD6458622946DED00C69400 /* ViewController.swift in Sources */,
 				1FD6458422946DED00C69400 /* AppDelegate.swift in Sources */,
 				1FD103F42296CE7F0046CBF9 /* WatchSessionManager.swift in Sources */,
@@ -459,6 +464,7 @@
 				1FD645C122946DF100C69400 /* NotificationController.swift in Sources */,
 				1FD645BF22946DF100C69400 /* ExtensionDelegate.swift in Sources */,
 				1FD645BD22946DF100C69400 /* InterfaceController.swift in Sources */,
+				1F9A099522973D4D00C1C3DA /* Constants.swift in Sources */,
 				1FD103F52296CE7F0046CBF9 /* WatchSessionManager.swift in Sources */,
 				1FD103F82296F1C90046CBF9 /* RequestType.swift in Sources */,
 			);

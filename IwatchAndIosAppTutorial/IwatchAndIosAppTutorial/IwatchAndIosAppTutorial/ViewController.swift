@@ -15,11 +15,18 @@ class ViewController: UIViewController {
     
     var counter = 0
     
+    @IBOutlet weak var btnSendMsg: UIButton!
+    
+    @IBOutlet weak var picker: UIPickerView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
         connectivityHandler.iOSDelegate = self
+        picker.delegate = self
+        picker.dataSource = self
     }
 
 
@@ -52,4 +59,37 @@ extension ViewController: iOSDelegate {
         }
     }
     
+    func applicationContextReceived(tuple: ApplicationContextReceived) {
+        DispatchQueue.main.async {
+            if let row = tuple.applicationContext["row"] as? Int {
+                self.btnSendMsg.backgroundColor = Constants.itemList[row].2
+            }
+        }
+    }
+}
+
+// MARK: UIPickerViewDataSource - UIPickerViewDelegate
+extension ViewController: UIPickerViewDataSource, UIPickerViewDelegate {
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return Constants.itemList.count;
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return Constants.itemList[row].1
+    }
+    
+    // 4: Call updateApplicationContext to update watch theme
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        do {
+            try connectivityHandler.updateApplicationContext(applicationContext: ["row" : row])
+        } catch {
+            print("Error: \(error)")
+        }
+        self.btnSendMsg.backgroundColor = Constants.itemList[row].2
+    }
 }

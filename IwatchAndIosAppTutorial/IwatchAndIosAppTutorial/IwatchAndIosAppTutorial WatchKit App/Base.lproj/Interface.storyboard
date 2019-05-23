@@ -38,9 +38,17 @@
                                 <action selector="requestVersion" destination="AgC-eL-Hgc" id="7DM-XK-RoO"/>
                             </connections>
                         </button>
+                        <picker height="100" alignment="left" id="oBV-3D-IC5">
+                            <connections>
+                                <action selector="changeTheme:" destination="AgC-eL-Hgc" id="Iqi-fa-f23"/>
+                            </connections>
+                        </picker>
                     </items>
                     <connections>
+                        <outlet property="btnDate" destination="vmo-pL-WvV" id="Ftb-WT-sC6"/>
+                        <outlet property="btnVersion" destination="vNY-9o-ZRB" id="R3k-eo-tJI"/>
                         <outlet property="messageTable" destination="ED6-Lr-7pv" id="JOJ-iF-4RD"/>
+                        <outlet property="picker" destination="oBV-3D-IC5" id="0ai-ty-cZj"/>
                     </connections>
                 </controller>
             </objects>

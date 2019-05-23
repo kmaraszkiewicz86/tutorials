@@ -12,14 +12,20 @@ import WatchConnectivity
 // 1: Encapsulating in a tuple for don't duplicate code
 typealias MessageReceived = (session: WCSession, message: [String : Any], replyHandler: (([String : Any]) -> Void)?)
 
+typealias ApplicationContextReceived = (session: WCSession, applicationContext: [String:Any])
+
 // 2: Protocol for manage all watchOS delegations
 protocol WatchOSDelegate: AnyObject {
     func messageReceived(tuple: MessageReceived)
+    
+    func applicationContextReceived (tuple: ApplicationContextReceived)
 }
 
 // 3: Protocol for manage all iOS delegations
 protocol iOSDelegate: AnyObject {
     func messageReceived(tuple: MessageReceived)
+    
+    func applicationContextReceived (tuple: ApplicationContextReceived)
 }
 
 class WatchSessionManager: NSObject {
@@ -141,4 +147,32 @@ extension WatchSessionManager {
         watchOSDelegate?.messageReceived(tuple: (session, message, replyHandler))
         #endif
     }
+}
+
+// 4: New extension for manage didReceiveApplicationContext()
+// MARK: Application Context
+// use when your app needs only the latest information
+// if the data was not sent, it will be replaced
+extension WatchSessionManager {
+    
+    // 5: Sender
+    func updateApplicationContext(applicationContext: [String : Any]) throws {
+        if let session = validSession {
+            do {
+                try session.updateApplicationContext(applicationContext)
+            } catch let error {
+                throw error
+            }
+        }
+    }
+    
+    // 6: Receiver
+    func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String : Any]) {
+        #if os(iOS)
+        iOSDelegate?.applicationContextReceived(tuple: (session, applicationContext))
+        #elseif os(watchOS)
+        watchOSDelegate?.applicationContextReceived(tuple: (session, applicationContext))
+        #endif
+    }
+    
 }

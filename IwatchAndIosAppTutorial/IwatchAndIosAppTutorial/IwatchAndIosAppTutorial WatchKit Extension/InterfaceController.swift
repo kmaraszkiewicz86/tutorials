@@ -16,6 +16,12 @@ class InterfaceController: WKInterfaceController {
     
     @IBOutlet weak var messageTable: WKInterfaceTable!
     
+    @IBOutlet weak var picker: WKInterfacePicker!
+    
+    @IBOutlet weak var btnDate: WKInterfaceButton!
+    
+    @IBOutlet weak var btnVersion: WKInterfaceButton!
+    
     var session: WCSession?
     
     var counter = 0
@@ -35,6 +41,15 @@ class InterfaceController: WKInterfaceController {
         super.awake(withContext: context)
         
         messages.append("Ready :)")
+        
+        // 2: Set picker data
+        let pickerItems: [WKPickerItem] = Constants.itemList.map {
+            let pickerItem = WKPickerItem()
+            pickerItem.caption = $0.0
+            pickerItem.title = $0.1
+            return pickerItem
+        }
+        picker.setItems(pickerItems)
     }
     
     override func willActivate() {
@@ -71,6 +86,24 @@ class InterfaceController: WKInterfaceController {
         }
     }
     
+    // 3: IBAction for WKInterfacePicker
+    @IBAction func changeTheme(_ value: Int) {
+        // 4: Change current theme
+        selectedTheme(row: value)
+        // 5: Call to update application context
+        do {
+            try connectivityHandler.updateApplicationContext(applicationContext: ["row" : value] as [String : AnyObject])
+        } catch {
+            print("Error: \(error)")
+        }
+    }
+    
+    // 6: Change theme of buttons
+    func selectedTheme(row: Int) {
+        self.btnDate.setBackgroundColor(Constants.itemList[row].2)
+        self.btnVersion.setBackgroundColor(Constants.itemList[row].2)
+    }
+    
     func updateMessagesTable() {
         messageTable.setNumberOfRows(messages.count, withRowType: "Row")
         for (i, msg) in messages.enumerated() {
@@ -87,6 +120,15 @@ extension InterfaceController: WatchOSDelegate {
             WKInterfaceDevice.current().play(.notification)
             if let msg = tuple.message["msg"] {
                 self.messages.append("\(msg)")
+            }
+        }
+    }
+    
+    // 7: Manage recieved data
+    func applicationContextReceived(tuple: ApplicationContextReceived) {
+        DispatchQueue.main.async() {
+            if let row = tuple.applicationContext["row"] as? Int {
+                self.changeTheme(row)
             }
         }
     }
