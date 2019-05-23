@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="nR7-1k-eyD">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.70"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Items List Table View Controller-->
+        <scene sceneID="10l-Sd-mJT">
+            <objects>
+                <tableViewController id="nR7-1k-eyD" customClass="ItemsListTableViewController" customModule="WebApiSampleProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="j1d-Z9-DiC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="ItemTableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ItemTableViewCell" id="vKq-xe-CAt" customClass="ItemTableViewCell" customModule="WebApiSampleProject" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vKq-xe-CAt" id="J4g-Nu-QFq">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="muC-Fa-N0I">
+                                            <rect key="frame" x="30" y="21" width="376.5" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="muC-Fa-N0I" firstAttribute="top" secondItem="J4g-Nu-QFq" secondAttribute="topMargin" constant="10" id="YLn-Iw-q1b"/>
+                                        <constraint firstItem="muC-Fa-N0I" firstAttribute="leading" secondItem="J4g-Nu-QFq" secondAttribute="leadingMargin" constant="10" id="bJF-ou-xcT"/>
+                                        <constraint firstItem="muC-Fa-N0I" firstAttribute="width" secondItem="J4g-Nu-QFq" secondAttribute="width" multiplier="0.91" id="ka5-iN-TNd"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="titleLabel" destination="muC-Fa-N0I" id="N9I-Xl-sop"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="nR7-1k-eyD" id="brf-kK-NJm"/>
+                            <outlet property="delegate" destination="nR7-1k-eyD" id="Kdg-vD-l9D"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="bjU-fv-o57"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dza-6S-fuf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="911.59420289855075" y="38.839285714285715"/>
+        </scene>
+    </scenes>
+</document>
