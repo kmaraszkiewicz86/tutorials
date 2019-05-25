@@ -83,14 +83,21 @@ class ActivityTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        switch (segue.identifier ?? "") {
+        case "AddActivity":
+            os_log("Adding activity", log: OSLog.activityTableViewController, type: .info)
+        default:
+            os_log("Destination \(segue.destination) not implemented", log: OSLog.activityTableViewController, type: .error)
+            fatalError("Segue destination not found")
+        }
+        
     }
-    */
-
+ 
 }

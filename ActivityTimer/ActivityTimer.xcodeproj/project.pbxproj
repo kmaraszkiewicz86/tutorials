@@ -10,7 +10,7 @@
 		1F3F1C342299C7B700F48BF2 /* OSLogExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3F1C332299C7B700F48BF2 /* OSLogExtension.swift */; };
 		1F3F1C352299C7B700F48BF2 /* OSLogExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3F1C332299C7B700F48BF2 /* OSLogExtension.swift */; };
 		1F9A09A322974A9A00C1C3DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9A09A222974A9A00C1C3DA /* AppDelegate.swift */; };
-		1F9A09A522974A9A00C1C3DA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9A09A422974A9A00C1C3DA /* ViewController.swift */; };
+		1F9A09A522974A9A00C1C3DA /* ActivityFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9A09A422974A9A00C1C3DA /* ActivityFormViewController.swift */; };
 		1F9A09A822974A9A00C1C3DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F9A09A622974A9A00C1C3DA /* Main.storyboard */; };
 		1F9A09AA22974A9D00C1C3DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F9A09A922974A9D00C1C3DA /* Assets.xcassets */; };
 		1F9A09AD22974A9D00C1C3DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F9A09AB22974A9D00C1C3DA /* LaunchScreen.storyboard */; };
@@ -91,7 +91,7 @@
 		1F3F1C332299C7B700F48BF2 /* OSLogExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSLogExtension.swift; sourceTree = "<group>"; };
 		1F9A099F22974A9A00C1C3DA /* ActivityTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ActivityTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F9A09A222974A9A00C1C3DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1F9A09A422974A9A00C1C3DA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1F9A09A422974A9A00C1C3DA /* ActivityFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityFormViewController.swift; sourceTree = "<group>"; };
 		1F9A09A722974A9A00C1C3DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1F9A09A922974A9D00C1C3DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1F9A09AC22974A9D00C1C3DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -208,7 +208,7 @@
 				1FB6AC3C2298822D001B7576 /* Controllers */,
 				1FB6AC382298784E001B7576 /* ActivityTimer.entitlements */,
 				1F9A09A222974A9A00C1C3DA /* AppDelegate.swift */,
-				1F9A09A422974A9A00C1C3DA /* ViewController.swift */,
+				1F9A09A422974A9A00C1C3DA /* ActivityFormViewController.swift */,
 				1F9A09A622974A9A00C1C3DA /* Main.storyboard */,
 				1F9A09A922974A9D00C1C3DA /* Assets.xcassets */,
 				1F9A09AB22974A9D00C1C3DA /* LaunchScreen.storyboard */,
@@ -492,7 +492,7 @@
 			files = (
 				1F3F1C342299C7B700F48BF2 /* OSLogExtension.swift in Sources */,
 				1FB6AC4622988529001B7576 /* Activity.swift in Sources */,
-				1F9A09A522974A9A00C1C3DA /* ViewController.swift in Sources */,
+				1F9A09A522974A9A00C1C3DA /* ActivityFormViewController.swift in Sources */,
 				1F9A09A322974A9A00C1C3DA /* AppDelegate.swift in Sources */,
 				1FB6AC42229883A1001B7576 /* ActivityTableViewCell.swift in Sources */,
 				1FB6AC3F2298827E001B7576 /* ActivityTableViewController.swift in Sources */,
