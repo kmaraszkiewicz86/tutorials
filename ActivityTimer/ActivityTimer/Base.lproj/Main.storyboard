@@ -42,6 +42,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="nameLabel" destination="Ihr-oq-Iy4" id="zRe-0E-hyh"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="EditActivity" id="tC2-AF-Ffa"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -100,10 +101,19 @@
                                 <action selector="cancelAction:" destination="BYZ-38-t0r" id="MTT-XX-trM"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="oaR-jl-uQV"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="oaR-jl-uQV">
+                            <connections>
+                                <segue destination="w3F-n4-5kv" kind="unwind" unwindAction="redeirectFromFormWithSender:" id="WsO-LV-lSx"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="nameTextField" destination="Zia-cE-jvm" id="5kr-ED-c41"/>
+                        <outlet property="saveButton" destination="oaR-jl-uQV" id="umM-5h-17t"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <exit id="w3F-n4-5kv" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1951" y="130"/>
         </scene>
@@ -141,7 +151,10 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eGI-PF-IGL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1029" y="130"/>
+            <point key="canvasLocation" x="1032" y="510"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="tC2-AF-Ffa"/>
+    </inferredMetricsTieBreakers>
 </document>

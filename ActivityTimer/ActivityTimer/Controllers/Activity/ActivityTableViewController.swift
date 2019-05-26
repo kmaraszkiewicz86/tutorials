@@ -17,16 +17,15 @@ class ActivityTableViewController: UITableViewController {
         super.viewDidLoad()
 
         self.navigationItem.leftBarButtonItem = self.editButtonItem
-        
-        for index in 1...10 {
-            activities.append(Activity(name: "test\(index)"))
-        }
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
+        
+        print(tableView.isEditing)
+        
         return 1
     }
 
@@ -47,26 +46,24 @@ class ActivityTableViewController: UITableViewController {
         return cell
     }
  
-
-    /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
     }
-    */
 
-    /*
+    
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
+            
+            print(indexPath.row)
+            
+            activities.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        }
     }
-    */
 
     /*
     // Override to support rearranging the table view.
@@ -92,10 +89,57 @@ class ActivityTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
         switch (segue.identifier ?? "") {
         case "AddActivity":
-            os_log("Adding activity", log: OSLog.activityTableViewController, type: .info)
+            os_log("Adding activity with %{PUBLIC}@ destination",
+                   log: OSLog.activityTableViewController,
+                   type: .info,
+            segue.destination)
+            
+        case "EditActivity":
+            
+            guard let activityFormViewController = segue.destination as? ActivityFormViewController else {
+                os_log("Invalid convertion from segue.destination to ActivityFormViewController", log: OSLog.activityTableViewController, type: .error)
+                
+                fatalError("Errour occours while tring to navigate to edit form")
+                
+            }
+            
+            guard let selectedCell = sender as? ActivityTableViewCell else {
+                os_log("Invalid convertion from sender to ActivityTableViewCell", log: OSLog.activityTableViewController, type: .error)
+                
+                fatalError("Errour occours while tring to navigate to edit form")
+            }
+            
+            guard let index = tableView.indexPath(for: selectedCell) else {
+                os_log("Invalid convertion from sender to ActivityTableViewCell", log: OSLog.activityTableViewController, type: .error)
+                
+                fatalError("Errour occours while tring to navigate to edit form")
+            }
+            
+            activityFormViewController.activity = activities[index.row]
+            
         default:
-            os_log("Destination \(segue.destination) not implemented", log: OSLog.activityTableViewController, type: .error)
+            os_log("Destination %s not implemented",
+                   log: OSLog.activityTableViewController,
+                   type: .error,
+                   segue.destination)
             fatalError("Segue destination not found")
+        }
+        
+    }
+    
+    @IBAction func redeirectFromForm(sender: UIStoryboardSegue) {
+        
+        if let activityFormViewController = sender.source as? ActivityFormViewController,
+            let activity = activityFormViewController.activity {
+            
+            if let index = tableView.indexPathForSelectedRow {
+                activities[index.row] = activity
+                tableView.reloadRows(at: [index], with: .fade)
+                
+            } else {
+                activities.append(activity)
+                self.tableView.reloadData()
+            }
         }
         
     }
