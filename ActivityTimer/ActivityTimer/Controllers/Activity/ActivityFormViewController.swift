@@ -16,7 +16,7 @@ class ActivityFormViewController: UIViewController {
     @IBOutlet weak var nameTextField: UITextField!
     
     //MARK: Properties
-    var activity: Activity?
+    var activity: ActivityModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,7 +46,7 @@ class ActivityFormViewController: UIViewController {
         super.prepare(for: segue, sender: sender)
         
         if let btn = sender as? UIBarButtonItem, btn === saveButton {
-            activity = Activity(name: nameTextField.text ?? "")
+            activity = ActivityModel(name: nameTextField.text ?? "")
         }
     }
 }
@@ -74,7 +74,7 @@ extension ActivityFormViewController: UITextFieldDelegate {
         validateForm()
         
         if let name = self.nameTextField.text {
-            self.activity = Activity(name: name)
+            self.activity = ActivityModel(name: name)
         }
     }
 }

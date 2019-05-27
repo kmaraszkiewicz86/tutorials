@@ -61,7 +61,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="woa-W9-1MJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="171.01449275362319" y="129.91071428571428"/>
+            <point key="canvasLocation" x="1062" y="120"/>
         </scene>
         <!--Activity Form View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -115,7 +115,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <exit id="w3F-n4-5kv" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1951" y="130"/>
+            <point key="canvasLocation" x="2858" y="127"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="JUg-yG-iyh">
@@ -133,7 +133,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LrI-Tg-K0O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-739.13043478260875" y="129.91071428571428"/>
+            <point key="canvasLocation" x="-38" y="120"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="q1B-Xq-YIf">
@@ -151,7 +151,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eGI-PF-IGL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1032" y="510"/>
+            <point key="canvasLocation" x="1990" y="550"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

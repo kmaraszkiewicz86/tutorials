@@ -10,45 +10,47 @@ import UIKit
 import os.log
 
 class ActivityTableViewController: UITableViewController {
-
-    var activities = [Activity]()
+    
+    var activities = [ActivityModel]()
+    
+    private static let osLogName = OSLog.activityTableViewController
+    
+    private let activityService = ActivityService.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.navigationItem.leftBarButtonItem = self.editButtonItem
+        
+        fetchData()
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        
-        print(tableView.isEditing)
-        
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return activities.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ActivityTableViewCell", for: indexPath) as? ActivityTableViewCell else {
             
-            os_log("Could not found valid ActivityTableViewCell type to convert data to table cell", log: OSLog.activityTableViewController, type: .fault)
+            os_log("Could not found valid ActivityTableViewCell type to convert data to table cell", log: ActivityTableViewController.osLogName, type: .fault)
             fatalError("Occours error while tring to find proper table cell type")
         }
 
-        cell.nameLabel.text = activities[indexPath.row].name
+        let activity = activities[indexPath.row]
+        
+        cell.nameLabel.text = activity.name
 
         return cell
     }
  
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
         return true
     }
 
@@ -56,12 +58,16 @@ class ActivityTableViewController: UITableViewController {
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            // Delete the row from the data source
             
-            print(indexPath.row)
-            
-            activities.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            do {
+                try activityService.delete(activityModel: activities[indexPath.row])
+                activities.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            } catch ServiceError.databaseError {
+                showAlert(title: "Error", withMessage: "Error with saving data occours")
+            } catch {
+                showAlert(title: "Error", withMessage: "Unknow exception occours")
+            }
         }
     }
 
@@ -90,27 +96,27 @@ class ActivityTableViewController: UITableViewController {
         switch (segue.identifier ?? "") {
         case "AddActivity":
             os_log("Adding activity with %{PUBLIC}@ destination",
-                   log: OSLog.activityTableViewController,
+                   log: ActivityTableViewController.osLogName,
                    type: .info,
             segue.destination)
             
         case "EditActivity":
             
             guard let activityFormViewController = segue.destination as? ActivityFormViewController else {
-                os_log("Invalid convertion from segue.destination to ActivityFormViewController", log: OSLog.activityTableViewController, type: .error)
+                os_log("Invalid convertion from segue.destination to ActivityFormViewController", log: ActivityTableViewController.osLogName, type: .error)
                 
                 fatalError("Errour occours while tring to navigate to edit form")
                 
             }
             
             guard let selectedCell = sender as? ActivityTableViewCell else {
-                os_log("Invalid convertion from sender to ActivityTableViewCell", log: OSLog.activityTableViewController, type: .error)
+                os_log("Invalid convertion from sender to ActivityTableViewCell", log: ActivityTableViewController.osLogName, type: .error)
                 
                 fatalError("Errour occours while tring to navigate to edit form")
             }
             
             guard let index = tableView.indexPath(for: selectedCell) else {
-                os_log("Invalid convertion from sender to ActivityTableViewCell", log: OSLog.activityTableViewController, type: .error)
+                os_log("Invalid convertion from sender to ActivityTableViewCell", log: ActivityTableViewController.osLogName, type: .error)
                 
                 fatalError("Errour occours while tring to navigate to edit form")
             }
@@ -119,7 +125,7 @@ class ActivityTableViewController: UITableViewController {
             
         default:
             os_log("Destination %s not implemented",
-                   log: OSLog.activityTableViewController,
+                   log: ActivityTableViewController.osLogName,
                    type: .error,
                    segue.destination)
             fatalError("Segue destination not found")
@@ -137,11 +143,40 @@ class ActivityTableViewController: UITableViewController {
                 tableView.reloadRows(at: [index], with: .fade)
                 
             } else {
-                activities.append(activity)
-                self.tableView.reloadData()
+                do {
+                    activities.append(try activityService.save(activityModel: activity))
+                    self.tableView.reloadData()
+                    
+                } catch ServiceError.databaseError {
+                    showAlert(title: "Error", withMessage: "Error with saving data occours")
+                } catch {
+                    showAlert(title: "Error", withMessage: "Unknow exception occours")
+                }
             }
         }
+    }
+    
+    //MARK: helper methods
+    private func showAlert (title: String, withMessage: String) {
+        
+        let action = UIAlertController(title: title, message: withMessage, preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        
+        action.addAction(okAction)
+        
+        present(action, animated: true)
         
     }
- 
+    
+    private func fetchData () {
+        do {
+            activities = try activityService.getAll()
+            tableView.reloadData()
+        } catch ServiceError.databaseError {
+            showAlert(title: "Error", withMessage: "Error with saving data occours")
+        } catch {
+            showAlert(title: "Error", withMessage: "Unknow exception occours")
+        }
+    }
 }

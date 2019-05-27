@@ -15,4 +15,6 @@ extension OSLog {
     
     static let activityTableViewController = OSLog(subsystem: bundle, category: "ActivityTableViewController")
     
+    static let activityService = OSLog(subsystem: bundle, category: "ActivityService")
+    
 }
