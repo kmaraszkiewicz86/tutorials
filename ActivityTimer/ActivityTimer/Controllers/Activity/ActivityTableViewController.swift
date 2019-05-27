@@ -138,21 +138,29 @@ class ActivityTableViewController: UITableViewController {
         if let activityFormViewController = sender.source as? ActivityFormViewController,
             let activity = activityFormViewController.activity {
             
-            if let index = tableView.indexPathForSelectedRow {
-                activities[index.row] = activity
-                tableView.reloadRows(at: [index], with: .fade)
-                
-            } else {
+                var workType = ""
+            
                 do {
-                    activities.append(try activityService.save(activityModel: activity))
-                    self.tableView.reloadData()
-                    
+                    if let index = tableView.indexPathForSelectedRow {
+                        
+                        workType = "updating"
+                        
+                        try activityService.update(id: activities[index.row].id, activityModel: activity)
+                        activities[index.row].name = activity.name
+                        tableView.reloadRows(at: [index], with: .fade)
+                        
+                    } else {
+                        
+                        workType = "saving"
+                        
+                        activities.append(try activityService.save(activityModel: activity))
+                        self.tableView.reloadData()
+                    }
                 } catch ServiceError.databaseError {
-                    showAlert(title: "Error", withMessage: "Error with saving data occours")
+                    showAlert(title: "Error", withMessage: "Error with \(workType) data occours")
                 } catch {
                     showAlert(title: "Error", withMessage: "Unknow exception occours")
                 }
-            }
         }
     }
     
