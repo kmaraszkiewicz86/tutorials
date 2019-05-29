@@ -8,6 +8,7 @@
 
 import UIKit
 import os.log
+import WatchConnectivity
 
 class ActivityTableViewController: UITableViewController {
     
@@ -17,10 +18,15 @@ class ActivityTableViewController: UITableViewController {
     
     private let activityService = ActivityService.shared
     
+    private let sesssion: WCSession? = WCSession.isSupported() ? WCSession.default : nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.navigationItem.leftBarButtonItem = self.editButtonItem
+        
+        sesssion?.delegate = self
+        sesssion?.activate()
         
         fetchData()
     }
@@ -187,4 +193,27 @@ class ActivityTableViewController: UITableViewController {
             showAlert(title: "Error", withMessage: "Unknow exception occours")
         }
     }
+}
+
+
+extension ActivityTableViewController: WCSessionDelegate {
+    
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Void) {
+        replyHandler(["response": "test"])
+    }
+    
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+        print("activationDidCompleteWith activationState:\(activationState) error:\(String(describing: error))")
+    }
+    
+    func sessionDidBecomeInactive(_ session: WCSession) {
+        print("sessionDidBecomeInactive: \(session)")
+    }
+    
+    func sessionDidDeactivate(_ session: WCSession) {
+        print("sessionDidDeactivate: \(session)")
+        
+        self.sesssion?.activate()
+    }
+    
 }
