@@ -91,5 +91,11 @@ extension InterfaceController : WCSessionDelegate {
         print("activationDidCompleteWith activationState:\(activationState) error:\(String(describing: error))")
     }
     
-    
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
+        DispatchQueue.main.async {
+            self.activities.append(ActivityModel(name: message["response"] as! String))
+            
+            self.refreshTable()
+        }
+    }
 }

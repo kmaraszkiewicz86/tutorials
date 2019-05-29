@@ -159,6 +159,8 @@ class ActivityTableViewController: UITableViewController {
                         
                         workType = "saving"
                         
+                        sesssion?.sendMessage(["response": activity.name], replyHandler: nil, errorHandler: nil)
+                        
                         activities.append(try activityService.save(activityModel: activity))
                         self.tableView.reloadData()
                     }
