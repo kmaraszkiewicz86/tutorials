@@ -17,6 +17,8 @@
 		1F510FD6229C489500B5C258 /* NSManagedObjectArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F510FD5229C489500B5C258 /* NSManagedObjectArrayExtension.swift */; };
 		1F510FD8229C5EEA00B5C258 /* NSManagedObjectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F510FD7229C5EEA00B5C258 /* NSManagedObjectExtension.swift */; };
 		1F510FD9229C860B00B5C258 /* ActivityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F510FCD229C045200B5C258 /* ActivityService.swift */; };
+		1F8383C522A4597C00ECDBE6 /* WCSessionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8383C322A4594000ECDBE6 /* WCSessionExtension.swift */; };
+		1F8383C922A45BEF00ECDBE6 /* WCSessionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8383C822A45BEF00ECDBE6 /* WCSessionExtension.swift */; };
 		1F9A09A322974A9A00C1C3DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9A09A222974A9A00C1C3DA /* AppDelegate.swift */; };
 		1F9A09A522974A9A00C1C3DA /* ActivityFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9A09A422974A9A00C1C3DA /* ActivityFormViewController.swift */; };
 		1F9A09A822974A9A00C1C3DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F9A09A622974A9A00C1C3DA /* Main.storyboard */; };
@@ -106,6 +108,8 @@
 		1F510FD2229C0AD800B5C258 /* ServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
 		1F510FD5229C489500B5C258 /* NSManagedObjectArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSManagedObjectArrayExtension.swift; sourceTree = "<group>"; };
 		1F510FD7229C5EEA00B5C258 /* NSManagedObjectExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSManagedObjectExtension.swift; sourceTree = "<group>"; };
+		1F8383C322A4594000ECDBE6 /* WCSessionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCSessionExtension.swift; sourceTree = "<group>"; };
+		1F8383C822A45BEF00ECDBE6 /* WCSessionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCSessionExtension.swift; sourceTree = "<group>"; };
 		1F9A099F22974A9A00C1C3DA /* ActivityTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ActivityTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F9A09A222974A9A00C1C3DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1F9A09A422974A9A00C1C3DA /* ActivityFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityFormViewController.swift; sourceTree = "<group>"; };
@@ -217,9 +221,43 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
+		1F8383C122A458E900ECDBE6 /* WKShared */ = {
+			isa = PBXGroup;
+			children = (
+				1F8383C222A4590500ECDBE6 /* Extensions */,
+			);
+			path = WKShared;
+			sourceTree = "<group>";
+		};
+		1F8383C222A4590500ECDBE6 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1F8383C322A4594000ECDBE6 /* WCSessionExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		1F8383C622A45BBE00ECDBE6 /* IOSShared */ = {
+			isa = PBXGroup;
+			children = (
+				1F8383C722A45BD600ECDBE6 /* Extensions */,
+			);
+			path = IOSShared;
+			sourceTree = "<group>";
+		};
+		1F8383C722A45BD600ECDBE6 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1F8383C822A45BEF00ECDBE6 /* WCSessionExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		1F9A099622974A9A00C1C3DA = {
 			isa = PBXGroup;
 			children = (
+				1F8383C622A45BBE00ECDBE6 /* IOSShared */,
+				1F8383C122A458E900ECDBE6 /* WKShared */,
 				1F3F1C302299C75000F48BF2 /* Shared */,
 				1F9A09A122974A9A00C1C3DA /* ActivityTimer */,
 				1F9A09B622974A9D00C1C3DA /* ActivityTimerTests */,
@@ -545,6 +583,7 @@
 				1F3F1C342299C7B700F48BF2 /* OSLogExtension.swift in Sources */,
 				1F9A09A522974A9A00C1C3DA /* ActivityFormViewController.swift in Sources */,
 				1F9A09A322974A9A00C1C3DA /* AppDelegate.swift in Sources */,
+				1F8383C922A45BEF00ECDBE6 /* WCSessionExtension.swift in Sources */,
 				1F510FD8229C5EEA00B5C258 /* NSManagedObjectExtension.swift in Sources */,
 				1F510FCC229C01E500B5C258 /* ActivityTimer.xcdatamodeld in Sources */,
 				1F510FD0229C053300B5C258 /* ActivityModel.swift in Sources */,
@@ -581,6 +620,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F8383C522A4597C00ECDBE6 /* WCSessionExtension.swift in Sources */,
 				1F3F1C352299C7B700F48BF2 /* OSLogExtension.swift in Sources */,
 				1FD282A9229F14DF000EAF03 /* ActivityRowController.swift in Sources */,
 				1F9A09E022974A9E00C1C3DA /* NotificationController.swift in Sources */,

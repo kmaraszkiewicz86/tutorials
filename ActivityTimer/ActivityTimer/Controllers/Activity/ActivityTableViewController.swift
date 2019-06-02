@@ -19,16 +19,7 @@ class ActivityTableViewController: UITableViewController {
     private let activityService = ActivityService.shared
     
     private let sesssion: WCSession? = WCSession.isSupported() ? WCSession.default : nil
-    
-    private var validateReachableSession: WCSession?
-    {
-        if let sess = self.sesssion, sess.isPaired && sess.isWatchAppInstalled {
-            return self.sesssion
-        }
-        
-        return nil
-    }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -168,7 +159,16 @@ class ActivityTableViewController: UITableViewController {
                         
                         workType = "saving"
                         
-                        validateReachableSession?.sendMessage(["response": activity.name], replyHandler: nil, errorHandler: nil)
+                        WCSession.initIOSSession(session: self.sesssion, sessionAction: { (validateReachableSession) in
+                            validateReachableSession.sendMessageData(Data(base64Encoded: "OnAdded")!, replyHandler: nil, errorHandler: nil)
+                        }) { (errorType) in
+                            DispatchQueue.main.async {
+                                self.showAlert(title: "Error occours", withMessage: "Error occours while tring to fetch data from IPhone")
+                                
+                                os_log("Error occours while watch tring to fetch data from IPhone app. %{PUBLIC}@", log: ActivityTableViewController.osLogName, type: .error, "\(errorType)")
+                            }
+                        }
+                        
                         
                         activities.append(try activityService.save(activityModel: activity))
                         self.tableView.reloadData()

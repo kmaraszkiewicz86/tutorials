@@ -21,14 +21,6 @@ class ActivityInterfaceController: WKInterfaceController {
     
     private let session: WCSession? = WCSession.isSupported() ? WCSession.default : nil
     
-    private var validReachableSession: WCSession? {
-        if let session = self.session, session.isReachable {
-            return session
-        }
-        
-        return nil
-    }
-    
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
     }
@@ -78,8 +70,8 @@ extension ActivityInterfaceController : WCSessionDelegate {
     }
     
     private func sendMessageAnmdGetResponseFromIPhone() {
-        initSession { (sess) in
-            sess.sendMessageData(Data(), replyHandler: { (data) in
+        initSession { (validReachableSession) in
+            validReachableSession.sendMessageData(Data(), replyHandler: { (data) in
                 
                 do {
                     let unarchiver = try NSKeyedUnarchiver(forReadingFrom: data)
@@ -116,31 +108,13 @@ extension ActivityInterfaceController : WCSessionDelegate {
     
     private func initSession (sessionAction: (WCSession) -> Void) {
         
-        if let sess = validReachableSession {
-            sessionAction(sess)
-        } else {
+            WCSession.initSession(session: self.session, sessionAction: sessionAction) { (errorType) in
             
-            let isSupported = WCSession.isSupported()
-            let isReachable = session?.isReachable ?? false
-            var errorType = ""
+            os_log("Watch session is not %{PUBLIC}@", log: ActivityInterfaceController.osLogName, type: .error,
+                   errorType)
             
-            if !isSupported {
-                errorType = " supported"
-            } else if !isReachable {
-                errorType = " reachable"
-            }
+            WKAlertHelper.showInfoAlert(title: "Session is on error state", message: "Watch session is not \(errorType)", usingController: self)
             
-            if !isSupported || !isReachable {
-            
-                os_log("Watch session is not %{PUBLIC}@", log: ActivityInterfaceController.osLogName, type: .error,
-                       errorType)
-                
-                WKAlertHelper.showInfoAlert(title: "Session is on error state", message: "Watch session is not \(errorType)", usingController: self)
-                
-                return
-            }
-            
-            sessionAction(validReachableSession!)
         }
     }
 }
