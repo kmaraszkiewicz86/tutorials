@@ -20,6 +20,15 @@ class ActivityTableViewController: UITableViewController {
     
     private let sesssion: WCSession? = WCSession.isSupported() ? WCSession.default : nil
     
+    private var validateReachableSession: WCSession?
+    {
+        if let sess = self.sesssion, sess.isPaired && sess.isWatchAppInstalled {
+            return self.sesssion
+        }
+        
+        return nil
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -159,7 +168,7 @@ class ActivityTableViewController: UITableViewController {
                         
                         workType = "saving"
                         
-                        sesssion?.sendMessage(["response": activity.name], replyHandler: nil, errorHandler: nil)
+                        validateReachableSession?.sendMessage(["response": activity.name], replyHandler: nil, errorHandler: nil)
                         
                         activities.append(try activityService.save(activityModel: activity))
                         self.tableView.reloadData()
@@ -200,8 +209,20 @@ class ActivityTableViewController: UITableViewController {
 
 extension ActivityTableViewController: WCSessionDelegate {
     
-    func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Void) {
-        replyHandler(["response": "test"])
+    func session(_ session: WCSession, didReceiveMessageData messageData: Data, replyHandler: @escaping (Data) -> Void) {
+        
+        let archiver = NSKeyedArchiver(requiringSecureCoding: false)
+        archiver.encode(self.activities, forKey: "activities")
+        
+        if archiver.encodedData.isEmpty {
+            os_log("Archiver encoded data is empty", log: ActivityTableViewController.osLogName, type: .error)
+        }
+        
+        if let error = archiver.error {
+            os_log("Occours error while tring tp encode data. With error: %{PUBLIC}@", log: ActivityTableViewController.osLogName, type: .error, "\(error)")
+        }
+        
+        replyHandler(archiver.encodedData)
     }
     
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {

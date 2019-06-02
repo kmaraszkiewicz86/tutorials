@@ -9,10 +9,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="14490.21"/>
     </dependencies>
     <scenes>
-        <!--Interface Controller-->
+        <!--Activity Interface Controller-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="ActivityTimer_WatchKit_App" customModuleProvider="target">
+                <controller id="AgC-eL-Hgc" customClass="ActivityInterfaceController" customModule="ActivityTimer_WatchKit_Extension">
                     <items>
                         <table alignment="left" id="5Zp-Zl-jkM">
                             <items>
@@ -28,11 +28,6 @@
                                 </tableRow>
                             </items>
                         </table>
-                        <button width="1" alignment="left" title="Send" id="2fb-UE-vg2">
-                            <connections>
-                                <action selector="sendAction" destination="AgC-eL-Hgc" id="jEZ-wz-K9d"/>
-                            </connections>
-                        </button>
                     </items>
                     <connections>
                         <outlet property="table" destination="5Zp-Zl-jkM" id="5ln-8k-6t4"/>

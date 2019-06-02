@@ -17,4 +17,8 @@ extension OSLog {
     
     static let activityService = OSLog(subsystem: bundle, category: "ActivityService")
     
+    static let activityInterfaceController = OSLog(subsystem: bundle, category: "ActivityInterfaceController")
+    
+    static let activityCollection = OSLog(subsystem: bundle, category: "ActivityCollection")
+    
 }

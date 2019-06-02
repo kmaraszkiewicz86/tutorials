@@ -6,14 +6,16 @@
 //  Copyright © 2019 Krzysztof Maraszkiewicz. All rights reserved.
 //
 
+import Foundation
+import os.log
 import WatchKit
 import WatchConnectivity
-import Foundation
 
-
-class InterfaceController: WKInterfaceController {
+class ActivityInterfaceController: WKInterfaceController {
     
     @IBOutlet weak var table: WKInterfaceTable!
+    
+    private static let osLogName = OSLog.activityInterfaceController
     
     private var activities = [ActivityModel]()
     
@@ -35,12 +37,7 @@ class InterfaceController: WKInterfaceController {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
         
-        self.activities += [
-            ActivityModel(name: "tesst1"),
-            ActivityModel(name: "tesst2")
-        ]
-        
-        refreshTable()
+        sendMessageAnmdGetResponseFromIPhone()
         
         session?.delegate = self
         session?.activate()
@@ -49,24 +46,6 @@ class InterfaceController: WKInterfaceController {
     override func didDeactivate() {
         // This method is called when watch view controller is no longer visible
         super.didDeactivate()
-    }
-    
-    @IBAction func sendAction() {
-        
-        validReachableSession?.sendMessage(["request": "getAll"], replyHandler: { (res) in
-            DispatchQueue.main.async {
-                self.activities.append(ActivityModel(name: res["response"] as! String))
-                
-                self.refreshTable()
-            }
-        }, errorHandler: { (err) in
-            DispatchQueue.main.async {
-                self.activities.append(ActivityModel(name: "err"))
-                
-                self.refreshTable()
-            }
-        })
-        
     }
     
     private func refreshTable () {
@@ -79,13 +58,12 @@ class InterfaceController: WKInterfaceController {
             let row = self.table.rowController(at: i) as! ActivityRowController
             
             row.nameLbl.setText(activities[i].name)
-            
         }
     }
 
 }
 
-extension InterfaceController : WCSessionDelegate {
+extension ActivityInterfaceController : WCSessionDelegate {
  
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
         print("activationDidCompleteWith activationState:\(activationState) error:\(String(describing: error))")
@@ -96,6 +74,73 @@ extension InterfaceController : WCSessionDelegate {
             self.activities.append(ActivityModel(name: message["response"] as! String))
             
             self.refreshTable()
+        }
+    }
+    
+    private func sendMessageAnmdGetResponseFromIPhone() {
+        initSession { (sess) in
+            sess.sendMessageData(Data(), replyHandler: { (data) in
+                
+                do {
+                    let unarchiver = try NSKeyedUnarchiver(forReadingFrom: data)
+                    
+                    let activitiesFromResponse = unarchiver.decodeObject(of: [NSArray.self, ActivityModel.self, NSURL.self], forKey: "activities") as? [ActivityModel]
+                    
+                    if let error = unarchiver.error {
+                        os_log("Occours error while tring to decode data. With error: %{PUBLIC}@", log: ActivityInterfaceController.osLogName, type: .error, "\(error)")
+                        
+                        WKAlertHelper.showInfoAlert(title: "Error occours", message: "Error occours while tring to get data from IPhone", usingController: self)
+                        
+                        return
+                    }
+                    
+                    self.activities = activitiesFromResponse!
+                    DispatchQueue.main.async {
+                        self.refreshTable()
+                    }
+                    
+                } catch let error as NSError {
+                    os_log("Error occours while tring to get data from IPhone. %{PUBLIC}@. %{PUBLIC}@", log: OSLog.activityInterfaceController, type: .error, error, error.userInfo)
+                    
+                    WKAlertHelper.showInfoAlert(title: "Error occours", message: "Error occours while tring to get data from IPhone", usingController: self)
+                }
+            }, errorHandler: { (err) in
+                DispatchQueue.main.async {
+                    WKAlertHelper.showInfoAlert(title: "Error occours", message: "Error occours while tring to fetch data from IPhone", usingController: self)
+                    
+                    os_log("Error occours while watch tring to fetch data from IPhone app. %{PUBLIC}@", log: OSLog.activityInterfaceController, type: .error, "\(err)")
+                }
+            })
+        }
+    }
+    
+    private func initSession (sessionAction: (WCSession) -> Void) {
+        
+        if let sess = validReachableSession {
+            sessionAction(sess)
+        } else {
+            
+            let isSupported = WCSession.isSupported()
+            let isReachable = session?.isReachable ?? false
+            var errorType = ""
+            
+            if !isSupported {
+                errorType = " supported"
+            } else if !isReachable {
+                errorType = " reachable"
+            }
+            
+            if !isSupported || !isReachable {
+            
+                os_log("Watch session is not %{PUBLIC}@", log: ActivityInterfaceController.osLogName, type: .error,
+                       errorType)
+                
+                WKAlertHelper.showInfoAlert(title: "Session is on error state", message: "Watch session is not \(errorType)", usingController: self)
+                
+                return
+            }
+            
+            sessionAction(validReachableSession!)
         }
     }
 }
