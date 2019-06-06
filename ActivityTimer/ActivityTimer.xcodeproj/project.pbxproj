@@ -34,6 +34,7 @@
 		1F9A09DE22974A9E00C1C3DA /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9A09DD22974A9E00C1C3DA /* ExtensionDelegate.swift */; };
 		1F9A09E022974A9E00C1C3DA /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9A09DF22974A9E00C1C3DA /* NotificationController.swift */; };
 		1F9A09E222974A9F00C1C3DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F9A09E122974A9F00C1C3DA /* Assets.xcassets */; };
+		1FB4FA3722A939CE00BD75B0 /* NSKeyedArchiverExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB4FA3622A939CE00BD75B0 /* NSKeyedArchiverExtension.swift */; };
 		1FB66D31229FC07A00A1225C /* WKAlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB66D30229FC07A00A1225C /* WKAlertHelper.swift */; };
 		1FB66D3322A15B9000A1225C /* ActivityCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB66D3222A15B9000A1225C /* ActivityCollection.swift */; };
 		1FB66D3422A15B9000A1225C /* ActivityCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB66D3222A15B9000A1225C /* ActivityCollection.swift */; };
@@ -134,6 +135,7 @@
 		1F9A09E122974A9F00C1C3DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1F9A09E322974A9F00C1C3DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1F9A09E422974A9F00C1C3DA /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		1FB4FA3622A939CE00BD75B0 /* NSKeyedArchiverExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSKeyedArchiverExtension.swift; sourceTree = "<group>"; };
 		1FB66D30229FC07A00A1225C /* WKAlertHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WKAlertHelper.swift; sourceTree = "<group>"; };
 		1FB66D3222A15B9000A1225C /* ActivityCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCollection.swift; sourceTree = "<group>"; };
 		1FB6AC382298784E001B7576 /* ActivityTimer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ActivityTimer.entitlements; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 			isa = PBXGroup;
 			children = (
 				1F8383C822A45BEF00ECDBE6 /* WCSessionExtension.swift */,
+				1FB4FA3622A939CE00BD75B0 /* NSKeyedArchiverExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -593,6 +596,7 @@
 				1F510FCE229C045200B5C258 /* ActivityService.swift in Sources */,
 				1FB6AC3F2298827E001B7576 /* ActivityTableViewController.swift in Sources */,
 				1F510FD6229C489500B5C258 /* NSManagedObjectArrayExtension.swift in Sources */,
+				1FB4FA3722A939CE00BD75B0 /* NSKeyedArchiverExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

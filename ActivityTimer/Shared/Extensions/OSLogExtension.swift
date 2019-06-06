@@ -19,6 +19,8 @@ extension OSLog {
     
     static let activityInterfaceController = OSLog(subsystem: bundle, category: "ActivityInterfaceController")
     
+    static let nsKeyedArchiverExtension = OSLog(subsystem: bundle, category: "NSKeyedArchiverExtension")
+    
     static let activityCollection = OSLog(subsystem: bundle, category: "ActivityCollection")
     
 }

@@ -173,18 +173,7 @@ class ActivityTableViewController: UITableViewController {
                             let activityModelToSend = ActivityModel(id: activity.id, name: activity.name, operationType: "Added")
                             
                             let archiver = NSKeyedArchiver(requiringSecureCoding: false)
-                            
-                            archiver.encode(activityModelToSend, forKey: "activity")
-                            
-                            if archiver.encodedData.isEmpty {
-                                os_log("Archiver encoded data is empty", log: ActivityTableViewController.osLogName, type: .error)
-                            }
-                            
-                            if let error = archiver.error {
-                                os_log("Occours error while tring tp encode data. With error: %{PUBLIC}@", log: ActivityTableViewController.osLogName, type: .error, "\(error)")
-                            }
-                            
-                        validreachableSession.sendMessageData(archiver.encodedData, replyHandler: nil, errorHandler: nil)
+                        validreachableSession.sendMessageData(archiver.encodeActivity(activityModelToSend, forKey: "activity"), replyHandler: nil, errorHandler: nil)
                             
                         }, onError: { (errorType) in
                             os_log("Watch session is not %{PUBLIC}@", log: ActivityTableViewController.osLogName, type: .error,
@@ -235,17 +224,8 @@ extension ActivityTableViewController: WCSessionDelegate {
     func session(_ session: WCSession, didReceiveMessageData messageData: Data, replyHandler: @escaping (Data) -> Void) {
         
         let archiver = NSKeyedArchiver(requiringSecureCoding: false)
-        archiver.encode(self.activities, forKey: "activities")
         
-        if archiver.encodedData.isEmpty {
-            os_log("Archiver encoded data is empty", log: ActivityTableViewController.osLogName, type: .error)
-        }
-        
-        if let error = archiver.error {
-            os_log("Occours error while tring tp encode data. With error: %{PUBLIC}@", log: ActivityTableViewController.osLogName, type: .error, "\(error)")
-        }
-        
-        replyHandler(archiver.encodedData)
+        replyHandler(archiver.encodeActivity(self.activities, forKey: "activities"))
     }
     
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {

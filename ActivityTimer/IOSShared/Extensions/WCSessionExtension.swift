@@ -30,7 +30,7 @@ extension WCSession {
             errorType = " nor paired"
         }
         
-        if !isSupported || !isReachable || isWatchAppInstalled || isPaired {
+        if !isSupported || !isReachable || !isWatchAppInstalled || !isPaired {
             
             onError(errorType)
             return
