@@ -19,7 +19,16 @@ class ActivityTableViewController: UITableViewController {
     private let activityService = ActivityService.shared
     
     private let sesssion: WCSession? = WCSession.isSupported() ? WCSession.default : nil
-
+    
+    private var validateReachableSession: WCSession?
+    {
+        if let sess = self.sesssion, sess.isPaired && sess.isWatchAppInstalled {
+            return self.sesssion
+        }
+        
+        return nil
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -159,16 +168,30 @@ class ActivityTableViewController: UITableViewController {
                         
                         workType = "saving"
                         
-                        WCSession.initIOSSession(session: self.sesssion, sessionAction: { (validateReachableSession) in
-                            validateReachableSession.sendMessageData(Data(base64Encoded: "OnAdded")!, replyHandler: nil, errorHandler: nil)
-                        }) { (errorType) in
-                            DispatchQueue.main.async {
-                                self.showAlert(title: "Error occours", withMessage: "Error occours while tring to fetch data from IPhone")
-                                
-                                os_log("Error occours while watch tring to fetch data from IPhone app. %{PUBLIC}@", log: ActivityTableViewController.osLogName, type: .error, "\(errorType)")
+                        WCSession.initIOSSession(session: self.sesssion, sessionAction: { (validreachableSession) in
+                            
+                            let activityModelToSend = ActivityModel(id: activity.id, name: activity.name, operationType: "Added")
+                            
+                            let archiver = NSKeyedArchiver(requiringSecureCoding: false)
+                            
+                            archiver.encode(activityModelToSend, forKey: "activity")
+                            
+                            if archiver.encodedData.isEmpty {
+                                os_log("Archiver encoded data is empty", log: ActivityTableViewController.osLogName, type: .error)
                             }
-                        }
-                        
+                            
+                            if let error = archiver.error {
+                                os_log("Occours error while tring tp encode data. With error: %{PUBLIC}@", log: ActivityTableViewController.osLogName, type: .error, "\(error)")
+                            }
+                            
+                        validreachableSession.sendMessageData(archiver.encodedData, replyHandler: nil, errorHandler: nil)
+                            
+                        }, onError: { (errorType) in
+                            os_log("Watch session is not %{PUBLIC}@", log: ActivityTableViewController.osLogName, type: .error,
+                                   errorType)
+                            
+                            showAlert(title: "Session is on error state", withMessage: "Watch session is not \(errorType)")
+                        })
                         
                         activities.append(try activityService.save(activityModel: activity))
                         self.tableView.reloadData()

@@ -17,6 +17,7 @@ class ActivityModel: NSObject, NSCoding, NSSecureCoding {
     struct Keys {
         static let idKeyName = "id"
         static let nameKeyName = "name"
+        static let operationTypeKeyName = "operationType"
     }
     
     //the activity identifier
@@ -25,18 +26,26 @@ class ActivityModel: NSObject, NSCoding, NSSecureCoding {
     ///The name of activity
     var name: String
     
+    var operationType: String?
+    
     required convenience init(coder deCoder: NSCoder) {
         
-        let name = deCoder.decodeObject(forKey: Keys.nameKeyName) as! String
-        
         let id = deCoder.decodeObject(forKey: Keys.idKeyName) as? URL
+        let name = deCoder.decodeObject(forKey: Keys.nameKeyName) as! String
+        let operationType = deCoder.decodeObject(forKey: Keys.operationTypeKeyName) as? String
         
-        self.init(id: id, name: name)
+        self.init(id: id, name: name, operationType: operationType)
     }
     
     init(id: URL?, name: String) {
         self.id = id
         self.name = name
+    }
+    
+    convenience init(id: URL?, name: String, operationType: String?) {
+        self.init(id: id, name: name)
+        
+        self.operationType = operationType
     }
     
     ///initializes Activity object
@@ -48,5 +57,6 @@ class ActivityModel: NSObject, NSCoding, NSSecureCoding {
     func encode(with aCoder: NSCoder) {
         aCoder.encode(self.id, forKey: Keys.idKeyName)
         aCoder.encode(self.name, forKey: Keys.nameKeyName)
+        aCoder.encode(self.operationType, forKey: Keys.operationTypeKeyName)
     }
 }

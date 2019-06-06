@@ -14,6 +14,11 @@
             <objects>
                 <controller id="AgC-eL-Hgc" customClass="ActivityInterfaceController" customModule="ActivityTimer_WatchKit_Extension">
                     <items>
+                        <button width="1" alignment="left" title="Load data" id="WUP-ca-Pyp">
+                            <connections>
+                                <action selector="loadDataAction" destination="AgC-eL-Hgc" id="F7H-7w-Hcv"/>
+                            </connections>
+                        </button>
                         <table alignment="left" id="5Zp-Zl-jkM">
                             <items>
                                 <tableRow identifier="ActivityRowController" id="SIt-dC-uFl" customClass="ActivityRowController" customModule="ActivityTimer_WatchKit_Extension">
@@ -30,6 +35,7 @@
                         </table>
                     </items>
                     <connections>
+                        <outlet property="loadDataButton" destination="WUP-ca-Pyp" id="8CJ-MY-ME0"/>
                         <outlet property="table" destination="5Zp-Zl-jkM" id="5ln-8k-6t4"/>
                     </connections>
                 </controller>
