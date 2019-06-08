@@ -35,6 +35,9 @@
 		1F9A09E022974A9E00C1C3DA /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9A09DF22974A9E00C1C3DA /* NotificationController.swift */; };
 		1F9A09E222974A9F00C1C3DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F9A09E122974A9F00C1C3DA /* Assets.xcassets */; };
 		1FB4FA3722A939CE00BD75B0 /* NSKeyedArchiverExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB4FA3622A939CE00BD75B0 /* NSKeyedArchiverExtension.swift */; };
+		1FB4FA3922A9494900BD75B0 /* NSKeyedUnarchivedExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB4FA3822A9494900BD75B0 /* NSKeyedUnarchivedExtension.swift */; };
+		1FB4FA3A22A9495700BD75B0 /* NSKeyedUnarchivedExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB4FA3822A9494900BD75B0 /* NSKeyedUnarchivedExtension.swift */; };
+		1FB4FA3B22A9497E00BD75B0 /* NSKeyedArchiverExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB4FA3622A939CE00BD75B0 /* NSKeyedArchiverExtension.swift */; };
 		1FB66D31229FC07A00A1225C /* WKAlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB66D30229FC07A00A1225C /* WKAlertHelper.swift */; };
 		1FB66D3322A15B9000A1225C /* ActivityCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB66D3222A15B9000A1225C /* ActivityCollection.swift */; };
 		1FB66D3422A15B9000A1225C /* ActivityCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB66D3222A15B9000A1225C /* ActivityCollection.swift */; };
@@ -42,6 +45,8 @@
 		1FB6AC402298827E001B7576 /* ActivityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB6AC3E2298827E001B7576 /* ActivityTableViewController.swift */; };
 		1FB6AC42229883A1001B7576 /* ActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB6AC41229883A1001B7576 /* ActivityTableViewCell.swift */; };
 		1FB6AC43229883A1001B7576 /* ActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB6AC41229883A1001B7576 /* ActivityTableViewCell.swift */; };
+		1FCD5B0722ABDA7D00FC9FC4 /* NSKeyedUnarchiverError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCD5B0622ABDA7D00FC9FC4 /* NSKeyedUnarchiverError.swift */; };
+		1FCD5B0822ABDB0700FC9FC4 /* NSKeyedUnarchiverError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCD5B0622ABDA7D00FC9FC4 /* NSKeyedUnarchiverError.swift */; };
 		1FD282A7229F1284000EAF03 /* ActivityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB6AC4522988529001B7576 /* ActivityModel.swift */; };
 		1FD282A9229F14DF000EAF03 /* ActivityRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD282A8229F14DF000EAF03 /* ActivityRowController.swift */; };
 /* End PBXBuildFile section */
@@ -136,12 +141,14 @@
 		1F9A09E322974A9F00C1C3DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1F9A09E422974A9F00C1C3DA /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		1FB4FA3622A939CE00BD75B0 /* NSKeyedArchiverExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSKeyedArchiverExtension.swift; sourceTree = "<group>"; };
+		1FB4FA3822A9494900BD75B0 /* NSKeyedUnarchivedExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSKeyedUnarchivedExtension.swift; sourceTree = "<group>"; };
 		1FB66D30229FC07A00A1225C /* WKAlertHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WKAlertHelper.swift; sourceTree = "<group>"; };
 		1FB66D3222A15B9000A1225C /* ActivityCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCollection.swift; sourceTree = "<group>"; };
 		1FB6AC382298784E001B7576 /* ActivityTimer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ActivityTimer.entitlements; sourceTree = "<group>"; };
 		1FB6AC3E2298827E001B7576 /* ActivityTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTableViewController.swift; sourceTree = "<group>"; };
 		1FB6AC41229883A1001B7576 /* ActivityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTableViewCell.swift; sourceTree = "<group>"; };
 		1FB6AC4522988529001B7576 /* ActivityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityModel.swift; sourceTree = "<group>"; };
+		1FCD5B0622ABDA7D00FC9FC4 /* NSKeyedUnarchiverError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSKeyedUnarchiverError.swift; sourceTree = "<group>"; };
 		1FD282A8229F14DF000EAF03 /* ActivityRowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityRowController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -192,9 +199,11 @@
 		1F3F1C322299C79800F48BF2 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				1FB4FA3622A939CE00BD75B0 /* NSKeyedArchiverExtension.swift */,
 				1F3F1C332299C7B700F48BF2 /* OSLogExtension.swift */,
 				1F510FD5229C489500B5C258 /* NSManagedObjectArrayExtension.swift */,
 				1F510FD7229C5EEA00B5C258 /* NSManagedObjectExtension.swift */,
+				1FB4FA3822A9494900BD75B0 /* NSKeyedUnarchivedExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -211,6 +220,7 @@
 			isa = PBXGroup;
 			children = (
 				1F510FD2229C0AD800B5C258 /* ServiceError.swift */,
+				1FCD5B0622ABDA7D00FC9FC4 /* NSKeyedUnarchiverError.swift */,
 			);
 			path = Errors;
 			sourceTree = "<group>";
@@ -251,7 +261,6 @@
 			isa = PBXGroup;
 			children = (
 				1F8383C822A45BEF00ECDBE6 /* WCSessionExtension.swift */,
-				1FB4FA3622A939CE00BD75B0 /* NSKeyedArchiverExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -590,10 +599,12 @@
 				1F510FD8229C5EEA00B5C258 /* NSManagedObjectExtension.swift in Sources */,
 				1F510FCC229C01E500B5C258 /* ActivityTimer.xcdatamodeld in Sources */,
 				1F510FD0229C053300B5C258 /* ActivityModel.swift in Sources */,
+				1FB4FA3922A9494900BD75B0 /* NSKeyedUnarchivedExtension.swift in Sources */,
 				1FB6AC42229883A1001B7576 /* ActivityTableViewCell.swift in Sources */,
 				1F510FD3229C0AD800B5C258 /* ServiceError.swift in Sources */,
 				1FB66D3322A15B9000A1225C /* ActivityCollection.swift in Sources */,
 				1F510FCE229C045200B5C258 /* ActivityService.swift in Sources */,
+				1FCD5B0722ABDA7D00FC9FC4 /* NSKeyedUnarchiverError.swift in Sources */,
 				1FB6AC3F2298827E001B7576 /* ActivityTableViewController.swift in Sources */,
 				1F510FD6229C489500B5C258 /* NSManagedObjectArrayExtension.swift in Sources */,
 				1FB4FA3722A939CE00BD75B0 /* NSKeyedArchiverExtension.swift in Sources */,
@@ -626,6 +637,9 @@
 			files = (
 				1F8383C522A4597C00ECDBE6 /* WCSessionExtension.swift in Sources */,
 				1F3F1C352299C7B700F48BF2 /* OSLogExtension.swift in Sources */,
+				1FB4FA3A22A9495700BD75B0 /* NSKeyedUnarchivedExtension.swift in Sources */,
+				1FCD5B0822ABDB0700FC9FC4 /* NSKeyedUnarchiverError.swift in Sources */,
+				1FB4FA3B22A9497E00BD75B0 /* NSKeyedArchiverExtension.swift in Sources */,
 				1FD282A9229F14DF000EAF03 /* ActivityRowController.swift in Sources */,
 				1F9A09E022974A9E00C1C3DA /* NotificationController.swift in Sources */,
 				1F9A09DE22974A9E00C1C3DA /* ExtensionDelegate.swift in Sources */,

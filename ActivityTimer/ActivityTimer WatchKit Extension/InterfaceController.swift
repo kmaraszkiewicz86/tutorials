@@ -79,20 +79,11 @@ extension ActivityInterfaceController : WCSessionDelegate {
     func session(_ session: WCSession, didReceiveMessageData messageData: Data) {
         do {
             
-            let unarchiver = try NSKeyedUnarchiver(forReadingFrom: messageData)
-            let activity = unarchiver.decodeObject(of: [NSURL.self, NSArray.self, ActivityModel.self], forKey: "activity") as? ActivityModel
+            try NSKeyedUnarchiver.decodeActivity(messageData, forKey: "activity") { (activity: ActivityModel) in
+                    self.activities.append(activity)
+                    self.refreshTable() }
             
-            if let error = unarchiver.error {
-                os_log("Occours error while tring to decode data. With error: %{PUBLIC}@", log: ActivityInterfaceController.osLogName, type: .error, "\(error)")
-                
-                return
-            }
             
-            DispatchQueue.main.async {
-                self.activities.append(activity!)
-                
-                self.refreshTable()
-            }
         } catch let error as NSError {
             os_log("Error occours while tring to get data from IPhone. %{PUBLIC}@. %{PUBLIC}@", log: OSLog.activityInterfaceController, type: .error, error, error.userInfo)
             
@@ -105,22 +96,10 @@ extension ActivityInterfaceController : WCSessionDelegate {
             validReachableSession.sendMessageData(Data(), replyHandler: { (data) in
                 
                 do {
-                    let unarchiver = try NSKeyedUnarchiver(forReadingFrom: data)
                     
-                    let activitiesFromResponse = unarchiver.decodeObject(of: [NSArray.self, ActivityModel.self, NSURL.self], forKey: "activities") as? [ActivityModel]
-                    
-                    if let error = unarchiver.error {
-                        os_log("Occours error while tring to decode data. With error: %{PUBLIC}@", log: ActivityInterfaceController.osLogName, type: .error, "\(error)")
-                        
-                        WKAlertHelper.showInfoAlert(title: "Error occours", message: "Error occours while tring to get data from IPhone", usingController: self)
-                        
-                        return
-                    }
-                    
-                    self.activities = activitiesFromResponse!
-                    DispatchQueue.main.async {
-                        self.refreshTable()
-                    }
+                    try NSKeyedUnarchiver.decodeActivity(data, forKey: "activities", afterDecodeAction: { (activitiesFromResponse: [ActivityModel]) in
+                            self.activities = activitiesFromResponse
+                            self.refreshTable()})
                     
                 } catch let error as NSError {
                     os_log("Error occours while tring to get data from IPhone. %{PUBLIC}@. %{PUBLIC}@", log: OSLog.activityInterfaceController, type: .error, error, error.userInfo)

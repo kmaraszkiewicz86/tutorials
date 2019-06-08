@@ -21,6 +21,8 @@ extension OSLog {
     
     static let nsKeyedArchiverExtension = OSLog(subsystem: bundle, category: "NSKeyedArchiverExtension")
     
+    static let nsKeyedUnarchiverExtension = OSLog(subsystem: bundle, category: "NSKeyedUnarchiverExtension")
+    
     static let activityCollection = OSLog(subsystem: bundle, category: "ActivityCollection")
     
 }
