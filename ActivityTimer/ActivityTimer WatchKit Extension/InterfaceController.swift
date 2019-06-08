@@ -79,9 +79,55 @@ extension ActivityInterfaceController : WCSessionDelegate {
     func session(_ session: WCSession, didReceiveMessageData messageData: Data) {
         do {
             
-            try NSKeyedUnarchiver.decodeActivity(messageData, forKey: "activity") { (activity: ActivityModel) in
-                    self.activities.append(activity)
-                    self.refreshTable() }
+            try NSKeyedUnarchiver.decodeActivity(messageData, forKey: "activity") { (activityModelFromResponse: ActivityModel) in
+                
+                if let operationType = activityModelFromResponse.operationType {
+                    
+                    switch operationType {
+                        case ActivityOperationType.added:
+                           
+                            print(activityModelFromResponse.id ?? "n/a")
+                            self.activities.append(activityModelFromResponse)
+                            self.refreshTable()
+                            break
+                        
+                        case ActivityOperationType.updated:
+                            
+                            let activitiesModel = self.activities.filter({ (activityModel) -> Bool in
+                                return activityModel.id == activityModelFromResponse.id
+                            })
+                            
+                            if let activityModel = activitiesModel.first {
+                                activityModel.name = activityModelFromResponse.name
+                                
+                                self.refreshTable()
+                            }
+                            
+                            break
+                        
+                    case .deleted:
+                        
+                        for a in self.activities {
+                            print(a.id ?? "n/a")
+                        }
+                        
+                        print(activityModelFromResponse.id ?? "n/a")
+                        
+                        if let activityIdToRemove = self.activities.firstIndex(where: { (activityModel) -> Bool in
+                            return activityModel.id == activityModelFromResponse.id
+                        }) {
+                            self.activities.remove(at: activityIdToRemove)
+                            self.refreshTable()
+                        }
+                        
+                        break
+                    }
+                    
+                }
+                
+                
+                
+            }
             
             
         } catch let error as NSError {

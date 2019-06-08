@@ -6,7 +6,7 @@
 //  Copyright © 2019 Krzysztof Maraszkiewicz. All rights reserved.
 //
 
-import WatchKit
+import UIKit
 
 ///Activity model
 @objc(ActivityModel)
@@ -26,15 +26,15 @@ class ActivityModel: NSObject, NSCoding, NSSecureCoding {
     ///The name of activity
     var name: String
     
-    var operationType: String?
+    var operationType: ActivityOperationType?
     
     required convenience init(coder deCoder: NSCoder) {
         
         let id = deCoder.decodeObject(forKey: Keys.idKeyName) as? URL
         let name = deCoder.decodeObject(forKey: Keys.nameKeyName) as! String
-        let operationType = deCoder.decodeObject(forKey: Keys.operationTypeKeyName) as? String
+        let operationTypeInt = deCoder.decodeObject(forKey: Keys.operationTypeKeyName) as? Int
         
-        self.init(id: id, name: name, operationType: operationType)
+        self.init(id: id, name: name, operationTypeInt: operationTypeInt)
     }
     
     init(id: URL?, name: String) {
@@ -42,7 +42,13 @@ class ActivityModel: NSObject, NSCoding, NSSecureCoding {
         self.name = name
     }
     
-    convenience init(id: URL?, name: String, operationType: String?) {
+    convenience init(id: URL?, name: String, operationTypeInt: Int?) {
+        self.init(id: id, name: name)
+        
+        self.operationType = toActivityOperationType(type: operationTypeInt)
+    }
+    
+    convenience init(id: URL?, name: String, operationType: ActivityOperationType?) {
         self.init(id: id, name: name)
         
         self.operationType = operationType
@@ -57,6 +63,52 @@ class ActivityModel: NSObject, NSCoding, NSSecureCoding {
     func encode(with aCoder: NSCoder) {
         aCoder.encode(self.id, forKey: Keys.idKeyName)
         aCoder.encode(self.name, forKey: Keys.nameKeyName)
-        aCoder.encode(self.operationType, forKey: Keys.operationTypeKeyName)
+        aCoder.encode(toInt(type: self.operationType), forKey: Keys.operationTypeKeyName)
+    }
+    
+    private func toInt (type: ActivityOperationType?) -> Int? {
+        
+        if let t = type {
+        
+            switch t {
+                case .added:
+                    return 1
+                
+                case .deleted:
+                    return 2
+                
+                case .updated:
+                    return 3
+                
+                default:
+                    return nil
+                
+                }
+        }
+        
+        return nil
+    }
+    
+    private func toActivityOperationType (type: Int?) -> ActivityOperationType? {
+        
+        if let t = type {
+        
+            switch t {
+            case 1:
+                return .added
+                
+            case 2:
+                return .deleted
+                
+            case 3:
+                return .updated
+                
+            default:
+                return nil
+                
+            }
+        }
+        
+        return nil
     }
 }

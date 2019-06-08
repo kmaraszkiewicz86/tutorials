@@ -7,23 +7,25 @@
 //
 
 import os.log
-import WatchKit
+import UIKit
 
 extension NSKeyedArchiver {
 
-    func encodeActivity(_ object: Any?, forKey: String) -> Data {
+    static func encodeActivity(_ object: Any?, forKey: String) -> Data {
         
-        self.encode(object, forKey: forKey)
+        let archiver = NSKeyedArchiver(requiringSecureCoding: false)
         
-        if self.encodedData.isEmpty {
+        archiver.encode(object, forKey: forKey)
+        
+        if archiver.encodedData.isEmpty {
             os_log("Archiver encoded data is empty", log: OSLog.nsKeyedArchiverExtension, type: .error)
         }
         
-        if let error = self.error {
+        if let error = archiver.error {
             os_log("Occours error while tring tp encode data. With error: %{PUBLIC}@", log: OSLog.nsKeyedArchiverExtension, type: .error, "\(error)")
         }
         
-        return self.encodedData
+        return archiver.encodedData
     }
     
 }

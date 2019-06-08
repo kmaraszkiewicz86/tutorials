@@ -75,8 +75,21 @@ class ActivityTableViewController: UITableViewController {
         if editingStyle == .delete {
             
             do {
+                WCSession.initIOSSession(session: self.sesssion, sessionAction: { (validreachableSession) in
+                    
+                    let activityModelToSend = ActivityModel(id: activities[indexPath.row].id, name: activities[indexPath.row].name, operationType: ActivityOperationType.deleted)
+                     validreachableSession.sendMessageData(NSKeyedArchiver.encodeActivity(activityModelToSend, forKey: "activity"), replyHandler: nil, errorHandler: nil)
+                    
+                }, onError: { (errorType) in
+                    os_log("Watch session is not %{PUBLIC}@", log: ActivityTableViewController.osLogName, type: .error,
+                           errorType)
+                    
+                    showAlert(title: "Session is on error state", withMessage: "Watch session is not \(errorType)")
+                })
+                
                 try activityService.delete(activityModel: activities[indexPath.row])
                 activities.remove(at: indexPath.row)
+                
                 tableView.deleteRows(at: [indexPath], with: .fade)
             } catch ServiceError.databaseError {
                 showAlert(title: "Error", withMessage: "Error with saving data occours")
@@ -160,20 +173,11 @@ class ActivityTableViewController: UITableViewController {
                         
                         workType = "updating"
                         
-                        try activityService.update(id: activities[index.row].id, activityModel: activity)
-                        activities[index.row].name = activity.name
-                        tableView.reloadRows(at: [index], with: .fade)
-                        
-                    } else {
-                        
-                        workType = "saving"
-                        
                         WCSession.initIOSSession(session: self.sesssion, sessionAction: { (validreachableSession) in
                             
-                            let activityModelToSend = ActivityModel(id: activity.id, name: activity.name, operationType: "Added")
+                            let activityModelToSend = ActivityModel(id: activities[index.row].id, name: activity.name, operationType: ActivityOperationType.updated)
                             
-                            let archiver = NSKeyedArchiver(requiringSecureCoding: false)
-                        validreachableSession.sendMessageData(archiver.encodeActivity(activityModelToSend, forKey: "activity"), replyHandler: nil, errorHandler: nil)
+                            validreachableSession.sendMessageData(NSKeyedArchiver.encodeActivity(activityModelToSend, forKey: "activity"), replyHandler: nil, errorHandler: nil)
                             
                         }, onError: { (errorType) in
                             os_log("Watch session is not %{PUBLIC}@", log: ActivityTableViewController.osLogName, type: .error,
@@ -182,7 +186,30 @@ class ActivityTableViewController: UITableViewController {
                             showAlert(title: "Session is on error state", withMessage: "Watch session is not \(errorType)")
                         })
                         
-                        activities.append(try activityService.save(activityModel: activity))
+                        try activityService.update(id: activities[index.row].id, activityModel: activity)
+                        activities[index.row].name = activity.name
+                        tableView.reloadRows(at: [index], with: .fade)
+                        
+                    } else {
+                        
+                        workType = "saving"
+                        
+                        let addedActivity = try activityService.save(activityModel: activity)
+                        
+                        WCSession.initIOSSession(session: self.sesssion, sessionAction: { (validreachableSession) in
+                            
+                            let activityModelToSend = ActivityModel(id: addedActivity.id, name: addedActivity.name, operationType: ActivityOperationType.added)
+                            
+                           validreachableSession.sendMessageData(NSKeyedArchiver.encodeActivity(activityModelToSend, forKey: "activity"), replyHandler: nil, errorHandler: nil)
+                            
+                        }, onError: { (errorType) in
+                            os_log("Watch session is not %{PUBLIC}@", log: ActivityTableViewController.osLogName, type: .error,
+                                   errorType)
+                            
+                            showAlert(title: "Session is on error state", withMessage: "Watch session is not \(errorType)")
+                        })
+                        
+                        activities.append(addedActivity)
                         self.tableView.reloadData()
                     }
                 } catch ServiceError.databaseError {
@@ -223,9 +250,7 @@ extension ActivityTableViewController: WCSessionDelegate {
     
     func session(_ session: WCSession, didReceiveMessageData messageData: Data, replyHandler: @escaping (Data) -> Void) {
         
-        let archiver = NSKeyedArchiver(requiringSecureCoding: false)
-        
-        replyHandler(archiver.encodeActivity(self.activities, forKey: "activities"))
+        replyHandler(NSKeyedArchiver.encodeActivity(self.activities, forKey: "activities"))
     }
     
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {

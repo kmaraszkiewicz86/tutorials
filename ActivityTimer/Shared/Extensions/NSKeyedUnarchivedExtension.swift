@@ -14,7 +14,7 @@ extension NSKeyedUnarchiver {
     static func decodeActivity<TActivity>(_ data: Data, forKey: String, afterDecodeAction: (TActivity)  -> Void) throws {
 
             let unarchiver = try NSKeyedUnarchiver(forReadingFrom: data)
-            let items = unarchiver.decodeObject(of: [NSURL.self, NSArray.self, ActivityModel.self], forKey: "activity") as? TActivity
+            let items = unarchiver.decodeObject(of: [NSURL.self, NSArray.self, ActivityModel.self], forKey: forKey) as? TActivity
         
             if let error = unarchiver.error {
                 os_log("Occours error while tring to decode data. With error: %{PUBLIC}@", log: OSLog.nsKeyedUnarchiverExtension, type: .error, "\(error)")

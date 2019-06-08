@@ -17,6 +17,8 @@
 		1F510FD6229C489500B5C258 /* NSManagedObjectArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F510FD5229C489500B5C258 /* NSManagedObjectArrayExtension.swift */; };
 		1F510FD8229C5EEA00B5C258 /* NSManagedObjectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F510FD7229C5EEA00B5C258 /* NSManagedObjectExtension.swift */; };
 		1F510FD9229C860B00B5C258 /* ActivityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F510FCD229C045200B5C258 /* ActivityService.swift */; };
+		1F77B71522AC47AF00EAE381 /* ActivityOperationTypeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F77B71422AC47AF00EAE381 /* ActivityOperationTypeError.swift */; };
+		1F77B71622AC47AF00EAE381 /* ActivityOperationTypeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F77B71422AC47AF00EAE381 /* ActivityOperationTypeError.swift */; };
 		1F8383C522A4597C00ECDBE6 /* WCSessionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8383C322A4594000ECDBE6 /* WCSessionExtension.swift */; };
 		1F8383C922A45BEF00ECDBE6 /* WCSessionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8383C822A45BEF00ECDBE6 /* WCSessionExtension.swift */; };
 		1F9A09A322974A9A00C1C3DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9A09A222974A9A00C1C3DA /* AppDelegate.swift */; };
@@ -47,6 +49,8 @@
 		1FB6AC43229883A1001B7576 /* ActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB6AC41229883A1001B7576 /* ActivityTableViewCell.swift */; };
 		1FCD5B0722ABDA7D00FC9FC4 /* NSKeyedUnarchiverError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCD5B0622ABDA7D00FC9FC4 /* NSKeyedUnarchiverError.swift */; };
 		1FCD5B0822ABDB0700FC9FC4 /* NSKeyedUnarchiverError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCD5B0622ABDA7D00FC9FC4 /* NSKeyedUnarchiverError.swift */; };
+		1FCD5B0C22ABEB1200FC9FC4 /* ActivityOperationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCD5B0B22ABEB1200FC9FC4 /* ActivityOperationType.swift */; };
+		1FCD5B0D22ABEB5F00FC9FC4 /* ActivityOperationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCD5B0B22ABEB1200FC9FC4 /* ActivityOperationType.swift */; };
 		1FD282A7229F1284000EAF03 /* ActivityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB6AC4522988529001B7576 /* ActivityModel.swift */; };
 		1FD282A9229F14DF000EAF03 /* ActivityRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD282A8229F14DF000EAF03 /* ActivityRowController.swift */; };
 /* End PBXBuildFile section */
@@ -114,6 +118,7 @@
 		1F510FD2229C0AD800B5C258 /* ServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
 		1F510FD5229C489500B5C258 /* NSManagedObjectArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSManagedObjectArrayExtension.swift; sourceTree = "<group>"; };
 		1F510FD7229C5EEA00B5C258 /* NSManagedObjectExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSManagedObjectExtension.swift; sourceTree = "<group>"; };
+		1F77B71422AC47AF00EAE381 /* ActivityOperationTypeError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityOperationTypeError.swift; sourceTree = "<group>"; };
 		1F8383C322A4594000ECDBE6 /* WCSessionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCSessionExtension.swift; sourceTree = "<group>"; };
 		1F8383C822A45BEF00ECDBE6 /* WCSessionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCSessionExtension.swift; sourceTree = "<group>"; };
 		1F9A099F22974A9A00C1C3DA /* ActivityTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ActivityTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -149,6 +154,7 @@
 		1FB6AC41229883A1001B7576 /* ActivityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTableViewCell.swift; sourceTree = "<group>"; };
 		1FB6AC4522988529001B7576 /* ActivityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityModel.swift; sourceTree = "<group>"; };
 		1FCD5B0622ABDA7D00FC9FC4 /* NSKeyedUnarchiverError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSKeyedUnarchiverError.swift; sourceTree = "<group>"; };
+		1FCD5B0B22ABEB1200FC9FC4 /* ActivityOperationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityOperationType.swift; sourceTree = "<group>"; };
 		1FD282A8229F14DF000EAF03 /* ActivityRowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityRowController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -187,6 +193,7 @@
 		1F3F1C302299C75000F48BF2 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				1FCD5B0A22ABEAF600FC9FC4 /* Enums */,
 				1FB6AC442298849D001B7576 /* Models */,
 				1FB66D2F229FC02900A1225C /* Helpers */,
 				1F510FD1229C0ABA00B5C258 /* Errors */,
@@ -221,6 +228,7 @@
 			children = (
 				1F510FD2229C0AD800B5C258 /* ServiceError.swift */,
 				1FCD5B0622ABDA7D00FC9FC4 /* NSKeyedUnarchiverError.swift */,
+				1F77B71422AC47AF00EAE381 /* ActivityOperationTypeError.swift */,
 			);
 			path = Errors;
 			sourceTree = "<group>";
@@ -236,6 +244,7 @@
 		1F8383C122A458E900ECDBE6 /* WKShared */ = {
 			isa = PBXGroup;
 			children = (
+				1FCD5B0922ABEA8A00FC9FC4 /* Enums */,
 				1F8383C222A4590500ECDBE6 /* Extensions */,
 			);
 			path = WKShared;
@@ -390,6 +399,21 @@
 				1FB66D3222A15B9000A1225C /* ActivityCollection.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		1FCD5B0922ABEA8A00FC9FC4 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
+		1FCD5B0A22ABEAF600FC9FC4 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				1FCD5B0B22ABEB1200FC9FC4 /* ActivityOperationType.swift */,
+			);
+			path = Enums;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -592,11 +616,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1FCD5B0C22ABEB1200FC9FC4 /* ActivityOperationType.swift in Sources */,
 				1F3F1C342299C7B700F48BF2 /* OSLogExtension.swift in Sources */,
 				1F9A09A522974A9A00C1C3DA /* ActivityFormViewController.swift in Sources */,
 				1F9A09A322974A9A00C1C3DA /* AppDelegate.swift in Sources */,
 				1F8383C922A45BEF00ECDBE6 /* WCSessionExtension.swift in Sources */,
 				1F510FD8229C5EEA00B5C258 /* NSManagedObjectExtension.swift in Sources */,
+				1F77B71522AC47AF00EAE381 /* ActivityOperationTypeError.swift in Sources */,
 				1F510FCC229C01E500B5C258 /* ActivityTimer.xcdatamodeld in Sources */,
 				1F510FD0229C053300B5C258 /* ActivityModel.swift in Sources */,
 				1FB4FA3922A9494900BD75B0 /* NSKeyedUnarchivedExtension.swift in Sources */,
@@ -637,6 +663,7 @@
 			files = (
 				1F8383C522A4597C00ECDBE6 /* WCSessionExtension.swift in Sources */,
 				1F3F1C352299C7B700F48BF2 /* OSLogExtension.swift in Sources */,
+				1F77B71622AC47AF00EAE381 /* ActivityOperationTypeError.swift in Sources */,
 				1FB4FA3A22A9495700BD75B0 /* NSKeyedUnarchivedExtension.swift in Sources */,
 				1FCD5B0822ABDB0700FC9FC4 /* NSKeyedUnarchiverError.swift in Sources */,
 				1FB4FA3B22A9497E00BD75B0 /* NSKeyedArchiverExtension.swift in Sources */,
@@ -644,6 +671,7 @@
 				1F9A09E022974A9E00C1C3DA /* NotificationController.swift in Sources */,
 				1F9A09DE22974A9E00C1C3DA /* ExtensionDelegate.swift in Sources */,
 				1FB66D3422A15B9000A1225C /* ActivityCollection.swift in Sources */,
+				1FCD5B0D22ABEB5F00FC9FC4 /* ActivityOperationType.swift in Sources */,
 				1FB66D31229FC07A00A1225C /* WKAlertHelper.swift in Sources */,
 				1F9A09DC22974A9E00C1C3DA /* InterfaceController.swift in Sources */,
 				1FD282A7229F1284000EAF03 /* ActivityModel.swift in Sources */,
