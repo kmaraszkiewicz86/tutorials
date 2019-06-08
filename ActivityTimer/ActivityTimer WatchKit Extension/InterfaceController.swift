@@ -11,21 +11,34 @@ import os.log
 import WatchKit
 import WatchConnectivity
 
+///The ActivityInterfaceController class
 class ActivityInterfaceController: WKInterfaceController {
     
     //MARK: Outlets
+    
+    ///The table outlet
     @IBOutlet weak var table: WKInterfaceTable!
+    
+    ///The load data button outlet
     @IBOutlet weak var loadDataButton: WKInterfaceButton!
     
     //MARK: private properties
+    
+    ///The OSLog type name
     private static let osLogName = OSLog.activityInterfaceController
+    
+    ///The activities items
     private var activities = [ActivityModel]()
+    
+    ///The ios app session instance
     private let session: WCSession? = WCSession.isSupported() ? WCSession.default : nil
     
+    ///The awake event
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
     }
     
+    ///The will activte event
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
@@ -36,15 +49,19 @@ class ActivityInterfaceController: WKInterfaceController {
         session?.activate()
     }
     
+    ///The did deactivate event
     override func didDeactivate() {
         // This method is called when watch view controller is no longer visible
         super.didDeactivate()
     }
     
+    ///The load data action after click `loadDataButton` button
+    ///Fetch current items from ios app
     @IBAction func loadDataAction() {
         sendMessageAnmdGetResponseFromIPhone()
     }
     
+    ///Refreshes data from ios apps
     private func refreshTable () {
         
         if self.activities.isEmpty || self.activities.count == 0 {
@@ -64,18 +81,26 @@ class ActivityInterfaceController: WKInterfaceController {
         }
     }
     
+    ///Toggles enabled and hidden status of loadData button
+    ///- parameter isHidden: The enabled and hidden status of loadData button
     private func toggleLoadDataBtnVisible(_ isHidden: Bool) {
         loadDataButton.setEnabled(isHidden)
         loadDataButton.setHidden(!isHidden)
     }
 }
 
+///The `ActivityInterfaceController` class extension
+///With event method of WCSessionDelegate class
 extension ActivityInterfaceController : WCSessionDelegate {
  
+    ///Triggers when session did activate
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
         print("activationDidCompleteWith activationState:\(activationState) error:\(String(describing: error))")
     }
     
+    ///Triggers after ios app sent request
+    ///- parameter session: The WCSession instance
+    ///- parameter messageData: The data response from ios app
     func session(_ session: WCSession, didReceiveMessageData messageData: Data) {
         do {
             
@@ -137,6 +162,7 @@ extension ActivityInterfaceController : WCSessionDelegate {
         }
     }
     
+    ///Sends the request to ios app
     private func sendMessageAnmdGetResponseFromIPhone() {
         initSession { (validReachableSession) in
             validReachableSession.sendMessageData(Data(), replyHandler: { (data) in
@@ -162,6 +188,10 @@ extension ActivityInterfaceController : WCSessionDelegate {
         }
     }
     
+    //MARK: The session helpers
+    
+    ///Initialize session for ios app
+    ///- parameter sessionAction: The action triggers when session is in valid state
     private func initSession (sessionAction: (WCSession) -> Void) {
         
             WCSession.initSession(session: self.session, sessionAction: sessionAction) { (errorType) in

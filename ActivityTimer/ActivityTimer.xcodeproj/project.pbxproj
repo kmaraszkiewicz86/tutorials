@@ -41,8 +41,6 @@
 		1FB4FA3A22A9495700BD75B0 /* NSKeyedUnarchivedExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB4FA3822A9494900BD75B0 /* NSKeyedUnarchivedExtension.swift */; };
 		1FB4FA3B22A9497E00BD75B0 /* NSKeyedArchiverExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB4FA3622A939CE00BD75B0 /* NSKeyedArchiverExtension.swift */; };
 		1FB66D31229FC07A00A1225C /* WKAlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB66D30229FC07A00A1225C /* WKAlertHelper.swift */; };
-		1FB66D3322A15B9000A1225C /* ActivityCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB66D3222A15B9000A1225C /* ActivityCollection.swift */; };
-		1FB66D3422A15B9000A1225C /* ActivityCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB66D3222A15B9000A1225C /* ActivityCollection.swift */; };
 		1FB6AC3F2298827E001B7576 /* ActivityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB6AC3E2298827E001B7576 /* ActivityTableViewController.swift */; };
 		1FB6AC402298827E001B7576 /* ActivityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB6AC3E2298827E001B7576 /* ActivityTableViewController.swift */; };
 		1FB6AC42229883A1001B7576 /* ActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB6AC41229883A1001B7576 /* ActivityTableViewCell.swift */; };
@@ -148,7 +146,6 @@
 		1FB4FA3622A939CE00BD75B0 /* NSKeyedArchiverExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSKeyedArchiverExtension.swift; sourceTree = "<group>"; };
 		1FB4FA3822A9494900BD75B0 /* NSKeyedUnarchivedExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSKeyedUnarchivedExtension.swift; sourceTree = "<group>"; };
 		1FB66D30229FC07A00A1225C /* WKAlertHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WKAlertHelper.swift; sourceTree = "<group>"; };
-		1FB66D3222A15B9000A1225C /* ActivityCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCollection.swift; sourceTree = "<group>"; };
 		1FB6AC382298784E001B7576 /* ActivityTimer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ActivityTimer.entitlements; sourceTree = "<group>"; };
 		1FB6AC3E2298827E001B7576 /* ActivityTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTableViewController.swift; sourceTree = "<group>"; };
 		1FB6AC41229883A1001B7576 /* ActivityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTableViewCell.swift; sourceTree = "<group>"; };
@@ -244,7 +241,6 @@
 		1F8383C122A458E900ECDBE6 /* WKShared */ = {
 			isa = PBXGroup;
 			children = (
-				1FCD5B0922ABEA8A00FC9FC4 /* Enums */,
 				1F8383C222A4590500ECDBE6 /* Extensions */,
 			);
 			path = WKShared;
@@ -396,16 +392,8 @@
 			isa = PBXGroup;
 			children = (
 				1FB6AC4522988529001B7576 /* ActivityModel.swift */,
-				1FB66D3222A15B9000A1225C /* ActivityCollection.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		1FCD5B0922ABEA8A00FC9FC4 /* Enums */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Enums;
 			sourceTree = "<group>";
 		};
 		1FCD5B0A22ABEAF600FC9FC4 /* Enums */ = {
@@ -628,7 +616,6 @@
 				1FB4FA3922A9494900BD75B0 /* NSKeyedUnarchivedExtension.swift in Sources */,
 				1FB6AC42229883A1001B7576 /* ActivityTableViewCell.swift in Sources */,
 				1F510FD3229C0AD800B5C258 /* ServiceError.swift in Sources */,
-				1FB66D3322A15B9000A1225C /* ActivityCollection.swift in Sources */,
 				1F510FCE229C045200B5C258 /* ActivityService.swift in Sources */,
 				1FCD5B0722ABDA7D00FC9FC4 /* NSKeyedUnarchiverError.swift in Sources */,
 				1FB6AC3F2298827E001B7576 /* ActivityTableViewController.swift in Sources */,
@@ -670,7 +657,6 @@
 				1FD282A9229F14DF000EAF03 /* ActivityRowController.swift in Sources */,
 				1F9A09E022974A9E00C1C3DA /* NotificationController.swift in Sources */,
 				1F9A09DE22974A9E00C1C3DA /* ExtensionDelegate.swift in Sources */,
-				1FB66D3422A15B9000A1225C /* ActivityCollection.swift in Sources */,
 				1FCD5B0D22ABEB5F00FC9FC4 /* ActivityOperationType.swift in Sources */,
 				1FB66D31229FC07A00A1225C /* WKAlertHelper.swift in Sources */,
 				1F9A09DC22974A9E00C1C3DA /* InterfaceController.swift in Sources */,

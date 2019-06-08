@@ -8,8 +8,13 @@
 
 import WatchConnectivity
 
+///Extension of WCSession
 extension WCSession {
     
+    ///Create watchkit session
+    /// - parameter session: Session of watchkit
+    /// - parameter sessionAction: Session run if session is in valid status
+    /// - parameter onError: Action run if session has invalid state
     static func initSession(session: WCSession?, sessionAction: (WCSession) -> Void, onError: (String) -> Void) {
         
         let isSupported = WCSession.isSupported()

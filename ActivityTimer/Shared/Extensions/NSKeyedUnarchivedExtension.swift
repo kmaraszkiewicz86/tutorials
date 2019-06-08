@@ -9,8 +9,13 @@
 import os.log
 import WatchKit
 
+///The NSKeyedUnarchiver extension
 extension NSKeyedUnarchiver {
     
+    ///Decodes activity data
+    ///- parameter data: The encode activity data
+    ///- parameter forKey: The name of encoded data
+    ///- parameter afterDecodeAction: The after decode action
     static func decodeActivity<TActivity>(_ data: Data, forKey: String, afterDecodeAction: (TActivity)  -> Void) throws {
 
             let unarchiver = try NSKeyedUnarchiver(forReadingFrom: data)

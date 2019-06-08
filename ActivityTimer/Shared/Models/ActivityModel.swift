@@ -8,12 +8,14 @@
 
 import UIKit
 
-///Activity model
+///Activity model storage activity data
 @objc(ActivityModel)
 class ActivityModel: NSObject, NSCoding, NSSecureCoding {
     
+    ///Is supported security coding
     static var supportsSecureCoding = true
     
+    ///Class properties names for NSKeyedArchiver or NSKeyedUnarchived classes
     struct Keys {
         static let idKeyName = "id"
         static let nameKeyName = "name"
@@ -26,8 +28,10 @@ class ActivityModel: NSObject, NSCoding, NSSecureCoding {
     ///The name of activity
     var name: String
     
+    ///The operation activity type
     var operationType: ActivityOperationType?
     
+    ///Initialize data for NSCoding decode
     required convenience init(coder deCoder: NSCoder) {
         
         let id = deCoder.decodeObject(forKey: Keys.idKeyName) as? URL
@@ -37,17 +41,20 @@ class ActivityModel: NSObject, NSCoding, NSSecureCoding {
         self.init(id: id, name: name, operationTypeInt: operationTypeInt)
     }
     
+    ///Initializer for shartness data of Activity
     init(id: URL?, name: String) {
         self.id = id
         self.name = name
     }
     
+    ///Initilizer for full activity data with int operation type
     convenience init(id: URL?, name: String, operationTypeInt: Int?) {
         self.init(id: id, name: name)
         
         self.operationType = toActivityOperationType(type: operationTypeInt)
     }
     
+    ///Initializer for full Activity data for operation type of ActivityOperationType enum
     convenience init(id: URL?, name: String, operationType: ActivityOperationType?) {
         self.init(id: id, name: name)
         
@@ -60,12 +67,16 @@ class ActivityModel: NSObject, NSCoding, NSSecureCoding {
         self.name = name
     }
     
+    ///encode data
+    /// - parameter aCoder: NSCoder object
     func encode(with aCoder: NSCoder) {
         aCoder.encode(self.id, forKey: Keys.idKeyName)
         aCoder.encode(self.name, forKey: Keys.nameKeyName)
         aCoder.encode(toInt(type: self.operationType), forKey: Keys.operationTypeKeyName)
     }
     
+    ///Convert ActivityOperationType to integer
+    ///- returns: The int value od ActivityOperationType
     private func toInt (type: ActivityOperationType?) -> Int? {
         
         if let t = type {
@@ -79,16 +90,14 @@ class ActivityModel: NSObject, NSCoding, NSSecureCoding {
                 
                 case .updated:
                     return 3
-                
-                default:
-                    return nil
-                
-                }
+            }
         }
         
         return nil
     }
     
+    /// Convert Int to ActivityOperationType
+    ///- returns: The ActivityOperationType
     private func toActivityOperationType (type: Int?) -> ActivityOperationType? {
         
         if let t = type {

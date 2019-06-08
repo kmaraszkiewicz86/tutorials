@@ -9,8 +9,13 @@
 import os.log
 import UIKit
 
+///The NSKeyedArchiver extension
 extension NSKeyedArchiver {
 
+    ///Encodes activity
+    /// - parameter object: The object to encode
+    /// - parameter forKey: The name of hashed key
+    /// - returns: The Data
     static func encodeActivity(_ object: Any?, forKey: String) -> Data {
         
         let archiver = NSKeyedArchiver(requiringSecureCoding: false)

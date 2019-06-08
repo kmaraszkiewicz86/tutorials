@@ -6,6 +6,9 @@
 //  Copyright © 2019 Krzysztof Maraszkiewicz. All rights reserved.
 //
 
+///The NSKeyedUnarchiver error types
 enum NSKeyedUnarchiverError: Error {
+    
+    ///The NSKeyedUnarchiver error type
     case error(errorMessage: String)
 }

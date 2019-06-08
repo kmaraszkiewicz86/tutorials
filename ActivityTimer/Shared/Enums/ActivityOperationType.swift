@@ -6,8 +6,14 @@
 //  Copyright © 2019 Krzysztof Maraszkiewicz. All rights reserved.
 //
 
+///Activity operation type to check what operation done.
 enum ActivityOperationType {
+    ///The added activity action
     case added
+    
+    ///The updated activity action
     case updated
+    
+    ///The deleted activity action
     case deleted
 }

@@ -8,8 +8,11 @@
 
 import CoreData
 
+///The NSManagedObject extensions
 extension NSManagedObject {
     
+    ///Convert to ActivityModel
+    ///- returns: The ActivityModel
     func toActivityModel () -> ActivityModel {
         return ActivityModel(id: objectID.uriRepresentation(),
             name: self.value(forKey: "name") as! String)

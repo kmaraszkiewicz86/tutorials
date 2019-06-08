@@ -8,6 +8,7 @@
 
 import WatchKit
 
+///The ActivityRowController class
 class ActivityRowController: NSObject {
     @IBOutlet weak var nameLbl: WKInterfaceLabel!
 }

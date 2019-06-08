@@ -8,8 +8,13 @@
 
 import WatchKit
 
+///WKAlert extension
 class WKAlertHelper {
  
+    ///Show alert into Watch app
+    ///- parameter title: Alert title
+    ///- parameter message: Alert message
+    ///- parameter controller: instance of controller where alert will be show
     static func showInfoAlert<T: WKInterfaceController>(title: String, message: String, usingController controller: T) {
         let okAction = WKAlertAction(title: "OK", style: .cancel, handler: {
             

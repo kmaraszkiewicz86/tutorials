@@ -6,6 +6,8 @@
 //  Copyright © 2019 Krzysztof Maraszkiewicz. All rights reserved.
 //
 
+///The ActivityOperationType errors type
 enum ActivityOperationTypeError: Error {
+    ///The invalid convert error
     case invalidConvertType
 }

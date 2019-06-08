@@ -10,16 +10,23 @@ import UIKit
 import os.log
 import WatchConnectivity
 
+///The ActivityTableViewController class
 class ActivityTableViewController: UITableViewController {
     
+    //MARK: properties
+    ///The activities model items
     var activities = [ActivityModel]()
     
+    ///The OSLog type name
     private static let osLogName = OSLog.activityTableViewController
     
+    ///The ActivityService instance
     private let activityService = ActivityService.shared
     
+    ///The apple watch session
     private let sesssion: WCSession? = WCSession.isSupported() ? WCSession.default : nil
     
+    ///The apple watch session after checked valida state or nil if state of session is invalid
     private var validateReachableSession: WCSession?
     {
         if let sess = self.sesssion, sess.isPaired && sess.isWatchAppInstalled {
@@ -29,6 +36,7 @@ class ActivityTableViewController: UITableViewController {
         return nil
     }
     
+    ///The view did load event
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -41,15 +49,18 @@ class ActivityTableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
-
+    
+    ///Selects max number of selection in table
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
+    ///Sets table items count
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return activities.count
     }
 
+    ///Fills data in table
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ActivityTableViewCell", for: indexPath) as? ActivityTableViewCell else {
             
@@ -161,6 +172,7 @@ class ActivityTableViewController: UITableViewController {
         
     }
     
+    ///Event triggers after response comming from another view
     @IBAction func redeirectFromForm(sender: UIStoryboardSegue) {
         
         if let activityFormViewController = sender.source as? ActivityFormViewController,
@@ -221,6 +233,9 @@ class ActivityTableViewController: UITableViewController {
     }
     
     //MARK: helper methods
+    ///Show alert
+    ///- parameter title: The alert title
+    ///- parameter withMessage: The alert message
     private func showAlert (title: String, withMessage: String) {
         
         let action = UIAlertController(title: title, message: withMessage, preferredStyle: .alert)
@@ -233,6 +248,7 @@ class ActivityTableViewController: UITableViewController {
         
     }
     
+    ///Fetch activies models data
     private func fetchData () {
         do {
             activities = try activityService.getAll()
@@ -245,9 +261,10 @@ class ActivityTableViewController: UITableViewController {
     }
 }
 
-
+///The ActivityTableViewController extension with WCSessionDelegate helpers methods
 extension ActivityTableViewController: WCSessionDelegate {
     
+    ///The event triggers when apple watch send request
     func session(_ session: WCSession, didReceiveMessageData messageData: Data, replyHandler: @escaping (Data) -> Void) {
         
         replyHandler(NSKeyedArchiver.encodeActivity(self.activities, forKey: "activities"))

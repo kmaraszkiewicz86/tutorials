@@ -6,6 +6,9 @@
 //  Copyright © 2019 Krzysztof Maraszkiewicz. All rights reserved.
 //
 
+///The service error types
 enum ServiceError: Error {
+    
+    ///The database error error
     case databaseError
 }
