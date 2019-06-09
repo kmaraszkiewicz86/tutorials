@@ -241,6 +241,13 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
+		1F7F2F7622AD66A4001650B2 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
 		1F8383C122A458E900ECDBE6 /* WKShared */ = {
 			isa = PBXGroup;
 			children = (
@@ -319,6 +326,7 @@
 		1F9A09B622974A9D00C1C3DA /* ActivityTimerTests */ = {
 			isa = PBXGroup;
 			children = (
+				1F7F2F7622AD66A4001650B2 /* Mocks */,
 				1F9A09B722974A9D00C1C3DA /* ActivityTimerTests.swift */,
 				1F9A09B922974A9D00C1C3DA /* Info.plist */,
 				1F77B71822AC7DAA00EAE381 /* WCSessionExtensionTests.swift */,
