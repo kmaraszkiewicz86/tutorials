@@ -33,4 +33,6 @@ extension OSLog {
     ///The ActivityCollection name for oslog class
     static let activityCollection = OSLog(subsystem: bundle, category: "ActivityCollection")
     
+    static let initIOSSession = OSLog(subsystem: bundle, category: "InitIOSSession")
+    
 }

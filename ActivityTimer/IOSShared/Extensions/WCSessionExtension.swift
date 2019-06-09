@@ -6,16 +6,21 @@
 //  Copyright © 2019 Krzysztof Maraszkiewicz. All rights reserved.
 //
 
+import os.log
 import WatchConnectivity
 
+protocol WCSessionProtocol {
+    static func initIOSSession(session: WCSession?, sessionAction: (WCSession) -> Void)
+}
+
 ///WCSession extension class
-extension WCSession {
+extension WCSession: WCSessionProtocol {
     
     ///Create new IOS instance of watch kit session
     /// - parameter session: Session of watchkit
     /// - parameter sessionAction: Session run if session is in valid status
     /// - parameter onError: Action run if session has invalid state
-    static func initIOSSession(session: WCSession?, sessionAction: (WCSession) -> Void, onError: (String) -> Void) {
+    static func initIOSSession(session: WCSession?, sessionAction: (WCSession) -> Void) {
         
         let isSupported = WCSession.isSupported()
         let isReachable = session?.isReachable ?? false
@@ -35,7 +40,7 @@ extension WCSession {
         
         if !isSupported || !isReachable || !isWatchAppInstalled || !isPaired {
             
-            onError(errorType)
+            os_log("Watch session is not %{PUBLIC}@", log: OSLog.initIOSSession, type: .error, errorType)
             return
         }
         

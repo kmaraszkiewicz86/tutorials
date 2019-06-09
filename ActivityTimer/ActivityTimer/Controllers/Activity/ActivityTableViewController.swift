@@ -91,11 +91,6 @@ class ActivityTableViewController: UITableViewController {
                     let activityModelToSend = ActivityModel(id: activities[indexPath.row].id, name: activities[indexPath.row].name, operationType: ActivityOperationType.deleted)
                      validreachableSession.sendMessageData(NSKeyedArchiver.encodeActivity(activityModelToSend, forKey: "activity"), replyHandler: nil, errorHandler: nil)
                     
-                }, onError: { (errorType) in
-                    os_log("Watch session is not %{PUBLIC}@", log: ActivityTableViewController.osLogName, type: .error,
-                           errorType)
-                    
-                    showAlert(title: "Session is on error state", withMessage: "Watch session is not \(errorType)")
                 })
                 
                 try activityService.delete(activityModel: activities[indexPath.row])
@@ -191,11 +186,6 @@ class ActivityTableViewController: UITableViewController {
                             
                             validreachableSession.sendMessageData(NSKeyedArchiver.encodeActivity(activityModelToSend, forKey: "activity"), replyHandler: nil, errorHandler: nil)
                             
-                        }, onError: { (errorType) in
-                            os_log("Watch session is not %{PUBLIC}@", log: ActivityTableViewController.osLogName, type: .error,
-                                   errorType)
-                            
-                            showAlert(title: "Session is on error state", withMessage: "Watch session is not \(errorType)")
                         })
                         
                         try activityService.update(id: activities[index.row].id, activityModel: activity)
@@ -214,11 +204,6 @@ class ActivityTableViewController: UITableViewController {
                             
                            validreachableSession.sendMessageData(NSKeyedArchiver.encodeActivity(activityModelToSend, forKey: "activity"), replyHandler: nil, errorHandler: nil)
                             
-                        }, onError: { (errorType) in
-                            os_log("Watch session is not %{PUBLIC}@", log: ActivityTableViewController.osLogName, type: .error,
-                                   errorType)
-                            
-                            showAlert(title: "Session is on error state", withMessage: "Watch session is not \(errorType)")
                         })
                         
                         activities.append(addedActivity)

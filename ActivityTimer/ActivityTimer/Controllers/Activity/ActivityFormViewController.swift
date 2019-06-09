@@ -69,10 +69,10 @@ extension ActivityFormViewController: UITextFieldDelegate {
     
     ///Validates the form
     fileprivate func validateForm () {
-        let text = self.nameTextField.text ?? ""
-        print(text)
+        let text = self.nameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
         
         self.saveButton.isEnabled = !text.isEmpty
+        self.nameTextField.text = text
     }
     
     ///Removes default responder from text filed

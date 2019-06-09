@@ -19,6 +19,8 @@
 		1F510FD9229C860B00B5C258 /* ActivityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F510FCD229C045200B5C258 /* ActivityService.swift */; };
 		1F77B71522AC47AF00EAE381 /* ActivityOperationTypeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F77B71422AC47AF00EAE381 /* ActivityOperationTypeError.swift */; };
 		1F77B71622AC47AF00EAE381 /* ActivityOperationTypeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F77B71422AC47AF00EAE381 /* ActivityOperationTypeError.swift */; };
+		1F77B71722AC7C5200EAE381 /* WCSessionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8383C822A45BEF00ECDBE6 /* WCSessionExtension.swift */; };
+		1F77B71922AC7DAA00EAE381 /* WCSessionExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F77B71822AC7DAA00EAE381 /* WCSessionExtensionTests.swift */; };
 		1F8383C522A4597C00ECDBE6 /* WCSessionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8383C322A4594000ECDBE6 /* WCSessionExtension.swift */; };
 		1F8383C922A45BEF00ECDBE6 /* WCSessionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8383C822A45BEF00ECDBE6 /* WCSessionExtension.swift */; };
 		1F9A09A322974A9A00C1C3DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9A09A222974A9A00C1C3DA /* AppDelegate.swift */; };
@@ -117,6 +119,7 @@
 		1F510FD5229C489500B5C258 /* NSManagedObjectArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSManagedObjectArrayExtension.swift; sourceTree = "<group>"; };
 		1F510FD7229C5EEA00B5C258 /* NSManagedObjectExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSManagedObjectExtension.swift; sourceTree = "<group>"; };
 		1F77B71422AC47AF00EAE381 /* ActivityOperationTypeError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityOperationTypeError.swift; sourceTree = "<group>"; };
+		1F77B71822AC7DAA00EAE381 /* WCSessionExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCSessionExtensionTests.swift; sourceTree = "<group>"; };
 		1F8383C322A4594000ECDBE6 /* WCSessionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCSessionExtension.swift; sourceTree = "<group>"; };
 		1F8383C822A45BEF00ECDBE6 /* WCSessionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCSessionExtension.swift; sourceTree = "<group>"; };
 		1F9A099F22974A9A00C1C3DA /* ActivityTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ActivityTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -318,6 +321,7 @@
 			children = (
 				1F9A09B722974A9D00C1C3DA /* ActivityTimerTests.swift */,
 				1F9A09B922974A9D00C1C3DA /* Info.plist */,
+				1F77B71822AC7DAA00EAE381 /* WCSessionExtensionTests.swift */,
 			);
 			path = ActivityTimerTests;
 			sourceTree = "<group>";
@@ -628,7 +632,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F77B71722AC7C5200EAE381 /* WCSessionExtension.swift in Sources */,
 				1F510FD9229C860B00B5C258 /* ActivityService.swift in Sources */,
+				1F77B71922AC7DAA00EAE381 /* WCSessionExtensionTests.swift in Sources */,
 				1F9A09B822974A9D00C1C3DA /* ActivityTimerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
