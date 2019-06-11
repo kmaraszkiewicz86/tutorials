@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F3A43C822AFF21E0090B988 /* NSManagedObjectArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3A43C722AFF21E0090B988 /* NSManagedObjectArrayExtension.swift */; };
 		1F3F1C342299C7B700F48BF2 /* OSLogExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3F1C332299C7B700F48BF2 /* OSLogExtension.swift */; };
 		1F3F1C352299C7B700F48BF2 /* OSLogExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3F1C332299C7B700F48BF2 /* OSLogExtension.swift */; };
 		1F510FCC229C01E500B5C258 /* ActivityTimer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1F510FCA229C01E500B5C258 /* ActivityTimer.xcdatamodeld */; };
@@ -14,7 +15,6 @@
 		1F510FCF229C04A900B5C258 /* ActivityFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9A09A422974A9A00C1C3DA /* ActivityFormViewController.swift */; };
 		1F510FD0229C053300B5C258 /* ActivityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB6AC4522988529001B7576 /* ActivityModel.swift */; };
 		1F510FD3229C0AD800B5C258 /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F510FD2229C0AD800B5C258 /* ServiceError.swift */; };
-		1F510FD6229C489500B5C258 /* NSManagedObjectArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F510FD5229C489500B5C258 /* NSManagedObjectArrayExtension.swift */; };
 		1F510FD8229C5EEA00B5C258 /* NSManagedObjectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F510FD7229C5EEA00B5C258 /* NSManagedObjectExtension.swift */; };
 		1F510FD9229C860B00B5C258 /* ActivityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F510FCD229C045200B5C258 /* ActivityService.swift */; };
 		1F77B71522AC47AF00EAE381 /* ActivityOperationTypeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F77B71422AC47AF00EAE381 /* ActivityOperationTypeError.swift */; };
@@ -112,11 +112,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1F3A43C722AFF21E0090B988 /* NSManagedObjectArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSManagedObjectArrayExtension.swift; sourceTree = "<group>"; };
 		1F3F1C332299C7B700F48BF2 /* OSLogExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSLogExtension.swift; sourceTree = "<group>"; };
 		1F510FCB229C01E500B5C258 /* ActivityTimer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ActivityTimer.xcdatamodel; sourceTree = "<group>"; };
 		1F510FCD229C045200B5C258 /* ActivityService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityService.swift; sourceTree = "<group>"; };
 		1F510FD2229C0AD800B5C258 /* ServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
-		1F510FD5229C489500B5C258 /* NSManagedObjectArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSManagedObjectArrayExtension.swift; sourceTree = "<group>"; };
 		1F510FD7229C5EEA00B5C258 /* NSManagedObjectExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSManagedObjectExtension.swift; sourceTree = "<group>"; };
 		1F77B71422AC47AF00EAE381 /* ActivityOperationTypeError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityOperationTypeError.swift; sourceTree = "<group>"; };
 		1F77B71822AC7DAA00EAE381 /* WCSessionExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCSessionExtensionTests.swift; sourceTree = "<group>"; };
@@ -208,9 +208,9 @@
 			children = (
 				1FB4FA3622A939CE00BD75B0 /* NSKeyedArchiverExtension.swift */,
 				1F3F1C332299C7B700F48BF2 /* OSLogExtension.swift */,
-				1F510FD5229C489500B5C258 /* NSManagedObjectArrayExtension.swift */,
 				1F510FD7229C5EEA00B5C258 /* NSManagedObjectExtension.swift */,
 				1FB4FA3822A9494900BD75B0 /* NSKeyedUnarchivedExtension.swift */,
+				1F3A43C722AFF21E0090B988 /* NSManagedObjectArrayExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -623,6 +623,7 @@
 				1F8383C922A45BEF00ECDBE6 /* WCSessionExtension.swift in Sources */,
 				1F510FD8229C5EEA00B5C258 /* NSManagedObjectExtension.swift in Sources */,
 				1F77B71522AC47AF00EAE381 /* ActivityOperationTypeError.swift in Sources */,
+				1F3A43C822AFF21E0090B988 /* NSManagedObjectArrayExtension.swift in Sources */,
 				1F510FCC229C01E500B5C258 /* ActivityTimer.xcdatamodeld in Sources */,
 				1F510FD0229C053300B5C258 /* ActivityModel.swift in Sources */,
 				1FB4FA3922A9494900BD75B0 /* NSKeyedUnarchivedExtension.swift in Sources */,
@@ -631,7 +632,6 @@
 				1F510FCE229C045200B5C258 /* ActivityService.swift in Sources */,
 				1FCD5B0722ABDA7D00FC9FC4 /* NSKeyedUnarchiverError.swift in Sources */,
 				1FB6AC3F2298827E001B7576 /* ActivityTableViewController.swift in Sources */,
-				1F510FD6229C489500B5C258 /* NSManagedObjectArrayExtension.swift in Sources */,
 				1FB4FA3722A939CE00BD75B0 /* NSKeyedArchiverExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
