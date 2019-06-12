@@ -10,7 +10,7 @@ import UIKit
 import os.log
 
 ///The OSLog extension
-extension OSLog {
+public extension OSLog {
  
     ///The bundle indetifier
     private static var bundle = Bundle.main.bundleIdentifier!

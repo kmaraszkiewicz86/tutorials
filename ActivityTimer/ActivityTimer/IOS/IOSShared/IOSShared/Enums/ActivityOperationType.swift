@@ -7,7 +7,7 @@
 //
 
 ///Activity operation type to check what operation done.
-enum ActivityOperationType {
+public enum ActivityOperationType {
     ///The added activity action
     case added
     

@@ -7,7 +7,7 @@
 //
 
 ///The service error types
-enum ServiceError: Error {
+public enum ServiceError: Error {
     
     ///The database error error
     case databaseError

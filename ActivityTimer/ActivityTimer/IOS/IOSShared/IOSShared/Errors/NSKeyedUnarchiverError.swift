@@ -7,7 +7,7 @@
 //
 
 ///The NSKeyedUnarchiver error types
-enum NSKeyedUnarchiverError: Error {
+public enum NSKeyedUnarchiverError: Error {
     
     ///The NSKeyedUnarchiver error type
     case error(errorMessage: String)

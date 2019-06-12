@@ -9,7 +9,7 @@
 import os.log
 import WatchConnectivity
 
-protocol WCSessionProtocol {
+public protocol WCSessionProtocol {
     static func initIOSSession(session: WCSession?, sessionAction: (WCSession) -> Void)
 }
 
@@ -20,7 +20,7 @@ extension WCSession: WCSessionProtocol {
     /// - parameter session: Session of watchkit
     /// - parameter sessionAction: Session run if session is in valid status
     /// - parameter onError: Action run if session has invalid state
-    static func initIOSSession(session: WCSession?, sessionAction: (WCSession) -> Void) {
+    public static func initIOSSession(session: WCSession?, sessionAction: (WCSession) -> Void) {
         
         let isSupported = WCSession.isSupported()
         let isReachable = session?.isReachable ?? false

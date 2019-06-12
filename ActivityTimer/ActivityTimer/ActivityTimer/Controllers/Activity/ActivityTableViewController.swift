@@ -6,9 +6,10 @@
 //  Copyright © 2019 Krzysztof Maraszkiewicz. All rights reserved.
 //
 
-import UIKit
+import IOSShared
 import os.log
 import WatchConnectivity
+import UIKit
 
 ///The ActivityTableViewController class
 class ActivityTableViewController: UITableViewController {
@@ -21,7 +22,7 @@ class ActivityTableViewController: UITableViewController {
     private static let osLogName = OSLog.activityTableViewController
     
     ///The ActivityService instance
-    private let activityService = ActivityService.shared
+    private let activityService: ActivityService
     
     ///The apple watch session
     private let sesssion: WCSession? = WCSession.isSupported() ? WCSession.default : nil
@@ -34,6 +35,20 @@ class ActivityTableViewController: UITableViewController {
         }
         
         return nil
+    }
+    
+    init() {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            os_log("Error occours while tring to convert UIApplication.shared.delegate to AppDelegate type", log: ActivityTableViewController.osLogName,
+                   type: .error)
+            fatalError("Invalid type of UIApplication.shared.delegate")
+        }
+        
+        self.activityService = ActivityService.shared(appDelegate.persistentContainer.viewContext)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        
     }
     
     ///The view did load event

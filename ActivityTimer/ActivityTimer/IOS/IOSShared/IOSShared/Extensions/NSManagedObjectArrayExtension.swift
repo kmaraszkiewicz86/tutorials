@@ -9,7 +9,7 @@
 import CoreData
 import Foundation
 
-extension Array where Element: NSManagedObject{
+public extension Array where Element: NSManagedObject{
     
     func toActivityModel () -> [ActivityModel] {
         var activities = [ActivityModel]()

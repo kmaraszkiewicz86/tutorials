@@ -10,7 +10,7 @@ import os.log
 import WatchKit
 
 ///The NSKeyedUnarchiver extension
-extension NSKeyedUnarchiver {
+public extension NSKeyedUnarchiver {
     
     ///Decodes activity data
     ///- parameter data: The encode activity data

@@ -10,10 +10,10 @@ import UIKit
 
 ///Activity model storage activity data
 @objc(ActivityModel)
-class ActivityModel: NSObject, NSCoding, NSSecureCoding {
+public class ActivityModel: NSObject, NSCoding, NSSecureCoding {
     
     ///Is supported security coding
-    static var supportsSecureCoding = true
+    public static var supportsSecureCoding = true
     
     ///Class properties names for NSKeyedArchiver or NSKeyedUnarchived classes
     struct Keys {
@@ -23,16 +23,16 @@ class ActivityModel: NSObject, NSCoding, NSSecureCoding {
     }
     
     //the activity identifier
-    var id: URL?
+    public var id: URL?
     
     ///The name of activity
-    var name: String
+    public var name: String
     
     ///The operation activity type
-    var operationType: ActivityOperationType?
+    public var operationType: ActivityOperationType?
     
     ///Initialize data for NSCoding decode
-    required convenience init(coder deCoder: NSCoder) {
+    required convenience public init(coder deCoder: NSCoder) {
         
         let id = deCoder.decodeObject(forKey: Keys.idKeyName) as? URL
         let name = deCoder.decodeObject(forKey: Keys.nameKeyName) as! String
@@ -42,20 +42,20 @@ class ActivityModel: NSObject, NSCoding, NSSecureCoding {
     }
     
     ///Initializer for shartness data of Activity
-    init(id: URL?, name: String) {
+    public init(id: URL?, name: String) {
         self.id = id
         self.name = name
     }
     
     ///Initilizer for full activity data with int operation type
-    convenience init(id: URL?, name: String, operationTypeInt: Int?) {
+    convenience public init(id: URL?, name: String, operationTypeInt: Int?) {
         self.init(id: id, name: name)
         
         self.operationType = toActivityOperationType(type: operationTypeInt)
     }
     
     ///Initializer for full Activity data for operation type of ActivityOperationType enum
-    convenience init(id: URL?, name: String, operationType: ActivityOperationType?) {
+    convenience public init(id: URL?, name: String, operationType: ActivityOperationType?) {
         self.init(id: id, name: name)
         
         self.operationType = operationType
@@ -63,13 +63,13 @@ class ActivityModel: NSObject, NSCoding, NSSecureCoding {
     
     ///initializes Activity object
     /// - parameter name: The activity name
-    init(name: String) {
+    public init(name: String) {
         self.name = name
     }
     
     ///encode data
     /// - parameter aCoder: NSCoder object
-    func encode(with aCoder: NSCoder) {
+    public func encode(with aCoder: NSCoder) {
         aCoder.encode(self.id, forKey: Keys.idKeyName)
         aCoder.encode(self.name, forKey: Keys.nameKeyName)
         aCoder.encode(toInt(type: self.operationType), forKey: Keys.operationTypeKeyName)

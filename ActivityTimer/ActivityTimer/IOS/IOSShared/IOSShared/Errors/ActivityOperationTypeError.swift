@@ -7,7 +7,7 @@
 //
 
 ///The ActivityOperationType errors type
-enum ActivityOperationTypeError: Error {
+public enum ActivityOperationTypeError: Error {
     ///The invalid convert error
     case invalidConvertType
 }

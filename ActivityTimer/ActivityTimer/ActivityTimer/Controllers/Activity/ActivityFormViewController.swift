@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import IOSShared
 
 ///The ActivityFormViewController class
 class ActivityFormViewController: UIViewController {

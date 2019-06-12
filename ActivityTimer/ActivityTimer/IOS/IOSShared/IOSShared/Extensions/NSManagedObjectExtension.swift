@@ -9,7 +9,7 @@
 import CoreData
 
 ///The NSManagedObject extensions
-extension NSManagedObject {
+public extension NSManagedObject {
     
     ///Convert to ActivityModel
     ///- returns: The ActivityModel

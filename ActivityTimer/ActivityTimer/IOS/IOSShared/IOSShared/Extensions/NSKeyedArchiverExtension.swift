@@ -10,7 +10,7 @@ import os.log
 import UIKit
 
 ///The NSKeyedArchiver extension
-extension NSKeyedArchiver {
+public extension NSKeyedArchiver {
 
     ///Encodes activity
     /// - parameter object: The object to encode
