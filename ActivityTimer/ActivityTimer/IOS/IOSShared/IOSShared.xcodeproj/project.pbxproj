@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		1FDDA87322B05EDC00646E66 /* ActivityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDDA86222B05EDB00646E66 /* ActivityService.swift */; };
-		1FDDA87422B05EDC00646E66 /* NSKeyedUnarchiverError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDDA86422B05EDB00646E66 /* NSKeyedUnarchiverError.swift */; };
 		1FDDA87522B05EDC00646E66 /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDDA86522B05EDB00646E66 /* ServiceError.swift */; };
 		1FDDA87622B05EDC00646E66 /* ActivityOperationTypeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDDA86622B05EDB00646E66 /* ActivityOperationTypeError.swift */; };
 		1FDDA87722B05EDC00646E66 /* ActivityOperationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDDA86822B05EDC00646E66 /* ActivityOperationType.swift */; };
@@ -16,7 +15,6 @@
 		1FDDA87A22B05EDC00646E66 /* NSManagedObjectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDDA86D22B05EDC00646E66 /* NSManagedObjectExtension.swift */; };
 		1FDDA87B22B05EDC00646E66 /* WCSessionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDDA86E22B05EDC00646E66 /* WCSessionExtension.swift */; };
 		1FDDA87C22B05EDC00646E66 /* NSKeyedArchiverExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDDA86F22B05EDC00646E66 /* NSKeyedArchiverExtension.swift */; };
-		1FDDA87D22B05EDC00646E66 /* NSKeyedUnarchivedExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDDA87022B05EDC00646E66 /* NSKeyedUnarchivedExtension.swift */; };
 		1FDDA87E22B05EDC00646E66 /* NSManagedObjectArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDDA87122B05EDC00646E66 /* NSManagedObjectArrayExtension.swift */; };
 		1FDDA87F22B05EDC00646E66 /* OSLogExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDDA87222B05EDC00646E66 /* OSLogExtension.swift */; };
 /* End PBXBuildFile section */
@@ -36,7 +34,6 @@
 /* Begin PBXFileReference section */
 		1FDDA83422B05D5B00646E66 /* libIOSShared.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libIOSShared.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FDDA86222B05EDB00646E66 /* ActivityService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityService.swift; sourceTree = "<group>"; };
-		1FDDA86422B05EDB00646E66 /* NSKeyedUnarchiverError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSKeyedUnarchiverError.swift; sourceTree = "<group>"; };
 		1FDDA86522B05EDB00646E66 /* ServiceError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
 		1FDDA86622B05EDB00646E66 /* ActivityOperationTypeError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityOperationTypeError.swift; sourceTree = "<group>"; };
 		1FDDA86822B05EDC00646E66 /* ActivityOperationType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityOperationType.swift; sourceTree = "<group>"; };
@@ -44,7 +41,6 @@
 		1FDDA86D22B05EDC00646E66 /* NSManagedObjectExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSManagedObjectExtension.swift; sourceTree = "<group>"; };
 		1FDDA86E22B05EDC00646E66 /* WCSessionExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCSessionExtension.swift; sourceTree = "<group>"; };
 		1FDDA86F22B05EDC00646E66 /* NSKeyedArchiverExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSKeyedArchiverExtension.swift; sourceTree = "<group>"; };
-		1FDDA87022B05EDC00646E66 /* NSKeyedUnarchivedExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSKeyedUnarchivedExtension.swift; sourceTree = "<group>"; };
 		1FDDA87122B05EDC00646E66 /* NSManagedObjectArrayExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSManagedObjectArrayExtension.swift; sourceTree = "<group>"; };
 		1FDDA87222B05EDC00646E66 /* OSLogExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OSLogExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -99,7 +95,6 @@
 		1FDDA86322B05EDB00646E66 /* Errors */ = {
 			isa = PBXGroup;
 			children = (
-				1FDDA86422B05EDB00646E66 /* NSKeyedUnarchiverError.swift */,
 				1FDDA86522B05EDB00646E66 /* ServiceError.swift */,
 				1FDDA86622B05EDB00646E66 /* ActivityOperationTypeError.swift */,
 			);
@@ -128,7 +123,6 @@
 				1FDDA86D22B05EDC00646E66 /* NSManagedObjectExtension.swift */,
 				1FDDA86E22B05EDC00646E66 /* WCSessionExtension.swift */,
 				1FDDA86F22B05EDC00646E66 /* NSKeyedArchiverExtension.swift */,
-				1FDDA87022B05EDC00646E66 /* NSKeyedUnarchivedExtension.swift */,
 				1FDDA87122B05EDC00646E66 /* NSManagedObjectArrayExtension.swift */,
 				1FDDA87222B05EDC00646E66 /* OSLogExtension.swift */,
 			);
@@ -194,9 +188,7 @@
 			files = (
 				1FDDA87B22B05EDC00646E66 /* WCSessionExtension.swift in Sources */,
 				1FDDA87522B05EDC00646E66 /* ServiceError.swift in Sources */,
-				1FDDA87422B05EDC00646E66 /* NSKeyedUnarchiverError.swift in Sources */,
 				1FDDA87C22B05EDC00646E66 /* NSKeyedArchiverExtension.swift in Sources */,
-				1FDDA87D22B05EDC00646E66 /* NSKeyedUnarchivedExtension.swift in Sources */,
 				1FDDA87322B05EDC00646E66 /* ActivityService.swift in Sources */,
 				1FDDA87F22B05EDC00646E66 /* OSLogExtension.swift in Sources */,
 				1FDDA87722B05EDC00646E66 /* ActivityOperationType.swift in Sources */,

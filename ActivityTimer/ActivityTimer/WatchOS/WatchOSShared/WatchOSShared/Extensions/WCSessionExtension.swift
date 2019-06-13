@@ -36,7 +36,7 @@ extension WCSession: WCSessionProtocol {
         
         if !isSupported || !isReachable {
             
-            os_log("Watch session is not %{PUBLIC}@", log: OSLog.initIOSSession, type: .error, errorType)
+            os_log("Watch session is not %{PUBLIC}@", log: OSLog.initSession, type: .error, errorType)
             onError(errorType)
         }
         
