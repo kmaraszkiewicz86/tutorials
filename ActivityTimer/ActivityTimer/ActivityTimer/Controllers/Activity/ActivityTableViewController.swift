@@ -22,7 +22,7 @@ class ActivityTableViewController: UITableViewController {
     private static let osLogName = OSLog.activityTableViewController
     
     ///The ActivityService instance
-    private let activityService: ActivityService
+    private var activityService: ActivityService?
     
     ///The apple watch session
     private let sesssion: WCSession? = WCSession.isSupported() ? WCSession.default : nil
@@ -37,24 +37,19 @@ class ActivityTableViewController: UITableViewController {
         return nil
     }
     
-    init() {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            os_log("Error occours while tring to convert UIApplication.shared.delegate to AppDelegate type", log: ActivityTableViewController.osLogName,
-                   type: .error)
-            fatalError("Invalid type of UIApplication.shared.delegate")
-        }
-        
-        self.activityService = ActivityService.shared(appDelegate.persistentContainer.viewContext)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        
-    }
-    
     ///The view did load event
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            os_log("Could not fetch appdelegate", log: ActivityTableViewController.osLogName, type: .error)
+            
+            fatalError("Could not fetch appdelegate")
+        }
+        
+        self.activityService = ActivityService.shared(appDelegate.persistentContainer.viewContext
+        )
+        
         self.navigationItem.leftBarButtonItem = self.editButtonItem
         
         sesssion?.delegate = self
@@ -108,7 +103,7 @@ class ActivityTableViewController: UITableViewController {
                     
                 })
                 
-                try activityService.delete(activityModel: activities[indexPath.row])
+                try activityService?.delete(activityModel: activities[indexPath.row])
                 activities.remove(at: indexPath.row)
                 
                 tableView.deleteRows(at: [indexPath], with: .fade)
@@ -203,7 +198,7 @@ class ActivityTableViewController: UITableViewController {
                             
                         })
                         
-                        try activityService.update(id: activities[index.row].id, activityModel: activity)
+                        try activityService!.update(id: activities[index.row].id, activityModel: activity)
                         activities[index.row].name = activity.name
                         tableView.reloadRows(at: [index], with: .fade)
                         
@@ -211,7 +206,7 @@ class ActivityTableViewController: UITableViewController {
                         
                         workType = "saving"
                         
-                        let addedActivity = try activityService.save(activityModel: activity)
+                        let addedActivity = try activityService!.save(activityModel: activity)
                         
                         WCSession.initIOSSession(session: self.sesssion, sessionAction: { (validreachableSession) in
                             
@@ -251,7 +246,7 @@ class ActivityTableViewController: UITableViewController {
     ///Fetch activies models data
     private func fetchData () {
         do {
-            activities = try activityService.getAll()
+            activities = try activityService!.getAll()
             tableView.reloadData()
         } catch ServiceError.databaseError {
             showAlert(title: "Error", withMessage: "Error with saving data occours")

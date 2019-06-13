@@ -13,7 +13,6 @@
 		1FDDA87622B05EDC00646E66 /* ActivityOperationTypeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDDA86622B05EDB00646E66 /* ActivityOperationTypeError.swift */; };
 		1FDDA87722B05EDC00646E66 /* ActivityOperationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDDA86822B05EDC00646E66 /* ActivityOperationType.swift */; };
 		1FDDA87822B05EDC00646E66 /* ActivityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDDA86A22B05EDC00646E66 /* ActivityModel.swift */; };
-		1FDDA87922B05EDC00646E66 /* AddedActivityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDDA86B22B05EDC00646E66 /* AddedActivityModel.swift */; };
 		1FDDA87A22B05EDC00646E66 /* NSManagedObjectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDDA86D22B05EDC00646E66 /* NSManagedObjectExtension.swift */; };
 		1FDDA87B22B05EDC00646E66 /* WCSessionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDDA86E22B05EDC00646E66 /* WCSessionExtension.swift */; };
 		1FDDA87C22B05EDC00646E66 /* NSKeyedArchiverExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDDA86F22B05EDC00646E66 /* NSKeyedArchiverExtension.swift */; };
@@ -42,7 +41,6 @@
 		1FDDA86622B05EDB00646E66 /* ActivityOperationTypeError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityOperationTypeError.swift; sourceTree = "<group>"; };
 		1FDDA86822B05EDC00646E66 /* ActivityOperationType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityOperationType.swift; sourceTree = "<group>"; };
 		1FDDA86A22B05EDC00646E66 /* ActivityModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityModel.swift; sourceTree = "<group>"; };
-		1FDDA86B22B05EDC00646E66 /* AddedActivityModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddedActivityModel.swift; sourceTree = "<group>"; };
 		1FDDA86D22B05EDC00646E66 /* NSManagedObjectExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSManagedObjectExtension.swift; sourceTree = "<group>"; };
 		1FDDA86E22B05EDC00646E66 /* WCSessionExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCSessionExtension.swift; sourceTree = "<group>"; };
 		1FDDA86F22B05EDC00646E66 /* NSKeyedArchiverExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSKeyedArchiverExtension.swift; sourceTree = "<group>"; };
@@ -120,7 +118,6 @@
 			isa = PBXGroup;
 			children = (
 				1FDDA86A22B05EDC00646E66 /* ActivityModel.swift */,
-				1FDDA86B22B05EDC00646E66 /* AddedActivityModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -201,7 +198,6 @@
 				1FDDA87C22B05EDC00646E66 /* NSKeyedArchiverExtension.swift in Sources */,
 				1FDDA87D22B05EDC00646E66 /* NSKeyedUnarchivedExtension.swift in Sources */,
 				1FDDA87322B05EDC00646E66 /* ActivityService.swift in Sources */,
-				1FDDA87922B05EDC00646E66 /* AddedActivityModel.swift in Sources */,
 				1FDDA87F22B05EDC00646E66 /* OSLogExtension.swift in Sources */,
 				1FDDA87722B05EDC00646E66 /* ActivityOperationType.swift in Sources */,
 				1FDDA87A22B05EDC00646E66 /* NSManagedObjectExtension.swift in Sources */,

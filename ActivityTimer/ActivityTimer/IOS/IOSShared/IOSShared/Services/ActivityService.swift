@@ -44,6 +44,7 @@ public class ActivityService {
         let fetchPredicate = NSFetchRequest<NSManagedObject>(entityName: "Activity")
         
         do {
+            
             let activities = try managedObject.fetch(fetchPredicate)
             
             return activities.toActivityModel()

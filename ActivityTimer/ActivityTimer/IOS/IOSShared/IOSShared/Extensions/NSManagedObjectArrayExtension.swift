@@ -16,7 +16,8 @@ public extension Array where Element: NSManagedObject{
         
         if !self.isEmpty {
             for managedObject in self {
-                let id = managedObject.value(forKey: "id") as? URL
+                
+                let id = managedObject.objectID.uriRepresentation()
                 let name = managedObject.value(forKey: "name") as! String
                 
                 activities.append(ActivityModel(id: id, name: name))
