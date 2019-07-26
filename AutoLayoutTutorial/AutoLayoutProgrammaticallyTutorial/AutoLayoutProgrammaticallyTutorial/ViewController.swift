@@ -44,7 +44,6 @@ class ViewController: UIViewController {
     private func setupLayout() {
         
         let imageViewContainerView = UIView()
-        imageViewContainerView.backgroundColor = .blue
         imageViewContainerView.translatesAutoresizingMaskIntoConstraints = false
         
         view.addSubview(imageViewContainerView)
@@ -54,14 +53,15 @@ class ViewController: UIViewController {
         imageViewContainerView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         imageViewContainerView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.5).isActive = true
         
-        imageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 100).isActive = true
-        imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        imageView.widthAnchor.constraint(equalToConstant: 200).isActive = true
-        imageView.heightAnchor.constraint(equalToConstant: 200).isActive = true
+        imageViewContainerView.addSubview(imageView)
+        imageView.centerXAnchor.constraint(equalTo: imageViewContainerView.centerXAnchor).isActive = true
+        imageView.centerYAnchor.constraint(equalTo: imageViewContainerView.centerYAnchor).isActive = true
+        imageView.heightAnchor.constraint(equalTo: imageViewContainerView.heightAnchor, multiplier: 0.5).isActive = true
+        imageView.widthAnchor.constraint(equalTo: imageViewContainerView.widthAnchor, multiplier: 0.5).isActive = true
         
-        descriptionTextView.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 20).isActive = true
-        descriptionTextView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        descriptionTextView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        descriptionTextView.topAnchor.constraint(equalTo: imageViewContainerView.bottomAnchor).isActive = true
+        descriptionTextView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        descriptionTextView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         descriptionTextView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
     }
 }
