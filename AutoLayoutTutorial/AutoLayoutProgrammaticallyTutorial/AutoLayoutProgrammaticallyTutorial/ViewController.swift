@@ -10,11 +10,58 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    let imageView: UIImageView = {
+        let imageView = UIImageView(image: #imageLiteral(resourceName: "krowa"))
+        //enable autolayout for this imageView
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFit
+        
+        return imageView
+    }()
+    
+    let descriptionTextView: UITextView = {
+        let textView = UITextView()
+        
+        textView.text = "To jest testowy nagłówek!"
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        textView.font = UIFont.boldSystemFont(ofSize: 18)
+        textView.textAlignment = .center
+        textView.isEditable = false
+        
+        return textView
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        self.view.addSubview(imageView)
+        self.view.addSubview(descriptionTextView)
+        
+        self.setupLayout()
     }
 
-
+    private func setupLayout() {
+        
+        let imageViewContainerView = UIView()
+        imageViewContainerView.backgroundColor = .blue
+        imageViewContainerView.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.addSubview(imageViewContainerView)
+        
+        imageViewContainerView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        imageViewContainerView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        imageViewContainerView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        imageViewContainerView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.5).isActive = true
+        
+        imageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 100).isActive = true
+        imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        imageView.widthAnchor.constraint(equalToConstant: 200).isActive = true
+        imageView.heightAnchor.constraint(equalToConstant: 200).isActive = true
+        
+        descriptionTextView.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 20).isActive = true
+        descriptionTextView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        descriptionTextView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        descriptionTextView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
+    }
 }
-
