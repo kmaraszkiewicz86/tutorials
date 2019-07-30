@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F1FEE3822F0E29A008AE75D /* SwippingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1FEE3722F0E29A008AE75D /* SwippingController.swift */; };
+		1F1FEE3A22F0ED5D008AE75D /* PageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1FEE3922F0ED5D008AE75D /* PageCell.swift */; };
 		1F964AFD22E9EC19003C1C41 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F964AFC22E9EC19003C1C41 /* AppDelegate.swift */; };
 		1F964AFF22E9EC19003C1C41 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F964AFE22E9EC19003C1C41 /* ViewController.swift */; };
 		1F964B0222E9EC19003C1C41 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F964B0022E9EC19003C1C41 /* Main.storyboard */; };
@@ -15,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1F1FEE3722F0E29A008AE75D /* SwippingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwippingController.swift; sourceTree = "<group>"; };
+		1F1FEE3922F0ED5D008AE75D /* PageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageCell.swift; sourceTree = "<group>"; };
 		1F964AF922E9EC19003C1C41 /* AutoLayoutProgrammaticallyTutorial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AutoLayoutProgrammaticallyTutorial.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F964AFC22E9EC19003C1C41 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1F964AFE22E9EC19003C1C41 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -60,6 +64,8 @@
 				1F964B0322E9EC19003C1C41 /* Assets.xcassets */,
 				1F964B0522E9EC19003C1C41 /* LaunchScreen.storyboard */,
 				1F964B0822E9EC19003C1C41 /* Info.plist */,
+				1F1FEE3722F0E29A008AE75D /* SwippingController.swift */,
+				1F1FEE3922F0ED5D008AE75D /* PageCell.swift */,
 			);
 			path = AutoLayoutProgrammaticallyTutorial;
 			sourceTree = "<group>";
@@ -136,6 +142,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F964AFF22E9EC19003C1C41 /* ViewController.swift in Sources */,
+				1F1FEE3822F0E29A008AE75D /* SwippingController.swift in Sources */,
+				1F1FEE3A22F0ED5D008AE75D /* PageCell.swift in Sources */,
 				1F964AFD22E9EC19003C1C41 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

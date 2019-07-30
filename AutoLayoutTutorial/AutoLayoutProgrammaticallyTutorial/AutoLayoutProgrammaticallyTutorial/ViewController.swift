@@ -8,6 +8,10 @@
 
 import UIKit
 
+extension UIColor {
+    public static let customPink: UIColor =  UIColor(red: 232/255, green: 68/255, blue: 133/255, alpha: 1)
+}
+
 class ViewController: UIViewController {
 
     let imageView: UIImageView = {
@@ -38,14 +42,69 @@ class ViewController: UIViewController {
         return textView
     }()
     
+    private let prevButton: UIButton = {
+        let btn = UIButton(type: .system)
+        btn.setTitle("NEXT", for: .normal)
+        btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        btn.setTitleColor(.gray, for: .normal)
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        
+        return btn
+    }()
+    
+    private let nextButton: UIButton = {
+        let btn = UIButton(type: .system)
+        btn.setTitle("PREV", for: .normal)
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        
+        btn.setTitleColor(UIColor.customPink, for: .normal)
+        
+        return btn
+    }()
+    
+    private let pageControll: UIPageControl = {
+        let pageControll = UIPageControl()
+        pageControll.currentPage = 0
+        pageControll.numberOfPages = 4
+        
+        pageControll.currentPageIndicatorTintColor = UIColor.customPink
+        pageControll.pageIndicatorTintColor = .gray
+        
+        return pageControll
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        
-        //self.view.addSubview(imageView)
         self.view.addSubview(descriptionTextView)
         
+        self.setupBottomButtons()
         self.setupLayout()
+    }
+    
+    private func setupBottomButtons() {
+        
+        let greenView = UIView()
+        greenView.backgroundColor = .green
+        
+        let controlsStackViewContainer = UIStackView(arrangedSubviews: [prevButton,
+            pageControll, nextButton])
+
+        controlsStackViewContainer.translatesAutoresizingMaskIntoConstraints = false
+
+        controlsStackViewContainer.distribution = .fillEqually
+        
+        
+        view.addSubview(controlsStackViewContainer)
+        
+        NSLayoutConstraint.activate([
+            controlsStackViewContainer.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            controlsStackViewContainer.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            controlsStackViewContainer.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            controlsStackViewContainer.heightAnchor.constraint(equalToConstant: 50)
+            
+            ])
+        
     }
 
     private func setupLayout() {
