@@ -71,6 +71,7 @@ class ViewController: UIViewController {
         descriptionTextView.topAnchor.constraint(equalTo: imageViewContainerView.bottomAnchor).isActive = true
         descriptionTextView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24).isActive = true
         descriptionTextView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24).isActive = true
+
         descriptionTextView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
     }
 }
