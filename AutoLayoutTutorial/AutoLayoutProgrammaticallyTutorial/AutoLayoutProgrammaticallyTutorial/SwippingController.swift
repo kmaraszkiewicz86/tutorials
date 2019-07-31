@@ -10,6 +10,12 @@ import UIKit
 
 class SwippingController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
+    let pages = [
+        Page(image: UIImage(named: "krowa")!, headerText: "To jest testowy nagłówek 1!"),
+        Page(image: UIImage(named: "Pierdzioch")!, headerText: "To jest testowy nagłówek 2!"),
+        Page(image: UIImage(named: "rycka")!, headerText: "To jest testowy nagłówek 3!")
+    ]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -24,11 +30,15 @@ class SwippingController: UICollectionViewController, UICollectionViewDelegateFl
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return pages.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellid", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellid", for: indexPath) as! PageCell
+        
+        let currentPage = pages[indexPath.item]
+        
+        cell.page = currentPage
         
         return cell
     }

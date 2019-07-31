@@ -10,7 +10,17 @@ import UIKit
 
 class PageCell: UICollectionViewCell {
     
-    let imageView: UIImageView = {
+    var page: Page? {
+        didSet {
+            guard let unwrappedPage = page else {
+                return
+            }
+            
+            imageView.image = unwrappedPage.image
+        }
+    }
+    
+    private let imageView: UIImageView = {
         let imageView = UIImageView(image: #imageLiteral(resourceName: "rycka"))
         //enable autolayout for this imageView
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -19,7 +29,7 @@ class PageCell: UICollectionViewCell {
         return imageView
     }()
     
-    let descriptionTextView: UITextView = {
+    private let descriptionTextView: UITextView = {
         let textView = UITextView()
         
         textView.text = "To jest testowy nagłówek!"
