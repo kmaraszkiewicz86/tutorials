@@ -17,6 +17,13 @@ class PageCell: UICollectionViewCell {
             }
             
             imageView.image = unwrappedPage.image
+            
+            let attributeText = NSMutableAttributedString(string: unwrappedPage.headerText, attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 18)])
+            
+            attributeText.append(NSMutableAttributedString(string: "\n\n\n\(unwrappedPage.bodyText)", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13), NSAttributedString.Key.foregroundColor: UIColor.gray]))
+            
+            descriptionTextView.attributedText = attributeText
+            descriptionTextView.textAlignment = .center
         }
     }
     
@@ -32,16 +39,7 @@ class PageCell: UICollectionViewCell {
     private let descriptionTextView: UITextView = {
         let textView = UITextView()
         
-        textView.text = "To jest testowy nagłówek!"
-        
-        let attributeText = NSMutableAttributedString(string: "To jest testowy nagłówek!", attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 18)])
-        
-        attributeText.append(NSMutableAttributedString(string: "\n\n\nTo jest test testów, tej testowej aplikacji, którą tworze dla testowego wyniku", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13), NSAttributedString.Key.foregroundColor: UIColor.gray]))
-        
-        textView.attributedText = attributeText
-        
         textView.translatesAutoresizingMaskIntoConstraints = false
-        textView.textAlignment = .center
         textView.isEditable = false
         textView.isScrollEnabled = false
         

@@ -11,9 +11,9 @@ import UIKit
 class SwippingController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     let pages = [
-        Page(image: UIImage(named: "krowa")!, headerText: "To jest testowy nagłówek 1!"),
-        Page(image: UIImage(named: "Pierdzioch")!, headerText: "To jest testowy nagłówek 2!"),
-        Page(image: UIImage(named: "rycka")!, headerText: "To jest testowy nagłówek 3!")
+        Page(image: UIImage(named: "krowa")!, headerText: "To jest testowy nagłówek 1!", bodyText: "To jest test testów, tej testowej aplikacji, którą tworze dla testowego wyniku"),
+        Page(image: UIImage(named: "Pierdzioch")!, headerText: "To jest testowy nagłówek 2!", bodyText: "Tworze dla testowego wyniku"),
+        Page(image: UIImage(named: "rycka")!, headerText: "To jest testowy nagłówek 3!", bodyText: "To jest test testów, tej testowej aplikacji")
     ]
     
     override func viewDidLoad() {

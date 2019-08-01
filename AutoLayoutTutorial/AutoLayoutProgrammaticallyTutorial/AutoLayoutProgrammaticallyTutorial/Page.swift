@@ -12,4 +12,6 @@ struct Page {
     let image: UIImage
     
     let headerText: String
+    
+    let bodyText: String
 }
