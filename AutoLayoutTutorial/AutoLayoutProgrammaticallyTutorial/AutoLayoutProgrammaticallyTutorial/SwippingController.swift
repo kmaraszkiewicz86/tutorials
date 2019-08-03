@@ -21,6 +21,7 @@ class SwippingController: UICollectionViewController, UICollectionViewDelegateFl
         btn.setTitle("NEXT", for: .normal)
         btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
         btn.setTitleColor(.gray, for: .normal)
+        btn.addTarget(self, action: #selector(prevBtnAction), for: .touchUpInside)
         btn.translatesAutoresizingMaskIntoConstraints = false
         
         return btn
@@ -39,13 +40,24 @@ class SwippingController: UICollectionViewController, UICollectionViewDelegateFl
     }()
     
     @objc private func nextBtnAction () {
-    
+        navigateToPage(indexOfPage: min(pageControll.currentPage + 1, pages.count - 1))
     }
     
-    private let pageControll: UIPageControl = {
+    @objc private func prevBtnAction() {
+        navigateToPage(indexOfPage: max(pageControll.currentPage - 1, 0))
+    }
+    
+    private func navigateToPage(indexOfPage: Int) {
+        let indexPath = IndexPath(item: indexOfPage, section: 0)
+        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        
+        pageControll.currentPage = indexOfPage
+    }
+    
+    private lazy var pageControll: UIPageControl = {
         let pageControll = UIPageControl()
         pageControll.currentPage = 0
-        pageControll.numberOfPages = 4
+        pageControll.numberOfPages = pages.count
         
         pageControll.currentPageIndicatorTintColor = UIColor.customPink
         pageControll.pageIndicatorTintColor = .gray
@@ -56,12 +68,32 @@ class SwippingController: UICollectionViewController, UICollectionViewDelegateFl
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        collectionView.backgroundColor = .white
-        collectionView.register(PageCell.self, forCellWithReuseIdentifier: "cellid")
+         collectionView.register(PageCell.self, forCellWithReuseIdentifier: "cellid")
         
+        collectionView.backgroundColor = .white
         collectionView.isPagingEnabled = true
         
         setupBottomButtons()
+    }
+    
+    override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        let x = targetContentOffset.pointee.x
+        
+        let indexOfPage = Int(x / scrollView.frame.width)
+        
+        pageControll.currentPage = indexOfPage
+        
+        prevButton.setTitleColor(UIColor.gray, for: .disabled)
+        nextButton.setTitleColor(UIColor.gray, for: .disabled)
+        
+        if (indexOfPage > 0) {
+            prevButton.setTitleColor(UIColor.customPink, for: .normal)
+        }
+        
+        if (indexOfPage < pages.count - 1) {
+            nextButton.setTitleColor(UIColor.customPink, for: .normal)
+        }
+
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
@@ -87,17 +119,11 @@ class SwippingController: UICollectionViewController, UICollectionViewDelegateFl
     }
     
     private func setupBottomButtons() {
-        
-        let greenView = UIView()
-        greenView.backgroundColor = .green
-        
-        let controlsStackViewContainer = UIStackView(arrangedSubviews: [prevButton,
-                                                                        pageControll, nextButton])
+        let controlsStackViewContainer = UIStackView(arrangedSubviews:
+            [prevButton, pageControll, nextButton])
         
         controlsStackViewContainer.translatesAutoresizingMaskIntoConstraints = false
-        
         controlsStackViewContainer.distribution = .fillEqually
-        
         
         view.addSubview(controlsStackViewContainer)
         
