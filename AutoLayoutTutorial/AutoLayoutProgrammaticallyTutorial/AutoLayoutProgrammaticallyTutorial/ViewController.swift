@@ -8,10 +8,6 @@
 
 import UIKit
 
-extension UIColor {
-    public static let customPink: UIColor =  UIColor(red: 232/255, green: 68/255, blue: 133/255, alpha: 1)
-}
-
 class ViewController: UIViewController {
 
     let imageView: UIImageView = {
