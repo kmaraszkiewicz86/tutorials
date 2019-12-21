@@ -1,6 +1,6 @@
 //
 //  ViewController.swift
-//  WeatherApp
+//  WeatherAppWithStoryboard
 //
 //  Created by Krzysztof Maraszkiewicz on 21/12/2019.
 //  Copyright © 2019 Krzysztof Maraszkiewicz. All rights reserved.
