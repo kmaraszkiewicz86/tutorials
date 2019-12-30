@@ -8,6 +8,13 @@
 
 public struct Location {
     
-    var name: String
+    var city: City
     
+    var name: String {
+        return city.name
+    }
+    
+    init(city: City) {
+        self.city = city
+    }
 }

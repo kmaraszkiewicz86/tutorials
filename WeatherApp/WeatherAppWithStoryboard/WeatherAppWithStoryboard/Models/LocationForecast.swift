@@ -22,7 +22,7 @@ public class LocationForecast {
     static func getTestData() -> LocationForecast {
         
         let aMinute = 60
-        let location = Location(name: "Suchy Las")
+        let location = Location(city: City.NewYork)
         let forecast = LocationForecast()
         forecast.location = location
         forecast.weather = "słonecznie"

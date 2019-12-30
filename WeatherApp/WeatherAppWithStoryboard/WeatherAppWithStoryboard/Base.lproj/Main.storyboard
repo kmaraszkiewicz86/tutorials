@@ -106,26 +106,26 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DailyForecastViewCell" id="Tdu-SC-H5i" customClass="DailyForecastViewCell" customModule="WeatherAppWithStoryboard" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="374" height="42.666667938232422"/>
+                                        <rect key="frame" x="0.0" y="28" width="374" height="41"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Tdu-SC-H5i" id="TEb-yo-t5W">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="42.666667938232422"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="41"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23°" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F2k-Lh-SXV">
-                                                    <rect key="frame" x="341" y="10.666666666666666" width="28" height="21.333333333333336"/>
+                                                    <rect key="frame" x="341" y="10.333333333333334" width="28" height="20.333333333333329"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wtorek" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JhR-Rc-0TX">
-                                                    <rect key="frame" x="5" y="10.666666666666666" width="152" height="21.333333333333336"/>
+                                                    <rect key="frame" x="5" y="10.333333333333334" width="152" height="20.333333333333329"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TlK-9q-G3l">
-                                                    <rect key="frame" x="162" y="11" width="50" height="30"/>
+                                                    <rect key="frame" x="162" y="11.000000000000002" width="50" height="29.666666666666671"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="29.670000000000002" id="4uY-ZH-km4"/>
                                                         <constraint firstAttribute="width" constant="50" id="vaz-y6-LhO"/>
@@ -140,7 +140,6 @@
                                                 <constraint firstItem="TlK-9q-G3l" firstAttribute="leading" secondItem="JhR-Rc-0TX" secondAttribute="trailing" constant="5" id="K71-Is-Wfb"/>
                                                 <constraint firstItem="TlK-9q-G3l" firstAttribute="top" secondItem="TEb-yo-t5W" secondAttribute="topMargin" id="PqA-l4-g79"/>
                                                 <constraint firstItem="F2k-Lh-SXV" firstAttribute="centerY" secondItem="TEb-yo-t5W" secondAttribute="centerY" id="dzI-M8-gdW"/>
-                                                <constraint firstItem="TlK-9q-G3l" firstAttribute="height" secondItem="TEb-yo-t5W" secondAttribute="height" multiplier="0.7" id="gp4-jU-bdc"/>
                                                 <constraint firstAttribute="trailing" secondItem="F2k-Lh-SXV" secondAttribute="trailing" constant="5" id="j9K-uI-zgG"/>
                                                 <constraint firstItem="F2k-Lh-SXV" firstAttribute="height" secondItem="TEb-yo-t5W" secondAttribute="height" multiplier="0.5" id="ohr-Uw-CE8"/>
                                                 <constraint firstItem="JhR-Rc-0TX" firstAttribute="leading" secondItem="TEb-yo-t5W" secondAttribute="leading" constant="5" id="xeh-Fi-FPS"/>
