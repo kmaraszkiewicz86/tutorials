@@ -6,9 +6,11 @@
 //  Copyright © 2019 Krzysztof Maraszkiewicz. All rights reserved.
 //
 
-public struct Location {
+public struct Location: Codable {
     
     var city: City
+    var timeZone:Int = 0
+    var temperature:String = "-"
     
     var name: String {
         return city.name

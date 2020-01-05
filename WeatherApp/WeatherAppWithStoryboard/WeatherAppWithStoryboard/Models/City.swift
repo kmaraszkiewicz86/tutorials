@@ -8,7 +8,7 @@
 
 import Foundation
 
-class City {
+class City: Codable {
     var name: String
     
     init(name: String) {
