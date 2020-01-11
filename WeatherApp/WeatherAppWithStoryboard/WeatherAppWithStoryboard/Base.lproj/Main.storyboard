@@ -193,10 +193,10 @@
             </objects>
             <point key="canvasLocation" x="135.19999999999999" y="136.69950738916256"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Favorites Table View Controller-->
         <scene sceneID="S5g-2D-OPG">
             <objects>
-                <tableViewController id="tVN-AX-vne" sceneMemberID="viewController">
+                <tableViewController id="tVN-AX-vne" customClass="FavoritesTableViewController" customModule="WeatherAppWithStoryboard" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="pcD-qJ-074">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -244,7 +244,7 @@
                                     <outlet property="time" destination="B6h-9Q-jaM" id="1rY-tt-B5H"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="bm2-5o-i5h">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AddLocationTableViawCell" id="bm2-5o-i5h" customClass="AddLocationTableViewCell" customModule="WeatherAppWithStoryboard" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="76.333332061767578" width="414" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bm2-5o-i5h" id="cLE-Oh-jaX">
@@ -264,6 +264,9 @@
                                         <constraint firstItem="vfE-Qd-jjx" firstAttribute="centerY" secondItem="cLE-Oh-jaX" secondAttribute="centerY" id="hxS-Rm-UZR"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="addFavoritesLocation" destination="vfE-Qd-jjx" id="sJO-78-0n9"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
