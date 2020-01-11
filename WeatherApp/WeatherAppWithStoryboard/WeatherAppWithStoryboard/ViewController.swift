@@ -37,6 +37,21 @@ class ViewController: UIViewController, UICollectionViewDataSource, UITableViewD
     fileprivate func getIcon(weather: String) -> UIImage? {
         return LocationForecast.getImageFor(weather: weather)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let id = segue.identifier {
+            switch id {
+            case "showFavorites":
+                guard let favViewController = segue.destination as? FavoritesTableViewController else {
+                    return
+                }
+                
+                //favViewController.received
+            default:
+                break
+            }
+        }
+    }
 }
 
 extension ViewController {

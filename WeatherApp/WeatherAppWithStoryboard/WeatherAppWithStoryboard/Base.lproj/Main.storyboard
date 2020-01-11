@@ -98,7 +98,7 @@
                                 <rect key="frame" x="20" y="49" width="61" height="30"/>
                                 <state key="normal" title="Ulubione"/>
                                 <connections>
-                                    <segue destination="tVN-AX-vne" kind="show" id="Uut-B0-jFU"/>
+                                    <segue destination="tVN-AX-vne" kind="show" identifier="showFavorites" id="Uut-B0-jFU"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mml-AJ-Efh">
@@ -254,9 +254,6 @@
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vfE-Qd-jjx">
                                             <rect key="frame" x="149.66666666666666" y="7" width="114.99999999999997" height="30"/>
                                             <state key="normal" title="Dodaj lokalizację"/>
-                                            <connections>
-                                                <segue destination="Znb-3Y-muB" kind="show" id="QcC-qV-OEb"/>
-                                            </connections>
                                         </button>
                                     </subviews>
                                     <constraints>
@@ -275,6 +272,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="KHc-1W-2cG"/>
+                    <connections>
+                        <segue destination="Znb-3Y-muB" kind="show" id="sLh-Ie-L21"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6vF-E1-rcz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
