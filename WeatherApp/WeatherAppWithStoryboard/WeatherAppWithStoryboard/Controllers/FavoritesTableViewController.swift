@@ -10,6 +10,9 @@ import UIKit
 
 class FavoritesTableViewController: UITableViewController {
 
+    public var selectedItem:Location?
+    public var receivedData:Int?
+    
     var favorites:[Location] = []
     let formatter: DateFormatter = DateFormatter()
     
@@ -72,6 +75,8 @@ class FavoritesTableViewController: UITableViewController {
         if indexPath.row == favorites.count {
             //TODO: tworzenie nowego kontenera
         } else {
+            selectedItem = favorites[indexPath.row]
+            
             saveFavorites()
         }
         

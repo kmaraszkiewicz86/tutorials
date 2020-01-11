@@ -274,9 +274,11 @@
                     <navigationItem key="navigationItem" id="KHc-1W-2cG"/>
                     <connections>
                         <segue destination="Znb-3Y-muB" kind="show" id="sLh-Ie-L21"/>
+                        <segue destination="OIB-ht-LB6" kind="unwind" unwindAction="unwindToHomeScreenWithSender:" id="YmU-CB-KOW"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6vF-E1-rcz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="OIB-ht-LB6" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="932" y="136.69950738916256"/>
         </scene>

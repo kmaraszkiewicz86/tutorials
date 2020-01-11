@@ -46,10 +46,17 @@ class ViewController: UIViewController, UICollectionViewDataSource, UITableViewD
                     return
                 }
                 
-                //favViewController.received
+                favViewController.receivedData = 42
             default:
                 break
             }
+        }
+    }
+    
+    @IBAction func unwindToHomeScreen(sender: UIStoryboardSegue) {
+        if let favoritesVC = sender.source as? FavoritesTableViewController {
+            model = LocationForecast()
+            model?.location = favoritesVC.selectedItem
         }
     }
 }
