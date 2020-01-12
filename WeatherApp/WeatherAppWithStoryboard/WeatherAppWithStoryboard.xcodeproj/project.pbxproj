@@ -19,6 +19,8 @@
 		1F478DFF23BA5A450064CC9A /* WeatherViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F478DFE23BA5A450064CC9A /* WeatherViewCell.swift */; };
 		1F478E0123BA8F150064CC9A /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F478E0023BA8F150064CC9A /* Country.swift */; };
 		1F478E0323BA8F5F0064CC9A /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F478E0223BA8F5F0064CC9A /* City.swift */; };
+		1FC3CF4423CB7300004CCBE6 /* PlacesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC3CF4323CB7300004CCBE6 /* PlacesTableViewController.swift */; };
+		1FC3CF4623CB7996004CCBE6 /* PlaceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC3CF4523CB7996004CCBE6 /* PlaceTableViewCell.swift */; };
 		1FDD65C923AEB7C800C49E8E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDD65C823AEB7C800C49E8E /* AppDelegate.swift */; };
 		1FDD65CB23AEB7C800C49E8E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDD65CA23AEB7C800C49E8E /* SceneDelegate.swift */; };
 		1FDD65CD23AEB7C800C49E8E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDD65CC23AEB7C800C49E8E /* ViewController.swift */; };
@@ -40,6 +42,8 @@
 		1F478DFE23BA5A450064CC9A /* WeatherViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewCell.swift; sourceTree = "<group>"; };
 		1F478E0023BA8F150064CC9A /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
 		1F478E0223BA8F5F0064CC9A /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
+		1FC3CF4323CB7300004CCBE6 /* PlacesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesTableViewController.swift; sourceTree = "<group>"; };
+		1FC3CF4523CB7996004CCBE6 /* PlaceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceTableViewCell.swift; sourceTree = "<group>"; };
 		1FDD65C523AEB7C800C49E8E /* WeatherAppWithStoryboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherAppWithStoryboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FDD65C823AEB7C800C49E8E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1FDD65CA23AEB7C800C49E8E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -86,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				1F32D61223BDD58000D57582 /* FavoritesTableViewController.swift */,
+				1FC3CF4323CB7300004CCBE6 /* PlacesTableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -97,6 +102,7 @@
 				1F478DFE23BA5A450064CC9A /* WeatherViewCell.swift */,
 				1F32D61423BDE7E100D57582 /* LocationTableViewCell.swift */,
 				1F2CE15623C9ED9700332847 /* AddLocationTableViewCell.swift */,
+				1FC3CF4523CB7996004CCBE6 /* PlaceTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -215,11 +221,13 @@
 				1F478DFD23BA59D40064CC9A /* DailyForecastViewCell.swift in Sources */,
 				1F1FA31C23B93DD300E54C4E /* LocationForecast.swift in Sources */,
 				1F2CE15723C9ED9700332847 /* AddLocationTableViewCell.swift in Sources */,
+				1FC3CF4423CB7300004CCBE6 /* PlacesTableViewController.swift in Sources */,
 				1F1FA31623B93A9D00E54C4E /* Location.swift in Sources */,
 				1F478E0323BA8F5F0064CC9A /* City.swift in Sources */,
 				1FDD65CB23AEB7C800C49E8E /* SceneDelegate.swift in Sources */,
 				1F2CE15A23CA8AA000332847 /* ZoomInSegue.swift in Sources */,
 				1F478E0123BA8F150064CC9A /* Country.swift in Sources */,
+				1FC3CF4623CB7996004CCBE6 /* PlaceTableViewCell.swift in Sources */,
 				1F1FA31823B93B5500E54C4E /* Forecast.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

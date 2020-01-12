@@ -255,6 +255,9 @@
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vfE-Qd-jjx">
                                             <rect key="frame" x="149.66666666666666" y="7" width="114.99999999999997" height="30"/>
                                             <state key="normal" title="Dodaj lokalizację"/>
+                                            <connections>
+                                                <segue destination="Znb-3Y-muB" kind="show" id="v9t-Ez-1VD"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <constraints>
@@ -274,7 +277,6 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="KHc-1W-2cG"/>
                     <connections>
-                        <segue destination="Znb-3Y-muB" kind="show" id="sLh-Ie-L21"/>
                         <segue destination="OIB-ht-LB6" kind="unwind" unwindAction="unwindToHomeScreenWithSender:" id="YmU-CB-KOW"/>
                     </connections>
                 </tableViewController>
@@ -283,16 +285,16 @@
             </objects>
             <point key="canvasLocation" x="932" y="136.69950738916256"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Places Table View Controller-->
         <scene sceneID="ese-A1-FAA">
             <objects>
-                <tableViewController id="Znb-3Y-muB" sceneMemberID="viewController">
+                <tableViewController id="Znb-3Y-muB" customClass="PlacesTableViewController" customModule="WeatherAppWithStoryboard" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Qkx-fE-Qi3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="XIp-hb-yRT">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PlaceTableViewCell" id="XIp-hb-yRT" customClass="PlaceTableViewCell" customModule="WeatherAppWithStoryboard" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="XIp-hb-yRT" id="P9L-Fs-h81">
@@ -312,6 +314,9 @@
                                         <constraint firstItem="nix-UV-Es5" firstAttribute="centerY" secondItem="P9L-Fs-h81" secondAttribute="centerY" id="fML-Uk-U9P"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="city" destination="nix-UV-Es5" id="FwC-Wk-4F3"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
