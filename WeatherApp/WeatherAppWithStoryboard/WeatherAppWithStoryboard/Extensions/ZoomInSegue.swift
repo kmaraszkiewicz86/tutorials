@@ -10,7 +10,7 @@ import UIKit
 
 class ZoomInSegue: UIStoryboardSegue {
     override func perform() {
-        
+        zoomIn()
     }
     
     func zoomIn() {

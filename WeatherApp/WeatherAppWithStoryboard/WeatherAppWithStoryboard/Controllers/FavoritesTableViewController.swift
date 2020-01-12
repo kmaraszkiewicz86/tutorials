@@ -76,7 +76,6 @@ class FavoritesTableViewController: UITableViewController {
             //TODO: tworzenie nowego kontenera
         } else {
             selectedItem = favorites[indexPath.row]
-            
             saveFavorites()
         }
         
