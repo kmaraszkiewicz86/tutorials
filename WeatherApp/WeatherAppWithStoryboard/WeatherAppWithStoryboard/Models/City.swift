@@ -9,13 +9,22 @@
 import Foundation
 
 class City: Codable {
+    
+    var id: Int?
+    
     var name: String
+    
+    convenience init (id: Int, name: String) {
+        self.init(name: name)
+        
+        self.id = id
+    }
     
     init(name: String) {
         self.name = name
     }
     
     static var NewYork: City = {
-        return City(name: "New York")
+        return City(id: 5128638, name: "New York")
     }()
 }
