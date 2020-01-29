@@ -189,6 +189,7 @@
                         <outlet property="cityWeather" destination="EhM-hU-j5u" id="qfx-fX-fIz"/>
                         <outlet property="details" destination="15V-2Q-N0J" id="Le5-jA-fre"/>
                         <outlet property="nextDays" destination="mml-AJ-Efh" id="LIF-iv-5XT"/>
+                        <outlet property="temperature" destination="Gnd-1L-7ms" id="s3a-hE-wSy"/>
                         <segue destination="tVN-AX-vne" kind="show" identifier="showFavoritesAlternative" id="X5h-1E-1MA"/>
                     </connections>
                 </viewController>

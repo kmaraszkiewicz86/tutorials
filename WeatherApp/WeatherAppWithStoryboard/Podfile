@@ -3,5 +3,7 @@
 
 target 'WeatherAppWithStoryboard' do
   pod 'Alamofire', '~> 4.5'
+  
+  pod 'Toast-Swift', '~> 5.0.1'
 
 end

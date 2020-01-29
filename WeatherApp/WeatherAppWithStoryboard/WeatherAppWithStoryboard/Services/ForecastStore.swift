@@ -14,7 +14,7 @@ class ForecastStore {
     public static let shared = ForecastStore()
     
     static let weatherApi = "https://api.openweathermap.org/data/2.5/weather"
-    static let weatherApiQuery = "appId=3c3945aff71cbc05e8fb632fdde15e21&units=metric"
+    static let weatherApiQuery = "?appId=3c3945aff71cbc05e8fb632fdde15e21&units=metric"
     
     private init() {
         

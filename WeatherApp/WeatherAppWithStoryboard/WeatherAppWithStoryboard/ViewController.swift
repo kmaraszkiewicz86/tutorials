@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Toast_Swift
 
 class ViewController: UIViewController, UICollectionViewDataSource, UITableViewDataSource {
 
@@ -50,13 +51,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UITableViewD
                 switch error {
                 case .invalidCity:
                     
-                    let alert = UIAlertController(title: "Problem z siecią", message: "Wystąpił błąd podczas wczytywania danych prognozy podogdy. Proszę spróbować później.", preferredStyle: .alert)
-                    
-                    let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                    
-                    alert.addAction(okAction)
-                    
-                    self?.present(alert, animated: true)
+                    self?.view.makeToast("Wystąpił błąd podczas wczytywania danych prognozy podogdy. Proszę spróbować później.", duration: 1.5, position: .top)
                     
                 case .noConnection:
                     break
@@ -79,10 +74,15 @@ class ViewController: UIViewController, UICollectionViewDataSource, UITableViewD
     
     func updateUI(city aCity: City, forecastModel: WeatherResponse?) {
         city.text = aCity.name
-        if let forecast = forecastModel, forecast.weather.count > 0 {
-            cityWeather.text = forecast.weather[0].description
+        
+        if let forecast = forecastModel {
+            
+            if forecast.weather.count > 0 {
+                cityWeather.text = forecast.weather[0].description
+            }
+            
+            temperature.text = String(format: "%.0f", forecast.forecast.temperature)
         }
-        temperature.text = String(format: "%.0f", forecastModel?.forecast.temperature ?? 0)
     }
     
     fileprivate func getIcon(weather: String) -> UIImage? {
