@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class ForecastStore {
     
@@ -25,36 +26,32 @@ class ForecastStore {
             return
         }
         
-        let configuration = URLSessionConfiguration.default
-        let session = URLSession(configuration: configuration)
         let urlString = ForecastStore.weatherApi + ForecastStore.weatherApiQuery + "&id="
-            + String(describing: city.id)
+            + String(describing: cityId)
         
-        if let url = URL(string: urlString) {
-            let task = session.dataTask(with: url) {
-                (data, response, error) in
-                if let _ = error {
-                    callback(nil, LoadingError.wrongResponse)
-                    return
-                } else {
-                    guard let data = data else {
-                        callback(nil, LoadingError.wrongResponse)
-                        return
-                    }
-                    
-                    do {
-                        let rawData = String(data: data, encoding: String.Encoding.utf8)
-                        let decoder = JSONDecoder()
-                        let responseModel = try decoder.decode(WeatherResponse.self, from: data)
-                        callback(responseModel, nil)
-                    } catch let err {
-                        callback(nil, LoadingError.wrongResponse)
-                    }
-                }
+        
+        Alamofire.request(urlString).responseJSON { (response) in
+            
+            guard let data = response.data else {
+                callback(nil, LoadingError.wrongResponse)
+                return
             }
             
-            task.resume()
+            do {
+                let rawData = String(data: data, encoding: String.Encoding.utf8)
+                
+                print(rawData ?? "request: n/a")
+                
+                let decoder = JSONDecoder()
+                let responseModel = try decoder.decode(WeatherResponse.self, from: data)
+                callback(responseModel, nil)
+            } catch let err {
+                
+                print(err)
+                
+                callback(nil, LoadingError.wrongResponse)
+            }
+            
         }
-        
     }
 }

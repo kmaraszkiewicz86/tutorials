@@ -16,7 +16,14 @@ class ViewController: UIViewController, UICollectionViewDataSource, UITableViewD
     
     @IBOutlet weak var nextDays: UITableView!
     
+    @IBOutlet weak var city: UILabel!
+    
+    @IBOutlet weak var cityWeather: UILabel!
+    
+    @IBOutlet weak var temperature: UILabel!
+    
     var forecast:[Forecast] = []
+    
     var degreeSymbol = "°"
     
     let collectionViewFormatter = DateFormatter()
@@ -32,6 +39,50 @@ class ViewController: UIViewController, UICollectionViewDataSource, UITableViewD
         
         details.dataSource = self
         nextDays.dataSource = self
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        let currentCity = City.NewYork
+        ForecastStore.shared.loadForecast(for: currentCity) { [weak self] (response, error) in
+            if let error = error {
+                switch error {
+                case .invalidCity:
+                    
+                    let alert = UIAlertController(title: "Problem z siecią", message: "Wystąpił błąd podczas wczytywania danych prognozy podogdy. Proszę spróbować później.", preferredStyle: .alert)
+                    
+                    let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                    
+                    alert.addAction(okAction)
+                    
+                    self?.present(alert, animated: true)
+                    
+                case .noConnection:
+                    break
+                    
+                case .invalidURL:
+                    break
+                    
+                case .wrongResponse:
+                    break
+                }
+            } else {
+                DispatchQueue.main.async {
+                    [weak self] in
+                    self?.updateUI(city: currentCity, forecastModel: response)
+                }
+            }
+        }
+        
+    }
+    
+    func updateUI(city aCity: City, forecastModel: WeatherResponse?) {
+        city.text = aCity.name
+        if let forecast = forecastModel, forecast.weather.count > 0 {
+            cityWeather.text = forecast.weather[0].description
+        }
+        temperature.text = String(format: "%.0f", forecastModel?.forecast.temperature ?? 0)
     }
     
     fileprivate func getIcon(weather: String) -> UIImage? {
