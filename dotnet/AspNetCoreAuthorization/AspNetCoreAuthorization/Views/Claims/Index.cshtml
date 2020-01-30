@@ -1,0 +1,30 @@
+﻿@model IEnumerable<System.Security.Claims.Claim>
+
+<h1>Claims</h1>
+
+<table border="1">
+	<tr>
+		<td>Subject</td>
+		<td>Issuer</td>
+		<td>Type</td>
+		<td>Value</td>
+	</tr>
+	@if (!Model?.Any() ?? false)
+	{
+		<tr>
+			<td colspan="4">No Claims</td>
+		</tr>
+	}
+	else
+	{
+		foreach (var claim in Model.OrderBy(x => x.Type))
+		{
+			<tr>
+				<td>@claim.Subject.Name</td>
+				<td>@claim.Issuer</td>
+				<td identity-claim-type="@claim.Type"></td>
+				<td>@claim.Value</td>
+			</tr>
+		}
+	}
+</table>

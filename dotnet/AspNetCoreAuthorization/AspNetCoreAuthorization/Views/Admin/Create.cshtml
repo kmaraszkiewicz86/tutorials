@@ -1,0 +1,17 @@
+﻿@model CreateModel
+
+<div asp-validation-summary="All"></div>
+
+<form asp-action="Create" method="post">
+	<label asp-for="Name"></label>
+	<input asp-for="Name" />
+	<br />
+	<label asp-for="Email"></label>
+	<input asp-for="Email" />
+	<br />
+	<label asp-for="Password"></label>
+	<input asp-for="Password"/>
+	<hr />
+	<button type="submit">Create</button>
+	<a asp-action="Index">Cancel</a>
+</form>

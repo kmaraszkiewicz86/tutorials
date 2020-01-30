@@ -1,0 +1,27 @@
+﻿@model AspNetCoreDILifecyclesTypes.Models.IServiceModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<hr />
+
+<ul>
+	<li>SingletonService -> @ViewBag.SingletonService.GetGuidString()</li>
+	<li>ScopedService -> @ViewBag.ScopedService.GetGuidString()</li>
+	<li>TransientService -> @ViewBag.TransientService.GetGuidString()</li>
+</ul>
+
+<hr />
+
+<ul>
+	<li>SingletonService -> @Model.SingletonService.GetGuidString()</li>
+	<li>ScopedService -> @Model.ScopedService.GetGuidString()</li>
+	<li>TransientService -> @Model.TransientService.GetGuidString()</li>
+</ul>
+
+<ul>
+    <li>SingletonService -> @Model.SingletonService.GetGuidString()</li>
+    <li>ScopedService -> @Model.ScopedService.GetGuidString()</li>
+    <li>TransientService -> @Model.TransientService.GetGuidString()</li>
+</ul>

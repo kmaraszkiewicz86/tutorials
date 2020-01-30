@@ -1,0 +1,28 @@
+﻿{
+	"Users": [
+		{
+			"Name": "Admin",
+			"Email": "admin@wp.pl",
+			"Password": "admin",
+			"Roles": [ "Admin" ]
+		},
+		{
+			"Name": "Alice",
+			"Email": "alice@wp.pl",
+			"Password": "alice",
+			"Roles": [ "Users", "Employees" ]
+		},
+		{
+			"Name": "Bob",
+			"Email": "bob@wp.pl",
+			"Password": "bob",
+			"Roles": [ "Employees" ]
+		},
+		{
+			"Name": "Joe",
+			"Email": "joe@wp.pl",
+			"Password": "joe",
+			"Roles": [ "Users" ]
+		}
+	]
+}

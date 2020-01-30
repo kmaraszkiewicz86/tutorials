@@ -1,0 +1,55 @@
+﻿@model RoleEditModel
+
+<div asp-validation-summary="All"></div>
+
+<form asp-action="Edit" method="post">
+	<input type="hidden" name="roleName" value="@Model.Role.Name" />
+	<input type="hidden" name="roleId" value="@Model.Role.Id" />
+
+	<h6>Add To @Model.Role.Name</h6>
+	<table>
+		@if (!Model.NonMembers.Any())
+		{
+			<tr>
+				<td>
+					All Users Are Members
+				</td>
+			</tr>
+		}
+		else
+		{
+			foreach (var modelNonMember in Model.NonMembers)
+			{
+				<tr>
+					<td>@modelNonMember.UserName</td>
+					<td>
+						<input type="checkbox" name="IdsToAdd" value="@modelNonMember.Id" />
+					</td>
+				</tr>
+			}
+		}
+	</table>
+	<h6>Remove From @Model.Role.Name</h6>
+	<table>
+		@if (!Model.Members.Any())
+		{
+			<tr>
+				<td>No users ara members</td>
+			</tr>
+		}
+		else
+		{
+			foreach (var modelMember in Model.Members)
+			{
+				<tr>
+					<td>@modelMember.UserName</td>
+					<td>
+						<input type="checkbox" name="IdsToDelete" value="@modelMember.Id"/>
+					</td>
+				</tr>
+			}
+		}
+	</table>
+	<button type="submit">Save</button>
+	<a asp-action="Index">Cancel</a>
+</form>

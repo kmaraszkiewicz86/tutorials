@@ -1,0 +1,24 @@
+﻿@model IQueryable<AppUser>
+
+<!DOCTYPE html>
+
+<div asp-validation-summary="All"></div>
+
+<table>
+@if (!Model.Any()) {
+	<tr><td colspan="3" class="text-center">No User Accounts</td></tr>
+} else {
+	foreach (AppUser user in Model) {
+		<tr>
+			<td>@user.Id</td><td>@user.UserName</td><td>@user.Email</td>
+			<td>
+				<form asp-action="Delete" asp-route-id="@user.Id" method="post">
+					<a asp-action="Edit" asp-route-id="@user.Id">Edit</a>
+					<button type="submit">Delete</button>
+				</form>
+			</td>
+		</tr>
+	}
+}
+</table>
+<a asp-action="Create">Create</a> 

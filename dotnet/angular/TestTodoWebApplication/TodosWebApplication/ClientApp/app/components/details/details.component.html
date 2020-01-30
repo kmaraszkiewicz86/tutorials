@@ -1,0 +1,13 @@
+﻿<form [formGroup]="todoForm" novalidate (submit)="update(todoForm.value)">
+	Title: <input type="text" formControlName="title" /> <br />
+	<small [hidden]="todoForm.controls.title.valid">
+		Title is required
+	</small>
+	Completed <input type="checkbox" formControlName="completed" /> <br />
+	<small [hidden]="todoForm.controls.completed.valid">
+		Title is required
+	</small>
+	<hr />
+
+	<input type="submit" value="Update" />
+</form>

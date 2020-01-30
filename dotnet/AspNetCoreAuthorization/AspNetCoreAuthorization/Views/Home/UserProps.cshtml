@@ -1,0 +1,17 @@
+﻿@model AppUser
+
+<div asp-validation-summary="All"></div>
+
+<form asp-action="UserProps">
+	<label asp-for="City"></label>
+	<select asp-for="City" asp-items="@new SelectList(Enum.GetNames(typeof(Cities)))">
+		<option disabled="disabled">Select a City</option>
+	</select>
+	<label asp-for="Qualifications"></label>
+	<select asp-for="Qualifications" asp-items="@new SelectList(Enum.GetNames(typeof(QualificationLevels)))">
+		<option disabled="disabled">Select a Qualifications</option>
+	</select>
+	
+	<button type="submit">Submit</button>
+	<a asp-action="Index">Cancel</a>
+</form>

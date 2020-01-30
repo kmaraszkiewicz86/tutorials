@@ -1,0 +1,14 @@
+﻿@model LoginModel
+
+<div asp-validation-summary="All"></div>
+
+<form asp-action="Login" method="post">
+	<input type="hidden" name="returnUrl" value="@ViewBag.ReturnUrl"/>
+	<label asp-for="Email"></label>
+	<input asp-for="Email"/>
+	<br />
+	<label asp-for="Password"></label>
+	<input asp-for="Password"/>
+	<hr />
+	<button type="submit">Log In</button>
+</form>

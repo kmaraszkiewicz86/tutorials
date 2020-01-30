@@ -1,0 +1,17 @@
+﻿@model AppUser
+
+<div asp-validation-summary="All"></div>
+
+<form asp-action="Edit" method="post">
+	<label asp-for="Id"></label>
+	<input asp-for="Id" disabled="disabled"/>
+	<br />
+	<label asp-for="Email"></label>
+	<input asp-for="Email"/>
+	<br />
+	<label for="password">Password</label>
+	<input name="password"/>
+	<hr />
+	<button type="submit">Save</button>
+	<a asp-action="Index">Cancel</a>
+</form>
