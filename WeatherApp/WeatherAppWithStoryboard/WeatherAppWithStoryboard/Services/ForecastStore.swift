@@ -21,6 +21,7 @@ class ForecastStore {
     }
     
     public func loadForecast(for city: City, callback: @escaping (_ response: WeatherResponse?, _ error: LoadingError?) -> Void) {
+        
         guard let cityId = city.id else {
             callback(nil, LoadingError.invalidCity)
             return

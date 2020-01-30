@@ -59,6 +59,8 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 """
     
+    @IBOutlet weak var licences: UITextView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

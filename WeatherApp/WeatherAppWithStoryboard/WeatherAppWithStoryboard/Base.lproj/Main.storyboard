@@ -16,8 +16,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Miasto" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E6v-gX-zVB">
-                                <rect key="frame" x="142" y="47" width="130" height="54"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Miasto" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E6v-gX-zVB">
+                                <rect key="frame" x="142" y="49" width="130" height="54"/>
                                 <accessibility key="accessibilityConfiguration" label="test"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="45"/>
                                 <nil key="textColor"/>
@@ -159,17 +159,28 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9wf-2U-t0B">
+                                <rect key="frame" x="321" y="49" width="73" height="30"/>
+                                <state key="normal" title="Informacje"/>
+                                <connections>
+                                    <segue destination="ZYo-yP-f0O" kind="show" id="dse-HF-EfK"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="iRN-FV-87N" firstAttribute="top" secondItem="Gnd-1L-7ms" secondAttribute="bottom" constant="8" id="61r-61-FhN"/>
                             <constraint firstItem="iRN-FV-87N" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="8ch-cY-cKt"/>
+                            <constraint firstItem="bWf-Bn-m6K" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="5" id="AnQ-K9-12k"/>
                             <constraint firstItem="bWf-Bn-m6K" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="5" id="FSd-ZB-tth"/>
+                            <constraint firstItem="E6v-gX-zVB" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="bWf-Bn-m6K" secondAttribute="trailing" constant="8" symbolic="YES" id="GTg-z0-VAq"/>
                             <constraint firstItem="EhM-hU-j5u" firstAttribute="top" secondItem="E6v-gX-zVB" secondAttribute="bottom" constant="15" id="Jqf-hW-kKC"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="mml-AJ-Efh" secondAttribute="bottom" constant="20" id="Lxr-WX-T7w"/>
+                            <constraint firstItem="9wf-2U-t0B" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="5" id="MNg-9n-bzy"/>
                             <constraint firstItem="EhM-hU-j5u" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="NsB-6A-j8r"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="iRN-FV-87N" secondAttribute="trailing" constant="20" id="QWf-wI-H8y"/>
                             <constraint firstItem="E6v-gX-zVB" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="5" identifier="0" id="WUJ-RI-qjA"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="9wf-2U-t0B" secondAttribute="trailing" constant="20" id="XJ8-Pj-91c"/>
                             <constraint firstItem="Gnd-1L-7ms" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="aeD-UU-owO"/>
                             <constraint firstItem="15V-2Q-N0J" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="bJM-6S-urK"/>
                             <constraint firstItem="15V-2Q-N0J" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.149836" id="izE-Yr-NOf"/>
@@ -180,6 +191,7 @@
                             <constraint firstItem="bWf-Bn-m6K" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="rsV-CY-S1d"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="mml-AJ-Efh" secondAttribute="trailing" constant="20" id="vrP-0l-v1U"/>
                             <constraint firstItem="E6v-gX-zVB" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="xLT-Ax-o8V"/>
+                            <constraint firstItem="9wf-2U-t0B" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="E6v-gX-zVB" secondAttribute="trailing" constant="8" symbolic="YES" id="yGK-KE-q1a"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="15V-2Q-N0J" secondAttribute="trailing" constant="20" id="zI7-Uc-X5M"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -196,6 +208,68 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="135.19999999999999" y="136.69950738916256"/>
+        </scene>
+        <!--Information View Controller-->
+        <scene sceneID="BaB-CD-uPE">
+            <objects>
+                <viewController id="ZYo-yP-f0O" customClass="InformationViewController" customModule="WeatherAppWithStoryboard" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GKi-la-aEM">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QFV-15-idN">
+                                <rect key="frame" x="20" y="10" width="54" height="30"/>
+                                <state key="normal" title="Zamknij"/>
+                                <connections>
+                                    <action selector="closeView:" destination="ZYo-yP-f0O" eventType="touchUpInside" id="fhA-tq-vb1"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="dbf-yW-Ubd">
+                                <rect key="frame" x="20" y="235.66666666666669" width="374" height="552.33333333333326"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SFU-wb-CYH">
+                                <rect key="frame" x="20" y="63.666666666666657" width="374" height="122"/>
+                                <string key="text">Weather to aplikacja mobilna wyświetlająca prognozę pogody na podstawie danych pochodzących z serwisu OpenWeatherMap. W aplikacji wykorzystano biblioteki open source Alamofire i Toast-Swift. Tutaj znajdziesz informacje o ich licencjach.</string>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Informacje" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lr0-SX-4za">
+                                <rect key="frame" x="143.66666666666666" y="10" width="126.66666666666666" height="33.666666666666664"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Lr0-SX-4za" firstAttribute="centerX" secondItem="bvR-sr-lLG" secondAttribute="centerX" id="3JT-Te-IVl"/>
+                            <constraint firstItem="dbf-yW-Ubd" firstAttribute="leading" secondItem="bvR-sr-lLG" secondAttribute="leading" constant="20" id="Cjt-xq-CP6"/>
+                            <constraint firstItem="bvR-sr-lLG" firstAttribute="bottom" secondItem="dbf-yW-Ubd" secondAttribute="bottom" constant="20" id="E0B-O5-9zh"/>
+                            <constraint firstItem="QFV-15-idN" firstAttribute="leading" secondItem="bvR-sr-lLG" secondAttribute="leading" constant="20" id="JeK-NI-poG"/>
+                            <constraint firstItem="Lr0-SX-4za" firstAttribute="top" secondItem="bvR-sr-lLG" secondAttribute="top" constant="10" id="Q44-Ce-MA6"/>
+                            <constraint firstItem="SFU-wb-CYH" firstAttribute="leading" secondItem="bvR-sr-lLG" secondAttribute="leading" constant="20" id="YHo-v9-2Sk"/>
+                            <constraint firstItem="bvR-sr-lLG" firstAttribute="trailing" secondItem="dbf-yW-Ubd" secondAttribute="trailing" constant="20" id="d1M-B6-bAu"/>
+                            <constraint firstItem="bvR-sr-lLG" firstAttribute="trailing" secondItem="SFU-wb-CYH" secondAttribute="trailing" constant="20" id="eeW-6T-UHp"/>
+                            <constraint firstItem="SFU-wb-CYH" firstAttribute="top" secondItem="Lr0-SX-4za" secondAttribute="bottom" constant="20" id="kXa-Rf-tMk"/>
+                            <constraint firstItem="dbf-yW-Ubd" firstAttribute="top" secondItem="SFU-wb-CYH" secondAttribute="bottom" constant="50" id="rmp-rW-T4l"/>
+                            <constraint firstItem="QFV-15-idN" firstAttribute="top" secondItem="bvR-sr-lLG" secondAttribute="top" constant="10" id="tft-66-Acb"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="bvR-sr-lLG"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="W65-Ch-JkT"/>
+                    <connections>
+                        <outlet property="licences" destination="dbf-yW-Ubd" id="I8K-zy-57F"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cV2-OQ-XSR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="134.78260869565219" y="794.86607142857144"/>
         </scene>
         <!--Favorites Table View Controller-->
         <scene sceneID="S5g-2D-OPG">
