@@ -77,10 +77,10 @@
             </objects>
             <point key="canvasLocation" x="750" y="360"/>
         </scene>
-        <!--View Controller-->
+        <!--Sign In View Controller-->
         <scene sceneID="XR3-iI-96E">
             <objects>
-                <viewController storyboardIdentifier="SignInViewController" id="wEm-fa-tqH" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignInViewController" id="wEm-fa-tqH" customClass="SignInViewController" customModule="InstagramLikeApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Wyc-lM-ssy">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -88,6 +88,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vaz-Z6-eOG">
                                 <rect key="frame" x="81" y="438" width="252" height="30"/>
                                 <state key="normal" title="Zaloguj się za pomocą adresu e-mail"/>
+                                <connections>
+                                    <action selector="singInWithEmail:" destination="wEm-fa-tqH" eventType="touchUpInside" id="Ra0-u5-4hd"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="InstagramLikeApp" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="68a-yu-bCB">
                                 <rect key="frame" x="20" y="74" width="374" height="34"/>
