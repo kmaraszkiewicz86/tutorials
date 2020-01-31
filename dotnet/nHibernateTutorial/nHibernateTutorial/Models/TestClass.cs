@@ -1,4 +1,4 @@
-﻿namespace nHibernateTutorial
+﻿namespace nHibernateTutorial.Models
 {
     class TestClass
     {
