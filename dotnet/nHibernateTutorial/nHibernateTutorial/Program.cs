@@ -13,6 +13,8 @@ namespace nHibernateTutorial
 
         static void Main(string[] args)
         {
+            log4net.Config.XmlConfigurator.Configure();
+
             switch (_type)
             {
                 case NHibernateConfigType.cfgXml:
@@ -33,6 +35,11 @@ namespace nHibernateTutorial
             }
 
             Console.WriteLine("Nhibernate configured!");
+
+            Console.Write("Log4Net testing configuration");
+
+            Log4NetExample.DoTestThing();
+
             Console.ReadKey();
         }
     }
