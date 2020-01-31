@@ -9,3 +9,7 @@ ios/InstagramLikeApp/WithStoryboard/Pods/.DS_Store
 ios/WeatherApp/.DS_Store
 ios/Wendercast/WenderCast-Finished/.DS_Store
 ios/Wendercast/WenderCast-Starter/.DS_Store
+ios/InstagramLikeApp/WithStoryboard/Pods/
+ios/InstagramLikeApp/WithStoryboard/Podfile.lock
+ios/WeatherApp/WeatherAppWithStoryboard/Pods/
+ios/WeatherApp/WeatherAppWithStoryboard/Podfile.lock
