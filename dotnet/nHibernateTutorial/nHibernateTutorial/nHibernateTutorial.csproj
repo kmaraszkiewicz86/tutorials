@@ -61,7 +61,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Core\NHibernateInitilization.cs" />
-    <Compile Include="TestClass.cs" />
+    <Compile Include="Models\TestClass.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="log4net.config" />
@@ -69,9 +69,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="hibernate.cfg.xml">
+    <None Include="hibernate.cfg.xml_back">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    </None>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
