@@ -8,15 +8,71 @@
 
 import UIKit
 import Firebase
+import FirebaseAuthUI
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, FUIAuthDelegate {
 
-
+    var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
+        
+        let nc = NotificationCenter.default
+        nc.addObserver(forName: Notification.Name(rawValue: "userSignedOut"),
+                       object: nil, queue: nil) { [weak self]
+                        notification in
+                        //TODO: Usunięcie przechowywanych informacji o użytkowniku.
+                        self?.openSignInScreen()
+        }
+        
+        // Obsługa logowania zakończonego sukcesem.
+        let authUI = FUIAuth.defaultAuthUI()
+        authUI?.delegate = self
+        
+        let user = Auth.auth().currentUser
+        if let user = user {
+            save(user: user)
+            self.openMainViewController()
+        }
         return true
+    }
+    
+    func save(user: User) {
+        
+    }
+    
+    func openSignInScreen() {
+        if let signInViewController = self.window?.rootViewController?.storyboard?.instantiateViewController(withIdentifier: "SignInViewController") as? SignInViewController {
+            signInViewController.view.frame = (self.window?.rootViewController?.view.frame)!
+            signInViewController.view.layoutIfNeeded()
+            UIView.transition(with: window!, duration: 0.3, options: .transitionCrossDissolve, animations: {
+                self.window?.rootViewController = signInViewController
+            }) { (completion) in
+                
+            }
+        }
+    }
+    
+    func openMainViewController() {
+        if let rootViewController = self.window?.rootViewController?.storyboard?.instantiateViewController(withIdentifier: "TabBarController") {
+            rootViewController.view.frame = (self.window?.rootViewController?.view.frame)!
+            rootViewController.view.layoutIfNeeded()
+            UIView.transition(with: window!, duration: 0.3, options: .transitionCrossDissolve, animations: {
+                self.window?.rootViewController = rootViewController
+            }) { (completed) in
+                
+            }
+        }
+    }
+    
+    //MARK:- FUIAuthDelegate
+    func authUI(_ authUI: FUIAuth, didSignInWith user: User?, error: Error?) {
+        // Niezbędna obsługa użytkownika i błędów.
+        if let user = user {
+            save(user: user)
+            self.openMainViewController()
+        }
     }
 
     // MARK: UISceneSession Lifecycle
