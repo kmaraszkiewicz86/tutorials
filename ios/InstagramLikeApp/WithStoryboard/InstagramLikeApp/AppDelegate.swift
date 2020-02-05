@@ -12,10 +12,9 @@ import FirebaseAuthUI
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, FUIAuthDelegate {
-
-    var window: UIWindow?
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
         FirebaseApp.configure()
         
         let nc = NotificationCenter.default
@@ -43,11 +42,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, FUIAuthDelegate {
     }
     
     func openSignInScreen() {
-        if let signInViewController = self.window?.rootViewController?.storyboard?.instantiateViewController(withIdentifier: "SignInViewController") as? SignInViewController {
-            signInViewController.view.frame = (self.window?.rootViewController?.view.frame)!
+        
+        let window = UIApplication.shared.windows.first
+        
+        if let signInViewController = window?.rootViewController?.storyboard?.instantiateViewController(withIdentifier: "SignInViewController") as? SignInViewController {
+            signInViewController.view.frame = (window?.rootViewController?.view.frame)!
             signInViewController.view.layoutIfNeeded()
             UIView.transition(with: window!, duration: 0.3, options: .transitionCrossDissolve, animations: {
-                self.window?.rootViewController = signInViewController
+                window?.rootViewController = signInViewController
             }) { (completion) in
                 
             }
@@ -55,11 +57,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, FUIAuthDelegate {
     }
     
     func openMainViewController() {
-        if let rootViewController = self.window?.rootViewController?.storyboard?.instantiateViewController(withIdentifier: "TabBarController") {
-            rootViewController.view.frame = (self.window?.rootViewController?.view.frame)!
+        
+        let window = UIApplication.shared.windows.first
+        
+        if let rootViewController = window?.rootViewController?.storyboard?.instantiateViewController(withIdentifier: "TabBarController") {
+            rootViewController.view.frame = (window?.rootViewController?.view.frame)!
             rootViewController.view.layoutIfNeeded()
             UIView.transition(with: window!, duration: 0.3, options: .transitionCrossDissolve, animations: {
-                self.window?.rootViewController = rootViewController
+                window?.rootViewController = rootViewController
             }) { (completed) in
                 
             }

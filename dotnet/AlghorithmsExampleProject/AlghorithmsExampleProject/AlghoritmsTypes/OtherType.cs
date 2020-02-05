@@ -6,6 +6,13 @@ namespace AlghorithmsExampleProject.AlghoritmsTypes
     {
         /// <summary>
         /// Najmniejszy Wspolny Dzielnik
+        /// <code>
+        ///    100 % 75
+        ///     1. a = 100 b = 75
+        ///     2. a = 75 b = 25
+        ///     3. a = 25 b = 0
+        ///     4. returns 25
+        /// </code>
         /// </summary>
         /// <param name="a"></param>
         /// <param name="b"></param>
@@ -24,9 +31,9 @@ namespace AlghorithmsExampleProject.AlghoritmsTypes
                 return new List<long>();
 
             if (length == 1)
-                return new List<long>(new long[] { 1 });
+                return new List<long>(new long[] {1});
 
-            var list = new List<long>(new long[] { 1, 1 });
+            var list = new List<long>(new long[] {1, 1});
 
             for (int index = 2; index < length; index++)
             {
@@ -47,9 +54,9 @@ namespace AlghorithmsExampleProject.AlghoritmsTypes
                     return new List<long>();
 
                 if (arrayLength == 1)
-                    return new List<long>(new long[] { 1 });
+                    return new List<long>(new long[] {1});
 
-                array = new List<long>(new long[] { 1, 1 });
+                array = new List<long>(new long[] {1, 1});
                 arrayLength -= 2;
             }
             else
