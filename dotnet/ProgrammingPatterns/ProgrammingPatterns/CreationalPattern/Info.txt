@@ -1,0 +1,2 @@
+Wzorce konstrukcyjne (kreacyjne) pozwalaja w sposob abstrakcyjny tworzyc i konfigurowac obiekty w celu ich
+wielokrotnego uzycia i zachowania niezaleznosci systemu od sposobu ich tworzenia
