@@ -1,4 +1,5 @@
 ﻿using System;
+using MyFirstEFApp.Core;
 
 namespace MyFirstEFApp
 {
@@ -6,7 +7,7 @@ namespace MyFirstEFApp
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Service.ShowAllBooks();
         }
     }
 }
