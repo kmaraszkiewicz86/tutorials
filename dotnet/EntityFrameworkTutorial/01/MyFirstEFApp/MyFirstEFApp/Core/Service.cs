@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using MyFirstEFApp.Models;
@@ -26,6 +27,25 @@ namespace MyFirstEFApp.Core
                                       $". {webUrl}");
                 }
             }
+        }
+
+        public static void ChangeWebURL()
+        {
+            Console.Write("New Quantum Networking WebUrl > ");
+            var newWebUrl = Console.ReadLine();
+
+            using (var db = new AppDbContext())
+            {
+                var book = db.Books
+                    .Include(a => a.Author)   
+                    .Single(b => b.Title == "O tym jednym co sie zesral");
+                
+                book.Author.WebUrl = newWebUrl;
+                db.SaveChanges();
+                Console.WriteLine("... SavedChanges called.");
+            }
+            
+            ShowAllBooks();
         }
     }
 }

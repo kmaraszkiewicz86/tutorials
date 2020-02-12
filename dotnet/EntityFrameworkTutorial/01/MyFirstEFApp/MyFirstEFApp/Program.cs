@@ -8,6 +8,8 @@ namespace MyFirstEFApp
         static void Main(string[] args)
         {
             Service.ShowAllBooks();
+            
+            Service.ChangeWebURL();
         }
     }
 }
