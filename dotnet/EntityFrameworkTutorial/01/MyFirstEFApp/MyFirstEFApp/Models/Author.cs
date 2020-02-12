@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace MyFirstEFApp.Models
 {
     public class Author
@@ -7,5 +9,7 @@ namespace MyFirstEFApp.Models
         public string Name { get; set; }
 
         public string WebUrl { get; set; }
+
+        public ICollection<BookAuthor> BookAuthors { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace MyFirstEFApp.Models
 {
@@ -12,8 +13,18 @@ namespace MyFirstEFApp.Models
 
         public DateTime PublishedOn { get; set; }
 
-        public int AuthorId { get; set; }
+        public string Pulblisher { get; set; }
 
-        public Author Author { get; set; }
+        public decimal Price { get; set; }
+
+        public string ImageUrl { get; set; }
+        
+        public ICollection<BookAuthor> BookAuthors { get; set; }
+
+        public ICollection<Review> Reviews { get; set; }
+
+        public int PriceOfferId { get; set; }
+
+        public PriceOffer PriceOffer { get; set; }
     }
 }
