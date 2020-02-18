@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace MyFirstEFApp.Models
 {
     public class PriceOffer
@@ -9,7 +11,5 @@ namespace MyFirstEFApp.Models
         public string PromotionalText { get; set; }
 
         public int BookId { get; set; }
-
-        public Book Book { get; set; }
     }
 }

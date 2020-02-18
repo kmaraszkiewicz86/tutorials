@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace MyFirstEFApp.Models
 {
     public class Review
@@ -11,7 +13,5 @@ namespace MyFirstEFApp.Models
         public string Comment { get; set; }
 
         public int BookId { get; set; }
-        
-        public Book Book { get; set; }
     }
 }

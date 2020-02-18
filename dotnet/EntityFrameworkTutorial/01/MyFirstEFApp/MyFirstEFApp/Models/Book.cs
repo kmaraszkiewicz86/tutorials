@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MyFirstEFApp.Models
 {
@@ -22,9 +23,10 @@ namespace MyFirstEFApp.Models
         public ICollection<BookAuthor> BookAuthors { get; set; }
 
         public ICollection<Review> Reviews { get; set; }
-
+        
         public int PriceOfferId { get; set; }
 
+        [ForeignKey("PriceOfferId")]
         public PriceOffer PriceOffer { get; set; }
     }
 }
