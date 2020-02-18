@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyFirstEFApp.Core;
 
 namespace MyFirstEFApp.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200218202400_init")]
+    partial class init
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -93,7 +95,7 @@ namespace MyFirstEFApp.Migrations
                             ImageUrl = "brak",
                             Price = 1m,
                             PriceOfferId = 1,
-                            PublishedOn = new DateTime(2020, 2, 18, 22, 4, 59, 892, DateTimeKind.Local).AddTicks(2600),
+                            PublishedOn = new DateTime(2020, 2, 18, 21, 24, 0, 168, DateTimeKind.Local).AddTicks(7370),
                             Pulblisher = "test1",
                             Title = "test1"
                         },
@@ -104,7 +106,7 @@ namespace MyFirstEFApp.Migrations
                             ImageUrl = "brak",
                             Price = 2m,
                             PriceOfferId = 2,
-                            PublishedOn = new DateTime(2020, 2, 18, 22, 4, 59, 896, DateTimeKind.Local).AddTicks(6240),
+                            PublishedOn = new DateTime(2020, 2, 18, 21, 24, 0, 172, DateTimeKind.Local).AddTicks(9150),
                             Pulblisher = "test2",
                             Title = "test2"
                         });
@@ -123,9 +125,6 @@ namespace MyFirstEFApp.Migrations
                     b.Property<int>("BookId")
                         .HasColumnType("int");
 
-                    b.Property<byte>("Order")
-                        .HasColumnType("tinyint");
-
                     b.HasKey("BookAuthorId");
 
                     b.HasIndex("AuthorId");
@@ -139,15 +138,13 @@ namespace MyFirstEFApp.Migrations
                         {
                             BookAuthorId = 1,
                             AuthorId = 1,
-                            BookId = 1,
-                            Order = (byte)116
+                            BookId = 1
                         },
                         new
                         {
                             BookAuthorId = 2,
                             AuthorId = 2,
-                            BookId = 2,
-                            Order = (byte)116
+                            BookId = 2
                         });
                 });
 

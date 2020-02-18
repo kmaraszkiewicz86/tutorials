@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Linq;
-using Microsoft.EntityFrameworkCore;
 using MyFirstEFApp.Core;
-using MyFirstEFApp.Models;
+using MyFirstEFApp.Extensions;
 
 namespace MyFirstEFApp
 {
@@ -10,30 +8,18 @@ namespace MyFirstEFApp
     {
         static void Main(string[] args)
         {
-            using var client = new AppDbContext();
-            var book = client.Books.First();
+            QueryExamples.Execute();
 
-            client.Entry(book).Collection(b => b.BookAuthors).Load();
-
-            foreach (var bookAuthor in book.BookAuthors)
+            using (var client = new AppDbContext())
             {
-                client.Entry(bookAuthor).Reference(b => b.Author).Load();
+                var books = client.Books.MapBookToDto();
+
+                foreach (var book in books)
+                {
+                    Console.Write(book.Title);
+                }
             }
-
-            client.Entry(book).Collection(b => b.Reviews).Load();
-
-            client.Entry(book).Reference(b => b.PriceOffer).Load();
-
-            var result = client.Books
-                .Select(p => new
-                    {
-                        p.Title,
-                        p.Price,
-                        NumReviews
-                            = p.Reviews.Count,
-                    }
-                ).First();
-
+            
             Console.ReadKey();
         }
     }

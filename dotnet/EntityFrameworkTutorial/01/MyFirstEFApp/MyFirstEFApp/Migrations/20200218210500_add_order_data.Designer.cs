@@ -10,8 +10,8 @@ using MyFirstEFApp.Core;
 namespace MyFirstEFApp.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20200212223302_initial")]
-    partial class initial
+    [Migration("20200218210500_add_order_data")]
+    partial class add_order_data
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -37,6 +37,20 @@ namespace MyFirstEFApp.Migrations
                     b.HasKey("AuthorId");
 
                     b.ToTable("Authors");
+
+                    b.HasData(
+                        new
+                        {
+                            AuthorId = 1,
+                            Name = "Test1",
+                            WebUrl = "http://www.test1.pl"
+                        },
+                        new
+                        {
+                            AuthorId = 2,
+                            Name = "test2",
+                            WebUrl = "http://test2.pl"
+                        });
                 });
 
             modelBuilder.Entity("MyFirstEFApp.Models.Book", b =>
@@ -72,6 +86,30 @@ namespace MyFirstEFApp.Migrations
                     b.HasIndex("PriceOfferId");
 
                     b.ToTable("Books");
+
+                    b.HasData(
+                        new
+                        {
+                            BookId = 1,
+                            Description = "test1",
+                            ImageUrl = "brak",
+                            Price = 1m,
+                            PriceOfferId = 1,
+                            PublishedOn = new DateTime(2020, 2, 18, 22, 4, 59, 892, DateTimeKind.Local).AddTicks(2600),
+                            Pulblisher = "test1",
+                            Title = "test1"
+                        },
+                        new
+                        {
+                            BookId = 2,
+                            Description = "test2",
+                            ImageUrl = "brak",
+                            Price = 2m,
+                            PriceOfferId = 2,
+                            PublishedOn = new DateTime(2020, 2, 18, 22, 4, 59, 896, DateTimeKind.Local).AddTicks(6240),
+                            Pulblisher = "test2",
+                            Title = "test2"
+                        });
                 });
 
             modelBuilder.Entity("MyFirstEFApp.Models.BookAuthor", b =>
@@ -87,6 +125,9 @@ namespace MyFirstEFApp.Migrations
                     b.Property<int>("BookId")
                         .HasColumnType("int");
 
+                    b.Property<byte>("Order")
+                        .HasColumnType("tinyint");
+
                     b.HasKey("BookAuthorId");
 
                     b.HasIndex("AuthorId");
@@ -94,6 +135,22 @@ namespace MyFirstEFApp.Migrations
                     b.HasIndex("BookId");
 
                     b.ToTable("BookAuthors");
+
+                    b.HasData(
+                        new
+                        {
+                            BookAuthorId = 1,
+                            AuthorId = 1,
+                            BookId = 1,
+                            Order = (byte)116
+                        },
+                        new
+                        {
+                            BookAuthorId = 2,
+                            AuthorId = 2,
+                            BookId = 2,
+                            Order = (byte)116
+                        });
                 });
 
             modelBuilder.Entity("MyFirstEFApp.Models.PriceOffer", b =>
@@ -115,6 +172,22 @@ namespace MyFirstEFApp.Migrations
                     b.HasKey("PriceOfferId");
 
                     b.ToTable("PriceOffers");
+
+                    b.HasData(
+                        new
+                        {
+                            PriceOfferId = 1,
+                            BookId = 0,
+                            NewPrice = 1m,
+                            PromotionalText = "test1"
+                        },
+                        new
+                        {
+                            PriceOfferId = 2,
+                            BookId = 0,
+                            NewPrice = 2m,
+                            PromotionalText = "test2"
+                        });
                 });
 
             modelBuilder.Entity("MyFirstEFApp.Models.Review", b =>
@@ -141,6 +214,24 @@ namespace MyFirstEFApp.Migrations
                     b.HasIndex("BookId");
 
                     b.ToTable("Reviews");
+
+                    b.HasData(
+                        new
+                        {
+                            ReviewId = 1,
+                            BookId = 1,
+                            Comment = "test1",
+                            NumStars = 5,
+                            VoterName = "test1"
+                        },
+                        new
+                        {
+                            ReviewId = 2,
+                            BookId = 2,
+                            Comment = "test2",
+                            NumStars = 5,
+                            VoterName = "test2"
+                        });
                 });
 
             modelBuilder.Entity("MyFirstEFApp.Models.Book", b =>

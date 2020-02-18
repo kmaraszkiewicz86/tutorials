@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyFirstEFApp.Core;
 
 namespace MyFirstEFApp.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200218210157_alter_add_column_order")]
+    partial class alter_add_column_order
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -93,7 +95,7 @@ namespace MyFirstEFApp.Migrations
                             ImageUrl = "brak",
                             Price = 1m,
                             PriceOfferId = 1,
-                            PublishedOn = new DateTime(2020, 2, 18, 22, 4, 59, 892, DateTimeKind.Local).AddTicks(2600),
+                            PublishedOn = new DateTime(2020, 2, 18, 22, 1, 56, 500, DateTimeKind.Local).AddTicks(7160),
                             Pulblisher = "test1",
                             Title = "test1"
                         },
@@ -104,7 +106,7 @@ namespace MyFirstEFApp.Migrations
                             ImageUrl = "brak",
                             Price = 2m,
                             PriceOfferId = 2,
-                            PublishedOn = new DateTime(2020, 2, 18, 22, 4, 59, 896, DateTimeKind.Local).AddTicks(6240),
+                            PublishedOn = new DateTime(2020, 2, 18, 22, 1, 56, 505, DateTimeKind.Local).AddTicks(2600),
                             Pulblisher = "test2",
                             Title = "test2"
                         });
@@ -140,14 +142,14 @@ namespace MyFirstEFApp.Migrations
                             BookAuthorId = 1,
                             AuthorId = 1,
                             BookId = 1,
-                            Order = (byte)116
+                            Order = (byte)0
                         },
                         new
                         {
                             BookAuthorId = 2,
                             AuthorId = 2,
                             BookId = 2,
-                            Order = (byte)116
+                            Order = (byte)0
                         });
                 });
 

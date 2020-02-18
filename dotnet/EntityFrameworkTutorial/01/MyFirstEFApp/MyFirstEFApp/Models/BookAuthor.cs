@@ -15,5 +15,7 @@ namespace MyFirstEFApp.Models
         
         [ForeignKey("BookId")]
         public Book Book { get; set; }
+
+        public byte Order { get; set; }
     }
 }
