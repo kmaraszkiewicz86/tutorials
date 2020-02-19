@@ -8,7 +8,8 @@ namespace ProgrammingPatterns
         static void Main(string[] args)
         {
             Console.WriteLine("Builder implemnetation");
-            BuilderExample.DoWork();
+            //BuilderExample.DoWork();
+            AbstractFactoryExample.DoWork();
             
             Console.ReadKey();
         }
