@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.EntityFrameworkCore;
 using MyFirstEFApp.Core;
 using MyFirstEFApp.Extensions;
 
@@ -11,7 +12,7 @@ namespace MyFirstEFApp
             QueryExamples.Execute();
 
             using (var client = new AppDbContext())
-            {
+            {   
                 var books = client.Books.MapBookToDto();
 
                 foreach (var book in books)
