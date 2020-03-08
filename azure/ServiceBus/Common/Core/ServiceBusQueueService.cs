@@ -18,6 +18,8 @@ namespace Common.Core
             _queueClient = new QueueClient(ServiceBusConnectionString, queueName);
         }
 
+        #region Send data into queue
+
         public async Task Send(string messageString)
         {
             var message = new Message(Encoding.UTF8.GetBytes(messageString));
@@ -30,6 +32,10 @@ namespace Common.Core
                 throw;
             }
         }
+
+        #endregion
+
+        #region Received data from queue
 
         public async Task ReciveMessages()
         {
@@ -73,6 +79,8 @@ namespace Common.Core
 
             return Task.CompletedTask;
         }
+
+        #endregion
 
         public async Task Close()
         {
