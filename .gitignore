@@ -41,3 +41,12 @@ angular/anuglar-tutorial/node_modules/
 azure/AzureStorageTutorial/.vs/
 azure/AzureStorageTutorial/bin/
 azure/AzureStorageTutorial/obj/
+azure/ServiceBus/Common/bin/
+azure/ServiceBus/Common/obj/
+azure/ServiceBus/PrivateMessageReceiver/bin/
+azure/ServiceBus/PrivateMessageReceiver/obj/
+azure/ServiceBus/PrivateMessageReceiver/.vs/
+azure/ServiceBus/PrivateMessageSender/PrivateMessageSender/bin/
+azure/ServiceBus/PrivateMessageSender/PrivateMessageSender/obj/
+azure/ServiceBus/PrivateMessageSender/PrivateMessageSender/.vs/
+azure/ServiceBus/PrivateMessageSender/.vs/
