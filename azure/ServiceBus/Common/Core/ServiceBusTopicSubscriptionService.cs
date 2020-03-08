@@ -6,31 +6,15 @@ using Microsoft.Azure.ServiceBus;
 
 namespace Common.Core
 {
-    public class ServiceBusQueueService: ServiceBusBaseService
+    public class ServiceBusTopicSubscriptionService : ServiceBusBaseService
     {
-        private QueueClient _queueClient;
+        private SubscriptionClient _subscriptionClient;
 
-        public ServiceBusQueueService(string queueName)
+        public ServiceBusTopicSubscriptionService(string topicName, string subscriptionName)
         {
-            _queueClient = new QueueClient(ServiceBusConnectionString, queueName);
+            _subscriptionClient = new SubscriptionClient(ServiceBusConnectionString, topicName, subscriptionName);
         }
 
-        #region Send data into queue
-
-        public async Task Send(string messageString)
-        {
-            var message = new Message(Encoding.UTF8.GetBytes(messageString));
-            try
-            {
-                await _queueClient.SendAsync(message);
-            }
-            catch
-            {
-                throw;
-            }
-        }
-
-        #endregion
 
         #region Received data from queue
 
@@ -53,7 +37,7 @@ namespace Common.Core
                 MaxConcurrentCalls = 1,
             };
 
-            _queueClient.RegisterMessageHandler(ProcessMessageAsync, messageHandlerOptions);
+            _subscriptionClient.RegisterMessageHandler(ProcessMessageAsync, messageHandlerOptions);
         }
 
         private async Task ProcessMessageAsync(Message message, CancellationToken cancellationToken)
@@ -61,7 +45,7 @@ namespace Common.Core
             Console.WriteLine(
                 $"Received message: SequenceNumber: {message.SystemProperties.SequenceNumber} Body: {Encoding.UTF8.GetString(message.Body)}");
 
-            await _queueClient.CompleteAsync(message.SystemProperties.LockToken);
+            await _subscriptionClient.CompleteAsync(message.SystemProperties.LockToken);
         }
 
         private Task ExceptionReceiverHandler(ExceptionReceivedEventArgs exceptionReceivedEventArgs)
@@ -81,7 +65,7 @@ namespace Common.Core
 
         public async Task Close()
         {
-            await _queueClient.CloseAsync();
+            await _subscriptionClient.CloseAsync();
         }
     }
 }

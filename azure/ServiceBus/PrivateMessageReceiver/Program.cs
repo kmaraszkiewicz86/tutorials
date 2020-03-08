@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Threading.Tasks;
 using Common.Core;
 
 namespace PrivateMessageReceiver
 {
     class Program
     {
-        static async Task Main(string[] args)
+        static void Main(string[] args)
         {
             ServiceBusQueueService serviceBusQueueServiceBus = null;
 
@@ -21,7 +20,7 @@ namespace PrivateMessageReceiver
             }
             finally
             {
-                await serviceBusQueueServiceBus?.Close();
+                serviceBusQueueServiceBus?.Close().GetAwaiter().GetResult();
             }
         }
     }

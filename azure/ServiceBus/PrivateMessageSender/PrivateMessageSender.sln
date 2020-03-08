@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "..\Common\Common.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrivateMessageReceiver", "..\PrivateMessageReceiver\PrivateMessageReceiver.csproj", "{1B0BD930-8B56-4543-B880-FD6C34CF308F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TopicSender", "..\TopicSender\TopicSender.csproj", "{F8ADE44A-7E16-4107-9B8B-1CFBF44D8657}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TopicReceiver", "..\TopicReceiver\TopicReceiver.csproj", "{1923AFA6-500D-4138-ABBB-DA651FD3CB45}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{1B0BD930-8B56-4543-B880-FD6C34CF308F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1B0BD930-8B56-4543-B880-FD6C34CF308F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1B0BD930-8B56-4543-B880-FD6C34CF308F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8ADE44A-7E16-4107-9B8B-1CFBF44D8657}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8ADE44A-7E16-4107-9B8B-1CFBF44D8657}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8ADE44A-7E16-4107-9B8B-1CFBF44D8657}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8ADE44A-7E16-4107-9B8B-1CFBF44D8657}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1923AFA6-500D-4138-ABBB-DA651FD3CB45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1923AFA6-500D-4138-ABBB-DA651FD3CB45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1923AFA6-500D-4138-ABBB-DA651FD3CB45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1923AFA6-500D-4138-ABBB-DA651FD3CB45}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

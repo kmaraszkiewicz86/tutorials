@@ -50,3 +50,9 @@ azure/ServiceBus/PrivateMessageSender/PrivateMessageSender/bin/
 azure/ServiceBus/PrivateMessageSender/PrivateMessageSender/obj/
 azure/ServiceBus/PrivateMessageSender/PrivateMessageSender/.vs/
 azure/ServiceBus/PrivateMessageSender/.vs/
+azure/ServiceBus/TopicReceiver/bin/
+azure/ServiceBus/TopicReceiver/obj/
+azure/ServiceBus/TopicReceiver/.vs/
+azure/ServiceBus/TopicSender/bin/
+azure/ServiceBus/TopicSender/obj/
+azure/ServiceBus/TopicSender/.vs/
