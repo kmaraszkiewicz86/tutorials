@@ -56,3 +56,13 @@ azure/ServiceBus/TopicReceiver/.vs/
 azure/ServiceBus/TopicSender/bin/
 azure/ServiceBus/TopicSender/obj/
 azure/ServiceBus/TopicSender/.vs/
+azure/AzureQueueStorage/QueueApp/bin/
+azure/AzureQueueStorage/QueueApp/obj/
+azure/AzureQueueStorage/QueueApp/.vs/
+azure/AzureQueueStorage/QueueApp/QueueApp/bin/
+azure/AzureQueueStorage/QueueApp/QueueApp/obj/
+azure/AzureQueueStorage/QueueApp/QueueApp/.vs/
+azure/ServiceBus/.vs/
+azure/ServiceBus/PrivateMessageSender/bin/
+azure/ServiceBus/PrivateMessageSender/obj/
+azure/ServiceBus/PrivateMessageSender/.vs/

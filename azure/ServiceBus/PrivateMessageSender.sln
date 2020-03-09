@@ -5,13 +5,13 @@ VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrivateMessageSender", "PrivateMessageSender\PrivateMessageSender.csproj", "{0BB2451D-4BCB-4722-9F4A-7FD0E5F72380}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "..\Common\Common.csproj", "{4B68D99C-3871-4CA4-8456-C5B1B7583D0C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", ".\Common\Common.csproj", "{4B68D99C-3871-4CA4-8456-C5B1B7583D0C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrivateMessageReceiver", "..\PrivateMessageReceiver\PrivateMessageReceiver.csproj", "{1B0BD930-8B56-4543-B880-FD6C34CF308F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrivateMessageReceiver", ".\PrivateMessageReceiver\PrivateMessageReceiver.csproj", "{1B0BD930-8B56-4543-B880-FD6C34CF308F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TopicSender", "..\TopicSender\TopicSender.csproj", "{F8ADE44A-7E16-4107-9B8B-1CFBF44D8657}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TopicSender", ".\TopicSender\TopicSender.csproj", "{F8ADE44A-7E16-4107-9B8B-1CFBF44D8657}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TopicReceiver", "..\TopicReceiver\TopicReceiver.csproj", "{1923AFA6-500D-4138-ABBB-DA651FD3CB45}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TopicReceiver", ".\TopicReceiver\TopicReceiver.csproj", "{1923AFA6-500D-4138-ABBB-DA651FD3CB45}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
