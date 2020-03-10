@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1, 
+  "version": 1,
   "newProjectRoot": "projects",
   "projects": {
     "angular-testing": {
@@ -24,9 +24,12 @@
               "src/assets"
             ],
             "styles": [
+              "src/styles/bulma.min.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/scripts/all.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -88,9 +91,12 @@
               "src/assets"
             ],
             "styles": [
+              "src/styles/bulma.min.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/scripts/all.js"
+            ]
           }
         },
         "lint": {
