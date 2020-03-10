@@ -28,7 +28,8 @@
               "src/styles.css"
             ],
             "scripts": [
-              "src/scripts/all.js"
+              "src/scripts/all.js",
+              "node_modules/jquery/dist/jquery.min.js"
             ]
           },
           "configurations": {
@@ -95,6 +96,7 @@
               "src/styles.css"
             ],
             "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
               "src/scripts/all.js"
             ]
           }
