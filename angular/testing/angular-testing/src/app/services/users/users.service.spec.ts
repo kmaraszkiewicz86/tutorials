@@ -1,19 +1,20 @@
 import { TestBed } from '@angular/core/testing';
+import { of } from 'rxjs';
 
 import { UsersService } from './users.service';
 
 describe('UsersService', () => {
-  let service: UsersService;
+  let usersService: UsersService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [UsersService]
     });
-    service = TestBed.get(UsersService);
+    usersService = TestBed.get(UsersService);
   });
 
   it('should be created', () => {
-    expect(service).toBeTruthy();
+    expect(usersService).toBeTruthy();
   });
 
   describe('all', () => {
@@ -32,6 +33,39 @@ describe('UsersService', () => {
           pokemon: 'Charizard'
         }
       ];
+
+      let response;
+
+      spyOn(usersService, 'all').and.returnValue(of(userResponse));
+
+      usersService.all().subscribe(res => {
+        response = res;
+      });
+
+      expect(response).toEqual(userResponse);
     })
   });
+
+  describe('findOne', () => {
+
+    it('should return a single user', () => {
+      let user = {
+        id: '1',
+          name: 'Jane',
+          role: 'Designer',
+          pokemon: 'Blastoise'
+      }
+
+      let response;
+
+      spyOn(usersService, 'findOne').and.returnValue(of(user));
+
+      usersService.findOne(user.id).subscribe(res => {
+        response = res;
+      });
+
+      expect(response).toEqual(user);
+    })
+  });
+
 });
