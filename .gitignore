@@ -66,3 +66,11 @@ azure/ServiceBus/.vs/
 azure/ServiceBus/PrivateMessageSender/bin/
 azure/ServiceBus/PrivateMessageSender/obj/
 azure/ServiceBus/PrivateMessageSender/.vs/
+SingnalR/UI/node_modules/
+SingnalR/.DS_Store
+SingnalR/UI/package-lock.json
+SingnalR/WebAPI/RealTimeCharts_Server/.vs
+SingnalR/WebAPI/RealTimeCharts_Server/obj
+SingnalR/WebAPI/RealTimeCharts_Server/RealTimeCharts_Server/obj/
+SingnalR/WebAPI/RealTimeCharts_Server/RealTimeCharts_Server/bin/
+.DS_Store
