@@ -75,3 +75,9 @@ SingnalR/WebAPI/RealTimeCharts_Server/RealTimeCharts_Server/obj/
 SingnalR/WebAPI/RealTimeCharts_Server/RealTimeCharts_Server/bin/
 .DS_Store
 SingnalR/UI/.vscode/
+RabbitMQ/ReceiverApp/.vs/
+RabbitMQ/SenderApp/.vs/
+RabbitMQ/SenderApp/SenderApp/bin/
+RabbitMQ/SenderApp/SenderApp/obj/
+RabbitMQ/ReceiverApp/ReceiverApp/bin/
+RabbitMQ/ReceiverApp/ReceiverApp/obj/
