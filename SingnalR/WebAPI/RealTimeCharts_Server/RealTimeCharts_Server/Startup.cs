@@ -1,15 +1,9 @@
- change using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+using RealTimeCharts_Server.HubConfig;
 
 namespace RealTimeCharts_Server
 {
@@ -29,9 +23,9 @@ namespace RealTimeCharts_Server
             {
                 options.AddPolicy("CorsPolicy", builder => builder
                     .WithOrigins("http://localhost:4200")
+                    .AllowAnyMethod()
                     .AllowAnyHeader()
-                    .AllowAnyHeader()
-                    .AllowCredentials();
+                    .AllowCredentials());
             });
 
             services.AddSignalR();
@@ -45,6 +39,7 @@ namespace RealTimeCharts_Server
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseStatusCodePages();
             }
 
             app.UseHttpsRedirection();
@@ -58,6 +53,7 @@ namespace RealTimeCharts_Server
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHub<ChartHub>("/chart");
             });
         }
     }
