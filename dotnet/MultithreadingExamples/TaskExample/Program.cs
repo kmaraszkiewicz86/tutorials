@@ -37,6 +37,7 @@ namespace TaskExample
                                   Task.CurrentId, taskData,
                                    Thread.CurrentThread.ManagedThreadId);
             });
+
             // Wait for the task to finish.
             t3.Wait();
 

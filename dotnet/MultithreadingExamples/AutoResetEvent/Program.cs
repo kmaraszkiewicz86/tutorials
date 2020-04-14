@@ -3,6 +3,19 @@ using System.Threading;
 
 namespace AutoResetEventExample
 {
+    /*Poniższy przykład pokazuje, jak używać AutoResetEvent do zwalniania
+    jednego wątku naraz, wywołując metodę Set(w klasie bazowej) przy każdym
+    naciśnięciu klawisza Enter.Przykład uruchamia trzy wątki, które oczekują
+    na AutoResetEvent, który został utworzony w stanie zasygnalizować.Pierwszy
+    wątek jest wydawany natychmiast, ponieważ AutoResetEvent jest już w stanie
+    zasygnalizować.Spowoduje to zresetowanie AutoResetEvent stanu
+    niesygnalizowanego, tak aby kolejne wątki blokowały.Zablokowane wątki nie
+    są zwalniane, dopóki użytkownik ich nie zwolni pojedynczo przez naciśnięcie
+    klawisza Enter. Po wydaniu wątków z pierwszej AutoResetEventczekają na inną
+    AutoResetEvent, która została utworzona w stanie niesygnalizującym.
+    Wszystkie trzy wątki blokują, dlatego Metoda Set musi być wywoływana trzy
+    razy, aby zwolnić wszystkie.*/
+
     class Program
     {
         private static AutoResetEvent event_1 = new AutoResetEvent(true);
