@@ -81,3 +81,6 @@ RabbitMQ/SenderApp/SenderApp/bin/
 RabbitMQ/SenderApp/SenderApp/obj/
 RabbitMQ/ReceiverApp/ReceiverApp/bin/
 RabbitMQ/ReceiverApp/ReceiverApp/obj/
+Sql/dotnetExample/EntityFrameworkExample/.vs/
+Sql/dotnetExample/EntityFrameworkExample/EntityFrameworkExample/bin/
+Sql/dotnetExample/EntityFrameworkExample/EntityFrameworkExample/obj/
