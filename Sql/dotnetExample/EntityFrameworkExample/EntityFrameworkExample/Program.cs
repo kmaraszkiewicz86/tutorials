@@ -8,13 +8,15 @@ namespace EntityFrameworkExample
 {
     class Program
     {
-        static IEnumerable<IJoinService> Services;
+        static IEnumerable<IJoinServiceFactory> Services;
 
-        static void GenerateListOfClasses(AppDbContext db)
+        static void GenerateListOfClasses()
         {
-            Services = new List<IJoinService>
+            Services = new List<IJoinServiceFactory>
             {
-                new InnerJoinServiceFactory().CreateBaseJoinService(db)
+                new InnerJoinServiceFactory(),
+                new LeftJoinServiceFactory(),
+                //new RightJoinServiceFactory(),
             };
         }
 
@@ -22,16 +24,18 @@ namespace EntityFrameworkExample
         {
             using (var db = new AppDbContextFactory().CreateDbContext(new string[] { }))
             {
-                GenerateListOfClasses(db);
+                GenerateListOfClasses();
 
                 foreach(var service in Services)
                 {
+                    var client = service.CreateBaseJoinService(db);
+
                     Console.WriteLine("=====================================");
-                    Console.WriteLine($"Running {service.GetType().FullName}");
+                    Console.WriteLine($"Running {client.GetType().FullName}");
                     Console.WriteLine("=====================================");
 
-                    service.Query();
-                    service.Print();
+                    client.Query();
+                    client.Print();
 
                     Console.WriteLine("=====================================");
                 }

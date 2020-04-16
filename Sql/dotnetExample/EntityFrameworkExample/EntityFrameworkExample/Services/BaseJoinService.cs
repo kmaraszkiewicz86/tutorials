@@ -14,6 +14,10 @@ namespace EntityFrameworkExample.Services
         }
 
         public abstract void Query();
-        public abstract void Print();
+
+        public void Print()
+        {
+            _tableWriter.Print();
+        }
     }
 }

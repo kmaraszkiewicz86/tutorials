@@ -166,6 +166,30 @@ namespace EntityFrameworkExample.Migrations
                             Id = 10,
                             Name = "Offer3.1",
                             ParentId = 3
+                        },
+                        new
+                        {
+                            Id = 11,
+                            CustomerId = 8,
+                            Name = "Offer4"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            CustomerId = 8,
+                            Name = "Offer4"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            CustomerId = 8,
+                            Name = "Offer4"
+                        },
+                        new
+                        {
+                            Id = 14,
+                            CustomerId = 8,
+                            Name = "Offer4"
                         });
                 });
 

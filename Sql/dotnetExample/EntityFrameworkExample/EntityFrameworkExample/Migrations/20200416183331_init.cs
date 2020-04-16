@@ -78,6 +78,10 @@ namespace EntityFrameworkExample.Migrations
                     { 5, 6, "Offer4", null },
                     { 6, 7, "Offer4", null },
                     { 7, 8, "Offer4", null },
+                    { 11, 8, "Offer4", null },
+                    { 12, 8, "Offer4", null },
+                    { 13, 8, "Offer4", null },
+                    { 14, 8, "Offer4", null },
                     { 8, null, "Offer1.1", 1 }
                 });
 

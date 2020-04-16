@@ -29,7 +29,6 @@ namespace EntityFrameworkExample.Services
             }
 
             PrintLine();
-            Console.ReadLine();
         }
     }
 }

@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EntityFrameworkExample.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20200415215515_init")]
+    [Migration("20200416183331_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -168,6 +168,30 @@ namespace EntityFrameworkExample.Migrations
                             Id = 10,
                             Name = "Offer3.1",
                             ParentId = 3
+                        },
+                        new
+                        {
+                            Id = 11,
+                            CustomerId = 8,
+                            Name = "Offer4"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            CustomerId = 8,
+                            Name = "Offer4"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            CustomerId = 8,
+                            Name = "Offer4"
+                        },
+                        new
+                        {
+                            Id = 14,
+                            CustomerId = 8,
+                            Name = "Offer4"
                         });
                 });
 

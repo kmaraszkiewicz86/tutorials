@@ -34,7 +34,11 @@ namespace EntityFrameworkExample.Core
             new Offer(7, "Offer4", 8, null),
             new Offer(8, "Offer1.1", null, 1),
             new Offer(9, "Offer2.1", null, 2),
-            new Offer(10, "Offer3.1", null, 3)
+            new Offer(10, "Offer3.1", null, 3),
+            new Offer(11, "Offer4", 8, null),
+            new Offer(12, "Offer4", 8, null),
+            new Offer(13, "Offer4", 8, null),
+            new Offer(14, "Offer4", 8, null),
         };
 
         public AppDbContext(DbContextOptions options) : base(options)
