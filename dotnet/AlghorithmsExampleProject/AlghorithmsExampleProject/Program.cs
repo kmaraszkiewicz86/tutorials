@@ -15,8 +15,13 @@ namespace AlghorithmsExampleProject
             Console.WriteLine("----------------------------------------------------");
             Console.WriteLine();
             ShowResult($"SmallestSharedDivider -> {SmallestSharedDivider(28, 24)}");
-            ShowResult($"FibonacciAlorithmWithForLoop -> {String.Join(',', FibonacciAlorithmWithForLoop(5))}");
-            ShowResult($"FibonacciAlorithmWithForLoop -> {String.Join(',', FibonacciAlorithmWithRecursion(5))}");
+            ShowResult($"FibonacciAlorithmWithForLoopReturnArray -> {String.Join(',', FibonacciAlorithmWithForLoopReturnArray(5))}");
+            ShowResult($"FibonacciAlorithmWithRecursionReturnArray -> {String.Join(',', FibonacciAlorithmWithRecursionReturnArray(5))}");
+
+            ShowResult($"FibonacciAlorithm -> {String.Join(',', FibonacciAlorithm(5))}");
+            ShowResult($"FibonacciAlorithmRecursion -> {String.Join(',', FibonacciAlorithmRecursion(5))}");
+
+
             ShowResult($"LinearSearch -> {String.Join(',', LinearSearch(20))}");
             ShowResult($"BinarySearch -> {String.Join(',', BinarySearch(20))}");
             ShowResult($"InsertionSort -> {String.Join(',', InsertionSort(20))}");
