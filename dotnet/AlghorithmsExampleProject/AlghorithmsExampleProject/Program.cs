@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using AlghorithmsExampleProject.AlghoritmsTypes;
 using AlghorithmsExampleProject.AlghoritmsTypes.TreeImpl;
+using AlghorithmsExampleProject.Helpers;
 using static AlghorithmsExampleProject.AlghoritmsTypes.OtherType;
 using static AlghorithmsExampleProject.AlghoritmsTypes.SearchType;
 using static AlghorithmsExampleProject.AlghoritmsTypes.SortType;
@@ -12,6 +13,9 @@ namespace AlghorithmsExampleProject
     {
         static void Main(string[] args)
         {
+            SearchType.ArrayHelper = new ArrayHelper();
+            SortType.ArrayHelper = new ArrayHelper();
+
             Console.WriteLine("----------------------------------------------------");
             Console.WriteLine();
             ShowResult($"SmallestSharedDivider -> {SmallestSharedDivider(28, 24)}");

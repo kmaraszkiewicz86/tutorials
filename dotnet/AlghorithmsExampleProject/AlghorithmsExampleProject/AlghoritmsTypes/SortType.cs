@@ -1,13 +1,15 @@
 ﻿using System.Collections.Generic;
-using AlghorithmsExampleProject.Extensions;
+using AlghorithmsExampleProject.Helpers;
 
 namespace AlghorithmsExampleProject.AlghoritmsTypes
 {
     public static class SortType
     {
+        public static IArrayHelper ArrayHelper { get; set; }
+
         public static int[] InsertionSort (int length)
         {
-            var array = length.GenerateRandomLengthOfArray(false, false).array;
+            var array = ArrayHelper.GenerateRandomLengthOfArray(length, false, false).array;
 
             for (var index = 0; index < array.Count; index++)
             {
@@ -30,7 +32,7 @@ namespace AlghorithmsExampleProject.AlghoritmsTypes
 
         public static int[] BubbleSort(int length)
         {
-            var array = length.GenerateRandomLengthOfArray(false, false).array;
+            var array = ArrayHelper.GenerateRandomLengthOfArray(length, false, false).array;
             var shouldContinue = true;
 
             for (var index = 1; index < array.Count && shouldContinue; index++)
@@ -53,7 +55,7 @@ namespace AlghorithmsExampleProject.AlghoritmsTypes
 
         public static int[] QuickSort(int length)
         {
-            var array = length.GenerateRandomLengthOfArray(false, false).array;
+            var array = ArrayHelper.GenerateRandomLengthOfArray(length, false, false).array;
 
             QuickSort(array, 0, array.Count - 1);
 
