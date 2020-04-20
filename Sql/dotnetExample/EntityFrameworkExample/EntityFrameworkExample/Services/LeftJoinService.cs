@@ -36,6 +36,11 @@ namespace EntityFrameworkExample.Services
 
                 Customer customer = customerModels.Single(c => c.Id == row.Customer.Id);
 
+                if (customer.Offers == null)
+                {
+                    customer.Offers = new HashSet<Offer>();
+                }
+
                 if (row.Offer != null)
                 {
                     customer.Offers.Add(row.Offer);

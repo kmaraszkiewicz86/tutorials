@@ -14,7 +14,6 @@ namespace EntityFrameworkExample.Services
 
         public override void Print()
         {
-            Console.Clear();
             PrintLine();
             PrintRow("ParentOfferId", "ParentOffer", "CustomerId", "Customer", "ChildOfferId", "ChildOffer");
             PrintLine();

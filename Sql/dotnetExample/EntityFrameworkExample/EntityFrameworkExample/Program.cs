@@ -16,7 +16,7 @@ namespace EntityFrameworkExample
             {
                 new InnerJoinServiceFactory(),
                 new LeftJoinServiceFactory(),
-                //new RightJoinServiceFactory(),
+                new RightJoinServiceFactory(),
             };
         }
 

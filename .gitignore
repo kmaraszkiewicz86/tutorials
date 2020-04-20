@@ -84,3 +84,6 @@ RabbitMQ/ReceiverApp/ReceiverApp/obj/
 Sql/dotnetExample/EntityFrameworkExample/.vs/
 Sql/dotnetExample/EntityFrameworkExample/EntityFrameworkExample/bin/
 Sql/dotnetExample/EntityFrameworkExample/EntityFrameworkExample/obj/
+wpf/HelloWorldMvvmTutorial/.vs/HelloWorldMvvmTutorial/v16/
+wpf/HelloWorldMvvmTutorial/HelloWorldMvvmTutorial/obj/
+wpf/HelloWorldMvvmTutorial/HelloWorldMvvmTutorial/bin/

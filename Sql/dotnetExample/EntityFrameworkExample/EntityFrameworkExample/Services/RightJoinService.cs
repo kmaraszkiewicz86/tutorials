@@ -19,8 +19,8 @@ namespace EntityFrameworkExample.Services
 
             var result = from customers in _db.Customers
                          join offer in _db.Offers on customers.Id equals offer.CustomerId
-                         into Offer
-                         from o in Offer.DefaultIfEmpty()
+                         into offer
+                         from o in offer.DefaultIfEmpty()
                          select new
                          {
                              Customer = customers,
@@ -29,7 +29,7 @@ namespace EntityFrameworkExample.Services
 
             foreach (var row in result)
             {
-                if (!customerModels.Any(m => m.Id == row.Customer.Id))
+                if (customerModels.All(m => m.Id != row.Customer.Id))
                 {
                     customerModels.Add(row.Customer);
                 }
