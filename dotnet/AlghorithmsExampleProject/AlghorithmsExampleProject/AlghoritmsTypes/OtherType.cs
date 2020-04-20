@@ -102,6 +102,55 @@ namespace AlghorithmsExampleProject.AlghoritmsTypes
             Console.WriteLine();
         }
 
+        public static void CheckIfTextHasValidPairsOfBracketsRecursion()
+        {
+            Console.WriteLine("CheckIfTextHasValidPairsOfBracketsRecursion");
+            Console.WriteLine();
+            Console.WriteLine("----------------------------------------------------");
+            Console.WriteLine();
+
+            var arr = new string[]
+            {
+                "((()))()())))",
+                "()",
+                "(((())))",
+                "()()()((())",
+                "()(())()("
+            };
+
+            foreach (var item in arr)
+            {
+                var total = 0;
+                CheckIfTextHasValidPairsOfBracketsRecursion(item, item.Length - 1, ref total);
+                Console.WriteLine($"In the text {item} has {total == 0} pairs of bracket characters");
+            }
+
+            Console.WriteLine("----------------------------------------------------");
+            Console.WriteLine();
+        }
+
+        public static void CheckIfTextHasValidPairsOfBracketsRecursion(string text, int index, ref int total)
+        {
+            if (index < 0)
+                return;
+
+            switch (text[index])
+            {
+                case '(':
+                    total++;
+                    break;
+
+                case ')':
+                    total--;
+                    break;
+
+                default:
+                    break;
+            }
+
+            CheckIfTextHasValidPairsOfBracketsRecursion(text, index - 1, ref total);
+        }
+
         public static void CheckIfTextHasValidPairsOfBrackets(string text)
         {
             var total = 0;

@@ -1,0 +1,43 @@
+Poziomy izolacji transakcji w SQL Serwerze dzielimy na następujące (między innymi):
+
+READ UNCOMMITTED
+READ COMMITTED
+REPEATABLE READ
+SERIALIZABLE
+Najmniej restrykcyjnym poziomem izolacji transakcji jest READ UNCOMITTED, w nim też występuje największa ilość niepożądanych zjawisk? Ile dokładnie? Trzy. W READ COMMITED występują tylko dwa zjawiska, w REPEATABLE READ – no, ciekawe ile, pewnie jedno. No tak. A w SERIALIZABLE w ogóle nie występują. Tak to sprytnie wymyślili.
+
+Domyślnym poziomem izolacji transakcji w MS SQL Server jest poziom READ COMMITED. Czyli mamy dwa występujące zjawiska. Przedstawia się to następująco:
+
+READ UNCOMMITTED – dirty reads, non-repeatable reads, phantom reads
+READ COMMITTED – non-repeatable reads, phantom reads
+REPEATABLE READ – phantom reads
+SERIALIZABLE
+
+
+
+----------------------------------------------------------------------------------
+
+
+Transakcja to po prostu zbiór komend języka T-SQL (Transact SQL – odmiana języka SQL zaimplementowana w produkcie firmy Microsoft), które to komendy wykonują się po sobie od pierwszej do ostatniej. Na przykład ciąg komend może być taki: Janek dodaje informacje o sprzedanych samochodach, Gosia zmienia cenę samych Trabantów a Michał kasuje te samochody, które zostały wywiezione na złom. Te komendy są wykonywane jedna po drugiej jako ciąg komend, i jako zbiór te komendy mają takie właściwości:
+
+ATOMICITY – są traktowane jako całość, niezależnie od tego czy zmieniają jeden wiersz (wpis), czy tez zmieniają setki miliony wierszy
+CONSISTENCY – dane po zmianie są pozostawione w stanie sensownym, czyli nie skasowaliśmy to co mieliśmy skasować, dodaliśmy co mieliśmy dodać, powiązania pomiędzy danymi zostały zachowane.
+ISOLATION – zmiany zaszły w obrębie transakcji, i nie wpływają na inne transakcje, czyli nie zaburzają ich pracy (tych innych transakcji).
+DURABILITY – po zakończeniu transakcji dane są w stanie permanentnym, czyli są pewne i możliwe do odzyskania nawet wtedy, kiedy by nagle ktoś potknął się o kabel zasilający i wyrwał wtyczkę z gniazdka. Dane w bazie są zapisane.
+
+
+
+-----------------------------------------------------------------------------------
+
+SET TRANSACTION ISOLATION LEVEL [READ UNCOMITTED | READ COMMITTED | REPEATABLE READ | SNAPSHOT | SERIALIZABLE ]
+
+Jak widać, SQL obsługuje więcej poziomów izolacji transakcji, niż zostało to wspomniane wcześniej. W tym poście nie będziemy omawiali wszystkich, ale tylko te najważniejsze.
+
+Przejdźmy do omówienia zjawiskowych fenomenów
+
+DIRTY READS – występuje, kiedy jedna transakcja zmienia dane, ale nie komituje ich (nie zatwierdza), a druga transakcja ma pozwolenie do czytania tych zmienionych danych. Występuje w tym przypadku duża możliwość, że zostaną odczytane niespójne dane.
+Opowieść o biletach – w tym przypadku przytaczałem opowieść o biletach. Załóżmy, że jedna z firm sprzedaje bilety na koncert. Miejsca zostały przyznane i bilety zostały zamówione w drukarni i mają dotrzeć do sklepu sprzedającego te bilety. Rezerwacja została dokonana, bilety w systemie są widoczne. I teraz, jeśli np. pójdziemy do takiego sklepu do jednej z galerii handlowych i powiedzmy, że zarezerwujemy bilety na przedstawienie dla 100 osób, to osoba rezerwująca bilety wpisze nas do systemu rezerwacji ponieważ pula dostępnych miejsc jest widoczna na ekranie komputera. Zadowoleni wracamy do domu. W międzyczasie okazuje się, iż drukarnia spłonęła (albo ktoś ukradł drukowane bilety, albo pula miejsc została przydzielona innym podmiotom), w tym przypadku, cała procedura zamawiania biletów i sprzedaży musi zostać anulowana. A nasze zamówienie nie dochodzi do skutku, bo nie ma czego sprzedawać. Cała transakcja sprzedaży została anulowana, a nasza rezerwacja to było to DIRTY READS całej dużej procedury kupowania biletów.
+NON-REPEATABLE READS – transakcja odczytuje zmienione dane odczytując ten sam zbiór danych w dwóch różnych momentach czasowych podczas trwania tej samej transakcji.
+Opowieść o kwiatkach – przytaczałem taką opowieść. Kiedy byłem mały to na pobliskiej polanie dziewczynki zbierały mlecze (nie wiem jak się fachowo nazywają te żółte kwiatki), aby z nich zrobić wianki. W tym przypadku wyjście na podwórko to jedna wielka transakcja, kończąca się powrotem do domu. W trakcie zabawy pytam dziewczynki – ile zebrałyście kwiatków? I załóżmy, iż każda z nich mi odpowiada ile. Sumarycznie – dajmy na to – zebrały tych kwiatków 200 i z nich chcą zrobić wianki. Kiedy idę wieczorem do domu jeszcze raz pytam koleżanki – ile było tych kwiatków? Biorę wianki i liczę kwiatki – okazuje się, że jednak tych kwiatków zostało użytych więcej – bo jedna dziewczynka musiała w międzyczasie dozbierać kilka, innej się połamały i urwały łodygi przy budowaniu wianka. I w rezultacie ilość użytych kwiatków była inna na początku (założenia), a inna na końcu. Dwa różne rezultaty polecenia SELECT podczas działania tej samej transakcji.
+PHANTOM READS – występuje w transakcjach z predykatem WHERE x <, gdzie odczyt danych w dwóch różnych poleceniach SELECT w tej samej transakcji zwraca różną liczbę wierszy.
+Opowieść o filmach – ten fenomen podobny jest do poprzedniego, ale różnica jest w ilości odczytywanych obiektów i zwracanych wynikach przez te obiekty. W pracy pytam się znajomych – kto ma więcej filmów ode mnie? Ja mam 300 filmów w domu. Okazuje się, że jest 3 kolegów w dziale, którzy mają więcej filmów niż ja. Taką rozmowę odbywamy np. po południu. Cały dzień pracy to transakcja. Pod koniec dnia pracy pytam się jeszcze raz o to samo? To co, kto ma więcej filmów? W tym przypadku przed końcem pracy z obiadu wróciły jeszcze 4 osoby, i okazuje się, że jedna z nich ma również więcej filmów niż ja. W rezultacie to nie 3 a 4 osoby mają więcej ode mnie filmów.
