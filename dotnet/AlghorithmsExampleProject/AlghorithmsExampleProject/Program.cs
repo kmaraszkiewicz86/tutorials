@@ -25,6 +25,8 @@ namespace AlghorithmsExampleProject
             ShowResult($"FibonacciAlorithm -> {String.Join(',', FibonacciAlorithm(5))}");
             ShowResult($"FibonacciAlorithmRecursion -> {String.Join(',', FibonacciAlorithmRecursion(5))}");
 
+            CheckIfTextHasValidPairsOfBrackets();
+
 
             ShowResult($"HashSet Test -> {String.Join(',', HastableTest())}");
             ShowResult($"Stack Test -> {String.Join(' ', StackTest("Dragon ball"))}");

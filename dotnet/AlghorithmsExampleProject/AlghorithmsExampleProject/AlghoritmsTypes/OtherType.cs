@@ -59,9 +59,9 @@ namespace AlghorithmsExampleProject.AlghoritmsTypes
                 return new List<long>();
 
             if (length == 1)
-                return new List<long>(new long[] {0, 1});
+                return new List<long>(new long[] { 0, 1 });
 
-            var list = new List<long>(new long[] {0, 1, 1});
+            var list = new List<long>(new long[] { 0, 1, 1 });
 
             for (int index = 2; index <= length; index++)
             {
@@ -77,12 +77,52 @@ namespace AlghorithmsExampleProject.AlghoritmsTypes
                 return new List<long>();
 
             if (arrayLength == 1)
-                return new List<long>(new long[] {0, 1});
+                return new List<long>(new long[] { 0, 1 });
 
-            var array = new List<long>(new long[] {0, 1, 1});
+            var array = new List<long>(new long[] { 0, 1, 1 });
             arrayLength -= 1;
 
             return FibonacciAlorithmWithRecursionReturnArray(arrayLength, array);
+        }
+
+        public static void CheckIfTextHasValidPairsOfBrackets()
+        {
+            Console.WriteLine("CheckIfTextHasValidPairsOfBrackets");
+            Console.WriteLine();
+            Console.WriteLine("----------------------------------------------------");
+            Console.WriteLine();
+
+            CheckIfTextHasValidPairsOfBrackets("((()))()())))");
+            CheckIfTextHasValidPairsOfBrackets("()");
+            CheckIfTextHasValidPairsOfBrackets("(((())))");
+            CheckIfTextHasValidPairsOfBrackets("()()()((())");
+            CheckIfTextHasValidPairsOfBrackets("()(())()(");
+
+            Console.WriteLine("----------------------------------------------------");
+            Console.WriteLine();
+        }
+
+        public static void CheckIfTextHasValidPairsOfBrackets(string text)
+        {
+            var total = 0;
+            foreach (char character in text)
+            {
+                switch (character)
+                {
+                    case '(':
+                        total++;
+                        break;
+
+                    case ')':
+                        total--;
+                        break;
+
+                    default:
+                        break;
+                }
+            }
+
+            Console.WriteLine($"In the text {text} has {total == 0} pairs of bracket characters");
         }
 
         public static HashSet<int> HastableTest()
