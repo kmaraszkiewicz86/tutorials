@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using AlghorithmsExampleProject.AlghoritmsTypes.TreeImpl;
 
 namespace AlghorithmsExampleProject.AlghoritmsTypes
 {
@@ -83,6 +85,125 @@ namespace AlghorithmsExampleProject.AlghoritmsTypes
             return FibonacciAlorithmWithRecursionReturnArray(arrayLength, array);
         }
 
+        public static HashSet<int> HastableTest()
+        {
+            var hastable = new HashSet<int>();
+            hastable.Add(2);
+            hastable.Add(2);
+            hastable.Add(2);
+            hastable.Add(2);
+            hastable.Add(2);
+            hastable.Add(1);
+            hastable.Add(1);
+            hastable.Add(1);
+            hastable.Add(1);
+
+            return hastable;
+        }
+
+        public static Stack<char> StackTest(string testString)
+        {
+            var stack = new Stack<char>();
+
+            var invertedText = InvertText(testString);
+
+            if (string.IsNullOrWhiteSpace(invertedText))
+                return stack;
+
+            Console.WriteLine($"Adding testing characters into stack from inverted string => {invertedText}");
+
+            foreach (var character in invertedText)
+            {
+                stack.Push(character);
+            }
+
+            return stack;
+        }
+
+        public static Queue<char> QueueTest(string testString)
+        {
+            var queue = new Queue<char>();
+
+            var invertedText = InvertText(testString);
+
+            if (string.IsNullOrWhiteSpace(invertedText))
+                return queue;
+
+            Console.WriteLine($"Adding testing characters into Queue from inverted string => {invertedText}");
+
+            foreach (var character in invertedText)
+            {
+                queue.Enqueue(character);
+            }
+
+            return queue;
+        }
+
+        private static string InvertText(string testString)
+        {
+            if (string.IsNullOrWhiteSpace(testString))
+            {
+                Console.WriteLine($"testString is required");
+                return string.Empty;
+            }
+
+            var invertedText = "";
+
+            for (var index = testString.Length - 1; index >= 0; index--)
+            {
+                invertedText += testString[index];
+            }
+
+            return invertedText;
+        }
+
+        public static void TreeNodeTes()
+        {
+            Console.WriteLine("---------------------Tree impl-------------------------------");
+
+
+            var tree = new Tree<int>
+            {
+                Root = new TreeNode<int>
+                {
+                    Data = 10
+                }
+            };
+
+            tree.Root.AddChildren(new List<TreeNode<int>>(new[] {
+                new TreeNode<int>
+                {
+                    Data = 23
+                },
+                new TreeNode<int>
+                {
+                    Data = 230
+                },
+                new TreeNode<int>
+                {
+                    Data = 11
+                },
+                new TreeNode<int>
+                {
+                    Data = 2
+                }
+            }));
+
+            tree.Root.Children[2].AddChildren(new[]
+            {
+                new TreeNode<int>
+                {
+                    Data = 123
+                },
+                new TreeNode<int>
+                {
+                    Data = 345
+                }
+            });
+
+            Console.WriteLine("---------------------Tree impl-------------------------------");
+        }
+
         private static List<long> FibonacciAlorithmWithRecursionReturnArray(int arrayLength, List<long> array = null)
         {
             if (arrayLength <= 0)
@@ -94,6 +215,5 @@ namespace AlghorithmsExampleProject.AlghoritmsTypes
 
             return FibonacciAlorithmWithRecursionReturnArray(arrayLength - 1, array);
         }
-
     }
 }
