@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace AlghorithmsExampleProject.Extensions
+namespace AlghorithmsExampleProject.Helpers
 {
-    public static class ArrayExtension
+    public class ArrayHelper: IArrayHelper
     {
-        public static (int numberToSearch, List<int> array) GenerateRandomLengthOfArray(this int length, bool shouldSortAray, bool shouldRandomizeValueForSearch)
+        public (int numberToSearch, List<int> array) GenerateRandomLengthOfArray(int length, bool shouldSortAray, bool shouldRandomizeValueForSearch)
         {
             if (length < 1)
                 return (-1, new List<int>());

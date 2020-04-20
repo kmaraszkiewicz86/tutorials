@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Extensions\" />
+    <Folder Include="Helpers\" />
     <Folder Include="AlghoritmsTypes\TreeImpl\" />
     <Folder Include="AlghoritmsTypes\TreeImpl\BinaryTree\" />
   </ItemGroup>
