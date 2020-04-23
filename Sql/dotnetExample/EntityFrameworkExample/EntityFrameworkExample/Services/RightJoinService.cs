@@ -1,13 +1,13 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using EntityFrameworkExample.Core;
-using EntityFrameworkExample.Models;
+using EntityFrameworkExample.Models.Views;
 
 namespace EntityFrameworkExample.Services
 {
-    public class RightJoinService : BaseJoinService<Customer>
+    public class RightJoinService : BaseJoinService<CustomerOffer>
     {
-        public RightJoinService(AppDbContext db, BaseTableWriter<Customer> tableWriter)
+        public RightJoinService(AppDbContext db, 
+            BaseTableWriter<CustomerOffer> tableWriter)
             : base(db, tableWriter)
         {
 
@@ -15,42 +15,7 @@ namespace EntityFrameworkExample.Services
 
         public override void Query()
         {
-            var customerModels = new List<Customer>();
-
-            var result = from customers in _db.Customers
-                         join offer in _db.Offers on customers.Id equals offer.CustomerId
-                         into offer
-                         from o in offer.DefaultIfEmpty()
-                         select new
-                         {
-                             Customer = customers,
-                             Offer = o
-                         };
-
-            foreach (var row in result)
-            {
-                if (customerModels.All(m => m.Id != row.Customer.Id))
-                {
-                    customerModels.Add(row.Customer);
-                }
-
-                Customer customer = customerModels.Single(c => c.Id == row.Customer.Id);
-                
-                if (row.Offer != null)
-                {
-                    customer.Offers.Add(row.Offer);
-                }
-                else
-                {
-                    customer.Offers.Add(new Offer
-                    {
-                        Id = -1,
-                        Name = "null"
-                    });
-                }
-            }
-
-            _tableWriter.Models = customerModels;
+            _tableWriter.Models = _db.CustomerOfferRightJoins.ToList();
         }
     }
 }

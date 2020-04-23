@@ -1,14 +1,19 @@
 ﻿using EntityFrameworkExample.Helpers;
 using EntityFrameworkExample.Models;
+using EntityFrameworkExample.Models.Views;
 using Microsoft.EntityFrameworkCore;
 
 namespace EntityFrameworkExample.Core
 {
     public class AppDbContext : DbContext
     {
-        public virtual DbSet<Customer> Customers { get; set; }
+        public DbSet<Customer> Customers { get; set; }
 
-        public virtual DbSet<Offer> Offers { get; set; }
+        public DbSet<Offer> Offers { get; set; }
+
+        public DbSet<CustomerOfferRightJoin> CustomerOfferRightJoins { get; set; }
+
+        public DbSet<CustomerOfferFullJoin> CustomerOfferFullJoins { get; set; }
 
         private Customer[] CustomerData => new Customer[]
         {
@@ -54,6 +59,18 @@ namespace EntityFrameworkExample.Core
         {
             modelBuilder.Entity<Customer>().HasData(CustomerData);
             modelBuilder.Entity<Offer>().HasData(OfferData);
+
+            modelBuilder.Entity<CustomerOfferRightJoin>(builder =>
+            {
+                builder.HasNoKey();
+                builder.ToView("View_CustomerOfferRightJoin");
+            });
+
+            modelBuilder.Entity<CustomerOfferFullJoin>(builder =>
+            {
+                builder.HasNoKey();
+                builder.ToView("View_CustomerOfferFullJoin");
+            });
         }
     }
 }

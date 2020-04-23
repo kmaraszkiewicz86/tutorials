@@ -3,11 +3,11 @@ using EntityFrameworkExample.Services;
 
 namespace EntityFrameworkExample.Factories
 {
-    public class RightJoinServiceFactory: IJoinServiceFactory
+    public class FullJoinServiceFactory: IJoinServiceFactory
     {
         public IJoinService CreateBaseJoinService(AppDbContext db)
         {
-            return new RightJoinService(db, new CustomerTableWriter());
+            return new FullJoinService(db, new CustomerOfferTableWriter());
         }
     }
 }

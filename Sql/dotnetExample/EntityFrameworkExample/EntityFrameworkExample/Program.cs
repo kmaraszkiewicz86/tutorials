@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using EntityFrameworkExample.Core;
 using EntityFrameworkExample.Factories;
-using EntityFrameworkExample.Services;
 
 namespace EntityFrameworkExample
 {
@@ -14,9 +13,10 @@ namespace EntityFrameworkExample
         {
             Services = new List<IJoinServiceFactory>
             {
-                new InnerJoinServiceFactory(),
-                new LeftJoinServiceFactory(),
+                //new InnerJoinServiceFactory(),
+                //new LeftJoinServiceFactory(),
                 new RightJoinServiceFactory(),
+                new FullJoinServiceFactory(),
             };
         }
 
