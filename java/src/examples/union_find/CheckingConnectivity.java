@@ -1,6 +1,8 @@
 package examples.union_find;
 
 import examples.std.StdIn;
+import examples.std.StdOut;
+
 import java.time.Duration;
 import java.time.Instant;
 
@@ -17,32 +19,39 @@ public class CheckingConnectivity
         System.out.println("Checking algorithm with:");
         System.out.println(uf.getClass().getTypeName());
 
-        System.out.println("Choose number p");
+        while (true) {
 
-        var p = StdIn.readInt();
+            System.out.print("Choose number p: ");
 
-        System.out.println("Choose number q");
+            var p = StdIn.readInt();
 
-        var q = StdIn.readInt();
+            System.out.print("Choose number q: ");
 
-        Instant start = Instant.now();
-        if (!uf.connected(p, q))
-        {
-            System.out.println(p + "!=" + q);
+            var q = StdIn.readInt();
 
-            System.out.println("Create new connection between p ang q");
+            if (!uf.connected(p, q))
+            {
+                System.out.println(p + "!=" + q);
 
-            this.uf.union(p, q);
+                System.out.println("Create new connection between p ang q");
 
-            System.out.println("Is union correctly match p and q => " + uf.connected(p, q));
-        } else {
-            System.out.println(p + "==" + q);
+                this.uf.union(p, q);
+
+                System.out.println("Is union correctly match p and q => " + uf.connected(p, q));
+            } else {
+                System.out.println(p + "==" + q);
+            }
+
+            System.out.println("Continue? (y/n): ");
+            String shouldContinue = StdIn.readString();
+
+            System.out.println(shouldContinue.toLowerCase());
+            System.out.println(shouldContinue.toLowerCase() == "y");
+
+            if (shouldContinue.toLowerCase().equals("y")) {
+                break;
+            }
         }
-
-        Instant end = Instant.now();
-        Duration timeElapsed = Duration.between(start, end);
-        System.out.println("Time taken: "+ timeElapsed.toMillis() +" milliseconds");
-
     }
 
     @Override

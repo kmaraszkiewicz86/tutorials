@@ -26,9 +26,4 @@ public class DynamicConnectivity
             }
         }
     }
-
-    @Override
-    protected void finalize() throws Throwable {
-        this.uf = null;
-    }
 }
