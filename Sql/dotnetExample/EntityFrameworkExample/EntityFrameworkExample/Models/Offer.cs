@@ -14,6 +14,8 @@ namespace EntityFrameworkExample.Models
 
         public int? ParentId { get; set; }
 
+        public decimal Price { get; set; }
+
         public Customer Customer { get; set; }
 
         public Offer Parent { get; set; }
@@ -25,12 +27,13 @@ namespace EntityFrameworkExample.Models
 
         }
 
-        public Offer(int id, string name, int? customerId, int? parentId)
+        public Offer(int id, string name, int? customerId, int? parentId, decimal price)
         {
             Id = id;
             Name = name;
             CustomerId = customerId;
             ParentId = parentId;
+            Price = price;
         }
     }
 }
