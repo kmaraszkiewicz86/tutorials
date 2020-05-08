@@ -98,3 +98,6 @@ Sql/dotnetExample/EntityFrameworkExample/.idea/
 */*/*/*/*/bin
 */*/*/*/.vs
 */*/*/.vs
+*/*/*/*/*/*/bin/
+*/*/*/*/*/*/obj/
+*/*/*/*/*/.vs
