@@ -94,4 +94,7 @@ java/.idea
 Sql/dotnetExample/EntityFrameworkExample/.idea/
 */*/*/*/bin
 */*/*/*/obj
+*/*/*/*/*/obj
+*/*/*/*/*/bin
+*/*/*/*/.vs
 */*/*/.vs
