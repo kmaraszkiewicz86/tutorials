@@ -13,10 +13,11 @@ namespace EntityFrameworkExample
         {
             Services = new List<IJoinServiceFactory>
             {
-                //new InnerJoinServiceFactory(),
-                //new LeftJoinServiceFactory(),
+                new InnerJoinServiceFactory(),
+                new LeftJoinServiceFactory(),
                 new RightJoinServiceFactory(),
                 new FullJoinServiceFactory(),
+                new GroupByServiceFactory()
             };
         }
 
