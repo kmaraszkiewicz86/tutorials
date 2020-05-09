@@ -71,6 +71,7 @@
                                                                Foreground="Blue"/>
                                                 </StackPanel>
                                             </Expander.Header>
+                                            <ItemsPresenter/>
                                         </Expander>
                                     </ControlTemplate>
                                 </Setter.Value>
