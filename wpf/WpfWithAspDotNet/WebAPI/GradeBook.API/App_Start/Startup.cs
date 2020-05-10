@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Web.Http;
 using System.Web.Http.Controllers;
+using GradeBook.Core.Core;
 using Microsoft.Extensions.DependencyInjection;
 using GradeBook.Core.Services.Implementations;
 using GradeBook.Core.Services.Interfaces;
@@ -26,6 +27,8 @@ namespace GradeBook.API
                 .Where(t => !t.IsAbstract && !t.IsGenericTypeDefinition)
                 .Where(t => typeof(IHttpController).IsAssignableFrom(t)
                             || t.Name.EndsWith("Controller", StringComparison.OrdinalIgnoreCase)));
+
+            services.AddSingleton<GradeBookDbContext>();
 
             services.AddScoped<IStudentDbService, StudentDbService>();
 

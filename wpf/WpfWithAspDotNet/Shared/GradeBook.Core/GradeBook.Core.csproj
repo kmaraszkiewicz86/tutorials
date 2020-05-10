@@ -73,9 +73,14 @@
     <Compile Include="Entities\SchoolSubjectStudent.cs" />
     <Compile Include="Entities\Student.cs" />
     <Compile Include="Helpers\ConnectionStringHelper.cs" />
+    <Compile Include="Mappers\StudentMapper.cs" />
     <Compile Include="Migrations\202005102019343_Init.cs" />
     <Compile Include="Migrations\202005102019343_Init.designer.cs">
       <DependentUpon>202005102019343_Init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005102116555_StudentsData.cs" />
+    <Compile Include="Migrations\202005102116555_StudentsData.designer.cs">
+      <DependentUpon>202005102116555_StudentsData.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\GradeModel.cs" />
@@ -93,10 +98,11 @@
     <EmbeddedResource Include="Migrations\202005102019343_Init.resx">
       <DependentUpon>202005102019343_Init.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005102116555_StudentsData.resx">
+      <DependentUpon>202005102116555_StudentsData.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Mapppers\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
