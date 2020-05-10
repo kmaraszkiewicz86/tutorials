@@ -23,6 +23,8 @@ namespace GradeBook.API
                 .Add(new MediaTypeHeaderValue("text/html"));
 
             if (appXmlType != null) config.Formatters.XmlFormatter.SupportedMediaTypes.Remove(appXmlType);
+
+            Startup.Bootstrapper(config);
         }
     }
 }
