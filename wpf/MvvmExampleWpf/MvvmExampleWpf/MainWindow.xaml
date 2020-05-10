@@ -11,14 +11,6 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800" >
 
-
-    <b:Interaction.Triggers>
-        <b:EventTrigger EventName="KeyUp">
-            <b:InvokeCommandAction Command="{Binding KeyPressCommand}"
-                                   PassEventArgsToCommand="True"/>
-        </b:EventTrigger>
-    </b:Interaction.Triggers>
-
     <Window.DataContext>
         <viewModels:PersonalViewModelCollection />
     </Window.DataContext>
@@ -27,18 +19,42 @@
         <Style TargetType="Control" x:Key="Margin">
             <Setter Property="Margin" Value="5" />
         </Style>
+        <Style x:Key="ErrorModel" TargetType="TextBox">
+            <Setter Property="Margin" Value="5" />
+            <Setter Property="Validation.ErrorTemplate">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <AdornedElementPlaceholder />
+                            <TextBlock Text="{Binding CurrentItem.ErrorContent}"
+                                       Foreground="Red"/>
+                        </StackPanel>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Window.Resources>
+
+    <b:Interaction.Triggers>
+        <b:EventTrigger EventName="KeyUp">
+            <b:InvokeCommandAction Command="{Binding KeyPressCommand}"
+                                   PassEventArgsToCommand="True"/>
+        </b:EventTrigger>
+    </b:Interaction.Triggers>
     <StackPanel>
 
         <StackPanel>
             <StackPanel Orientation="Horizontal">
                 <Label Content="Name: " Style="{StaticResource Margin}"/>
-                <TextBox Width="300" Text="{Binding Path=Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource Margin}"/>
+                <TextBox Width="300" 
+                         Text="{Binding Path=Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" 
+                         Style="{StaticResource ErrorModel}"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
                 <Label Content="Age: " Style="{StaticResource Margin}"/>
-                <TextBox Width="300" Text="{Binding Path=Age, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource Margin}"/>
+                <TextBox Width="300" Text="{Binding Path=Age, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" 
+                         Style="{StaticResource ErrorModel}"/>
             </StackPanel>
 
             <Button Content="Add new person age" Command="{Binding Path=AddCommand}" CommandParameter="{Binding PersonModelItem, Mode=TwoWay}" Style="{StaticResource Margin}" />

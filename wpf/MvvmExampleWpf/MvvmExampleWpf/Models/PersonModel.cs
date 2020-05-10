@@ -1,4 +1,7 @@
-﻿namespace MvvmExampleWpf.Models
+﻿using System;
+using System.ComponentModel;
+
+namespace MvvmExampleWpf.Models
 {
     public class PersonModel
     {

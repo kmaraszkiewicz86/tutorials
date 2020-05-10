@@ -1,4 +1,6 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Input;
 using MvvmExampleWpf.Commands;
@@ -6,7 +8,7 @@ using MvvmExampleWpf.Models;
 
 namespace MvvmExampleWpf.ViewModels
 {
-    public class PersonalViewModelCollection: BaseViewModel
+    public class PersonalViewModelCollection: BaseViewModel, IDataErrorInfo
     {
 
         private PersonModel _personModelItem;
@@ -132,6 +134,38 @@ namespace MvvmExampleWpf.ViewModels
             if (e.Key == Key.Escape)
             {
                 MessageBox.Show("Pressed escape button.");
+            }
+        }
+
+        public string Error
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public string this[string columnName]
+        {
+            get
+            {
+                var message = string.Empty;
+
+                switch (columnName)
+                {
+                    case nameof(Name):
+                        if (string.IsNullOrWhiteSpace(Name))
+                        {
+                            message = $"{Name} is required";
+                        }
+                        break;
+
+                    case nameof(Age):
+                        if (Age < 1 || Age > 100)
+                        {
+                            message = $"{Age} have to in range from 1 to 100";
+                        }
+                        break;
+                }
+
+                return message;
             }
         }
     }
