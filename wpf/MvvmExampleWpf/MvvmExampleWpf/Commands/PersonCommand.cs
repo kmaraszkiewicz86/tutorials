@@ -4,31 +4,15 @@ using MvvmExampleWpf.Models;
 
 namespace MvvmExampleWpf.Commands
 {
-    public class PersonCommand: ICommand
+    public class GenerateDataCommand: ICommand
     {
         private Action _execute;
 
-        private Action<PersonModel> _executeWithParams;
-
-        private Action<KeyEventArgs> _executeWithKeyEventArgs;
-
         private Func<bool> _canExecute;
 
-        public PersonCommand(Action execute, Func<bool> canExecute)
+        public GenerateDataCommand(Action execute, Func<bool> canExecute)
         {
             _execute = execute;
-            _canExecute = canExecute;
-        }
-
-        public PersonCommand(Action<PersonModel> executeWithParams, Func<bool> canExecute)
-        {
-            _executeWithParams = executeWithParams;
-            _canExecute = canExecute;
-        }
-
-        public PersonCommand(Action<KeyEventArgs> executeWithKeyEventArgs, Func<bool> canExecute)
-        {
-            _executeWithKeyEventArgs = executeWithKeyEventArgs;
             _canExecute = canExecute;
         }
 
@@ -41,8 +25,67 @@ namespace MvvmExampleWpf.Commands
         public void Execute(object parameter)
         {
             _execute?.Invoke();
-            _executeWithParams?.Invoke((PersonModel) parameter);
-            _executeWithKeyEventArgs?.Invoke((KeyEventArgs) parameter);
+        }
+
+        public void RaiseCanExecuteChanged()
+        {
+            CanExecuteChanged?.Invoke(this, EventArgs.Empty);
+        }
+
+        public event EventHandler CanExecuteChanged;
+    }
+
+    public class PersonAddCommand: ICommand
+    {
+        private Action<PersonModel> _execute;
+
+        private Func<bool> _canExecute;
+
+        public PersonAddCommand(Action<PersonModel> execute, Func<bool> canExecute)
+        {
+            _execute = execute;
+            _canExecute = canExecute;
+        }
+
+
+        public bool CanExecute(object parameter)
+        {
+            return _canExecute.Invoke();
+        }
+
+        public void Execute(object parameter)
+        {
+            _execute?.Invoke((PersonModel) parameter);
+        }
+
+        public void RaiseCanExecuteChanged()
+        {
+            CanExecuteChanged?.Invoke(this, EventArgs.Empty);
+        }
+
+        public event EventHandler CanExecuteChanged;
+    }
+
+    public class KeyUpCommand : ICommand
+    {
+        private Action _execute;
+
+        private Action<KeyEventArgs> _executeWithKeyEventArgs;
+
+        public KeyUpCommand(Action<KeyEventArgs> executeWithKeyEventArgs)
+        {
+            _executeWithKeyEventArgs = executeWithKeyEventArgs;
+        }
+
+
+        public bool CanExecute(object parameter)
+        {
+            return true;
+        }
+
+        public void Execute(object parameter)
+        {
+            _executeWithKeyEventArgs?.Invoke((KeyEventArgs)parameter);
         }
 
         public void RaiseCanExecuteChanged()

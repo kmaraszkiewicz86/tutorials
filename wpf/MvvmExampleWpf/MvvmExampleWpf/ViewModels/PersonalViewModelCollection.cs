@@ -55,33 +55,33 @@ namespace MvvmExampleWpf.ViewModels
 
         private int _age;
 
-        private PersonCommand _addCommand;
+        private PersonAddCommand _addCommand;
 
-        private PersonCommand _generateAllCommand;
+        private GenerateDataCommand _generateAllCommand;
 
-        private PersonCommand _keyPressCommand;
+        private KeyUpCommand _keyPressCommand;
 
         private ObservableCollection<PersonModel> _personModels;
 
-        public bool CanExecuteAddCommand() => !string.IsNullOrWhiteSpace(Name) && Age > 0;
+        public bool CanExecuteAddCommand() => !string.IsNullOrWhiteSpace(Name) && (Age > 0 && Age <= 100);
         public bool CanExecuteGenerateAllCommand() => PersonModels.Count == 0;
 
-        public PersonCommand AddCommand
+        public PersonAddCommand AddCommand
         {
             get => _addCommand;
             private set => _addCommand = value;
         }
 
-        public PersonCommand GenerateAllCommand
+        public GenerateDataCommand GenerateAllCommand
         {
             get => _generateAllCommand;
             private set => _generateAllCommand = value;
         }
 
-        public PersonCommand KeyPressCommand
+        public KeyUpCommand KeyPressCommand
         {
-            get => _generateAllCommand;
-            private set => _generateAllCommand = value;
+            get => _keyPressCommand;
+            private set => _keyPressCommand = value;
         }
 
         public PersonModel PersonModelItem
@@ -96,9 +96,9 @@ namespace MvvmExampleWpf.ViewModels
 
         public PersonalViewModelCollection()
         {
-            AddCommand = new PersonCommand(AddPerson, CanExecuteAddCommand);
-            GenerateAllCommand = new PersonCommand(GenerateItems, CanExecuteGenerateAllCommand);
-            KeyPressCommand = new PersonCommand(Window_KeyUp, () => true);
+            AddCommand = new PersonAddCommand(AddPerson, CanExecuteAddCommand);
+            GenerateAllCommand = new GenerateDataCommand(GenerateItems, CanExecuteGenerateAllCommand);
+            KeyPressCommand = new KeyUpCommand(Window_KeyUp);
 
             PersonModels = new ObservableCollection<PersonModel>();
         }

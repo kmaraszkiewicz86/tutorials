@@ -69,14 +69,14 @@
 
             <Button Grid.Row="0" Content="Generate default data" Style="{StaticResource Margin}" >
                 <b:Interaction.Triggers>
-                    <b:EventTrigger EventName="MouseDoubleClick">
+                    <b:EventTrigger EventName="Click">
                         <b:InvokeCommandAction Command="{Binding GenerateAllCommand}" />
                     </b:EventTrigger>
                 </b:Interaction.Triggers>
             </Button>
 
             <DataGrid Grid.Row="1" ItemsSource="{Binding Path=PersonModels}" Style="{StaticResource Margin}" 
-                          IsReadOnly="True">
+                      >
                 
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Person name" Binding="{Binding Path=Name}" />
