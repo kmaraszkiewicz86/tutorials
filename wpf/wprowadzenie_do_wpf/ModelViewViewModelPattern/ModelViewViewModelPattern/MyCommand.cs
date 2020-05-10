@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Windows.Input;
 
 namespace ModelViewViewModelPattern
@@ -12,6 +13,7 @@ namespace ModelViewViewModelPattern
         }
         public void Execute(object parameter)
         {
+            Debug.Write("aaaa");
             if (_execute != null)
             {
                 _execute();
@@ -21,6 +23,7 @@ namespace ModelViewViewModelPattern
         {
             return true;
         }
+
         public event EventHandler CanExecuteChanged;
     }
 }

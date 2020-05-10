@@ -101,3 +101,8 @@ Sql/dotnetExample/EntityFrameworkExample/.idea/
 */*/*/*/*/*/bin/
 */*/*/*/*/*/obj/
 */*/*/*/*/.vs
+*/*/MvvmExampleWpf.sln.DotSettings
+*/*/.vs/
+*/*/*/bin/
+*/*/*/obj/
+*/*/packages/
