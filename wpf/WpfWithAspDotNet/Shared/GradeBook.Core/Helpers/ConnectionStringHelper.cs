@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Configuration;
 
 namespace GradeBook.Core.Helpers
 {
-    public class ConnectionStringHelper
+    public static class ConnectionStringHelper
     {
-        public string ConnectionString =>
+        public static string ConnectionString =>
             ConfigurationManager.ConnectionStrings["GradeBook"].ConnectionString;
     }
 }

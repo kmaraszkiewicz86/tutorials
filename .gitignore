@@ -107,3 +107,4 @@ Sql/dotnetExample/EntityFrameworkExample/.idea/
 */*/*/obj/
 */*/packages/
 wpf/WpfWithAspDotNet/WebAPI/packages/
+wpf/WpfWithAspDotNet/UI/packages/
