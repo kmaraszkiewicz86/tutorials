@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="PeopleDbModel.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="GENDERS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NAME" Type="varchar2" MaxLength="150" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PEOPLE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NAME" Type="varchar2" MaxLength="150" Nullable="false" />
+          <Property Name="SURNAME" Type="varchar2" MaxLength="150" Nullable="false" />
+          <Property Name="GENDERID" Type="number" Precision="38" Scale="0" />
+        </EntityType>
+        <Association Name="SYS_C003940">
+          <End Role="GENDERS" Type="Self.GENDERS" Multiplicity="0..1" />
+          <End Role="PEOPLE" Type="Self.PEOPLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GENDERS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PEOPLE">
+              <PropertyRef Name="GENDERID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="ADD_NEW_PERSON" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADMIN">
+          <Parameter Name="NAME" Type="varchar2" Mode="In" />
+          <Parameter Name="SURNAME" Type="varchar2" Mode="In" />
+          <Parameter Name="GENDER" Type="varchar2" Mode="In" />
+        </Function>
+        <EntityContainer Name="PeopleDbModelStoreContainer">
+          <EntitySet Name="GENDERS" EntityType="Self.GENDERS" Schema="ADMIN" store:Type="Tables" />
+          <EntitySet Name="PEOPLE" EntityType="Self.PEOPLE" Schema="ADMIN" store:Type="Tables" />
+          <AssociationSet Name="SYS_C003940" Association="Self.SYS_C003940">
+            <End Role="GENDERS" EntitySet="GENDERS" />
+            <End Role="PEOPLE" EntitySet="PEOPLE" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PeopleDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="GENDERS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NAME" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="PEOPLE" Relationship="Self.SYS_C003940" FromRole="GENDERS" ToRole="PEOPLE" />
+        </EntityType>
+        <EntityType Name="PEOPLE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NAME" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SURNAME" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GENDERID" Type="Decimal" Precision="38" Scale="0" />
+          <NavigationProperty Name="GENDERS" Relationship="Self.SYS_C003940" FromRole="PEOPLE" ToRole="GENDERS" />
+        </EntityType>
+        <Association Name="SYS_C003940">
+          <End Role="GENDERS" Type="Self.GENDERS" Multiplicity="0..1" />
+          <End Role="PEOPLE" Type="Self.PEOPLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GENDERS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PEOPLE">
+              <PropertyRef Name="GENDERID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PeopleDbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="GENDERS" EntityType="Self.GENDERS" />
+          <EntitySet Name="PEOPLE" EntityType="Self.PEOPLE" />
+          <AssociationSet Name="SYS_C003940" Association="Self.SYS_C003940">
+            <End Role="GENDERS" EntitySet="GENDERS" />
+            <End Role="PEOPLE" EntitySet="PEOPLE" />
+          </AssociationSet>
+          <FunctionImport Name="ADD_NEW_PERSON">
+            <Parameter Name="NAME" Mode="In" Type="String" />
+            <Parameter Name="SURNAME" Mode="In" Type="String" />
+            <Parameter Name="GENDER" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PeopleDbModelStoreContainer" CdmEntityContainer="PeopleDbEntities">
+          <EntitySetMapping Name="GENDERS">
+            <EntityTypeMapping TypeName="PeopleDbModel.GENDERS">
+              <MappingFragment StoreEntitySet="GENDERS">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PEOPLE">
+            <EntityTypeMapping TypeName="PeopleDbModel.PEOPLE">
+              <MappingFragment StoreEntitySet="PEOPLE">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="SURNAME" ColumnName="SURNAME" />
+                <ScalarProperty Name="GENDERID" ColumnName="GENDERID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="ADD_NEW_PERSON" FunctionName="PeopleDbModel.Store.ADD_NEW_PERSON" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

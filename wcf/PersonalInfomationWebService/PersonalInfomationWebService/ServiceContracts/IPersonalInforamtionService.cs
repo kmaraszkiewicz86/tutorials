@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ServiceModel;
+using System.Threading.Tasks;
+using PersonalInfomationWebService.Models.Requests;
 using PersonalInfomationWebService.Models.Responses;
 
 namespace PersonalInfomationWebService.ServiceContracts
@@ -10,5 +12,8 @@ namespace PersonalInfomationWebService.ServiceContracts
     {
         [OperationContract]
         PeopleCollectionModelResponse GetAll();
+
+        [OperationContract]
+        Task<PersonModelResponse> GetAsync(PersonModelRequest model);
     }
 }

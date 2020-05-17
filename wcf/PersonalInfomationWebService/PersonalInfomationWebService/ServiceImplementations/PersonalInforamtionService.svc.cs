@@ -1,4 +1,6 @@
-﻿using PersonalInfomationWebService.Models.Responses;
+﻿using System.Threading.Tasks;
+using PersonalInfomationWebService.Models.Requests;
+using PersonalInfomationWebService.Models.Responses;
 using PersonalInfomationWebService.ServiceContracts;
 using PersonalInfomationWebService.Services.Interfaces;
 
@@ -18,6 +20,11 @@ namespace PersonalInfomationWebService.ServiceImplementations
         public PeopleCollectionModelResponse GetAll()
         {
             return _peopleService.GetAll();
+        }
+
+        public async Task<PersonModelResponse> GetAsync(PersonModelRequest model)
+        {
+            return await _peopleService.Get(model);
         }
     }
 }

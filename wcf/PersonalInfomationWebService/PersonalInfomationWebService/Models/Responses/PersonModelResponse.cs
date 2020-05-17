@@ -18,11 +18,15 @@ namespace PersonalInfomationWebService.Models.Responses
         [DataMember]
         public string Surname { get; set; }
 
-        public PersonModelResponse(int id, string name, string surname)
+        [DataMember]
+        public string GenderType { get; set; }
+
+        public PersonModelResponse(int id, string name, string surname, string genderType)
         {
             Id = id;
             Name = name;
             Surname = surname;
+            GenderType = genderType;
         }
     }
 }

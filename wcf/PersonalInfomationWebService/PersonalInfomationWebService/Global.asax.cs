@@ -6,6 +6,7 @@ using System.Web.Security;
 using System.Web.SessionState;
 using Autofac;
 using Autofac.Integration.Wcf;
+using PersonalInfomationWebService.Core;
 using PersonalInfomationWebService.ServiceImplementations;
 using PersonalInfomationWebService.Services.Implementations;
 using PersonalInfomationWebService.Services.Interfaces;
@@ -19,8 +20,10 @@ namespace PersonalInfomationWebService
         {
             var builder = new ContainerBuilder();
 
+            builder.Register(c => new PeopleDbEntities());
             builder.RegisterType<PersonalInforamtionService>();
             builder.RegisterType<PeopleService>().As<IPeopleService>();
+
 
             var container = builder.Build();
             AutofacHostFactory.Container = container;
