@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Core.Models" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Core.Models" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:50230/ServiceContracts/PersonServiceContract/PersonServiceContract.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Core.Models.Enums" />
+  <xs:complexType name="PersonModel">
+    <xs:sequence>
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Core.Models.Enums" minOccurs="0" name="GenderType" type="q1:GenderType" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Surname" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PersonModel" nillable="true" type="tns:PersonModel" />
+  <xs:complexType name="ArrayOfPersonModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PersonModel" nillable="true" type="tns:PersonModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPersonModel" nillable="true" type="tns:ArrayOfPersonModel" />
+</xs:schema>

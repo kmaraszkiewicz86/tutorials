@@ -28,6 +28,7 @@ namespace WcfServiceWebApplication.ServiceContracts.PersonServiceContract
         /// Inserts the specified person model.
         /// </summary>
         /// <param name="personModel">The person model.</param>
+        [OperationBehavior(TransactionScopeRequired = true)]
         public void Insert(PersonModel personModel)
         {
             OnAction(() => _personService.Insert(personModel));
@@ -37,6 +38,7 @@ namespace WcfServiceWebApplication.ServiceContracts.PersonServiceContract
         /// Updates the specified person model.
         /// </summary>
         /// <param name="personModel">The person model.</param>
+        [OperationBehavior(TransactionScopeRequired = true)]
         public void Update(PersonModel personModel)
         {
             OnAction(() => _personService.Update(personModel));

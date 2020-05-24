@@ -49,6 +49,8 @@
     <Compile Include="Services\PersonServiceImpl\IPersonService.cs" />
     <Compile Include="Services\PersonServiceImpl\PersonService.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Database\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

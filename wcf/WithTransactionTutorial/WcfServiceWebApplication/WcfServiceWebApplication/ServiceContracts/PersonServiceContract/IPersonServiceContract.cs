@@ -15,6 +15,7 @@ namespace WcfServiceWebApplication.ServiceContracts.PersonServiceContract
         /// </summary>
         /// <param name="personModel">The person model.</param>
         [OperationContract]
+        [TransactionFlow(TransactionFlowOption.Allowed)]
         void Insert(PersonModel personModel);
 
         /// <summary>
@@ -22,6 +23,7 @@ namespace WcfServiceWebApplication.ServiceContracts.PersonServiceContract
         /// </summary>
         /// <param name="personModel">The person model.</param>
         [OperationContract]
+        [TransactionFlow(TransactionFlowOption.Allowed)]
         void Update(PersonModel personModel);
 
         [OperationContract]
