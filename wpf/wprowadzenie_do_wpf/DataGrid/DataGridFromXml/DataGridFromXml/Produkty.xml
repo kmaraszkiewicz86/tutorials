@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="iso-8859-2"?>
+<Products>
+  <Product>
+    <Symbol>O1-11</Symbol>
+    <Name>ołówek</Name>
+    <ItemCount>8</ItemCount>
+    <Warehouse>Katowice 1</Warehouse>
+    <Image>Images/olowek.jpg</Image>
+  </Product>
+  <Product>
+    <Symbol>PW-20</Symbol>
+    <Name>pióro wieczne</Name>
+    <ItemCount>75</ItemCount>
+    <Warehouse>Katowice 2</Warehouse>
+    <Image>Images/piorowieczne.jpg</Image>
+  </Product>
+  <Product>
+    <Symbol>DZ-10</Symbol>
+    <Nazwa>długopis żelowy</Nazwa>
+    <ItemCount>1121</ItemCount>
+    <Warehouse>Katowice 1</Warehouse>
+    <Image>Images/dlugopis_zelowy.jpeg</Image>
+  </Product>
+  <Product>
+    <Symbol>DZ-12</Symbol>
+    <Name>długopis kulkowy</Name>
+    <ItemCount>280</ItemCount>s
+    <Warehouse>Katowice 2</Warehouse>
+    <Image>Images/dlugopis_kulkowy.jpg</Image>
+  </Product>
+</Products>
