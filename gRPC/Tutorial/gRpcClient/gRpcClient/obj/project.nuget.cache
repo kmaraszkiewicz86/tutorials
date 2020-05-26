@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "dgSpecHash": "ZsqKjNVl+WSgyLxCikquovJjmtGNm3Vb+vWbqkaJNsv5guSqvRlfW671zkNBnXVjLXCFZH5xmpMMsBMIO3iMmQ==",
+  "success": true,
+  "projectFilePath": "/Users/kmaraszkiewicz86/Library/Developer/Repo/tutorials/gRPC/Tutorial/gRpcClient/gRpcClient/gRpcClient.csproj",
+  "expectedPackageFiles": [
+    "/Users/kmaraszkiewicz86/.nuget/packages/google.protobuf/3.12.1/google.protobuf.3.12.1.nupkg.sha512",
+    "/Users/kmaraszkiewicz86/.nuget/packages/grpc.core.api/2.27.0/grpc.core.api.2.27.0.nupkg.sha512",
+    "/Users/kmaraszkiewicz86/.nuget/packages/grpc.net.client/2.28.0/grpc.net.client.2.28.0.nupkg.sha512",
+    "/Users/kmaraszkiewicz86/.nuget/packages/grpc.net.common/2.28.0/grpc.net.common.2.28.0.nupkg.sha512",
+    "/Users/kmaraszkiewicz86/.nuget/packages/grpc.tools/2.29.0/grpc.tools.2.29.0.nupkg.sha512",
+    "/Users/kmaraszkiewicz86/.nuget/packages/microsoft.extensions.logging.abstractions/2.1.1/microsoft.extensions.logging.abstractions.2.1.1.nupkg.sha512",
+    "/Users/kmaraszkiewicz86/.nuget/packages/system.diagnostics.diagnosticsource/4.5.1/system.diagnostics.diagnosticsource.4.5.1.nupkg.sha512",
+    "/Users/kmaraszkiewicz86/.nuget/packages/system.memory/4.5.3/system.memory.4.5.3.nupkg.sha512"
+  ],
+  "logs": []
+}

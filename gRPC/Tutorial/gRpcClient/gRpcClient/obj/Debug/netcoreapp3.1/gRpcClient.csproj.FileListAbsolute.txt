@@ -1,0 +1,17 @@
+/Users/kmaraszkiewicz86/Library/Developer/Repo/tutorials/gRPC/Tutorial/gRpcClient/gRpcClient/bin/Debug/netcoreapp3.1/gRpcClient.deps.json
+/Users/kmaraszkiewicz86/Library/Developer/Repo/tutorials/gRPC/Tutorial/gRpcClient/gRpcClient/bin/Debug/netcoreapp3.1/gRpcClient.runtimeconfig.json
+/Users/kmaraszkiewicz86/Library/Developer/Repo/tutorials/gRPC/Tutorial/gRpcClient/gRpcClient/bin/Debug/netcoreapp3.1/gRpcClient.runtimeconfig.dev.json
+/Users/kmaraszkiewicz86/Library/Developer/Repo/tutorials/gRPC/Tutorial/gRpcClient/gRpcClient/bin/Debug/netcoreapp3.1/gRpcClient.dll
+/Users/kmaraszkiewicz86/Library/Developer/Repo/tutorials/gRPC/Tutorial/gRpcClient/gRpcClient/bin/Debug/netcoreapp3.1/gRpcClient.pdb
+/Users/kmaraszkiewicz86/Library/Developer/Repo/tutorials/gRPC/Tutorial/gRpcClient/gRpcClient/bin/Debug/netcoreapp3.1/Google.Protobuf.dll
+/Users/kmaraszkiewicz86/Library/Developer/Repo/tutorials/gRPC/Tutorial/gRpcClient/gRpcClient/bin/Debug/netcoreapp3.1/Grpc.Core.Api.dll
+/Users/kmaraszkiewicz86/Library/Developer/Repo/tutorials/gRPC/Tutorial/gRpcClient/gRpcClient/bin/Debug/netcoreapp3.1/Grpc.Net.Client.dll
+/Users/kmaraszkiewicz86/Library/Developer/Repo/tutorials/gRPC/Tutorial/gRpcClient/gRpcClient/bin/Debug/netcoreapp3.1/Grpc.Net.Common.dll
+/Users/kmaraszkiewicz86/Library/Developer/Repo/tutorials/gRPC/Tutorial/gRpcClient/gRpcClient/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Logging.Abstractions.dll
+/Users/kmaraszkiewicz86/Library/Developer/Repo/tutorials/gRPC/Tutorial/gRpcClient/gRpcClient/obj/Debug/netcoreapp3.1/gRpcClient.AssemblyInfoInputs.cache
+/Users/kmaraszkiewicz86/Library/Developer/Repo/tutorials/gRPC/Tutorial/gRpcClient/gRpcClient/obj/Debug/netcoreapp3.1/gRpcClient.AssemblyInfo.cs
+/Users/kmaraszkiewicz86/Library/Developer/Repo/tutorials/gRPC/Tutorial/gRpcClient/gRpcClient/obj/Debug/netcoreapp3.1/gRpcClient.csproj.CoreCompileInputs.cache
+/Users/kmaraszkiewicz86/Library/Developer/Repo/tutorials/gRPC/Tutorial/gRpcClient/gRpcClient/obj/Debug/netcoreapp3.1/gRpcClient.csproj.CopyComplete
+/Users/kmaraszkiewicz86/Library/Developer/Repo/tutorials/gRPC/Tutorial/gRpcClient/gRpcClient/obj/Debug/netcoreapp3.1/gRpcClient.dll
+/Users/kmaraszkiewicz86/Library/Developer/Repo/tutorials/gRPC/Tutorial/gRpcClient/gRpcClient/obj/Debug/netcoreapp3.1/gRpcClient.pdb
+/Users/kmaraszkiewicz86/Library/Developer/Repo/tutorials/gRPC/Tutorial/gRpcClient/gRpcClient/obj/Debug/netcoreapp3.1/gRpcClient.genruntimeconfig.cache
