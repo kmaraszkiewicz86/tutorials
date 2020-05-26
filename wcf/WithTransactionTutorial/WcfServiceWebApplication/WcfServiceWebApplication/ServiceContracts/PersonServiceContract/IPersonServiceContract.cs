@@ -7,7 +7,7 @@ namespace WcfServiceWebApplication.ServiceContracts.PersonServiceContract
     /// <summary>
     /// The person service contract
     /// </summary>
-    [ServiceContract]
+    [ServiceContract(SessionMode = SessionMode.Required)]
     public interface IPersonServiceContract
     {
         /// <summary>
