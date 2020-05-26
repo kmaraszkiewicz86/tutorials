@@ -1,0 +1,37 @@
+﻿<Properties StartupConfiguration="{CA56128A-9295-4CF5-A8C5-75A844453812}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="gRPCService/Program.cs">
+    <Files>
+      <File FileName="gRPCService/Protos/greet.proto" Line="8" Column="5" />
+      <File FileName="gRPCService/Services/GreeterService.cs" Line="10" Column="54" />
+      <File FileName="gRPCService/Startup.cs" Line="19" Column="29" />
+      <File FileName="gRPCService/obj/Debug/netcoreapp3.1/Greet.cs" Line="194" Column="12" />
+      <File FileName="gRPCService/appsettings.json" Line="12" Column="14" />
+      <File FileName="gRPCService/Program.cs" Line="29" Column="25" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="gRPCService" expanded="True">
+            <Node name="gRPCService" expanded="True">
+              <Node name="Dependencies" expanded="True" />
+              <Node name="Properties" expanded="True" />
+              <Node name="Protos" expanded="True" />
+              <Node name="Services" expanded="True" />
+              <Node name="Program.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.gRPCService PreferredExecutionTarget="/Applications/Safari.app" />
+</Properties>
