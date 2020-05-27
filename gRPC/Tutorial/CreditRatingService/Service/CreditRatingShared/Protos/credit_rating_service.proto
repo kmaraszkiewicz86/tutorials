@@ -1,8 +1,8 @@
 syntax = "proto3";
 
-option csharp_namespace = "CreditRatingService.Protos";
+option csharp_namespace = "CreditRatingShared";
 
-package CreditRatingService;
+package CreditRatingShared;
 
 service CreditRatingCheck {
 	rpc CheckCreditRequest(CreditRequest) returns (CreditReply);

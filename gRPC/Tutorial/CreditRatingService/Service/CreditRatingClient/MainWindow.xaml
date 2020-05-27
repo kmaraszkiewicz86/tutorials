@@ -13,7 +13,8 @@
         </Style>
     </Window.Resources>
     <Grid>
-        <TextBlock Text="{Binding Mode=OneWay, Path=Test, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <TextBlock Text="{Binding Mode=OneWay, Path=ResultModel.Message, UpdateSourceTrigger=PropertyChanged}" 
+                   HorizontalAlignment="Center" VerticalAlignment="Center" />
         
     </Grid>
 </Window>
