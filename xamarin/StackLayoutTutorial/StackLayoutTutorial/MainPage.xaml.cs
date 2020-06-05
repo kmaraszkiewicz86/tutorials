@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -13,11 +14,31 @@ namespace StackLayoutTutorial
         {
             InitializeComponent();
         }
+
+        void Button_Clicked(System.Object sender, System.EventArgs e)
+        {
+        }
+
+        void ListView_ItemTapped(System.Object sender, Xamarin.Forms.ItemTappedEventArgs e)
+        {
+        }
     }
 
     public class ViewModel : INotifyPropertyChanged
     {
         private int Count = 0;
+
+        private List<string> _links;
+
+        public List<string> Links
+        {
+            get => _links;
+            set
+            {
+                _links = value;
+                OnPropertyChanged(nameof(Links));
+            }
+        }
 
         private string _testString = "Empty Label";
 
@@ -31,6 +52,23 @@ namespace StackLayoutTutorial
             }
         }
 
+        private string _selectedItem;
+
+        public string SelectedItem
+        {
+            get => _selectedItem;
+            set
+            {
+                _selectedItem = value;
+                OnPropertyChanged(nameof(SelectedItem));
+
+                if (_selectedItem != null)
+                {
+                    NextPageCommand.Execute(_selectedItem);
+                }
+            }
+        }
+
         private bool _canExecute;
 
         public bool CanExecute
@@ -39,11 +77,13 @@ namespace StackLayoutTutorial
             set
             {
                 _canExecute = value;
-                OnPropertyChanged(nameof(CanExecute));
+                OnPropertyChanged(nameof(SayHelloCommand.CanExecute));
             }
         }
 
         public ICommand SayHelloCommand { get; }
+
+        public ICommand NextPageCommand { get; }
 
         public ViewModel()
         {
@@ -62,8 +102,22 @@ namespace StackLayoutTutorial
                 return CanExecute;
 
             });
-        }
 
+            NextPageCommand = new Command(async () =>
+            {
+                var selectedItem = SelectedItem ?? Links[0];
+
+                var page = new MySecondPage();
+                ((MySecondPageViewModel)page.BindingContext).Title = Links[0];
+
+                await App.Current.MainPage.Navigation.PushAsync(page);
+            }, () => true);
+
+            Links = new List<string>
+            {
+                "Test model"
+            };
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
 

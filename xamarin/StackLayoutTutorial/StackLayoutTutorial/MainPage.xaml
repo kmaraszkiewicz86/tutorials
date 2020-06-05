@@ -8,8 +8,43 @@
     <ContentPage.BindingContext>
         <local:ViewModel />
     </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Button">
+                <Setter Property="BorderWidth" Value="2" />
+                <Setter Property="BorderColor" Value="Aqua" />
+            </Style>
+            <Style x:Key="TextLabel" TargetType="Label" >
+                <Setter Property="Margin" Value="0,0,10,0" />
+                <Setter Property="FontSize" Value="Large" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
     <StackLayout Margin="20,35,20,25">
-        <Button Text="Click me" Command="{Binding SayHelloCommand}" />
+        <Button Grid.Column="1" Text="Next Page" Command="{Binding NextPageCommand}" />
+        <Entry x:Name="TestEntry" Text="Testowanie" />
+        <Button Text="{Binding Source={x:Reference TestEntry}, Path=Text}" Command="{Binding SayHelloCommand}" />
         <Label Text="{Binding TestString}" />
+        <ListView
+            ItemsSource="{Binding Links}"
+            SelectedItem="{Binding Path=SelectedItem, Mode=OneWayToSource}" >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Style="{StaticResource TextLabel}" Grid.Column="0" Text="Click this button" />
+                            <Button Grid.Column="1" Text="Next Page" Command="{Binding NextPageCommand}" />
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </StackLayout>
 </ContentPage>
