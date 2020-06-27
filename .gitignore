@@ -107,3 +107,12 @@ Sql/dotnetExample/EntityFrameworkExample/.idea/
 */*/*/obj/
 */*/packages/
 */*/*/packages/
+
+
+
+.DS_Store
+*/.DS_Store
+*/*/*/.DS_Store
+*/*/*/.DS_Store
+*/*/*/.DS_Store
+*/*/*/*/.DS_Store"
