@@ -56,7 +56,7 @@ class VideoCell: UICollectionViewCell {
     let separator: UIView = {
         let view = UIView();
         
-        view.backgroundColor = .black
+        view.backgroundColor = UIColor(red: 230/255, green: 230/255, blue: 230/255, alpha: 1)
         
         return view
     }();

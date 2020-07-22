@@ -18,6 +18,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windoScene = (scene as? UIWindowScene) else { return }
         
         self.window = self.getRootController(windoScene);
+        
+        setCustomStatusBarBackground()
     }
     
     private func getRootController(_ windoScene: UIWindowScene) -> UIWindow {
@@ -29,6 +31,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window.makeKeyAndVisible();
         
         return window;
+    }
+    
+    private func setCustomStatusBarBackground() {
+        let statusBackgroundView = UIView()
+        statusBackgroundView.backgroundColor = UIColor.rgb(red: 194, green: 31, blue: 31)
+        
+        self.window?.addSubview(statusBackgroundView)
+        self.window?.addViewConstraints(withVisualFormat: "H:|[v0]|", views: statusBackgroundView)
+        self.window?.addViewConstraints(withVisualFormat: "V:|[v0(20)]", views: statusBackgroundView)
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
