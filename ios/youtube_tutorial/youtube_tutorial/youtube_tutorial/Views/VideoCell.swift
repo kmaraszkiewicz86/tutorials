@@ -8,7 +8,40 @@
 
 import UIKit
 
-class VideoCell: UICollectionViewCell {
+class VideoCell: BaseCollectionViewCell {
+    
+    var video : Video? {
+        didSet {
+            
+            if let video = video {
+                thumbailImageView.image = UIImage(named: video.thumbailImageName)
+                titleLabel.text = video.title
+                
+                let numberFormatter = NumberFormatter()
+                numberFormatter.numberStyle = .decimal
+                
+                userProfileImage.image = UIImage(named: video.channel.profileImageName)
+                
+                subtitleTextView.text = "\(video.channel.name) • \(numberFormatter.string(from: video.numberOfView)!) • 2 years ago"
+                
+                measureTitleText(video: video)
+            }
+        }
+    }
+    
+    func measureTitleText(video: Video) {
+        let size = CGSize(width: frame.width - CGFloat(LayoutHelper.getSumOfLayoutHelperValues()), height: 1000)
+        let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
+        let estimatedRect = NSString(string: video.title).boundingRect(with: size, options: options, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)], context: nil)
+        
+        if (estimatedRect.size.height > 20) {
+            self.titleLabelLayoutConstrinat?.constant = 44
+        } else {
+            self.titleLabelLayoutConstrinat?.constant = 20
+        }
+    }
+    
+    var titleLabelLayoutConstrinat: NSLayoutConstraint?
     
     let thumbailImageView: UIImageView = {
         let image = UIImageView()
@@ -38,6 +71,8 @@ class VideoCell: UICollectionViewCell {
         label.text = "Pierdki - Puste miejsce"
         label.translatesAutoresizingMaskIntoConstraints = false
         
+        label.numberOfLines = 2
+        
         return label
     }();
     
@@ -47,11 +82,14 @@ class VideoCell: UICollectionViewCell {
         textView.text = "Pierdkowe wideo z domowego zacisza • 1,300,923,900 • 2 years ago"
         textView.textContainerInset = UIEdgeInsets(top: 0, left: -4, bottom: 0, right: 0)
         textView.textColor = .lightGray
+        textView.isEditable = false
         
         textView.translatesAutoresizingMaskIntoConstraints = false
         
         return textView
     }();
+    
+    
     
     let separator: UIView = {
         let view = UIView();
@@ -61,39 +99,38 @@ class VideoCell: UICollectionViewCell {
         return view
     }();
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-
-        self.setupViews()
-    }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
-    private func setupViews() {
+    internal override func setupViews() {
         addSubview(self.thumbailImageView)
         addSubview(self.userProfileImage)
         addSubview(self.separator)
         addSubview(self.titleLabel)
         addSubview(self.subtitleTextView)
         
-        addViewConstraints(withVisualFormat: "H:|-16-[v0]-16-|", views: self.thumbailImageView)
-        addViewConstraints(withVisualFormat: "H:|-16-[v0(44)]", views: self.userProfileImage)
+        addViewConstraints(withVisualFormat: "H:|-\(LayoutHelper.leftViewCellMargin)-[v0]-\(LayoutHelper.rightViewCellMargin)-|", views: self.thumbailImageView)
+        addViewConstraints(withVisualFormat: "H:|-\(LayoutHelper.leftViewCellMargin)-[v0(\(LayoutHelper.userProfileImageWidth))]", views: self.userProfileImage)
         
         addConstraint(NSLayoutConstraint(item: self.titleLabel, attribute: .top, relatedBy: .equal, toItem: self.thumbailImageView, attribute: .bottom, multiplier: 1, constant: 8))
         addConstraint(NSLayoutConstraint(item: self.titleLabel, attribute: .left, relatedBy: .equal, toItem: self.userProfileImage, attribute: .right, multiplier: 1, constant: 8))
         addConstraint(NSLayoutConstraint(item: self.titleLabel, attribute: .right, relatedBy: .equal, toItem: self.thumbailImageView, attribute: .right, multiplier: 1, constant: 0))
-        addConstraint(NSLayoutConstraint(item: self.titleLabel, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0, constant: 30))
+        
+        self.titleLabelLayoutConstrinat = NSLayoutConstraint(item: self.titleLabel, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0, constant: 44)
+        
+        addConstraint(self.titleLabelLayoutConstrinat!)
         
         addConstraint(NSLayoutConstraint(item: self.subtitleTextView, attribute: .top, relatedBy: .equal, toItem: self.titleLabel, attribute: .bottom, multiplier: 1, constant: 4))
         addConstraint(NSLayoutConstraint(item: self.subtitleTextView, attribute: .left, relatedBy: .equal, toItem: self.userProfileImage, attribute: .right, multiplier: 1, constant: 8))
         addConstraint(NSLayoutConstraint(item: self.subtitleTextView, attribute: .right, relatedBy: .equal, toItem: self.thumbailImageView, attribute: .right, multiplier: 1, constant: 0))
         addConstraint(NSLayoutConstraint(item: self.subtitleTextView, attribute: .height, relatedBy: .equal, toItem: self.titleLabel, attribute: .height, multiplier: 1, constant: 0))
         
-        addViewConstraints(withVisualFormat: "V:|-16-[v0]-8-[v1(44)]-26-[v2(1)]|", views:
+        addViewConstraints(withVisualFormat: "V:|-\(LayoutHelper.leftViewCellMargin)-[v0]-\(LayoutHelper.userProfileImageRightMargin)-[v1(44)]-50-[v2(1)]|", views:
             self.thumbailImageView, self.userProfileImage, self.separator)
         addViewConstraints(withVisualFormat: "H:|[v0]|", views: self.separator)
         
+    }
+    
+    func fetchVideos() {
+        let url = NSURL("")
     }
 }
