@@ -24,7 +24,9 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         
         let dogs2Image = Video(thumbailImageName: "dogs2", title: "Pierdki - Se stoja, sie gapia na pike, ktora jest u gory na suficie", numberOfView: 11111111, uploadDate: NSDate(timeIntervalSince1970: TimeInterval(exactly: 1000000)!), channel: channel)
         
-        return [dogsImage, dogs2Image]
+        let dogs3Image = Video(thumbailImageName: "kotopitbulopies", title: "Pierdki - Kotopitbulopies po kapieli", numberOfView: 11111111, uploadDate: NSDate(timeIntervalSince1970: TimeInterval(exactly: 1000000)!), channel: channel)
+        
+        return [dogsImage, dogs2Image, dogs3Image]
     }
     
     override func viewDidLoad() {

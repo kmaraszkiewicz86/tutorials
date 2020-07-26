@@ -70,6 +70,7 @@ class VideoCell: BaseCollectionViewCell {
         
         label.text = "Pierdki - Puste miejsce"
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .black
         
         label.numberOfLines = 2
         
@@ -83,6 +84,7 @@ class VideoCell: BaseCollectionViewCell {
         textView.textContainerInset = UIEdgeInsets(top: 0, left: -4, bottom: 0, right: 0)
         textView.textColor = .lightGray
         textView.isEditable = false
+        textView.backgroundColor = .white
         
         textView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -131,6 +133,6 @@ class VideoCell: BaseCollectionViewCell {
     }
     
     func fetchVideos() {
-        let url = NSURL("")
+        //let url = NSURL("")
     }
 }
