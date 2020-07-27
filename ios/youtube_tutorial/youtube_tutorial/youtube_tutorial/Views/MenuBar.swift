@@ -60,6 +60,10 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate,
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        print(frame.width)
+        print(frame.height)
+        
         return CGSize(width: frame.width / 4, height: frame.height)
     }
     

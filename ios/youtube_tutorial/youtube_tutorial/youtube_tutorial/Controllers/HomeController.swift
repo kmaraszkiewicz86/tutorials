@@ -16,22 +16,56 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         return mb
     }()
     
-    private var videos: [Video] {
+    private var videos: [Video]?
+    
+    private func fetchVideos() {
+        let url = URLRequest(url: URL(string: "http://localhost:5000/api/Home")!)
+        let session = URLSession.shared
         
-        let channel = Channel(name: "PierdkoweKonto", profileImageName: "szarko")
-        
-        let dogsImage = Video(thumbailImageName: "dogs", title: "Pierdki - Se siedzą, sie gapia", numberOfView: 1300923900, uploadDate: NSDate(timeIntervalSince1970: TimeInterval(exactly: 1000000)!), channel: channel)
-        
-        let dogs2Image = Video(thumbailImageName: "dogs2", title: "Pierdki - Se stoja, sie gapia na pike, ktora jest u gory na suficie", numberOfView: 11111111, uploadDate: NSDate(timeIntervalSince1970: TimeInterval(exactly: 1000000)!), channel: channel)
-        
-        let dogs3Image = Video(thumbailImageName: "kotopitbulopies", title: "Pierdki - Kotopitbulopies po kapieli", numberOfView: 11111111, uploadDate: NSDate(timeIntervalSince1970: TimeInterval(exactly: 1000000)!), channel: channel)
-        
-        return [dogsImage, dogs2Image, dogs3Image]
+        session.dataTask(with: url) { (data, response, error) in
+            
+            if error != nil {
+                print(error)
+                return
+            }
+            
+            do {
+                let json = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers)
+                
+                self.videos = [Video]()
+                
+                for dictioniary in json as! [[String: Any]] {
+                                        
+                    let channelDictionaty = dictioniary["channel"] as! [String: Any]
+                    let channel = Channel(name: channelDictionaty["name"] as! String,
+                    profileImageName: channelDictionaty["profile_image_name"] as! String)
+                    
+                    let dogsImage = Video(thumbailImageName: dictioniary["thumbnail_image_name"] as! String,
+                                          title: dictioniary["title"] as! String,
+                                          numberOfView: 1300923900,
+                                          uploadDate: NSDate(timeIntervalSince1970: TimeInterval(exactly: 1000000)!),
+                                          channel: channel)
+                    
+                    self.videos?.append(dogsImage)
+                }
+                
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                }
+                
+                
+            } catch let jsonError {
+                print(jsonError)
+            }
+            
+        }.resume()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        fetchVideos()
+        
         self.navigationItem.title = "Home"
         self.navigationController?.navigationBar.isTranslucent = false
         
@@ -91,16 +125,25 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.videos.count
+        return self.videos?.count ?? 0
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: "VideoCell", for: indexPath) as! VideoCell
     
-        cell.video = videos[indexPath.item]
+        cell.video = videos![indexPath.item]
         
         return cell
     }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+
+        self.collectionView?.reloadData()
+        
+        menuBar.colectionView.reloadData()
+    }
+    
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath:  IndexPath) -> CGSize {
         

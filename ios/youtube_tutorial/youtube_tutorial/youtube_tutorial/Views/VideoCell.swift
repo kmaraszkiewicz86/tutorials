@@ -14,19 +14,41 @@ class VideoCell: BaseCollectionViewCell {
         didSet {
             
             if let video = video {
-                thumbailImageView.image = UIImage(named: video.thumbailImageName)
+                
+                self.thumbailImageView.loadThumbailImageAndSetToImageView(url: video.thumbailImageName)
+                
                 titleLabel.text = video.title
                 
                 let numberFormatter = NumberFormatter()
                 numberFormatter.numberStyle = .decimal
                 
-                userProfileImage.image = UIImage(named: video.channel.profileImageName)
+                userProfileImage.loadThumbailImageAndSetToImageView(url: video.channel.profileImageName)
                 
                 subtitleTextView.text = "\(video.channel.name) • \(numberFormatter.string(from: video.numberOfView)!) • 2 years ago"
                 
                 measureTitleText(video: video)
             }
         }
+    }
+    
+    func loadThumbailImageAndSetToImageView(video: Video) {
+        let request = URLRequest(url: URL(string: video.thumbailImageName)!)
+        
+        let session = URLSession.shared
+        
+        session.dataTask(with: request) { (data, response, error) in
+            
+            if let err = error {
+                print(err)
+                return
+            }
+            
+            print(video.thumbailImageName)
+            
+            DispatchQueue.main.async {
+                self.thumbailImageView.image = UIImage(data: data!)
+            }
+        }.resume()
     }
     
     func measureTitleText(video: Video) {
@@ -61,6 +83,7 @@ class VideoCell: BaseCollectionViewCell {
         image.image = UIImage(named: "szarko")
         image.layer.cornerRadius = 22
         image.layer.masksToBounds = true
+        image.contentMode = .scaleAspectFill
         
         return image
     }();
