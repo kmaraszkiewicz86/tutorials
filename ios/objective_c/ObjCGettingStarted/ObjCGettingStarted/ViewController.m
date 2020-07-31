@@ -24,10 +24,48 @@ NSString *cellId = @"cellId";
     
     [self setupCourses];
     
+    [self fetchData];
+    
     self.navigationItem.title = @"Courses";
     self.navigationController.navigationBar.prefersLargeTitles = YES;
     
     [self.tableView registerClass:UITableViewCell.class forCellReuseIdentifier:cellId];
+}
+
+- (void) fetchData {
+    NSLog(@"Fetching courses");
+    
+    NSString *urlString = @"https://api.letsbuildthatapp.com/jsondecodable/courses";
+    NSURL *url = [NSURL URLWithString:urlString];
+    
+    [[NSURLSession.sharedSession dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        
+        NSError *err;
+        
+        NSArray *jsonData =  [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&err];
+        
+        if (err) {
+            NSLog(@"Url %@ produce erro %@", urlString, err);
+            return;
+        }
+        
+        NSMutableArray<Course *> *courses = NSMutableArray.new;
+        
+        for (NSDictionary *jsonDictionary in jsonData) {
+            
+            Course *course = Course.new;
+            course.name = jsonDictionary[@"name"];
+            course.numberOfLessons = jsonDictionary[@"number_of_lessons"];
+            
+            [courses addObject:course];
+        }
+        
+        self.courses = courses;
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableView reloadData];
+        });
+    }] resume];
 }
 
 - (void)setupCourses {
@@ -46,11 +84,14 @@ NSString *cellId = @"cellId";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId forIndexPath:indexPath];
+//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId forIndexPath:indexPath];
+    
+    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellId];
     
     Course *course = self.courses[indexPath.row];
     
     cell.textLabel.text = course.name;
+    cell.detailTextLabel.text = course.numberOfLessons.stringValue;
     
     return cell;
 }
