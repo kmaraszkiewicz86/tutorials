@@ -8,8 +8,24 @@
 
 import UIKit
 
-extension UIImageView {
+
+
+class CustomImage: UIImageView {
+    
+    static let imageCache = NSCache<NSString, UIImage>()
+    
+    //private var imageUrlString: String?
+    
     func loadThumbailImageAndSetToImageView(url: String) {
+        
+        //self.imageUrlString = url
+        self.image = nil
+        
+        if let image : UIImage = CustomImage.imageCache.object(forKey: NSString(string: url)) {
+            self.image = image
+            return
+        }
+        
         let request = URLRequest(url: URL(string: url)!)
         
         let session = URLSession.shared
@@ -21,9 +37,14 @@ extension UIImageView {
                 return
             }
             
-            DispatchQueue.main.async {
-                self.image = UIImage(data: data!)
-            }
+            let imageToCache = UIImage(data: data!)!
+            CustomImage.imageCache.setObject(imageToCache, forKey: NSString(string: url))
+            
+            //if self.imageUrlString == url {
+                DispatchQueue.main.async {
+                    self.image = imageToCache
+                }
+            //}
         }.resume()
     }
 }

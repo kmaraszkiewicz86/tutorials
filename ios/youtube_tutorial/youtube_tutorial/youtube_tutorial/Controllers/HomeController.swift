@@ -18,52 +18,13 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     private var videos: [Video]?
     
-    private func fetchVideos() {
-        let url = URLRequest(url: URL(string: "http://localhost:5000/api/Home")!)
-        let session = URLSession.shared
-        
-        session.dataTask(with: url) { (data, response, error) in
-            
-            if error != nil {
-                print(error)
-                return
-            }
-            
-            do {
-                let json = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers)
-                
-                self.videos = [Video]()
-                
-                for dictioniary in json as! [[String: Any]] {
-                                        
-                    let channelDictionaty = dictioniary["channel"] as! [String: Any]
-                    let channel = Channel(name: channelDictionaty["name"] as! String,
-                    profileImageName: channelDictionaty["profile_image_name"] as! String)
-                    
-                    let dogsImage = Video(thumbailImageName: dictioniary["thumbnail_image_name"] as! String,
-                                          title: dictioniary["title"] as! String,
-                                          numberOfView: 1300923900,
-                                          uploadDate: NSDate(timeIntervalSince1970: TimeInterval(exactly: 1000000)!),
-                                          channel: channel)
-                    
-                    self.videos?.append(dogsImage)
-                }
-                
-                DispatchQueue.main.async {
-                    self.collectionView.reloadData()
-                }
-                
-                
-            } catch let jsonError {
-                print(jsonError)
-            }
-            
-        }.resume()
-    }
+    var settingsLauncher: SettingsLauncher?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        self.settingsLauncher = SettingsLauncher(view: self.view, navigationController: self.navigationController)
+        
         fetchVideos()
         
         self.navigationItem.title = "Home"
@@ -73,7 +34,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         titleLabel.textColor = .white
         titleLabel.text = "Home"
         titleLabel.font = UIFont.systemFont(ofSize: 20)
-            
+        
         self.navigationItem.titleView = titleLabel
         
         self.collectionView.backgroundColor = .white
@@ -90,21 +51,15 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     private func setupNavBarButtons()
     {
-        let searchBarButtonItem = UIBarButtonItem.getImageBarButtonItemUsing(imageByName: "ellipsis.circle.fill", target: self, selector: #selector(handleSearch))
+        let searchBarButtonItem = UIBarButtonItem.getImageBarButtonItemUsing(imageByName: "magnifyingglass", target: self, selector: #selector(handleSearch))
         
-        let moreButtonBarButtonItem =  UIBarButtonItem.getImageBarButtonItemUsing(imageByName: "magnifyingglass", target: self, selector: #selector(handleMoreButton))
+        let moreButtonBarButtonItem =  UIBarButtonItem.getImageBarButtonItemUsing(imageByName: "ellipsis.circle.fill", target: self, selector: #selector(handleMoreButton))
         
         navigationItem.rightBarButtonItems = [moreButtonBarButtonItem, searchBarButtonItem]
     }
     
     @objc func handleMoreButton() {
-        let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-        
-        let alertController = UIAlertController(title: "handleMoreButton", message: "Handle of more button", preferredStyle: .actionSheet)
-        
-        alertController.addAction(okAction)
-        
-        present(alertController, animated: false)
+        self.settingsLauncher?.showSettings()
     }
     
     @objc func handleSearch() {
@@ -130,7 +85,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: "VideoCell", for: indexPath) as! VideoCell
-    
+        
         cell.video = videos![indexPath.item]
         
         return cell
@@ -138,7 +93,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-
+        
         self.collectionView?.reloadData()
         
         menuBar.colectionView.reloadData()
@@ -155,5 +110,48 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
-
+    
+    private func fetchVideos() {
+        let url = URLRequest(url: URL(string: "http://flashcard.izabelamaraszkiewiczit.hostingasp.pl/api/home")!)
+        let session = URLSession.shared
+        
+        session.dataTask(with: url) { (data, response, error) in
+            
+            if error != nil {
+                print(error)
+                return
+            }
+            
+            do {
+                let json = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers)
+                
+                self.videos = [Video]()
+                
+                for dictioniary in json as! [[String: Any]] {
+                    
+                    let channelDictionaty = dictioniary["channel"] as! [String: Any]
+                    let channel = Channel(name: channelDictionaty["name"] as! String,
+                                          profileImageName: channelDictionaty["profile_image_name"] as! String)
+                    
+                    let dogsImage = Video(thumbailImageName: dictioniary["thumbnail_image_name"] as! String,
+                                          title: dictioniary["title"] as! String,
+                                          numberOfView: 1300923900,
+                                          uploadDate: NSDate(timeIntervalSince1970: TimeInterval(exactly: 1000000)!),
+                                          channel: channel)
+                    
+                    self.videos?.append(dogsImage)
+                }
+                
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                }
+                
+                
+            } catch let jsonError {
+                print(jsonError)
+            }
+            
+        }.resume()
+    }
+    
 }

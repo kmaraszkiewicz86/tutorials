@@ -65,8 +65,8 @@ class VideoCell: BaseCollectionViewCell {
     
     var titleLabelLayoutConstrinat: NSLayoutConstraint?
     
-    let thumbailImageView: UIImageView = {
-        let image = UIImageView()
+    let thumbailImageView: CustomImage = {
+        let image = CustomImage()
         
         image.backgroundColor = .blue
         image.image = UIImage(named: "dogs")
@@ -76,8 +76,8 @@ class VideoCell: BaseCollectionViewCell {
         return image
     }();
     
-    let userProfileImage: UIImageView = {
-        let image = UIImageView()
+    let userProfileImage: CustomImage = {
+        let image = CustomImage()
         
         image.backgroundColor = .green
         image.image = UIImage(named: "szarko")

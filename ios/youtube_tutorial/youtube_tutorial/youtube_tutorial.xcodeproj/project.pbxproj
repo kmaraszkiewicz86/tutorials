@@ -23,6 +23,8 @@
 		685D95BF24CC8382001364E3 /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685D95BE24CC8382001364E3 /* Channel.swift */; };
 		685D95C224CCA467001364E3 /* LayoutHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685D95C124CCA467001364E3 /* LayoutHelper.swift */; };
 		68EB646824CF666700533FF1 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68EB646724CF666700533FF1 /* UIImageViewExtension.swift */; };
+		68F03B5524D0D0AA0069C8A6 /* SettingsLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F03B5424D0D0AA0069C8A6 /* SettingsLauncher.swift */; };
+		68F03B5724D0E8C40069C8A6 /* SettingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F03B5624D0E8C40069C8A6 /* SettingCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +46,8 @@
 		685D95BE24CC8382001364E3 /* Channel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
 		685D95C124CCA467001364E3 /* LayoutHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutHelper.swift; sourceTree = "<group>"; };
 		68EB646724CF666700533FF1 /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
+		68F03B5424D0D0AA0069C8A6 /* SettingsLauncher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsLauncher.swift; sourceTree = "<group>"; };
+		68F03B5624D0E8C40069C8A6 /* SettingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +101,7 @@
 				68133C4424C8F5E80095CA6D /* MenuBar.swift */,
 				681BA5EE24CA197A00E81F95 /* MenuCollectionViewCell.swift */,
 				681BA5F124CA199300E81F95 /* BaseCollectionViewCell.swift */,
+				68F03B5624D0E8C40069C8A6 /* SettingCollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -125,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				685D95C124CCA467001364E3 /* LayoutHelper.swift */,
+				68F03B5424D0D0AA0069C8A6 /* SettingsLauncher.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -218,9 +224,11 @@
 				681BA5EF24CA197A00E81F95 /* MenuCollectionViewCell.swift in Sources */,
 				680ACB2024C634D0008AF399 /* SceneDelegate.swift in Sources */,
 				685D95BD24CC72E1001364E3 /* Video.swift in Sources */,
+				68F03B5524D0D0AA0069C8A6 /* SettingsLauncher.swift in Sources */,
 				6851B8AF24C63E82009984E4 /* HomeController.swift in Sources */,
 				68133C4524C8F5E80095CA6D /* MenuBar.swift in Sources */,
 				68133C4224C8F0EA0095CA6D /* UIColorExtension.swift in Sources */,
+				68F03B5724D0E8C40069C8A6 /* SettingCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
