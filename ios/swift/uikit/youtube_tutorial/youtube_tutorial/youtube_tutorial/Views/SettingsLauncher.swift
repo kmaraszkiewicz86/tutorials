@@ -20,17 +20,9 @@ class SettingsLauncher : NSObject, UICollectionViewDataSource,
     
     let settings : [Settings] = {
         
-        var setting1 = Settings()
-        setting1.name = "Settings"
-        setting1.iconName = "gear"
-        
-        var setting2 = Settings()
-        setting2.name = "Account"
-        setting2.iconName = "person"
-        
-        var setting3 = Settings()
-        setting3.name = "Help"
-        setting3.iconName = "questionmark"
+        var setting1 = Settings(name: "Settings", iconName: "gear")
+        var setting2 = Settings(name: "Account", iconName: "person")
+        var setting3 = Settings(name: "Help", iconName: "questionmark")
         
         return [setting1, setting2, setting3]
     }();

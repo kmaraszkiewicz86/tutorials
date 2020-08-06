@@ -17,8 +17,8 @@ class SettingCollectionViewCell: BaseCollectionViewCell {
                 return
             }
             
-            textLabel.text = settingsTmp.name!
-            imageView.image = UIImage(systemName: settingsTmp.iconName!)
+            textLabel.text = settingsTmp.name
+            imageView.image = UIImage(systemName: settingsTmp.iconName)
             
         }
     }
