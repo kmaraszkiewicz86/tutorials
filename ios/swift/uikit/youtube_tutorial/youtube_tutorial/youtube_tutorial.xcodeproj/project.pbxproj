@@ -24,6 +24,7 @@
 		685D95C224CCA467001364E3 /* LayoutHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685D95C124CCA467001364E3 /* LayoutHelper.swift */; };
 		68E43F9B24D8A33F00332A99 /* SettingsLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E43F9A24D8A33F00332A99 /* SettingsLauncher.swift */; };
 		68EB646824CF666700533FF1 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68EB646724CF666700533FF1 /* UIImageViewExtension.swift */; };
+		68EE1D6224DCB37A002E3A21 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68EE1D6124DCB37A002E3A21 /* Settings.swift */; };
 		68F03B5724D0E8C40069C8A6 /* SettingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F03B5624D0E8C40069C8A6 /* SettingCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +48,7 @@
 		685D95C124CCA467001364E3 /* LayoutHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutHelper.swift; sourceTree = "<group>"; };
 		68E43F9A24D8A33F00332A99 /* SettingsLauncher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsLauncher.swift; sourceTree = "<group>"; };
 		68EB646724CF666700533FF1 /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
+		68EE1D6124DCB37A002E3A21 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		68F03B5624D0E8C40069C8A6 /* SettingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -123,6 +125,7 @@
 			children = (
 				685D95BC24CC72E1001364E3 /* Video.swift */,
 				685D95BE24CC8382001364E3 /* Channel.swift */,
+				68EE1D6124DCB37A002E3A21 /* Settings.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -216,6 +219,7 @@
 				685D95BA24CC6E3F001364E3 /* UIBarButtonItemExtension.swift in Sources */,
 				685D95C224CCA467001364E3 /* LayoutHelper.swift in Sources */,
 				68EB646824CF666700533FF1 /* UIImageViewExtension.swift in Sources */,
+				68EE1D6224DCB37A002E3A21 /* Settings.swift in Sources */,
 				685D95BF24CC8382001364E3 /* Channel.swift in Sources */,
 				68E43F9B24D8A33F00332A99 /* SettingsLauncher.swift in Sources */,
 				6826AA2924C78D31006B4E33 /* UIViewExtension.swift in Sources */,

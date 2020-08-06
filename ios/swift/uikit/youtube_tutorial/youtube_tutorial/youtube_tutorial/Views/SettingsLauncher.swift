@@ -15,9 +15,25 @@ class SettingsLauncher : NSObject, UICollectionViewDataSource,
     let blackView = UIView()
     
     private var view: UIView?
-    private var navigationController: UINavigationController?
+    private var collectionViewConstraints: [NSLayoutConstraint]?
+    private var blackViewConstraints: [NSLayoutConstraint]?
     
-    let settingNames = ["tset1", "tset2", "test3"]
+    let settings : [Settings] = {
+        
+        var setting1 = Settings()
+        setting1.name = "Settings"
+        setting1.iconName = "gear"
+        
+        var setting2 = Settings()
+        setting2.name = "Account"
+        setting2.iconName = "person"
+        
+        var setting3 = Settings()
+        setting3.name = "Help"
+        setting3.iconName = "questionmark"
+        
+        return [setting1, setting2, setting3]
+    }();
     
     lazy var collectionView: UICollectionView = {
         
@@ -28,19 +44,27 @@ class SettingsLauncher : NSObject, UICollectionViewDataSource,
         cv.dataSource = self
         
         cv.translatesAutoresizingMaskIntoConstraints = false
-        cv.backgroundColor = .red
+        cv.backgroundColor = .white
         
         return cv
     }();
     
+    init(view: UIView?) {
+        super.init()
+        
+        self.view = view
+        
+        self.collectionView.register(SettingCollectionViewCell.self, forCellWithReuseIdentifier: "SettingCollectionViewCell")
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return settingNames.count
+        return settings.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SettingCollectionViewCell", for: indexPath) as! SettingCollectionViewCell
         
-        cell.text = settingNames[indexPath.item]
+        cell.settings = settings[indexPath.item]
         
         return cell
     }
@@ -50,17 +74,9 @@ class SettingsLauncher : NSObject, UICollectionViewDataSource,
         return CGSize(width: self.view!.frame.width, height: 50)
     }
     
-    init(view: UIView?, navigationController: UINavigationController?) {
-        super.init()
-        
-        self.view = view
-        self.navigationController = navigationController
-        
-        self.collectionView.register(SettingCollectionViewCell.self, forCellWithReuseIdentifier: "SettingCollectionViewCell")
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
     }
-    
-    private var collectionViewConstraints: [NSLayoutConstraint]?
-    private var blackViewConstraints: [NSLayoutConstraint]?
     
     func showSettings() {
         
@@ -71,8 +87,7 @@ class SettingsLauncher : NSObject, UICollectionViewDataSource,
         blackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissMoreButton)))
         
         view?.addSubview(blackView)
-        self.navigationController?.view.addSubview(blackView)
-        
+            
         view?.addSubview(collectionView)
         
         
@@ -88,7 +103,7 @@ class SettingsLauncher : NSObject, UICollectionViewDataSource,
         self.collectionView.frame = CGRect(x: 0, y: view!.frame.height, width: self.collectionView.frame.width, height: height)
         
         blackViewConstraints = [
-            blackView.topAnchor.constraint(equalTo: self.navigationController!.view!.topAnchor),
+            blackView.topAnchor.constraint(equalTo: self.view!.topAnchor),
             blackView.trailingAnchor.constraint(equalTo: view!.trailingAnchor),
             blackView.leadingAnchor.constraint(equalTo: view!.leadingAnchor),
             blackView.bottomAnchor.constraint(equalTo: view!.bottomAnchor)

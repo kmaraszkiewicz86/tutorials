@@ -23,8 +23,6 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.settingsLauncher = SettingsLauncher(view: self.view, navigationController: self.navigationController)
-        
         fetchVideos()
         
         self.navigationController?.navigationBar.isTranslucent = false
@@ -34,23 +32,22 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         titleLabel.textColor = .white
         titleLabel.text = "Home"
         titleLabel.font = UIFont.systemFont(ofSize: 20)
-
+        
         self.navigationItem.titleView = titleLabel
         
         self.collectionView.backgroundColor = .white
         self.navigationItem.titleView?.autoresizingMask = [UIView.AutoresizingMask.flexibleHeight, UIView.AutoresizingMask.flexibleTopMargin]
-            
-            
-            //UIView.AutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleRightMargin
         
         self.collectionView.register(VideoCell.self, forCellWithReuseIdentifier: "VideoCell")
         
-        //self.collectionView.contentInset = UIEdgeInsets(top: 50, left: 0, bottom: 0, right: 0)
+        self.collectionView.contentInset = UIEdgeInsets(top: 50, left: 0, bottom: 0, right: 0)
         
-        //collectionView.scrollIndicatorInsets = UIEdgeInsets(top: 50, left: 0, bottom: 0, right: 0)
+        collectionView.scrollIndicatorInsets = UIEdgeInsets(top: 50, left: 0, bottom: 0, right: 0)
         
         setupMenuBar()
         setupNavBarButtons()
+        
+        self.settingsLauncher = SettingsLauncher(view: self.view)
     }
     
     private func setupNavBarButtons()

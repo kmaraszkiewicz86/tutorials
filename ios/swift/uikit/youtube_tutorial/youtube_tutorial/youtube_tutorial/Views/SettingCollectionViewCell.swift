@@ -10,14 +10,15 @@ import UIKit
 
 class SettingCollectionViewCell: BaseCollectionViewCell {
     
-    var text: String? {
+    var settings: Settings? {
         didSet {
             
-            guard let t = text else {
+            guard let settingsTmp = settings else {
                 return
             }
             
-            textLabel.text = t
+            textLabel.text = settingsTmp.name!
+            imageView.image = UIImage(systemName: settingsTmp.iconName!)
             
         }
     }
@@ -29,15 +30,28 @@ class SettingCollectionViewCell: BaseCollectionViewCell {
         return label
     }();
     
-    override func setupViews() {
+    private let imageView: UIImageView = {
+        let imageView = UIImageView()
         
+        imageView.image = UIImage(systemName: "gear")
+        imageView.contentMode = .scaleAspectFit
+        imageView.tintColor = .gray
+        
+        return imageView
+    }();
+    
+    override func setupViews() {
         super.setupViews()
         
         addSubview(textLabel)
+        addSubview(imageView)
+        
+        addViewConstraints(withVisualFormat: "H:|-16-[v0(30)]-8-[v1]|", views: imageView, textLabel)
+        addViewConstraints(withVisualFormat: "V:[v0(30)]", views: imageView)
+        addViewConstraints(withVisualFormat: "V:|[v0]|", views: textLabel)
         
         NSLayoutConstraint.activate([
-            textLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
-            textLabel.centerXAnchor.constraint(equalTo: centerXAnchor)
+            imageView.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
         
     }
