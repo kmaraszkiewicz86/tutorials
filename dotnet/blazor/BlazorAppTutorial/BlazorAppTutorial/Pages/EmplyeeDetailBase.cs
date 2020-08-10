@@ -1,14 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using BethanysPieShopHRM.Shared;
+﻿using BethanysPieShopHRM.Shared;
 using Microsoft.AspNetCore.Components;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace BethanyPieShopHRM.App.Pages
+namespace BlazorAppTutorial.Pages
 {
-    public class EmployeeOverviewBase : ComponentBase
+    public class EmplyeeDetailBase : ComponentBase
     {
+        [Parameter]
+        public string EmployeeId { get; set; }
+
+        public Employee Employee { get; set; } = new Employee();
+
         public IEnumerable<Employee> Employees { get; set; }
+
+        private List<Country> Countries { get; set; }
+
+        private List<JobCategory> JobCategories { get; set; }
 
         protected override Task OnInitializedAsync()
         {
@@ -16,12 +26,10 @@ namespace BethanyPieShopHRM.App.Pages
             InitializeJobCategories();
             InitializeEmployees();
 
+            Employee = Employees.FirstOrDefault(e => e.EmployeeId == int.Parse(EmployeeId));
+
             return base.OnInitializedAsync();
         }
-
-        private List<Country> Countries { get; set; }
-
-        private List<JobCategory> JobCategories { get; set; }
 
         private void InitializeJobCategories()
         {
@@ -43,16 +51,16 @@ namespace BethanyPieShopHRM.App.Pages
         private void InitializeCountries()
         {
             Countries = new List<Country>
-    {
-        new Country {CountryId = 1, Name = "Belgium"},
-        new Country {CountryId = 2, Name = "Netherlands"},
-        new Country {CountryId = 3, Name = "USA"},
-        new Country {CountryId = 4, Name = "Japan"},
-        new Country {CountryId = 5, Name = "China"},
-        new Country {CountryId = 6, Name = "UK"},
-        new Country {CountryId = 7, Name = "France"},
-        new Country {CountryId = 8, Name = "Brazil"}
-    };
+            {
+                new Country {CountryId = 1, Name = "Belgium"},
+                new Country {CountryId = 2, Name = "Netherlands"},
+                new Country {CountryId = 3, Name = "USA"},
+                new Country {CountryId = 4, Name = "Japan"},
+                new Country {CountryId = 5, Name = "China"},
+                new Country {CountryId = 6, Name = "UK"},
+                new Country {CountryId = 7, Name = "France"},
+                new Country {CountryId = 8, Name = "Brazil"}
+            };
         }
 
         private void InitializeEmployees()
@@ -102,3 +110,4 @@ namespace BethanyPieShopHRM.App.Pages
         }
     }
 }
+
