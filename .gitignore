@@ -115,6 +115,9 @@ Sql/dotnetExample/EntityFrameworkExample/.idea/
 */*/*/.DS_Store
 */*/*/.DS_Store
 */*/*/.DS_Store
-*/*/*/*/.DS_Store"
+*/*/*/*/.DS_Store
+*/*/*/*/*/*/*/obj
+*/*/*/*/*/*/*/bin
+*/*/.idea
 
 ios/FoodTracker/.DS_Store
