@@ -10,6 +10,21 @@ import UIKit
 
 class SettingCollectionViewCell: BaseCollectionViewCell {
     
+    override var isSelected: Bool {
+        didSet {
+            
+            if (isSelected) {
+                backgroundColor = .darkGray
+                textLabel.textColor = .white
+                imageView.tintColor = .white
+            } else {
+                backgroundColor = .white
+                textLabel.textColor = .darkGray
+                imageView.tintColor = .darkGray
+            }
+        }
+    }
+    
     var settings: Settings? {
         didSet {
             
@@ -19,6 +34,8 @@ class SettingCollectionViewCell: BaseCollectionViewCell {
             
             textLabel.text = settingsTmp.name
             imageView.image = UIImage(systemName: settingsTmp.iconName)
+            imageView.image?.withRenderingMode(.alwaysTemplate)
+            imageView.image?.withTintColor(.darkGray)
             
         }
     }

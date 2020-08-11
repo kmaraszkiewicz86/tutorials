@@ -14,9 +14,13 @@ class SettingsLauncher : NSObject, UICollectionViewDataSource,
     
     let blackView = UIView()
     
+    public var homeController : HomeController?
+    
     private var view: UIView?
     private var collectionViewConstraints: [NSLayoutConstraint]?
     private var blackViewConstraints: [NSLayoutConstraint]?
+    
+    private let settingCellHeight : CGFloat = 50
     
     let settings : [Settings] = {
         
@@ -63,11 +67,19 @@ class SettingsLauncher : NSObject, UICollectionViewDataSource,
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath:  IndexPath) -> CGSize {
         
-        return CGSize(width: self.view!.frame.width, height: 50)
+        return CGSize(width: self.view!.frame.width, height: self.settingCellHeight)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        dismissMoreButton() {
+            (completed: Bool) in
+            self.homeController?.showController(settings: self.settings[indexPath.row])
+        }
     }
     
     func showSettings() {
@@ -76,7 +88,7 @@ class SettingsLauncher : NSObject, UICollectionViewDataSource,
         blackView.translatesAutoresizingMaskIntoConstraints = false
         blackView.alpha = 0
         
-        blackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissMoreButton)))
+        blackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissMoreButtonAction)))
         
         view?.addSubview(blackView)
             
@@ -87,7 +99,7 @@ class SettingsLauncher : NSObject, UICollectionViewDataSource,
             collectionView.bottomAnchor.constraint(equalTo: view!.bottomAnchor),
             collectionView.leadingAnchor.constraint(equalTo: view!.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view!.trailingAnchor),
-            collectionView.heightAnchor.constraint(equalToConstant: 300)
+            collectionView.heightAnchor.constraint(equalToConstant: CGFloat(settings.count) * self.settingCellHeight)
         ]
         
         let height: CGFloat = 200
@@ -111,16 +123,24 @@ class SettingsLauncher : NSObject, UICollectionViewDataSource,
         }, completion: nil)
     }
     
-    @objc func dismissMoreButton() {
+    @objc func dismissMoreButtonAction() {
+        dismissMoreButton(nil)
+    }
+    
+    func dismissMoreButton(_ completion: ((Bool) -> Void)?) {
         
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-            self.blackView.alpha = 0
+            self.dissmisAction();
             
-            self.collectionView.frame = CGRect(x: 0, y: self.view!.frame.height, width: self.view!.frame.width, height: 0)
-            
-        }, completion: nil)
+        }, completion: completion)
+    }
+    
+    private func dissmisAction() {
+        self.blackView.alpha = 0
         
-        self.collectionView.removeConstraints(collectionViewConstraints!)
-        self.blackView.removeConstraints(blackViewConstraints!)
+        self.collectionView.frame = CGRect(x: 0, y: self.view!.frame.height, width: self.view!.frame.width, height: 0)
+        
+        self.collectionView.removeConstraints(self.collectionViewConstraints!)
+        self.blackView.removeConstraints(self.blackViewConstraints!)
     }
 }

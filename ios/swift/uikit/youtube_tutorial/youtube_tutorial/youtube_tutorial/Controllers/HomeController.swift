@@ -18,7 +18,11 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     private var videos: [Video]?
     
-    var settingsLauncher: SettingsLauncher?
+    private lazy var settingsLauncher : SettingsLauncher = {
+        let settingsLauncher = SettingsLauncher(view: self.view);
+        settingsLauncher.homeController = self
+        return settingsLauncher
+    }();
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,8 +50,6 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         
         setupMenuBar()
         setupNavBarButtons()
-        
-        self.settingsLauncher = SettingsLauncher(view: self.view)
     }
     
     private func setupNavBarButtons()
@@ -60,7 +62,18 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     }
     
     @objc func handleMoreButton() {
-        self.settingsLauncher?.showSettings()
+        self.settingsLauncher.showSettings()
+    }
+    
+    public func showController(settings: Settings) {
+        let controller = UIViewController()
+        controller.navigationItem.title = settings.name
+        controller.view.backgroundColor = .white
+        
+        navigationController?.navigationBar.tintColor = .white
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        
+        navigationController?.pushViewController(controller, animated: true)
     }
     
     @objc func handleSearch() {
