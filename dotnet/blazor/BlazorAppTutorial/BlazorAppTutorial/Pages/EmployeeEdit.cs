@@ -1,14 +1,11 @@
-﻿using BethanysPieShopHRM.Shared;
+﻿using System.Threading.Tasks;
+using BethanysPieShopHRM.Shared;
 using BlazorAppTutorial.Api.Services;
 using Microsoft.AspNetCore.Components;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace BlazorAppTutorial.Pages
 {
-    public class EmplyeeDetailBase : ComponentBase
+    public partial class EmployeeEdit
     {
         [Parameter]
         public string EmployeeId { get; set; }
@@ -24,4 +21,3 @@ namespace BlazorAppTutorial.Pages
         }
     }
 }
-
