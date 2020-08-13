@@ -1,8 +1,8 @@
 using BlazorAppTutorial.Api.Services;
+using BlazorAppTutorial.Services;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace BlazorAppTutorial
@@ -15,7 +15,13 @@ namespace BlazorAppTutorial
             builder.RootComponents.Add<App>("app");
 
             builder.Services.AddHttpClient<IEmployeeDataService, EmployeeDataService>(
-                client => client.BaseAddress = new Uri("https://localhost:5001/"));
+                client => client.BaseAddress = new Uri("https://localhost:44340/"));
+
+            builder.Services.AddHttpClient<ICountryDataService, CountryDataService>(
+                client => client.BaseAddress = new Uri("https://localhost:44340/"));
+
+            builder.Services.AddHttpClient<IJobCategoryDataService, JobCategoryDataService>(
+                client => client.BaseAddress = new Uri("https://localhost:44340/"));
 
             await builder.Build().RunAsync();
         }
