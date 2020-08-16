@@ -37,7 +37,9 @@ namespace BlazorAppTutorial.Api.Services
             var employeeJson =
                 new StringContent(JsonSerializer.Serialize(employee), Encoding.UTF8, "application/json");
 
-            await _httpClient.PutAsync("api/employee", employeeJson);
+            var response = await _httpClient.PutAsync("api/employee", employeeJson);
+
+            Console.WriteLine(response.StatusCode);
         }
 
         public async Task DeleteEmployee(int employeeId)

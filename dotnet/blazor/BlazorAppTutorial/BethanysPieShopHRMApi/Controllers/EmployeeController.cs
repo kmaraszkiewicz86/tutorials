@@ -1,11 +1,13 @@
 ﻿using BethanysPieShopHRM.Api.Models;
 using BethanysPieShopHRM.Shared;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BethanysPieShopHRM.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors("Open")]
     public class EmployeeController : Controller
     {
         private readonly IEmployeeRepository _employeeRepository;

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using BethanysPieShopHRM.Shared;
 using BlazorAppTutorial.Api.Services;
@@ -15,7 +16,7 @@ namespace BlazorAppTutorial.Pages
 
         protected override async Task OnInitializedAsync()
         {
-			Employees = await EmployeeDataService.GetAllEmployees();
+            Employees = await EmployeeDataService.GetAllEmployees();
         }
 	}
 }
