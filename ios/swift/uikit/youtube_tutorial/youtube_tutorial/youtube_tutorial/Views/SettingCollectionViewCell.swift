@@ -32,7 +32,7 @@ class SettingCollectionViewCell: BaseCollectionViewCell {
                 return
             }
             
-            textLabel.text = settingsTmp.name
+            textLabel.text = settings?.name.rawValue
             imageView.image = UIImage(systemName: settingsTmp.iconName)
             imageView.image?.withRenderingMode(.alwaysTemplate)
             imageView.image?.withTintColor(.darkGray)

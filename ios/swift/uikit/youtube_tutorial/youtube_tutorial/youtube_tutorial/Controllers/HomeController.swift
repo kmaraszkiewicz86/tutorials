@@ -27,14 +27,18 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        fetchVideos()
+        VideoService.shared.fetchVideos { (videos) in
+            self.videos = videos
+            
+            self.collectionView.reloadData()
+        }
         
         self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.navigationBar.autoresizingMask = [UIView.AutoresizingMask.flexibleHeight, UIView.AutoresizingMask.flexibleTopMargin]
         
         let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.width - 32, height: self.view.frame.height))
         titleLabel.textColor = .white
-        titleLabel.text = "Home"
+        titleLabel.text = "  Home"
         titleLabel.font = UIFont.systemFont(ofSize: 20)
         
         self.navigationItem.titleView = titleLabel
@@ -67,7 +71,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     public func showController(settings: Settings) {
         let controller = UIViewController()
-        controller.navigationItem.title = settings.name
+        controller.navigationItem.title = settings.name.rawValue
         controller.view.backgroundColor = .white
         
         navigationController?.navigationBar.tintColor = .white
@@ -87,10 +91,23 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     }
     
     private func setupMenuBar() {
+        navigationController?.hidesBarsOnSwipe = true
+        
+        let redView = UIView()
+        view.addSubview(redView)
+        
+        redView.backgroundColor = UIColor.rgb(red: 230, green: 32, blue: 31)
+        view.addViewConstraints(withVisualFormat: "H:|[v0]|", views: redView)
+        view.addViewConstraints(withVisualFormat: "V:[v0(50)]", views: redView)
+        
         self.view.addSubview(menuBar)
         
         self.view.addViewConstraints(withVisualFormat: "H:|[v0]|", views: self.menuBar)
-        self.view.addViewConstraints(withVisualFormat: "V:|[v0(50)]", views: self.menuBar)
+        self.view.addViewConstraints(withVisualFormat: "V:[v0(50)]", views: self.menuBar)
+        
+        NSLayoutConstraint.activate([
+            self.menuBar.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor)
+        ])
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -126,48 +143,4 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
-    
-    private func fetchVideos() {
-        let url = URLRequest(url: URL(string: "http://flashcard.izabelamaraszkiewiczit.hostingasp.pl/api/home")!)
-        let session = URLSession.shared
-        
-        session.dataTask(with: url) { (data, response, error) in
-            
-            if error != nil {
-                print(error)
-                return
-            }
-            
-            do {
-                let json = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers)
-                
-                self.videos = [Video]()
-                
-                for dictioniary in json as! [[String: Any]] {
-                    
-                    let channelDictionaty = dictioniary["channel"] as! [String: Any]
-                    let channel = Channel(name: channelDictionaty["name"] as! String,
-                                          profileImageName: channelDictionaty["profile_image_name"] as! String)
-                    
-                    let dogsImage = Video(thumbailImageName: dictioniary["thumbnail_image_name"] as! String,
-                                          title: dictioniary["title"] as! String,
-                                          numberOfView: 1300923900,
-                                          uploadDate: NSDate(timeIntervalSince1970: TimeInterval(exactly: 1000000)!),
-                                          channel: channel)
-                    
-                    self.videos?.append(dogsImage)
-                }
-                
-                DispatchQueue.main.async {
-                    self.collectionView.reloadData()
-                }
-                
-                
-            } catch let jsonError {
-                print(jsonError)
-            }
-            
-        }.resume()
-    }
-    
 }

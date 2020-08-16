@@ -10,11 +10,11 @@ import Foundation
 
 class Settings: NSObject {
     
-    var name: String
+    var name: SettingName
     
     var iconName: String
     
-    init(name: String, iconName: String) {
+    init(name: SettingName, iconName: String) {
         
         self.name = name
         self.iconName = iconName

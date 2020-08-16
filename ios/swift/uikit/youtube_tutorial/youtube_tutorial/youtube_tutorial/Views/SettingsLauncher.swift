@@ -24,11 +24,12 @@ class SettingsLauncher : NSObject, UICollectionViewDataSource,
     
     let settings : [Settings] = {
         
-        var setting1 = Settings(name: "Settings", iconName: "gear")
-        var setting2 = Settings(name: "Account", iconName: "person")
-        var setting3 = Settings(name: "Help", iconName: "questionmark")
+        var setting1 = Settings(name: .settings, iconName: "gear")
+        var setting2 = Settings(name: .account, iconName: "person")
+        var setting3 = Settings(name: .help, iconName: "questionmark")
+        var setting4 = Settings(name: .cancel, iconName: "clear")
         
-        return [setting1, setting2, setting3]
+        return [setting1, setting2, setting3, setting4]
     }();
     
     lazy var collectionView: UICollectionView = {
@@ -78,6 +79,12 @@ class SettingsLauncher : NSObject, UICollectionViewDataSource,
         
         dismissMoreButton() {
             (completed: Bool) in
+            
+            if self.settings[indexPath.row].name == .cancel {
+                self.dissmisAction()
+                return
+            }
+            
             self.homeController?.showController(settings: self.settings[indexPath.row])
         }
     }
@@ -107,7 +114,7 @@ class SettingsLauncher : NSObject, UICollectionViewDataSource,
         self.collectionView.frame = CGRect(x: 0, y: view!.frame.height, width: self.collectionView.frame.width, height: height)
         
         blackViewConstraints = [
-            blackView.topAnchor.constraint(equalTo: self.view!.topAnchor),
+            blackView.topAnchor.constraint(equalTo: self.view!.safeAreaLayoutGuide.topAnchor),
             blackView.trailingAnchor.constraint(equalTo: view!.trailingAnchor),
             blackView.leadingAnchor.constraint(equalTo: view!.leadingAnchor),
             blackView.bottomAnchor.constraint(equalTo: view!.bottomAnchor)
