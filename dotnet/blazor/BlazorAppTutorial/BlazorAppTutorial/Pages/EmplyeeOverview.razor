@@ -1,5 +1,4 @@
 ﻿@page "/employeeoverview"
-@inherits EmployeeOverviewBase
 
 <h3>EmplyeeOverview</h3>
 
@@ -42,3 +41,6 @@ else
         </tbody>
     </table>
 }
+
+<button @onclick="QuickAddEmployee" class="btn btn-dark table-btn quick-add-btn">&nbsp;&nbsp;+&nbsp;&nbsp;</button>
+<AddEmployeeDialog @ref="AddEmployeeDialog" CloseEventCallback="@AddEmployeeDialog_OnCloseDialog"></AddEmployeeDialog>
