@@ -10,13 +10,15 @@ import UIKit
 
 class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
-    private var menuBar: MenuBar = {
+    let cellId = "cellId"
+    
+    private lazy var menuBar: MenuBar = {
         let mb = MenuBar()
+        
+        mb.homeController = self
         
         return mb
     }()
-    
-    private var videos: [Video]?
     
     private lazy var settingsLauncher : SettingsLauncher = {
         let settingsLauncher = SettingsLauncher(view: self.view);
@@ -27,12 +29,6 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        VideoService.shared.fetchVideos { (videos) in
-            self.videos = videos
-            
-            self.collectionView.reloadData()
-        }
-        
         self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.navigationBar.autoresizingMask = [UIView.AutoresizingMask.flexibleHeight, UIView.AutoresizingMask.flexibleTopMargin]
         
@@ -42,18 +38,30 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         titleLabel.font = UIFont.systemFont(ofSize: 20)
         
         self.navigationItem.titleView = titleLabel
-        
-        self.collectionView.backgroundColor = .white
         self.navigationItem.titleView?.autoresizingMask = [UIView.AutoresizingMask.flexibleHeight, UIView.AutoresizingMask.flexibleTopMargin]
         
-        self.collectionView.register(VideoCell.self, forCellWithReuseIdentifier: "VideoCell")
-        
-        self.collectionView.contentInset = UIEdgeInsets(top: 50, left: 0, bottom: 0, right: 0)
-        
-        collectionView.scrollIndicatorInsets = UIEdgeInsets(top: 50, left: 0, bottom: 0, right: 0)
-        
+        setupCollectionView()
         setupMenuBar()
         setupNavBarButtons()
+    }
+    
+    func setupCollectionView() {
+        
+        if let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            flowLayout.scrollDirection = .horizontal
+            flowLayout.minimumLineSpacing = 0
+        }
+        
+        //        self.collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellId)
+        //        self.collectionView.register(VideoCell.self, forCellWithReuseIdentifier: "VideoCell")
+        self.collectionView.register(FeedCell.self, forCellWithReuseIdentifier: cellId)
+        
+        self.collectionView.backgroundColor = .white
+        
+        self.collectionView.contentInset = UIEdgeInsets(top: 50, left: 0, bottom: 0, right: 0)
+        self.collectionView.scrollIndicatorInsets = UIEdgeInsets(top: 50, left: 0, bottom: 0, right: 0)
+        
+        self.collectionView.isPagingEnabled = true
     }
     
     private func setupNavBarButtons()
@@ -80,7 +88,15 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         navigationController?.pushViewController(controller, animated: true)
     }
     
+    func scrollToMenuIndex(menuIndex: Int) {
+        let indexPath = IndexPath(item: menuIndex, section: 0)
+        collectionView.scrollToItem(at: indexPath, at: UICollectionView.ScrollPosition.init(), animated: true)
+    }
+    
     @objc func handleSearch() {
+        
+        scrollToMenuIndex(menuIndex: 2)
+        
         let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         
         let alertController = UIAlertController(title: "Search", message: "Handle of search button", preferredStyle: .actionSheet)
@@ -110,37 +126,38 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         ])
     }
     
+    override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        let index = targetContentOffset.pointee.x / view.frame.width
+        let indexPath = IndexPath(item: Int(index), section: 0)
+        
+        menuBar.colectionView.selectItem(at: indexPath, animated: true, scrollPosition: UICollectionView.ScrollPosition.init())
+    }
+    
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        menuBar.horizontalBarLeftAnchorContraint?.constant = scrollView.contentOffset.x / 4
+    }
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.videos?.count ?? 0
+        return 4
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: "VideoCell", for: indexPath) as! VideoCell
-        
-        cell.video = videos![indexPath.item]
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
         
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: view.frame.width, height: view.frame.height)
+    }
+    
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransition(to: size, with: coordinator)
+        super.viewWillLayoutSubviews()
         
-        self.navigationController?.navigationBar.invalidateIntrinsicContentSize()
+        guard let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout else {
+            return
+        }
         
-        self.collectionView?.reloadData()
-        
-        menuBar.colectionView.reloadData()
-    }
-    
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath:  IndexPath) -> CGSize {
-        
-        let height = (view.frame.width - CGFloat(LayoutHelper.leftViewCellMargin) - CGFloat(LayoutHelper.rightViewCellMargin)) * 9 / 16
-        
-        return CGSize(width: self.view.frame.width, height: height + 16 + 90)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
+        flowLayout.invalidateLayout()
     }
 }

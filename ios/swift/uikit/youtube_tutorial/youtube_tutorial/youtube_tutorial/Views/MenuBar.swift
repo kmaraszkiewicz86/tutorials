@@ -27,6 +27,8 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate,
         return collectionView
     }()
     
+    var homeController: HomeController?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -67,19 +69,16 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate,
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(indexPath.row)
+//        
+//        let x = CGFloat(indexPath.row) * frame.width / 4
+//        
+//        horizontalBarLeftAnchorContraint?.constant = x
+//        
+//        UIView.animate(withDuration: 0.75, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+//            self.layoutIfNeeded()
+//        }, completion: nil)
         
-        let x = CGFloat(indexPath.row) * frame.width / 4
-        
-        horizontalBarLeftAnchorContraint?.constant = x
-        
-        UIView.animate(withDuration: 0.75, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-            self.layoutIfNeeded()
-        }, completion: nil)
-        
-        UIView.animate(withDuration: 0.75) {
-            self.layoutIfNeeded()
-        }
+        homeController?.scrollToMenuIndex(menuIndex: indexPath.item)
     }
     
     required init?(coder: NSCoder) {

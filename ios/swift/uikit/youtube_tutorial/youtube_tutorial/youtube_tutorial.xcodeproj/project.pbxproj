@@ -16,6 +16,8 @@
 		681BA5EF24CA197A00E81F95 /* MenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681BA5EE24CA197A00E81F95 /* MenuCollectionViewCell.swift */; };
 		681BA5F224CA199300E81F95 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681BA5F124CA199300E81F95 /* BaseCollectionViewCell.swift */; };
 		6826AA2924C78D31006B4E33 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6826AA2824C78D31006B4E33 /* UIViewExtension.swift */; };
+		683B025F24EB275F008EEF9C /* SettingsLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683B025E24EB275F008EEF9C /* SettingsLauncher.swift */; };
+		683B026124EB27B5008EEF9C /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683B026024EB27B5008EEF9C /* FeedCell.swift */; };
 		6851B8AF24C63E82009984E4 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6851B8AE24C63E82009984E4 /* HomeController.swift */; };
 		6851B8B124C64640009984E4 /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6851B8B024C64640009984E4 /* VideoCell.swift */; };
 		685D95BA24CC6E3F001364E3 /* UIBarButtonItemExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685D95B924CC6E3F001364E3 /* UIBarButtonItemExtension.swift */; };
@@ -24,7 +26,6 @@
 		685D95C224CCA467001364E3 /* LayoutHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685D95C124CCA467001364E3 /* LayoutHelper.swift */; };
 		68E3788224E9DD9500C1F23B /* SettingName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E3788124E9DD9500C1F23B /* SettingName.swift */; };
 		68E3788524E9ED3400C1F23B /* VideoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E3788424E9ED3400C1F23B /* VideoService.swift */; };
-		68E43F9B24D8A33F00332A99 /* SettingsLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E43F9A24D8A33F00332A99 /* SettingsLauncher.swift */; };
 		68EB646824CF666700533FF1 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68EB646724CF666700533FF1 /* UIImageViewExtension.swift */; };
 		68EE1D6224DCB37A002E3A21 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68EE1D6124DCB37A002E3A21 /* Settings.swift */; };
 		68F03B5724D0E8C40069C8A6 /* SettingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F03B5624D0E8C40069C8A6 /* SettingCollectionViewCell.swift */; };
@@ -42,6 +43,8 @@
 		681BA5EE24CA197A00E81F95 /* MenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCollectionViewCell.swift; sourceTree = "<group>"; };
 		681BA5F124CA199300E81F95 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		6826AA2824C78D31006B4E33 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		683B025E24EB275F008EEF9C /* SettingsLauncher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsLauncher.swift; sourceTree = "<group>"; };
+		683B026024EB27B5008EEF9C /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 		6851B8AE24C63E82009984E4 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		6851B8B024C64640009984E4 /* VideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
 		685D95B924CC6E3F001364E3 /* UIBarButtonItemExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBarButtonItemExtension.swift; sourceTree = "<group>"; };
@@ -50,7 +53,6 @@
 		685D95C124CCA467001364E3 /* LayoutHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutHelper.swift; sourceTree = "<group>"; };
 		68E3788124E9DD9500C1F23B /* SettingName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingName.swift; sourceTree = "<group>"; };
 		68E3788424E9ED3400C1F23B /* VideoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoService.swift; sourceTree = "<group>"; };
-		68E43F9A24D8A33F00332A99 /* SettingsLauncher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsLauncher.swift; sourceTree = "<group>"; };
 		68EB646724CF666700533FF1 /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
 		68EE1D6124DCB37A002E3A21 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		68F03B5624D0E8C40069C8A6 /* SettingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -105,12 +107,12 @@
 		68133C4324C8F5BD0095CA6D /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				68E43F9A24D8A33F00332A99 /* SettingsLauncher.swift */,
 				6851B8B024C64640009984E4 /* VideoCell.swift */,
 				68133C4424C8F5E80095CA6D /* MenuBar.swift */,
 				681BA5EE24CA197A00E81F95 /* MenuCollectionViewCell.swift */,
 				681BA5F124CA199300E81F95 /* BaseCollectionViewCell.swift */,
 				68F03B5624D0E8C40069C8A6 /* SettingCollectionViewCell.swift */,
+				683B026024EB27B5008EEF9C /* FeedCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -163,6 +165,7 @@
 		68FE2C0724CA131B0049D891 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				683B025E24EB275F008EEF9C /* SettingsLauncher.swift */,
 				6851B8AE24C63E82009984E4 /* HomeController.swift */,
 			);
 			path = Controllers;
@@ -238,13 +241,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				683B025F24EB275F008EEF9C /* SettingsLauncher.swift in Sources */,
+				683B026124EB27B5008EEF9C /* FeedCell.swift in Sources */,
 				68E3788524E9ED3400C1F23B /* VideoService.swift in Sources */,
 				685D95BA24CC6E3F001364E3 /* UIBarButtonItemExtension.swift in Sources */,
 				685D95C224CCA467001364E3 /* LayoutHelper.swift in Sources */,
 				68EB646824CF666700533FF1 /* UIImageViewExtension.swift in Sources */,
 				68EE1D6224DCB37A002E3A21 /* Settings.swift in Sources */,
 				685D95BF24CC8382001364E3 /* Channel.swift in Sources */,
-				68E43F9B24D8A33F00332A99 /* SettingsLauncher.swift in Sources */,
 				6826AA2924C78D31006B4E33 /* UIViewExtension.swift in Sources */,
 				680ACB1E24C634D0008AF399 /* AppDelegate.swift in Sources */,
 				681BA5F224CA199300E81F95 /* BaseCollectionViewCell.swift in Sources */,
