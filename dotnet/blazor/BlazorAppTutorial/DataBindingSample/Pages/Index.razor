@@ -1,0 +1,32 @@
+﻿@page "/"
+@inherits IndexBase
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+
+<div>
+    <h2>One way data binding</h2>
+    Emplyee first name <label>@Employee.FirstName</label>
+    Emplyee last name <label>@Employee.LastName</label>
+</div>
+
+<div>
+    <h2>One way data binding on form controlls</h2>
+    Emplyee first name <input type="text" value="@Employee.FirstName" />
+    Emplyee last name <input type="text" value="@Employee.LastName" />
+</div>
+
+<div>
+    <h2>Two way data binding</h2>
+    Emplyee first name <input type="text" @bind="@Employee.FirstName" />
+    Emplyee last name <input type="text" @bind="@Employee.LastName" />
+</div>
+
+<div>
+    <h2>Two way data binding</h2>
+    Emplyee first name <input type="text" @bind-value="@Employee.FirstName" @bind-value:event="oninput" />
+    Emplyee last name <input type="text" @bind-value="@Employee.LastName" @bind-value:event="oninput" />
+</div>
+
+<button @onclick="Click" >Klikaj !!!!!!</button>
