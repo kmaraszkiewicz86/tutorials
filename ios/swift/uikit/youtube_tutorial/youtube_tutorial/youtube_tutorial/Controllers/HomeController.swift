@@ -11,6 +11,8 @@ import UIKit
 class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     let cellId = "cellId"
+    let trendingCellId = "trendingCellId"
+    let subscriptionsCellId = "subscriptionsCellId"
     
     private let titles = ["Home", "Trending", "Subscriptions", "Account"]
     
@@ -54,9 +56,9 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
             flowLayout.minimumLineSpacing = 0
         }
         
-        //        self.collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellId)
-        //        self.collectionView.register(VideoCell.self, forCellWithReuseIdentifier: "VideoCell")
         self.collectionView.register(FeedCell.self, forCellWithReuseIdentifier: cellId)
+        self.collectionView.register(TrendingCell.self, forCellWithReuseIdentifier: trendingCellId)
+        self.collectionView.register(SubscriptionsCell.self, forCellWithReuseIdentifier: subscriptionsCellId)
         
         self.collectionView.backgroundColor = .white
         
@@ -152,9 +154,16 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
         
-        return cell
+        var cellIdTmp = cellId
+        
+        if indexPath.row == 1 {
+            cellIdTmp = trendingCellId
+        } else if indexPath.row == 2 {
+            cellIdTmp = subscriptionsCellId
+        }
+        
+        return collectionView.dequeueReusableCell(withReuseIdentifier: cellIdTmp, for: indexPath)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

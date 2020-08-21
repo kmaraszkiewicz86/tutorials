@@ -13,6 +13,8 @@ UICollectionViewDelegateFlowLayout{
     
     private var videos: [Video]?
     
+    var url: String = "http://flashcard.izabelamaraszkiewiczit.hostingasp.pl/api/home"
+    
     lazy var collectionView: UICollectionView = {
         var layout = UICollectionViewFlowLayout()
         var cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -27,14 +29,20 @@ UICollectionViewDelegateFlowLayout{
     
     let cellId = "cellId"
     
+    func fetchVideos() {
+        VideoService.shared.fetchHomeVideos()
+    }
+    
     override func setupViews() {
         super.setupViews()
         
-        VideoService.shared.fetchVideos { (videos) in
+        VideoService.shared.completion = { (videos) in
             self.videos = videos
             
             self.collectionView.reloadData()
         }
+        
+        fetchVideos()
         
         backgroundColor = . brown
         

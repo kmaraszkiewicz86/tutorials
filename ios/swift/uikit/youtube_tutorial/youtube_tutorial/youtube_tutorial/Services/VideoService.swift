@@ -12,8 +12,28 @@ class VideoService : NSObject {
     
     static let shared = VideoService()
     
-    public func fetchVideos(completion: @escaping ([Video]) -> Void) {
-        let url = URLRequest(url: URL(string: "http://flashcard.izabelamaraszkiewiczit.hostingasp.pl/api/home")!)
+    var completion: (([Video]) -> Void)?
+    
+    public func fetchHomeVideos() {
+        fetchVideos(url: "http://flashcard.izabelamaraszkiewiczit.hostingasp.pl/api/home") { (videos) in
+            self.completion?(videos)
+        }
+    }
+    
+    public func fetchTrendingsVideos() {
+        fetchVideos(url: "https://s3-us-west-2.amazonaws.com/youtubeassets/trending.json") { (videos) in
+            self.completion?(videos)
+        }
+    }
+    
+    public func fetchSubscriptionsVideos() {
+        fetchVideos(url: "https://s3-us-west-2.amazonaws.com/youtubeassets/subscriptions.json") { (videos) in
+            self.completion?(videos)
+        }
+    }
+    
+    public func fetchVideos(url: String, completion: @escaping ([Video]) -> Void) {
+        let url = URLRequest(url: URL(string: url)!)
         let session = URLSession.shared
         
         session.dataTask(with: url) { (data, response, error) in
