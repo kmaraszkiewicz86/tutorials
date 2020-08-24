@@ -9,23 +9,23 @@
 import UIKit
 
 class Video : NSObject {
+    var thumbnail_image_name: String?
+    var title: String?
+    var number_of_views: NSNumber?
+    var uploadDate: NSDate?
+    var duration: NSNumber?
     
-    var thumbailImageName: String
-    var title: String
-    var numberOfView: NSNumber
-    var uploadDate: NSDate
+    var channel: Channel?
     
-    var channel: Channel
-    
-    init(thumbailImageName: String, title: String,
-         numberOfView: NSNumber, uploadDate: NSDate,
-         channel: Channel) {
+    init(dictionary: [String: Any]) {
+        let channelDictionaty = dictionary["channel"] as! [String: Any]
         
-        self.thumbailImageName = thumbailImageName
-        self.title = title
-        self.numberOfView = numberOfView
-        self.uploadDate = uploadDate
-        self.channel = channel
-        
+        thumbnail_image_name = dictionary["thumbnail_image_name"] as? String ?? ""
+        title = dictionary["title"] as? String ?? ""
+        duration = dictionary["duration"] as? NSNumber ?? 0
+        number_of_views = dictionary["number_of_views"] as? NSNumber ?? 0
+        uploadDate = NSDate(timeIntervalSince1970: TimeInterval(exactly: 1000000)!)
+        channel = Channel(name: channelDictionaty["name"] as! String,
+                          profileImageName: channelDictionaty["profile_image_name"] as! String)
     }
 }

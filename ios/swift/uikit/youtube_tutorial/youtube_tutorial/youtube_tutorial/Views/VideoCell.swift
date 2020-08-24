@@ -13,26 +13,40 @@ class VideoCell: BaseCollectionViewCell {
     var video : Video? {
         didSet {
             
-            if let video = video {
-                
-                self.thumbailImageView.loadThumbailImageAndSetToImageView(url: video.thumbailImageName)
-                
-                titleLabel.text = video.title
-                
-                let numberFormatter = NumberFormatter()
-                numberFormatter.numberStyle = .decimal
-                
-                userProfileImage.loadThumbailImageAndSetToImageView(url: video.channel.profileImageName)
-                
-                subtitleTextView.text = "\(video.channel.name) • \(numberFormatter.string(from: video.numberOfView)!) • 2 years ago"
-                
-                measureTitleText(video: video)
+            guard let videoTmp = video else {
+                return
+            }
+            
+            let numberFormatter = NumberFormatter()
+            numberFormatter.numberStyle = .decimal
+            
+            titleLabel.text = videoTmp.title ?? ""
+            
+            if let thumbailImageName = videoTmp.thumbnail_image_name {
+                self.thumbailImageView.loadThumbailImageAndSetToImageView(url: thumbailImageName)
+            }
+            
+            measureTitleText(video: videoTmp)
+            
+            guard let channel = videoTmp.channel else {
+                return
+            }
+            
+            if let channelName = channel.name {
+                subtitleTextView.text = "\(channelName) • \(numberFormatter.string(from: videoTmp.number_of_views ?? 0)!) • 2 years ago"
+            }
+            
+            if let profileImageName = channel.profile_image_name {
+                userProfileImage.loadThumbailImageAndSetToImageView(url: profileImageName)
             }
         }
     }
     
     func loadThumbailImageAndSetToImageView(video: Video) {
-        let request = URLRequest(url: URL(string: video.thumbailImageName)!)
+        guard let thumbailImageName = video.thumbnail_image_name else {
+            return
+        }
+        let request = URLRequest(url: URL(string: thumbailImageName)!)
         
         let session = URLSession.shared
         
@@ -43,18 +57,22 @@ class VideoCell: BaseCollectionViewCell {
                 return
             }
             
-            print(video.thumbailImageName)
-            
             DispatchQueue.main.async {
                 self.thumbailImageView.image = UIImage(data: data!)
             }
         }.resume()
+        
     }
     
     func measureTitleText(video: Video) {
+        
+        guard let videoTitle = video.title else {
+            return
+        }
+        
         let size = CGSize(width: frame.width - CGFloat(LayoutHelper.getSumOfLayoutHelperValues()), height: 1000)
         let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
-        let estimatedRect = NSString(string: video.title).boundingRect(with: size, options: options, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)], context: nil)
+        let estimatedRect = NSString(string: videoTitle).boundingRect(with: size, options: options, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)], context: nil)
         
         if (estimatedRect.size.height > 20) {
             self.titleLabelLayoutConstrinat?.constant = 44

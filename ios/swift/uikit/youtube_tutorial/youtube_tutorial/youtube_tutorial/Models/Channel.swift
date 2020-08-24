@@ -10,11 +10,11 @@ import UIKit
 
 class Channel: NSObject {
     
-    var name: String
-    var profileImageName: String
+    var name: String?
+    var profile_image_name: String?
     
     init(name: String, profileImageName: String) {
         self.name = name
-        self.profileImageName = profileImageName
+        self.profile_image_name = profileImageName
     }
 }
