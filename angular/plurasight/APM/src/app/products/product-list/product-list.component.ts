@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { IProduct } from './product'
 
 @Component({
   selector: 'pm-product-list',
@@ -17,7 +18,7 @@ export class ProductListComponent implements OnInit {
     return this.showImage ? "Hide Image" : "Show Image";
   }
 
-  products: any[] = [
+  products: IProduct[] = [
     {
       "productId": 2,
       "productName": "Garden Cart",
