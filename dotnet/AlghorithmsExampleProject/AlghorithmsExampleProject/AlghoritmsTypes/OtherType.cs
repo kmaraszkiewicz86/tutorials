@@ -27,6 +27,21 @@ namespace AlghorithmsExampleProject.AlghoritmsTypes
             return SmallestSharedDivider(b, a % b);
         }
 
+        public static int SmallestSharedDividerForLoop(int a, int b)
+        {
+            var result = b;
+
+            do
+            {
+                b = result;
+                result = a % result;
+                a = b;
+
+            } while (result > 0);
+
+            return b;
+        }
+
         public static int FibonacciAlorithm(int length)
         {
             var n1 = 0;
@@ -45,7 +60,7 @@ namespace AlghorithmsExampleProject.AlghoritmsTypes
 
         public static int FibonacciAlorithmRecursion(int length)
         {
-            if (length <= 2)
+            if (length < 2)
                 return length;
 
 
@@ -63,7 +78,7 @@ namespace AlghorithmsExampleProject.AlghoritmsTypes
 
             var list = new List<long>(new long[] { 0, 1, 1 });
 
-            for (int index = 2; index <= length; index++)
+            for (int index = 2; index < length; index++)
             {
                 list.Add(list[index - 1] + list[index]);
             }

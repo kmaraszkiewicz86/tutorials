@@ -18,30 +18,33 @@ namespace AlghorithmsExampleProject
 
             Console.WriteLine("----------------------------------------------------");
             Console.WriteLine();
-            //ShowResult($"SmallestSharedDivider -> {SmallestSharedDivider(28, 24)}");
-            //ShowResult($"FibonacciAlorithmWithForLoopReturnArray -> {String.Join(',', FibonacciAlorithmWithForLoopReturnArray(5))}");
-            //ShowResult($"FibonacciAlorithmWithRecursionReturnArray -> {String.Join(',', FibonacciAlorithmWithRecursionReturnArray(5))}");
+            ShowResult($"SmallestSharedDivider -> {SmallestSharedDivider(100, 75)}");
+            ShowResult($"SmallestSharedDivider -> {SmallestSharedDividerForLoop(100, 75)}");
+            ShowResult($"FibonacciAlorithmWithForLoopReturnArray -> {string.Join(',', FibonacciAlorithmWithForLoopReturnArray(6))}");
+            ShowResult($"FibonacciAlorithmWithRecursionReturnArray -> {String.Join(',', FibonacciAlorithmWithRecursionReturnArray(5))}");
 
-            //ShowResult($"FibonacciAlorithm -> {String.Join(',', FibonacciAlorithm(5))}");
-            //ShowResult($"FibonacciAlorithmRecursion -> {String.Join(',', FibonacciAlorithmRecursion(5))}");
+            ShowResult($"FibonacciAlorithm -> {String.Join(',', FibonacciAlorithm(5))}");
+            ShowResult($"FibonacciAlorithmRecursion -> {string.Join(',', FibonacciAlorithmRecursion(6))}");
 
-            //CheckIfTextHasValidPairsOfBrackets();
+            CheckIfTextHasValidPairsOfBrackets();
             CheckIfTextHasValidPairsOfBracketsRecursion();
 
 
-            //ShowResult($"HashSet Test -> {String.Join(',', HastableTest())}");
-            //ShowResult($"Stack Test -> {String.Join(' ', StackTest("Dragon ball"))}");
-            //ShowResult($"Stack Test -> {String.Join(' ', QueueTest("Dragon ball"))}");
+            ShowResult($"HashSet Test -> {String.Join(',', HastableTest())}");
+            ShowResult($"Stack Test -> {String.Join(' ', StackTest("Dragon ball"))}");
+            ShowResult($"Stack Test -> {String.Join(' ', QueueTest("Dragon ball"))}");
 
 
-            //ShowResult($"LinearSearch -> {String.Join(',', LinearSearch(20))}");
-            //ShowResult($"BinarySearch -> {String.Join(',', BinarySearchRecursion(20))}");
-            //ShowResult($"BinarySearchStandard -> {String.Join(',', BinarySearchStandard(20))}");
-            //ShowResult($"InsertionSort -> {String.Join(',', InsertionSort(20))}");
-            //ShowResult($"BubbleSort -> {String.Join(',', BubbleSort(20))}");
-            //ShowResult($"QuickSort -> {String.Join(',', QuickSort(20))}");
+            ShowResult($"LinearSearch -> {String.Join(',', LinearSearch(20))}");
+            ShowResult($"BinarySearch -> {String.Join(',', BinarySearchRecursion(20))}");
+            ShowResult($"BinarySearchStandard -> {String.Join(',', BinarySearchStandard(20))}");
+            ShowResult($"InsertionSort -> {String.Join(',', InsertionSort(20))}");
+            ShowResult($"BubbleSort -> {String.Join(',', BubbleSort(20))}");
+            ShowResult($"QuickSort -> {String.Join(',', QuickSort(20))}");
 
             //TreeNodeTes();
+
+            Console.ReadKey();
         }
 
         static void ShowResult(string resultString)
