@@ -15,6 +15,7 @@
 		68133C4524C8F5E80095CA6D /* MenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68133C4424C8F5E80095CA6D /* MenuBar.swift */; };
 		681BA5EF24CA197A00E81F95 /* MenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681BA5EE24CA197A00E81F95 /* MenuCollectionViewCell.swift */; };
 		681BA5F224CA199300E81F95 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681BA5F124CA199300E81F95 /* BaseCollectionViewCell.swift */; };
+		681C096C24F6FB7B00B02504 /* VideoLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681C096B24F6FB7B00B02504 /* VideoLauncher.swift */; };
 		6826AA2924C78D31006B4E33 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6826AA2824C78D31006B4E33 /* UIViewExtension.swift */; };
 		683B025F24EB275F008EEF9C /* SettingsLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683B025E24EB275F008EEF9C /* SettingsLauncher.swift */; };
 		683B026124EB27B5008EEF9C /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683B026024EB27B5008EEF9C /* FeedCell.swift */; };
@@ -44,6 +45,7 @@
 		68133C4424C8F5E80095CA6D /* MenuBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBar.swift; sourceTree = "<group>"; };
 		681BA5EE24CA197A00E81F95 /* MenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCollectionViewCell.swift; sourceTree = "<group>"; };
 		681BA5F124CA199300E81F95 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
+		681C096B24F6FB7B00B02504 /* VideoLauncher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoLauncher.swift; sourceTree = "<group>"; };
 		6826AA2824C78D31006B4E33 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		683B025E24EB275F008EEF9C /* SettingsLauncher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsLauncher.swift; sourceTree = "<group>"; };
 		683B026024EB27B5008EEF9C /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 			children = (
 				683B025E24EB275F008EEF9C /* SettingsLauncher.swift */,
 				6851B8AE24C63E82009984E4 /* HomeController.swift */,
+				681C096B24F6FB7B00B02504 /* VideoLauncher.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -266,6 +269,7 @@
 				6851B8AF24C63E82009984E4 /* HomeController.swift in Sources */,
 				68133C4524C8F5E80095CA6D /* MenuBar.swift in Sources */,
 				68AF8EAD24F033DA00DBC9D7 /* SubscriptionsCell.swift in Sources */,
+				681C096C24F6FB7B00B02504 /* VideoLauncher.swift in Sources */,
 				68133C4224C8F0EA0095CA6D /* UIColorExtension.swift in Sources */,
 				68F03B5724D0E8C40069C8A6 /* SettingCollectionViewCell.swift in Sources */,
 				68E3788224E9DD9500C1F23B /* SettingName.swift in Sources */,

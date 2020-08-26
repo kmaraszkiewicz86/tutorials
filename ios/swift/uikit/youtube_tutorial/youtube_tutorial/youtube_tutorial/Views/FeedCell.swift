@@ -13,8 +13,6 @@ UICollectionViewDelegateFlowLayout{
     
     private var videos: [Video]?
     
-    var url: String = "http://flashcard.izabelamaraszkiewiczit.hostingasp.pl/api/home"
-    
     lazy var collectionView: UICollectionView = {
         var layout = UICollectionViewFlowLayout()
         var cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -87,6 +85,11 @@ UICollectionViewDelegateFlowLayout{
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let videoLauncher = VideoLauncher()
+        videoLauncher.showVideoPlayer()
     }
     
 }
