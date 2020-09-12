@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { IProduct } from './product';
 import { ProductService } from '../../services/product.service';
-import { from } from 'rxjs';
+import { Observable, range } from 'rxjs';
+import { map, filter } from 'rxjs/operators';
 
 @Component({
   selector: 'pm-product-list',
@@ -14,7 +15,10 @@ export class ProductListComponent implements OnInit {
   width: number = 50;
   margin: number = 2;
   showImage: boolean = false;
+  errorMessage: String = '';
   private _listFilter: string;
+
+  filteredProducts: IProduct[];
 
   public get listFilter(): string {
     return this._listFilter;
@@ -29,15 +33,15 @@ export class ProductListComponent implements OnInit {
     return this.showImage ? "Hide Image" : "Show Image";
   }
 
-  filteredProducts: IProduct[];
+  
 
   constructor (private productService: ProductService) {
     this._listFilter = '';
-    this.filteredProducts = this.productService.getProducts();
+    this.getData();
   }
 
   ngOnInit(): void {
-    this.filteredProducts = this.productService.getProducts();
+    this.getData();
   }
 
   toggleImage(): void {
@@ -48,15 +52,37 @@ export class ProductListComponent implements OnInit {
     this.pageTitle = message;
   }
 
+  rangeItems: Observable<number> = range(0, 10);
+
+  testObservable() {
+
+    {
+        let dupa: String = "dupa";
+        var dupa2: String = "dupa2";
+
+      this.rangeItems.pipe(
+        map(x => x * 200),
+        filter(x => x % 2 == 0)
+      ).subscribe(x => console.log(x));
+    }
+  }
+
+  private getData(): void {
+    this.productService.getProducts().subscribe({
+      next: products => this.filteredProducts = products,
+      error: err => this.errorMessage = err
+    })
+  }
+
   private performFilter() {
 
     if (!this._listFilter) {
-      this.filteredProducts = this.productService.getProducts();
+      this.getData();
     }
 
     let listFilter = this._listFilter.toLocaleLowerCase();
 
-    this.filteredProducts = this.productService.getProducts().filter((product: IProduct) => 
+    this.filteredProducts = this.filteredProducts.filter((product: IProduct) => 
       product.productName.toLocaleLowerCase().indexOf(listFilter) != -1);
   }
 }
