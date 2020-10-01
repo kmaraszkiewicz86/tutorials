@@ -1,19 +1,32 @@
 ﻿using EntityFrameworkRelationshipsTesting.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
+using Microsoft.Extensions.Logging;
 
 namespace EntityFrameworkRelationshipsTesting
 {
     public class AppDbContextDesign : IDesignTimeDbContextFactory<AppDbContext>
     {
+        public static readonly ILoggerFactory ConsoleLoggerFactory =
+            LoggerFactory.Create(builder =>
+            {
+                builder.AddFilter((category, level) =>
+                    category == DbLoggerCategory.Database.Command.Name
+                    && level == LogLevel.Information).AddConsole();
+            });
+
         public AppDbContext CreateDbContext(string[] args)
         {
             var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
+            optionsBuilder.UseLoggerFactory(ConsoleLoggerFactory).EnableSensitiveDataLogging();
             //optionsBuilder.UseSqlServer(
             //    "Server=WINDOWSIZABELAM;Database=EntityFrameworkRelationshipsTesting;Trusted_Connection=True;MultipleActiveResultSets=true");
 
+            //optionsBuilder.UseSqlServer(
+            //    @"Server=PLMFUL90017;Database=EntityFrameworkRelationshipsTesting;Trusted_Connection=True;MultipleActiveResultSets=true");
+
             optionsBuilder.UseSqlServer(
-                @"Server=PLMFUL90017;Database=EntityFrameworkRelationshipsTesting;Trusted_Connection=True;MultipleActiveResultSets=true");
+                "Server=127.0.0.1;Database=EntityFrameworkRelationshipsTesting;User Id=SA;Password=Grubson@2020");
 
             return new AppDbContext(optionsBuilder.Options);
         }
