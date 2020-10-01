@@ -9,8 +9,11 @@ namespace EntityFrameworkRelationshipsTesting
         public AppDbContext CreateDbContext(string[] args)
         {
             var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
+            //optionsBuilder.UseSqlServer(
+            //    "Server=WINDOWSIZABELAM;Database=EntityFrameworkRelationshipsTesting;Trusted_Connection=True;MultipleActiveResultSets=true");
+
             optionsBuilder.UseSqlServer(
-                "Server=WINDOWSIZABELAM;Database=EntityFrameworkRelationshipsTesting;Trusted_Connection=True;MultipleActiveResultSets=true");
+                @"Server=PLMFUL90017;Database=EntityFrameworkRelationshipsTesting;Trusted_Connection=True;MultipleActiveResultSets=true");
 
             return new AppDbContext(optionsBuilder.Options);
         }
@@ -20,13 +23,24 @@ namespace EntityFrameworkRelationshipsTesting
     {
         public DbSet<Dog> Dogs { get; set; }
 
-        public DbSet<AdditionalName> AdditionalNames { get; set; }
+        public DbSet<DogOwnerDog> DogOwnerDogs { get; set; }
+
+        public DbSet<DogOwner> DogOwners { get; set; }
+        
+        public DbSet<DogBreeder> DogBreeders { get; set; }
 
         public DbSet<Puppy> Puppies { get; set; }
 
         public AppDbContext(DbContextOptions options) : base(options)
         {
 
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<DogOwnerDog>().HasKey(d => new { d.DogId, d.DogOwnerId });
+
+            base.OnModelCreating(modelBuilder);
         }
     }
 }

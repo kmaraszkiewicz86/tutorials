@@ -1,6 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace EntityFrameworkRelationshipsTesting.Entities
 {
@@ -8,17 +7,45 @@ namespace EntityFrameworkRelationshipsTesting.Entities
     {
         public int DogId { get; set; }
 
+        [Required]
+        [MaxLength(100)]
         public string Name { get; set; }
 
-        public AdditionalName AdditionalName { get; set; }
+        public DogBreeder DogBreeder { get; set; }
+
+        public ICollection<DogOwnerDog> DogOwnerDogs { get; set; }
 
         public ICollection<Puppy> Puppies { get; set; }
     }
 
-    public class AdditionalName
+    public class DogOwnerDog
     {
-        public int AdditionalNameId { get; set; }
+        public Dog Dog { get; set; }
 
+        public int DogId { get; set; }
+
+        public DogOwner DogOwner { get; set; }
+
+        public int DogOwnerId { get; set; }
+    }
+
+    public class DogOwner
+    {
+        public int DogOwnerId { get; set; }
+
+        [Required]
+        [MaxLength(50)]
+        public string Name { get; set; }
+
+        public ICollection<DogOwnerDog> DogOwnerDogs { get; set; }
+    }
+
+    public class DogBreeder
+    {
+        public int DogBreederId { get; set; }
+
+        [Required]
+        [MaxLength(50)]
         public string Name { get; set; }
 
         public int DogId { get; set; }
@@ -28,6 +55,8 @@ namespace EntityFrameworkRelationshipsTesting.Entities
     {
         public int PuppyId { get; set; }
 
+        [Required]
+        [MaxLength(50)]
         public string Name { get; set; }
 
         public Dog Dog { get; set; }
