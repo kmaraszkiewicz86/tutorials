@@ -8,7 +8,6 @@ namespace EntityFrameworkRelationshipsTesting.Entities
         public int DogId { get; set; }
 
         [Required]
-        [MaxLength(100)]
         public string Name { get; set; }
 
         public DogBreeder DogBreeder { get; set; }
@@ -34,7 +33,6 @@ namespace EntityFrameworkRelationshipsTesting.Entities
         public int DogOwnerId { get; set; }
 
         [Required]
-        [MaxLength(50)]
         public string Name { get; set; }
 
         public ICollection<DogOwnerDog> DogOwnerDogs { get; set; }
@@ -45,7 +43,6 @@ namespace EntityFrameworkRelationshipsTesting.Entities
         public int DogBreederId { get; set; }
 
         [Required]
-        [MaxLength(50)]
         public string Name { get; set; }
 
         public int DogId { get; set; }

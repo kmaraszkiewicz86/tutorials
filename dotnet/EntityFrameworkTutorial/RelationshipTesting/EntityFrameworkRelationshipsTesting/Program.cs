@@ -13,11 +13,16 @@ namespace EntityFrameworkRelationshipsTesting
 
             var appDbContextDesign = new AppDbContextDesign();
 
+            var startDateTime = DateTime.Now;
+
             using (var client = appDbContextDesign.CreateDbContext(null))
             {
+                var dogBreederName = "12, 'b'); drop database EntityFrameworkRelationshipsTesting;--";
+                var dogName = "Lilo";
+
                 var dogBreeder = new DogBreeder
                 {
-                    Name = "poppy"
+                    Name = dogBreederName
                 };
 
                 //var dogs = new List<Dog>
@@ -46,11 +51,19 @@ namespace EntityFrameworkRelationshipsTesting
 
                 var dog = new Dog
                 {
-                    Name = "Rurwiej",
-                    DogBreeder = dogBreeder
+                    Name = dogName,
+                    DogBreeder = dogBreeder,
+                    Puppies = new List<Puppy>
+                    {
+                        new Puppy { Name = "puppy1" },
+                        new Puppy { Name = "puppy2" },
+                        new Puppy { Name = "puppy3" },
+                        new Puppy { Name = "puppy4" },
+                        new Puppy { Name = "puppy5" },
+                    }
                 };
 
-                client.AddRange(dog, dogBreeder);
+                client.Dogs.Add(dog);
 
                 client.SaveChanges();
 
@@ -61,13 +74,26 @@ namespace EntityFrameworkRelationshipsTesting
 
                 Console.WriteLine($"Count => {count}");
 
-                foreach (var dog8 in client.Dogs)
+                foreach (var dog8 in client.Dogs.Include(d => d.DogBreeder))
                 {
-                    Console.WriteLine(dog8.Name);
+                    Console.WriteLine($"{dog8.Name}; {dog8.DogBreeder?.Name ?? "Empty"}");
+
+                    if (dog8.Puppies != null)
+                    {
+                        Console.WriteLine("List of puppies:");
+
+                        foreach (var puppy in dog8.Puppies)
+                        {
+                            Console.WriteLine(puppy.Name);
+                        }
+                    }
+
+                    Console.WriteLine("==================================");
                 }
             }
 
-
+            var estimateTime = DateTime.Now - startDateTime;
+            Console.WriteLine($"Finished with {estimateTime}");
             Console.ReadKey();
         }
     }
