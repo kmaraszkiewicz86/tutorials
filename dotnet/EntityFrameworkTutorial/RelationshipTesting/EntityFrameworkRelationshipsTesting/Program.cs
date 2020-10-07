@@ -90,11 +90,35 @@ namespace EntityFrameworkRelationshipsTesting
 
                     Console.WriteLine("==================================");
                 }
+
+                var dogData = client.Dogs.Select(d => new TestModel
+                {
+                    DogName = d.Name,
+                    FirstPuppyName = d.Puppies.First().Name,
+                    Puppies = d.Puppies,
+                    PuppiesWithWhere = d.Puppies.Where(p => p.Name.EndsWith("1")),
+                    PuppyCount = d.Puppies.Count
+                });
+
+                Console.WriteLine(dogData.First().DogName);
             }
 
             var estimateTime = DateTime.Now - startDateTime;
             Console.WriteLine($"Finished with {estimateTime}");
             Console.ReadKey();
         }
+    }
+
+    class TestModel
+    {
+        public string DogName { get; set; }
+
+        public string FirstPuppyName { get; set; }
+
+        public IEnumerable<Puppy> Puppies { get; set; }
+
+        public IEnumerable<Puppy> PuppiesWithWhere { get; set; }
+
+        public int PuppyCount { get; set; }
     }
 }

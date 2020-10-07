@@ -19,11 +19,11 @@ namespace EntityFrameworkRelationshipsTesting
         {
             var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
             optionsBuilder.UseLoggerFactory(ConsoleLoggerFactory).EnableSensitiveDataLogging();
-            //optionsBuilder.UseSqlServer(
-            //    "Server=WINDOWSIZABELAM;Database=EntityFrameworkRelationshipsTesting;Trusted_Connection=True;MultipleActiveResultSets=true");
-
             optionsBuilder.UseSqlServer(
-                @"Server=PLMFUL90017;Database=EntityFrameworkRelationshipsTesting;Trusted_Connection=True;MultipleActiveResultSets=true");
+                "Server=WINDOWSIZABELAM;Database=EntityFrameworkRelationshipsTesting;Trusted_Connection=True;MultipleActiveResultSets=true");
+
+            //optionsBuilder.UseSqlServer(
+            //    @"Server=PLMFUL90017;Database=EntityFrameworkRelationshipsTesting;Trusted_Connection=True;MultipleActiveResultSets=true");
 
             //optionsBuilder.UseSqlServer(
             //    "Server=127.0.0.1;Database=EntityFrameworkRelationshipsTesting;User Id=SA;Password=Grubson@2020");
