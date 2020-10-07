@@ -98,7 +98,9 @@ namespace EntityFrameworkRelationshipsTesting
                     Puppies = d.Puppies,
                     PuppiesWithWhere = d.Puppies.Where(p => p.Name.EndsWith("1")),
                     PuppyCount = d.Puppies.Count
-                });
+                }).ToList();
+
+                dogData[0].DogName += " testing";
 
                 Console.WriteLine(dogData.First().DogName);
             }
