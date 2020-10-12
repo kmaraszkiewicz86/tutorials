@@ -12,7 +12,7 @@ namespace EntityFrameworkRelationshipsTesting.Migrations
                 {
                     DogOwnerId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(maxLength: 50, nullable: false)
+                    Name = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -25,7 +25,7 @@ namespace EntityFrameworkRelationshipsTesting.Migrations
                 {
                     DogId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(maxLength: 100, nullable: false)
+                    Name = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -38,7 +38,7 @@ namespace EntityFrameworkRelationshipsTesting.Migrations
                 {
                     DogBreederId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(maxLength: 50, nullable: false),
+                    Name = table.Column<string>(nullable: false),
                     DogId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -83,7 +83,7 @@ namespace EntityFrameworkRelationshipsTesting.Migrations
                     PuppyId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(maxLength: 50, nullable: false),
-                    DogId = table.Column<int>(nullable: true)
+                    DogId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -93,7 +93,33 @@ namespace EntityFrameworkRelationshipsTesting.Migrations
                         column: x => x.DogId,
                         principalTable: "Dogs",
                         principalColumn: "DogId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.InsertData(
+                table: "Dogs",
+                columns: new[] { "DogId", "Name" },
+                values: new object[,]
+                {
+                    { 1, "Mailo" },
+                    { 2, "Lilo" },
+                    { 3, "Szarlo" },
+                    { 4, "Izka" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Puppies",
+                columns: new[] { "PuppyId", "DogId", "Name" },
+                values: new object[,]
+                {
+                    { 1, 1, "Mailo1" },
+                    { 2, 1, "Mailo2" },
+                    { 3, 2, "Lilo1" },
+                    { 4, 2, "Lilo2" },
+                    { 5, 2, "Lilo3" },
+                    { 6, 3, "Szarlo1" },
+                    { 7, 3, "Szarlo2" },
+                    { 8, 3, "Szarlo3" }
                 });
 
             migrationBuilder.CreateIndex(

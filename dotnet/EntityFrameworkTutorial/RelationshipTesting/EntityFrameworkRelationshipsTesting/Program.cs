@@ -17,13 +17,13 @@ namespace EntityFrameworkRelationshipsTesting
 
             using (var client = appDbContextDesign.CreateDbContext(null))
             {
-                var dogBreederName = "12, 'b'); drop database EntityFrameworkRelationshipsTesting;--";
-                var dogName = "Lilo";
+                //var dogBreederName = "12, 'b'); drop database EntityFrameworkRelationshipsTesting;--";
+                //var dogName = "Lilo";
 
-                var dogBreeder = new DogBreeder
-                {
-                    Name = dogBreederName
-                };
+                //var dogBreeder = new DogBreeder
+                //{
+                //    Name = dogBreederName
+                //};
 
                 //var dogs = new List<Dog>
                 //{
@@ -49,60 +49,65 @@ namespace EntityFrameworkRelationshipsTesting
                 //    },
                 //};
 
-                var dog = new Dog
+                //var dog = new Dog
+                //{
+                //    Name = dogName,
+                //    DogBreeder = dogBreeder,
+                //    Puppies = new List<Puppy>
+                //    {
+                //        new Puppy { Name = "puppy1" },
+                //        new Puppy { Name = "puppy2" },
+                //        new Puppy { Name = "puppy3" },
+                //        new Puppy { Name = "puppy4" },
+                //        new Puppy { Name = "puppy5" },
+                //    }
+                //};
+
+                //client.Dogs.Add(dog);
+
+                //client.SaveChanges();
+
+                //var a = "Rur%";
+                //var count = client.Dogs.Where(d => EF.Functions.Like(d.Name, a)).Count();
+
+                //count = client.Dogs.Where(d => EF.Functions.Like(d.Name, a)).Count();
+
+                //Console.WriteLine($"Count => {count}");
+
+                //foreach (var dog8 in client.Dogs.Include(d => d.DogBreeder))
+                //{
+                //    Console.WriteLine($"{dog8.Name}; {dog8.DogBreeder?.Name ?? "Empty"}");
+
+                //    if (dog8.Puppies != null)
+                //    {
+                //        Console.WriteLine("List of puppies:");
+
+                //        foreach (var puppy in dog8.Puppies)
+                //        {
+                //            Console.WriteLine(puppy.Name);
+                //        }
+                //    }
+
+                //    Console.WriteLine("==================================");
+                //}
+
+                //var dogData = client.Dogs.Select(d => new TestModel
+                //{
+                //    DogName = d.Name,
+                //    FirstPuppyName = d.Puppies.First().Name,
+                //    Puppies = d.Puppies,
+                //    PuppiesWithWhere = d.Puppies.Where(p => p.Name.EndsWith("1")),
+                //    PuppyCount = d.Puppies.Count
+                //}).ToList();
+
+                //dogData[0].DogName += " testing";
+
+                //Console.WriteLine(dogData.First().DogName);
+
+                foreach (var item in client.GetPupiesWithParentDogs.ToList())
                 {
-                    Name = dogName,
-                    DogBreeder = dogBreeder,
-                    Puppies = new List<Puppy>
-                    {
-                        new Puppy { Name = "puppy1" },
-                        new Puppy { Name = "puppy2" },
-                        new Puppy { Name = "puppy3" },
-                        new Puppy { Name = "puppy4" },
-                        new Puppy { Name = "puppy5" },
-                    }
-                };
-
-                client.Dogs.Add(dog);
-
-                client.SaveChanges();
-
-                var a = "Rur%";
-                var count = client.Dogs.Where(d => EF.Functions.Like(d.Name, a)).Count();
-
-                count = client.Dogs.Where(d => EF.Functions.Like(d.Name, a)).Count();
-
-                Console.WriteLine($"Count => {count}");
-
-                foreach (var dog8 in client.Dogs.Include(d => d.DogBreeder))
-                {
-                    Console.WriteLine($"{dog8.Name}; {dog8.DogBreeder?.Name ?? "Empty"}");
-
-                    if (dog8.Puppies != null)
-                    {
-                        Console.WriteLine("List of puppies:");
-
-                        foreach (var puppy in dog8.Puppies)
-                        {
-                            Console.WriteLine(puppy.Name);
-                        }
-                    }
-
-                    Console.WriteLine("==================================");
+                    Console.WriteLine($"ParentDogName: {item.ParentDogName}; PuppyName: {item.PuppyName}");
                 }
-
-                var dogData = client.Dogs.Select(d => new TestModel
-                {
-                    DogName = d.Name,
-                    FirstPuppyName = d.Puppies.First().Name,
-                    Puppies = d.Puppies,
-                    PuppiesWithWhere = d.Puppies.Where(p => p.Name.EndsWith("1")),
-                    PuppyCount = d.Puppies.Count
-                }).ToList();
-
-                dogData[0].DogName += " testing";
-
-                Console.WriteLine(dogData.First().DogName);
             }
 
             var estimateTime = DateTime.Now - startDateTime;

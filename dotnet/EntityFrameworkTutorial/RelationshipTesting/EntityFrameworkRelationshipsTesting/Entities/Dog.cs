@@ -56,6 +56,8 @@ namespace EntityFrameworkRelationshipsTesting.Entities
         [MaxLength(50)]
         public string Name { get; set; }
 
+        public int DogId { get; set; }
+
         public Dog Dog { get; set; }
     }
 }
