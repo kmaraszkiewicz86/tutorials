@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using EntityFrameworkRelationshipsTesting.Entities;
 using Microsoft.EntityFrameworkCore;
@@ -103,6 +104,35 @@ namespace EntityFrameworkRelationshipsTesting
                 //dogData[0].DogName += " testing";
 
                 //Console.WriteLine(dogData.First().DogName);
+
+                
+
+                try
+                {
+                    client.Database.GetDbConnection().Open();
+
+                    using (var command = client.Database.GetDbConnection().CreateCommand())
+                    {
+                        command.CommandText = "[dbo].[GetFirstDogPuppy]";
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        var dogNameParameter = command.CreateParameter();
+                        dogNameParameter.ParameterName = "@DogId";
+                        dogNameParameter.DbType = DbType.Int32;
+                        dogNameParameter.Value = 1;
+
+                        command.Parameters.Add(dogNameParameter);
+
+                        var puppyName = (string)command.ExecuteScalar();
+
+                        Console.WriteLine(puppyName);
+                    }
+                }
+                finally
+                {
+                    client.Database.GetDbConnection().Close();
+                }
+                
 
                 foreach (var item in client.GetPupiesWithParentDogs.ToList())
                 {
