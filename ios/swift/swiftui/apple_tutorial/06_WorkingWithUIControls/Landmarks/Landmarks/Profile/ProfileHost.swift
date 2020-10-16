@@ -6,4 +6,20 @@
 //  Copyright © 2020 Apple. All rights reserved.
 //
 
-import Foundation
+import SwiftUI
+
+struct ProfileHost: View {
+    @State var draftProfile = Profile.default
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 20, content: {
+            ProfileSummary(profile: draftProfile)
+        })
+    }
+}
+
+struct ProfileHost_Previews: PreviewProvider {
+    static var previews: some View {
+        ProfileHost()
+    }
+}
