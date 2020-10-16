@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from "@angular/core/testing";
+import { async, ComponentFixture, fakeAsync, flush, TestBed, tick } from "@angular/core/testing";
 import { ActivatedRoute } from "@angular/router";
 import { HeroService } from "../hero.service";
 import { HeroDetailComponent } from "./hero-detail.component";
@@ -45,5 +45,29 @@ describe('HeroDetails unit tests', () => {
         expect(h2NativeElement.textContent).toContain('MR. DOGMAN');
 
     });
+
+    it('should call updateHero when save is called', fakeAsync(() => {
+     
+        mockHeroService.updateHero.and.returnValue(of({}));
+        fixture.detectChanges();
+
+        fixture.componentInstance.save();
+
+        flush()
+
+        expect(mockHeroService.updateHero).toHaveBeenCalled();
+        
+    }));
+
+    it('should call updateHero when save is called for promises', async(() => {
+        mockHeroService.updateHero.and.returnValue(of({}));
+        fixture.detectChanges();
+
+        fixture.componentInstance.save2();
+
+        fixture.whenStable().then(() => {
+            expect(mockHeroService.updateHero).toHaveBeenCalled();
+        });
+    }));
 
 });
