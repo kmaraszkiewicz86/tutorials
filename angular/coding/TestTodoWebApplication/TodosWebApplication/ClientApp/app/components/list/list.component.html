@@ -1,8 +1,0 @@
-﻿<input type="text" [(ngModel)]="text" />
-<button type="button" (click)="add()">Dodaj</button>
-
-<ul>
-	<li *ngFor="let todo of todos">
-		<a href="/details/{{todo.id}}">{{todo.id}}</a>  | <button type="button" (click)="remove(todo)">remove</button>
-	</li>
-</ul>
