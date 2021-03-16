@@ -34,6 +34,29 @@ namespace Logic.Students
         }
     }
 
+    public sealed class EditPersonalInfoCommandHandler : ICommandHandler<EditPersonalInfoCommand>
+    {
+        private readonly UnitOfWork _unitOfWork;
+
+        public EditPersonalInfoCommandHandler(UnitOfWork unitOfWork)
+        {
+            _unitOfWork = unitOfWork;
+        }
+
+        public Result Handle(EditPersonalInfoCommand command)
+        {
+            var studentRepository = new StudentRepository(_unitOfWork);
+
+            Student student = studentRepository.GetById(command.Id);
+            if (student == null)
+                return Result.Fail($"No student found for Id {command.Id}");
+
+            _unitOfWork.Commit();
+
+            return Result.Ok();
+        }
+    }
+
     public sealed class RegisterCommand : ICommand
     {
         public string Name { get; }
@@ -205,11 +228,11 @@ namespace Logic.Students
         }
     }
 
-    public sealed class UnregisterCommandCommandHandler : ICommandHandler<UnregisterCommand>
+    public sealed class UnregisterCommandHandler : ICommandHandler<UnregisterCommand>
     {
         private readonly UnitOfWork _unitOfWork;
 
-        public UnregisterCommandCommandHandler(UnitOfWork unitOfWork)
+        public UnregisterCommandHandler(UnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
@@ -230,11 +253,11 @@ namespace Logic.Students
         }
     }
 
-    public sealed class EnrollCommandCommandHandler : ICommandHandler<EnrollCommand>
+    public sealed class EnrollCommandHandler : ICommandHandler<EnrollCommand>
     {
         private readonly UnitOfWork _unitOfWork;
 
-        public EnrollCommandCommandHandler(UnitOfWork unitOfWork)
+        public EnrollCommandHandler(UnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
@@ -265,11 +288,11 @@ namespace Logic.Students
         }
     }
 
-    public sealed class DisenrollCommandCommandHandler : ICommandHandler<DisenrollCommand>
+    public sealed class DisenrollCommandHandler : ICommandHandler<DisenrollCommand>
     {
         private readonly UnitOfWork _unitOfWork;
 
-        public DisenrollCommandCommandHandler(UnitOfWork unitOfWork)
+        public DisenrollCommandHandler(UnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
@@ -299,34 +322,13 @@ namespace Logic.Students
         }
     }
 
-    public sealed class EditPersonalInfoCommandHandler : ICommandHandler<EditPersonalInfoCommand>
+    
+
+    public sealed class TransferCommandHandler : ICommandHandler<TransferCommand>
     {
         private readonly UnitOfWork _unitOfWork;
 
-        public EditPersonalInfoCommandHandler(UnitOfWork unitOfWork)
-        {
-            _unitOfWork = unitOfWork;
-        }
-
-        public Result Handle(EditPersonalInfoCommand command)
-        {
-            var studentRepository = new StudentRepository(_unitOfWork);
-
-            Student student = studentRepository.GetById(command.Id);
-            if (student == null)
-                return Result.Fail($"No student found for Id {command.Id}");
-
-            _unitOfWork.Commit();
-
-            return Result.Ok();
-        }
-    }
-
-    public sealed class TransferCommandCommandHandler : ICommandHandler<TransferCommand>
-    {
-        private readonly UnitOfWork _unitOfWork;
-
-        public TransferCommandCommandHandler(UnitOfWork unitOfWork)
+        public TransferCommandHandler(UnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
