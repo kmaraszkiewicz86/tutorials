@@ -34,8 +34,6 @@ namespace Api
                     new EditPersonalInfoCommandHandler(serviceProvider.GetService<SessionFactory>()), 
                     serviceProvider.GetService<Config>()));
 
-            services.AddTransient<ICommandHandler<EditPersonalInfoCommand>, EditPersonalInfoCommandHandler>();
-            services.AddTransient<ICommandHandler<EditPersonalInfoCommand>, EditPersonalInfoCommandHandler>();
             services.AddTransient<ICommandHandler<RegisterCommand>, RegisterCommandHandler>();
             services.AddTransient<ICommandHandler<UnregisterCommand>, UnregisterCommandHandler>();
             services.AddTransient<ICommandHandler<EnrollCommand>, EnrollCommandHandler>();
