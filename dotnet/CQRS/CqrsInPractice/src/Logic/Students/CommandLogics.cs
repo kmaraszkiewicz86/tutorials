@@ -36,22 +36,26 @@ namespace Logic.Students
 
     public sealed class EditPersonalInfoCommandHandler : ICommandHandler<EditPersonalInfoCommand>
     {
-        private readonly UnitOfWork _unitOfWork;
+        private readonly SessionFactory _sessionFactory;
 
-        public EditPersonalInfoCommandHandler(UnitOfWork unitOfWork)
+        public EditPersonalInfoCommandHandler(SessionFactory sessionFactory)
         {
-            _unitOfWork = unitOfWork;
+            _sessionFactory = sessionFactory;
         }
 
         public Result Handle(EditPersonalInfoCommand command)
         {
-            var studentRepository = new StudentRepository(_unitOfWork);
+            var unitOfWork = new UnitOfWork(_sessionFactory);
+            var studentRepository = new StudentRepository(unitOfWork);
 
             Student student = studentRepository.GetById(command.Id);
             if (student == null)
                 return Result.Fail($"No student found for Id {command.Id}");
 
-            _unitOfWork.Commit();
+            student.Name = command.Name;
+            student.Email = command.Email;
+
+            unitOfWork.Commit();
 
             return Result.Ok();
         }
