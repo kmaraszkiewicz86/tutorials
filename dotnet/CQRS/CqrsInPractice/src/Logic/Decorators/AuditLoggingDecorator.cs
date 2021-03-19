@@ -1,7 +1,6 @@
 ﻿using System;
 using CSharpFunctionalExtensions;
-using Logic.Students.CommandHandlers;
-using Logic.Students.Commands;
+using Logic.AppServices.Commands;
 using Newtonsoft.Json;
 
 namespace Logic.Decorators

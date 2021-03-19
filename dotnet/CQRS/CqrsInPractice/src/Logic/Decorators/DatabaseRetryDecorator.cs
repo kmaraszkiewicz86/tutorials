@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using CSharpFunctionalExtensions;
-using Logic.Students.CommandHandlers;
-using Logic.Students.Commands;
+using Logic.AppServices.Commands;
 using Logic.Utils;
 
 namespace Logic.Decorators

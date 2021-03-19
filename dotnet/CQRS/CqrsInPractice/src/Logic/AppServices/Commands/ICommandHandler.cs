@@ -1,7 +1,6 @@
 ﻿using CSharpFunctionalExtensions;
-using Logic.Students.Commands;
 
-namespace Logic.Students.CommandHandlers
+namespace Logic.AppServices.Commands
 {
     public interface ICommandHandler<TCommand> where TCommand : ICommand
     {

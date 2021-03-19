@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Logic.AppServices.Commands;
+using Logic.AppServices.Queries;
 using Logic.Decorators;
-using Logic.Students.CommandHandlers;
-using Logic.Students.Commands;
-using Logic.Students.QueryHandlers;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Logic.Utils

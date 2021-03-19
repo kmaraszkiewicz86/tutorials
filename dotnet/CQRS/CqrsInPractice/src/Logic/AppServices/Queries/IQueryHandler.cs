@@ -1,6 +1,4 @@
-﻿using Logic.Students.Queries;
-
-namespace Logic.Students.QueryHandlers
+﻿namespace Logic.AppServices.Queries
 {
     public interface IQueryHandler<TQuery, TResult> : IQuery<TResult>
     {

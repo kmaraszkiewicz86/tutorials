@@ -1,11 +1,4 @@
-﻿using System.Collections.Generic;
-using Api.Utils;
-using Logic.Decorators;
-using Logic.Dtos;
-using Logic.Students.CommandHandlers;
-using Logic.Students.Commands;
-using Logic.Students.Queries;
-using Logic.Students.QueryHandlers;
+﻿using Api.Utils;
 using Logic.Utils;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
