@@ -2,7 +2,10 @@
 using Api.Utils;
 using Logic.Decorators;
 using Logic.Dtos;
-using Logic.Students;
+using Logic.Students.CommandHandlers;
+using Logic.Students.Commands;
+using Logic.Students.Queries;
+using Logic.Students.QueryHandlers;
 using Logic.Utils;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
@@ -29,10 +32,11 @@ namespace Api
             services.AddSingleton(new SessionFactory(Configuration["ConnectionString"]));
             services.AddTransient<UnitOfWork>();
 
-            services.AddTransient<ICommandHandler<EditPersonalInfoCommand>>(serviceProvider => 
-                new DatabaseRetryDecorator<EditPersonalInfoCommand>(
-                    new EditPersonalInfoCommandHandler(serviceProvider.GetService<SessionFactory>()), 
-                    serviceProvider.GetService<Config>()));
+            services.AddTransient<ICommandHandler<EditPersonalInfoCommand>>(serviceProvider =>
+                new AuditLoggingDecorator<EditPersonalInfoCommand>(
+                    new DatabaseRetryDecorator<EditPersonalInfoCommand>(
+                        new EditPersonalInfoCommandHandler(serviceProvider.GetService<SessionFactory>()),
+                        serviceProvider.GetService<Config>())));
 
             services.AddTransient<ICommandHandler<RegisterCommand>, RegisterCommandHandler>();
             services.AddTransient<ICommandHandler<UnregisterCommand>, UnregisterCommandHandler>();
