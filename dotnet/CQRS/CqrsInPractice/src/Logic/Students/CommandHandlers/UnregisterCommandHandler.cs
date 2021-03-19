@@ -1,21 +1,26 @@
 ﻿using CSharpFunctionalExtensions;
+using Logic.Decorators;
 using Logic.Students.Commands;
 using Logic.Utils;
 
 namespace Logic.Students.CommandHandlers
 {
+    [DatabaseRetry]
+    [AuditLogging]
     public sealed class UnregisterCommandHandler : ICommandHandler<UnregisterCommand>
     {
-        private readonly UnitOfWork _unitOfWork;
+        private readonly SessionFactory _sessionFactory;
 
-        public UnregisterCommandHandler(UnitOfWork unitOfWork)
+        public UnregisterCommandHandler(SessionFactory sessionFactory)
         {
-            _unitOfWork = unitOfWork;
+            _sessionFactory = sessionFactory;
         }
 
         public Result Handle(UnregisterCommand command)
         {
-            var studentRepository = new StudentRepository(_unitOfWork);
+            var unitOfWork = new UnitOfWork(_sessionFactory);
+
+            var studentRepository = new StudentRepository(unitOfWork);
 
             Student student = studentRepository.GetById(command.Id);
             if (student == null)
@@ -23,7 +28,7 @@ namespace Logic.Students.CommandHandlers
 
             studentRepository.Delete(student);
 
-            _unitOfWork.Commit();
+            unitOfWork.Commit();
 
             return Result.Ok();
         }

@@ -1,9 +1,12 @@
 ﻿using CSharpFunctionalExtensions;
+using Logic.Decorators;
 using Logic.Students.Commands;
 using Logic.Utils;
 
 namespace Logic.Students.CommandHandlers
 {
+    [DatabaseRetry]
+    [AuditLogging]
     public sealed class EditPersonalInfoCommandHandler : ICommandHandler<EditPersonalInfoCommand>
     {
         private readonly SessionFactory _sessionFactory;

@@ -1,25 +1,30 @@
 ﻿using System;
 using CSharpFunctionalExtensions;
+using Logic.Decorators;
 using Logic.Students.Commands;
 using Logic.Utils;
 
 namespace Logic.Students.CommandHandlers
 {
+    [DatabaseRetry]
+    [AuditLogging]
     public sealed class RegisterCommandHandler : ICommandHandler<RegisterCommand>
     {
-        private readonly UnitOfWork _unitOfWork;
+        private readonly SessionFactory _sessionFactory;
 
-        public RegisterCommandHandler(UnitOfWork unitOfWork)
+        public RegisterCommandHandler(SessionFactory sessionFactory)
         {
-            _unitOfWork = unitOfWork;
+            _sessionFactory = sessionFactory;
         }
 
         public Result Handle(RegisterCommand command)
         {
+            var unitOfWork = new UnitOfWork(_sessionFactory);
+
             var student = new Student(command.Name, command.Email);
 
-            var studentRepository = new StudentRepository(_unitOfWork);
-            var courseRepository = new CourseRepository(_unitOfWork);
+            var studentRepository = new StudentRepository(unitOfWork);
+            var courseRepository = new CourseRepository(unitOfWork);
 
             if (command.Course1 != null && command.Course1Grade != null)
             {
@@ -34,7 +39,7 @@ namespace Logic.Students.CommandHandlers
             }
 
             studentRepository.Save(student);
-            _unitOfWork.Commit();
+            unitOfWork.Commit();
 
             return Result.Ok();
         }

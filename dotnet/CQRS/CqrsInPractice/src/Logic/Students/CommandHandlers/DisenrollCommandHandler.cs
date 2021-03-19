@@ -1,22 +1,27 @@
 ﻿using CSharpFunctionalExtensions;
+using Logic.Decorators;
 using Logic.Students.Commands;
 using Logic.Utils;
 
 namespace Logic.Students.CommandHandlers
 {
+    [DatabaseRetry]
+    [AuditLogging]
     public sealed class DisenrollCommandHandler : ICommandHandler<DisenrollCommand>
     {
-        private readonly UnitOfWork _unitOfWork;
+        private readonly SessionFactory _sessionFactory;
 
-        public DisenrollCommandHandler(UnitOfWork unitOfWork)
+        public DisenrollCommandHandler(SessionFactory sessionFactory)
         {
-            _unitOfWork = unitOfWork;
+            _sessionFactory = sessionFactory;
         }
 
         public Result Handle(DisenrollCommand command)
         {
-            var studentRepository = new StudentRepository(_unitOfWork);
-            var courseRepository = new CourseRepository(_unitOfWork);
+            var unitOfWork = new UnitOfWork(_sessionFactory);
+
+            var studentRepository = new StudentRepository(unitOfWork);
+            var courseRepository = new CourseRepository(unitOfWork);
 
             Student student = studentRepository.GetById(command.Id);
             if (student == null)
@@ -32,7 +37,7 @@ namespace Logic.Students.CommandHandlers
 
             student.RemoveEnrollment(enrollment, command.Comment);
 
-            _unitOfWork.Commit();
+            unitOfWork.Commit();
 
             return Result.Ok();
         }
