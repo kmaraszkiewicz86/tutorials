@@ -1,10 +1,10 @@
 ﻿namespace Logic.Utils
 {
-    public class ConnectionString
+    public class CommandsConnectionString
     {
         public string Value { get; }
 
-        public ConnectionString(string value)
+        public CommandsConnectionString(string value)
         {
             Value = value;
         }

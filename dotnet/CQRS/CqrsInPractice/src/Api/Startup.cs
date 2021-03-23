@@ -20,11 +20,13 @@ namespace Api
             services.AddMvc();
 
             var config = new Config(3);
-            var connectionString = new ConnectionString(Configuration["ConnectionString"]);
+            var commandsConnectionString = new CommandsConnectionString(Configuration["ConnectionString"]);
+            var queriesConnectionString = new QueriesConnectionString(Configuration["QueriesConnectionString"]);
 
             services.AddSingleton(config);
-            services.AddSingleton(connectionString);
-            services.AddSingleton(new SessionFactory(connectionString));
+            services.AddSingleton(commandsConnectionString);
+            services.AddSingleton(queriesConnectionString);
+            services.AddSingleton(new SessionFactory(commandsConnectionString));
             services.AddSingleton<Messages>();
             services.AddHandlers();
         }
