@@ -1,59 +1,59 @@
 ﻿using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
-using Logic.Decorators;
+using Dapper;
 using Logic.Dtos;
-using Logic.Students;
 using Logic.Utils;
 
 namespace Logic.AppServices.Queries
 {
     public sealed class GetListQuery : IQuery<List<StudentDto>>
     {
-        public string Enrolled { get; }
+        public string EnrolledIn { get; }
 
-        public int? EnrollmentNumber { get; }
+        public int? NumberOfCurses { get; }
 
         public GetListQuery(string enrolled, int? enrollmentNumber)
         {
-            Enrolled = enrolled;
-            EnrollmentNumber = enrollmentNumber;
+            EnrolledIn = enrolled;
+            NumberOfCurses = enrollmentNumber;
         }
 
         internal class GetListQueryHandler : IQueryHandler<GetListQuery, List<StudentDto>>
         {
-            private readonly SessionFactory _sessionFactory;
+            private readonly QueriesConnectionString _connectionString;
 
-            public GetListQueryHandler(SessionFactory sessionFactory)
+            public GetListQueryHandler(QueriesConnectionString connectionString)
             {
-                _sessionFactory = sessionFactory;
+                _connectionString = connectionString;
             }
 
-            public List<StudentDto> Handle(GetListQuery command)
+            public List<StudentDto> Handle(GetListQuery query)
             {
-                var unitOfWork = new UnitOfWork(_sessionFactory);
+                string sql = @"
+                    SELECT s.StudentID Id, s.Name, s.Email,
+	                    s.FirstCourseName Course1, s.FirstCourseCredits Course1Credits, s.FirstCourseGrade Course1Grade,
+	                    s.SecondCourseName Course2, s.SecondCourseCredits Course2Credits, s.SecondCourseGrade Course2Grade
+                    FROM dbo.Student s
+                    WHERE (s.FirstCourseName = @Course
+		                    OR s.SecondCourseName = @Course
+		                    OR @Course IS NULL)
+                        AND (s.NumberOfEnrollments = @Number
+                            OR @Number IS NULL)
+                    ORDER BY s.StudentID ASC";
 
-                var studentRepository = new StudentRepository(unitOfWork);
-
-                return studentRepository
-                    .GetList(command.Enrolled, command.EnrollmentNumber)
-                    .Select(x => ConvertToDto(x)).ToList()
-                    .ToList();
-            }
-
-            private StudentDto ConvertToDto(Student student)
-            {
-                return new StudentDto
+                using (SqlConnection connection = new SqlConnection(_connectionString.Value))
                 {
-                    Id = student.Id,
-                    Name = student.Name,
-                    Email = student.Email,
-                    Course1 = student.FirstEnrollment?.Course?.Name,
-                    Course1Grade = student.FirstEnrollment?.Grade.ToString(),
-                    Course1Credits = student.FirstEnrollment?.Course?.Credits,
-                    Course2 = student.SecondEnrollment?.Course?.Name,
-                    Course2Grade = student.SecondEnrollment?.Grade.ToString(),
-                    Course2Credits = student.SecondEnrollment?.Course?.Credits,
-                };
+                    List<StudentDto> students = connection
+                        .Query<StudentDto>(sql, new
+                        {
+                            Course = query.EnrolledIn,
+                            Number = query.NumberOfCurses
+                        })
+                        .ToList();
+
+                    return students;
+                }
             }
         }
     }

@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+import "google/protobuf/any.proto";
+import "address.proto";
+import "type.proto";
+
+package dogdata;
+
+message Customer {
+    string username = 1;
+    repeated Address email_addresses = 2;
+    CustomType type = 3;
+    oneof test {
+        string name = 4;
+        string name2 = 5;
+    }
+    map<int32, string> animal_food = 6;
+    optional google.protobuf.Any no_diffrent_what = 7;
+}

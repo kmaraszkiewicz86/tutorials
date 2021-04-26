@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+package dogdata;
+
+message Address {
+    string street = 1;
+    string city = 2;
+}
